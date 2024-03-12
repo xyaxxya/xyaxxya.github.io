@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SQLMAP使用指北 | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="sqlmap基本语法-u 目标URL--dbs所有数据库--current_db查看网站当前的数据库-D 库名 --tables查询表明-D 库名 --T 表名 --columns列出所有字段-D 库名 --T 表名 -C 列名 --dump列出字段内容 POST注入 参数通过抓包获取  --data&#x2F;&#x2F;通过post方式提交参数使用方法:sqlmap -u[URL]--data">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQLMAP使用指北">
+<meta property="og:url" content="https://xyaxxya.github.io/2024/02/17/SQLMAP%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/index.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="sqlmap基本语法-u 目标URL--dbs所有数据库--current_db查看网站当前的数据库-D 库名 --tables查询表明-D 库名 --T 表名 --columns列出所有字段-D 库名 --T 表名 -C 列名 --dump列出字段内容 POST注入 参数通过抓包获取  --data&#x2F;&#x2F;通过post方式提交参数使用方法:sqlmap -u[URL]--data">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/02/19/uAtFQKaymT7J4ZB.png">
+<meta property="article:published_time" content="2024-02-17T08:39:34.000Z">
+<meta property="article:modified_time" content="2024-02-19T16:09:49.469Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="渗透">
+<meta property="article:tag" content="工具使用">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/02/19/uAtFQKaymT7J4ZB.png"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/2024/02/17/SQLMAP%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SQLMAP使用指北',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-20 00:09:49'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/02/19/uAtFQKaymT7J4ZB.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SQLMAP使用指北</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-17T08:39:34.000Z" title="发表于 2024-02-17 16:39:34">2024-02-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-19T16:09:49.469Z" title="更新于 2024-02-20 00:09:49">2024-02-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/web/">web</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/web/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/">工具使用指北</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/web/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/sqlmap/">sqlmap</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2024/02/17/SQLMAP%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/" data-flag-title="SQLMAP使用指北"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/02/17/SQLMAP%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2024/02/17/SQLMAP%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="sqlmap基本语法"><a href="#sqlmap基本语法" class="headerlink" title="sqlmap基本语法"></a>sqlmap基本语法</h1><p><code>-u</code> 目标URL<br><code>--dbs</code>所有数据库<br><code>--current_db</code>查看网站当前的数据库<br><code>-D 库名 --tables</code>查询表明<br><code>-D 库名 --T 表名 --columns</code>列出所有字段<br><code>-D 库名 --T 表名 -C 列名 --dump</code>列出字段内容</p>
+<h2 id="POST注入"><a href="#POST注入" class="headerlink" title="POST注入"></a>POST注入</h2><blockquote>
+<p>参数通过抓包获取</p>
+</blockquote>
+<p><code>--data</code>&#x2F;&#x2F;通过post方式提交参数<br>使用方法:<code>sqlmap -u[URL]--data POST参数</code><br><code>sqlmap -u [URL] -r &quot;filename&#39;</code>建议用这个方法<br><code>python sqlmap.py -u &quot;http://172.26.26.253/Less-11/index.php&quot; --data&quot;uname=1&amp;passwd=1&amp;submit=Submit</code></p>
+<h1 id="常用参数："><a href="#常用参数：" class="headerlink" title="常用参数："></a>常用参数：</h1><h2 id="v"><a href="#v" class="headerlink" title="-v"></a>-v</h2><p>使用方法:-v&lt;级别&gt;如:sqlmap -u [URL]-v 3&gt;<br>参数详情:SQLmap的输出信息按从简到繁，从0-6共分为7个级别，默认的输出级别为1.&gt;<br>各个输出级别的描述如下:<br>0:只显示python的回溯、错误和关键信息<br>1:显示信息和警告消息<br>2:显示调式信息<br>3:显示注入使用的攻击载荷<br>4:显示HTTP请求<br>5:显示HTTP响应头<br>6:显示HTTP相应页面的内容</p>
+<h2 id="–level"><a href="#–level" class="headerlink" title="–level"></a>–level</h2><p>用法:sqlmap -u[URL]–level 3<br>也可说明:SQLMap一共有5个探测等级，默认是1，S2LMap使用的Payload可以在xml&#x2F;payloads.xml中看到以根据相应的格式添加自己的payload。<br>level1:对GET和POST的数据进行测试<br>level2:会对HTTP cookie进行测试<br>level 3:会对HTTP User-Agent&#x2F;Referer头进行测试<br>level4-5:测试的更加全面，同时测试的速度会更慢</p>
+<p>注意:在不确定哪个Payload或参数为注入点时，为了保证全面性，建议使用高的level值</p>
+<h2 id="–is-dba"><a href="#–is-dba" class="headerlink" title="–is-dba"></a>–is-dba</h2><p>用法:sqlmap -u[URL]–is-dba员账户。<br>这个命令有时候决定了你是否可以在服务器下进行写说明:该命令用于查看当前账户是否为数据库管理器上面写入一句话木马的操作，是否有写的权限，代表你是否可以在服务结果:如果是管理员会返回Ture，否则返回False<br>列出数据库管理员角色</p>
+<h2 id="–roles"><a href="#–roles" class="headerlink" title="–roles"></a>–roles</h2><p>用法:sqlmap -u [URL] –roles<br>使用说明:该命令用于查看数据库用户角色，如果当前用户有去读取包含所有用户的表，输入该命令会列举出每个户的角色，也可以用-U参数指定想看哪个用户的角色<br>注意:仅适用于Oracle数据库</p>
+<p>获取数据库的用户名和密码</p>
+<h2 id="–users–passwords"><a href="#–users–passwords" class="headerlink" title="–users–passwords"></a>–users–passwords</h2><p>枚举所有的用户密码<br>使用方法:<code>sqlmap -u[URL]--users --passwords</code><br>mysql数据库的在线解密参考链接:<a target="_blank" rel="noopener" href="https://cmd5.com/">https://cmd5.com/</a></p>
+<p><code>python sqlmap.py -u &quot;http://172.26.26.253/less-1/index.php?id=1&quot;--users --passwords</code><br><code>python sqlmap.py-u “http://172.26.26.253/Less-1/index.php?id=1&quot; -U root --passwords</code></p>
+<h2 id="–current-user-–current-db"><a href="#–current-user-–current-db" class="headerlink" title="–current-user –current-db"></a>–current-user –current-db</h2><p>使用方法:<code>sqlmap -u[URL]--current-user --current-db</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://172.26.26.253/Less-1/index,php?id=1&quot;--current-user --current-db</span><br></pre></td></tr></table></figure>
+
+<h2 id="m-批量检测"><a href="#m-批量检测" class="headerlink" title="-m 批量检测"></a>-m 批量检测</h2><p><code>-m+[IPfile]</code></p>
+<h2 id="–cookie"><a href="#–cookie" class="headerlink" title="–cookie"></a>–cookie</h2><p>用法: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u [url] --cookie=&quot;SESSIONID=xxxxx;NAME=ichunqiu;&quot; --level 2 --data &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>说明:当需要对cookie注入的时候，必须使用–cookie选项,–data””因为post的数据长度为0，但是又想使用post方法进行注入，则使用–data””，使用–data选项后，sqlmap自动使用post方法。<br>注意:<br>1、sqlmap不支持使用–method指定http请求的方法。<br>2、默认不扫cookie的内容，必须是level大于等于2才能扫cookie里的内容<br>3、cookie默认的分隔符为“;”</p>
+<p>抓包后在User-agent后面加个<code>*</code>表示重点检测此处</p>
+<h2 id="–user-agent和–random-agent"><a href="#–user-agent和–random-agent" class="headerlink" title="–user-agent和–random-agent"></a>–user-agent和–random-agent</h2><p>用法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--user-agent=&quot;Mozilla/5.0(Windows NT6.1;WOW64;rv:16.0)Gecko/20100101 Firefox/16.0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>说明:<code>--user-agent</code>可以指定一个User-Agent值。参数<code>--random-agent</code>，Sqlmap会从文件.&#x2F;txt&#x2F;user-gents.txt中随机地取一个User-Agent<br>注意:</p>
+<ol>
+<li>在一次会话中只有使用同一个User-Agent，并不是每发一个HTTP请求包，都随机一个User-Agen</li>
+<li>必须是level大于等于3才会尝试对 referer注入。</li>
+</ol>
+<h2 id="–referer"><a href="#–referer" class="headerlink" title="–referer"></a>–referer</h2><p>用法:<code>--referer=&quot;aaa&quot;</code><br>说明:使qlmap 可以在请求中伪造 HTTP 中的 referer，Sqlmap发送的HTTP请求头部默认无Referer字段.<br>注意:必须是level大于等于3才会尝试对referer 注入。</p>
+<h2 id="延时注入"><a href="#延时注入" class="headerlink" title="延时注入"></a>延时注入</h2><p>语句:<br><code>sqlmap -u&quot;http://IP地址/time.php?id=1&quot;--technique T --time-sec 5 -dbs</code><br>参数说明:<br><code>--techniqueT</code>:报错注入:<br><code>--time-sec5</code>:延时的时间为5秒:<br><code>--batch</code>:默认选项都为y</p>
+<h2 id="–sql-query"><a href="#–sql-query" class="headerlink" title="–sql-query"></a>–sql-query</h2><p>用法:sqlmap -u [URL]–sql-query&#x3D;“sql语句’<br><code>python sqlmap.py -u &quot;http://172.26.26.253/Less-1/index.php?id=1&quot;--sql-query=&quot;select version()&quot;</code></p>
+<h2 id="–sql-shell"><a href="#–sql-shell" class="headerlink" title="–sql-shell"></a>–sql-shell</h2><p>用法:<code>sqlmap -u [URL] --sql-shell</code><br>说明:该参数可直接获得交互式的SQL命令shell,我们可以在此直接输入想要执行的SQL语句并实时取得回显，输入x或者q退出交互式命令行<br>注意:只能进行select查询</p>
+<h2 id="–sql-file"><a href="#–sql-file" class="headerlink" title="–sql-file"></a>–sql-file</h2><p>用法:<code>sqlmap -u [URL]--sql-file=sql</code>文件说明:参数可以直接执行SQL文件中的语句。<br>举例:新建一个SQL文件，如:1.sql<br>内容为:<code>select version();select @@datadir;</code>在sqlmap工具中输入 <code>sqlmap -u [url]--sql-file=&quot;1.sql</code>如上，MySQL的版本、MySQL数据库存放的路径都被查询到</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/2024/02/17/SQLMAP%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/">https://xyaxxya.github.io/2024/02/17/SQLMAP%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ctf/">ctf</a><a class="post-meta__tags" href="/tags/web/">web</a><a class="post-meta__tags" href="/tags/sql%E6%B3%A8%E5%85%A5/">sql注入</a><a class="post-meta__tags" href="/tags/%E6%B8%97%E9%80%8F/">渗透</a><a class="post-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/02/19/uAtFQKaymT7J4ZB.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/17/ezRSA/" title="ezRSA"><img class="cover" src="https://s2.loli.net/2024/02/19/XSgGnKMzUilF82E.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ezRSA</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/16/2024%E5%B9%B4%E9%A6%96%E5%B1%8A%E7%8D%AC%E8%B1%B8%E6%9D%AFwp/" title="2024年首届獬豸杯wp"><img class="cover" src="https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2024年首届獬豸杯wp</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/26/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/" title="PHP伪协议"><img class="cover" src="https://s2.loli.net/2024/02/20/AzVOtrNYExbpkJa.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-26</div><div class="title">PHP伪协议</div></div></a></div><div><a href="/2024/02/17/PHP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" title="PHP基础语法"><img class="cover" src="https://s2.loli.net/2024/02/19/a5Ah7V1swNFKeMI.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-17</div><div class="title">PHP基础语法</div></div></a></div><div><a href="/2024/02/20/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="反序列化"><img class="cover" src="https://s2.loli.net/2024/02/17/x9hmviL2f7kFYqV.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-20</div><div class="title">反序列化</div></div></a></div><div><a href="/2024/02/19/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" title="命令执行漏洞"><img class="cover" src="https://s2.loli.net/2024/02/20/LR5VYU3QtFxkoMp.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-19</div><div class="title">命令执行漏洞</div></div></a></div><div><a href="/2024/02/17/ezRSA/" title="ezRSA"><img class="cover" src="https://s2.loli.net/2024/02/19/XSgGnKMzUilF82E.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-17</div><div class="title">ezRSA</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="mailto:3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2024/02/16/%E5%85%B3%E4%BA%8E%E6%88%91" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sqlmap%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">sqlmap基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#POST%E6%B3%A8%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">POST注入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">常用参数：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#v"><span class="toc-number">2.1.</span> <span class="toc-text">-v</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93level"><span class="toc-number">2.2.</span> <span class="toc-text">–level</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93is-dba"><span class="toc-number">2.3.</span> <span class="toc-text">–is-dba</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93roles"><span class="toc-number">2.4.</span> <span class="toc-text">–roles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93users%E2%80%93passwords"><span class="toc-number">2.5.</span> <span class="toc-text">–users–passwords</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93current-user-%E2%80%93current-db"><span class="toc-number">2.6.</span> <span class="toc-text">–current-user –current-db</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#m-%E6%89%B9%E9%87%8F%E6%A3%80%E6%B5%8B"><span class="toc-number">2.7.</span> <span class="toc-text">-m 批量检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93cookie"><span class="toc-number">2.8.</span> <span class="toc-text">–cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93user-agent%E5%92%8C%E2%80%93random-agent"><span class="toc-number">2.9.</span> <span class="toc-text">–user-agent和–random-agent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93referer"><span class="toc-number">2.10.</span> <span class="toc-text">–referer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%B6%E6%97%B6%E6%B3%A8%E5%85%A5"><span class="toc-number">2.11.</span> <span class="toc-text">延时注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93sql-query"><span class="toc-number">2.12.</span> <span class="toc-text">–sql-query</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93sql-shell"><span class="toc-number">2.13.</span> <span class="toc-text">–sql-shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%93sql-file"><span class="toc-number">2.14.</span> <span class="toc-text">–sql-file</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/11/%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%B1%80%E7%BD%91%E5%AE%89%E5%A4%A7%E6%AF%94%E6%AD%A6/" title="上海市局网安大比武"><img src="https://s2.loli.net/2024/02/20/k5JcHuo9eUaxMWK.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="上海市局网安大比武"/></a><div class="content"><a class="title" href="/2024/03/11/%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%B1%80%E7%BD%91%E5%AE%89%E5%A4%A7%E6%AF%94%E6%AD%A6/" title="上海市局网安大比武">上海市局网安大比武</a><time datetime="2024-03-11T01:48:33.000Z" title="发表于 2024-03-11 09:48:33">2024-03-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/05/%E9%87%8D%E5%BA%86%E7%BD%91%E5%AE%89%E8%83%BD%E5%8A%9B%E9%AA%8C%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="重庆网安能力验证服务器"><img src="https://s2.loli.net/2024/02/19/vYcnqNFOSGEofJD.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="重庆网安能力验证服务器"/></a><div class="content"><a class="title" href="/2024/03/05/%E9%87%8D%E5%BA%86%E7%BD%91%E5%AE%89%E8%83%BD%E5%8A%9B%E9%AA%8C%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="重庆网安能力验证服务器">重庆网安能力验证服务器</a><time datetime="2024-03-05T10:16:01.000Z" title="发表于 2024-03-05 18:16:01">2024-03-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/04/%E6%96%9F%E8%8C%B6%E7%8E%8B%E8%80%85%E5%B8%B8%E8%A7%84%E8%B5%9B-%E6%95%B0%E6%8D%AE%E7%A0%94%E5%88%A4%E4%B8%93%E9%A1%B9/" title="斟茶王者常规赛-数据研判专项"><img src="https://s2.loli.net/2024/02/19/aiZP65Iuw7j8meq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="斟茶王者常规赛-数据研判专项"/></a><div class="content"><a class="title" href="/2024/03/04/%E6%96%9F%E8%8C%B6%E7%8E%8B%E8%80%85%E5%B8%B8%E8%A7%84%E8%B5%9B-%E6%95%B0%E6%8D%AE%E7%A0%94%E5%88%A4%E4%B8%93%E9%A1%B9/" title="斟茶王者常规赛-数据研判专项">斟茶王者常规赛-数据研判专项</a><time datetime="2024-03-04T12:36:16.000Z" title="发表于 2024-03-04 20:36:16">2024-03-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/04/ByteCTF-2021-Final-SEO-WP/" title="ByteCTF 2021 Final SEO WP"><img src="https://s2.loli.net/2024/02/17/bcaAVNDYvx5leMf.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ByteCTF 2021 Final SEO WP"/></a><div class="content"><a class="title" href="/2024/03/04/ByteCTF-2021-Final-SEO-WP/" title="ByteCTF 2021 Final SEO WP">ByteCTF 2021 Final SEO WP</a><time datetime="2024-03-04T01:14:09.000Z" title="发表于 2024-03-04 09:14:09">2024-03-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/03/DC-1%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/" title="DC-1靶场练习"><img src="https://s2.loli.net/2024/02/19/8fBYiCjdpqegr7x.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DC-1靶场练习"/></a><div class="content"><a class="title" href="/2024/03/03/DC-1%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/" title="DC-1靶场练习">DC-1靶场练习</a><time datetime="2024-03-03T08:38:51.000Z" title="发表于 2024-03-03 16:38:51">2024-03-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
