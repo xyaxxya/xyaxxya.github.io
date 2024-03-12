@@ -87,37 +87,6 @@
     
     
     <entry>
-      <title>ByteCTF 2021 Final SEO WP</title>
-      <link href="/2024/03/04/ByteCTF-2021-Final-SEO-WP/"/>
-      <url>/2024/03/04/ByteCTF-2021-Final-SEO-WP/</url>
-      
-        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/sqlsec/ByteCTF2021-Final-SEO.git</span><br><span class="line">cd ByteCTF2021-Final-SEO/Dockerfile</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure><p><img src="https://pic.imgdb.cn/item/65e5224f9f345e8d03ed3ee2.jpg"></p><p>IP访问</p><p><img src="https://pic.imgdb.cn/item/65e522d69f345e8d03ee5f7e.jpg"></p><p>思路：</p><blockquote><ol><li>找到含义 SSRF 的漏洞接口，绕过前端校验，可以直接扫描探测内网信息。</li><li>为了快速定位内网的网段，网站还预留的文件下载漏洞，可以通过文件下载 hosts 之类的文件，拿到当前网段的信息。</li><li>使用 SSRF 漏洞的接口，通过 gopher 协议攻击内网的 MySQL 服务器，使用 UDF 提权可以拿下内网 MySQL 权限</li><li>内网 MySQL 根目录下存放着 flag，直接 UDF 命令执行读取即可</li></ol></blockquote><h1 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h1><p><img src="https://pic.imgdb.cn/item/65e524579f345e8d03f1af3d.jpg"></p><h1 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h1><p><img src="https://pic.imgdb.cn/item/65e59edf9f345e8d033355b4.jpg"></p><h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p><img src="https://pic.imgdb.cn/item/65e59d7b9f345e8d032fb87f.jpg"></p><h1 id="burpsuite抓包查看接口"><a href="#burpsuite抓包查看接口" class="headerlink" title="burpsuite抓包查看接口"></a>burpsuite抓包查看接口</h1><p><img src="https://pic.imgdb.cn/item/65e595e79f345e8d031ba716.jpg"></p><p>&#x2F;api&#x2F;speed.php</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Mon, 04 Mar 2024 09:33:29 GMT</span><br><span class="line">Server: Apache/2.4.38 (Debian)</span><br><span class="line">X-Powered-By: PHP/7.2.34</span><br><span class="line">Content-Length: 53</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: text/json;charset=utf-8</span><br><span class="line"></span><br><span class="line">&#123;&quot;speed&quot;:95,&quot;score&quot;:0.8,&quot;res&quot;:&quot;d3d3LmJhaWR1LmNvbQ==&quot;&#125;</span><br></pre></td></tr></table></figure><p>&#x2F;api&#x2F;icp.php</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Mon, 04 Mar 2024 09:33:29 GMT</span><br><span class="line">Server: Apache/2.4.38 (Debian)</span><br><span class="line">X-Powered-By: PHP/7.2.34</span><br><span class="line">Content-Length: 114</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: text/json;charset=utf-8</span><br><span class="line"></span><br><span class="line">&#123;&quot;icp&quot;:&quot;\u82cfICP\u590799512387\u53f7-5&quot;,&quot;name&quot;:&quot;\u674e\u4f1f&quot;,&quot;kind&quot;:&quot;\u4e2a\u4eba&quot;,&quot;res&quot;:&quot;d3d3LmJhaWR1LmNvbQ==&quot;&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Mon, 04 Mar 2024 09:33:29 GMT</span><br><span class="line">Server: Apache/2.4.38 (Debian)</span><br><span class="line">X-Powered-By: PHP/7.2.34</span><br><span class="line">Content-Length: 115</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: text/json;charset=utf-8</span><br><span class="line"></span><br><span class="line">&#123;&quot;icp&quot;:&quot;\u9752ICP\u590775647730\u53f7-10&quot;,&quot;name&quot;:&quot;\u674e\u6770&quot;,&quot;kind&quot;:&quot;\u4e2a\u4eba&quot;,&quot;res&quot;:&quot;d3d3LmJhaWR1LmNvbQ==&quot;&#125;</span><br></pre></td></tr></table></figure><p>&#x2F;api</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Date: Mon, 04 Mar 2024 09:33:29 GMT</span><br><span class="line">Server: Apache/2.4.38 (Debian)</span><br><span class="line">Location: http://192.168.100.252/api/</span><br><span class="line">Content-Length: 316</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;</span><br><span class="line">&lt;html&gt;&lt;head&gt;</span><br><span class="line">&lt;title&gt;301 Moved Permanently&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Moved Permanently&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;The document has moved &lt;a href=&quot;http://192.168.100.252/api/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;address&gt;Apache/2.4.38 (Debian) Server at 192.168.100.252 Port 80&lt;/address&gt;</span><br><span class="line">&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure><p>&#x2F;api&#x2F;seo.php</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Mon, 04 Mar 2024 09:42:09 GMT</span><br><span class="line">Server: Apache/2.4.38 (Debian)</span><br><span class="line">X-Powered-By: PHP/7.2.34</span><br><span class="line">Content-Length: 98</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: text/json;charset=utf-8</span><br><span class="line"></span><br><span class="line">&#123;&quot;rank_baidu&quot;:7,&quot;rank_bd&quot;:2,&quot;rank_toutiao&quot;:7,&quot;rank_360&quot;:7,&quot;rank_sogou&quot;:7,&quot;rank_shenma&quot;:4,&quot;res&quot;:&quot;&quot;&#125;</span><br></pre></td></tr></table></figure><p>真正存在漏洞的接口是&#x2F;api&#x2F;ip.php</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Mon, 04 Mar 2024 09:33:29 GMT</span><br><span class="line">Server: Apache/2.4.38 (Debian)</span><br><span class="line">X-Powered-By: PHP/7.2.34</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: text/json;charset=utf-8</span><br><span class="line">Content-Length: 12784</span><br><span class="line"></span><br><span class="line">&#123;&quot;ip&quot;:&quot;36.155.132.76&quot;,&quot;title&quot;:&quot;\u767e\u5ea6\u4e00\u4e0b\uff0c\u4f60\u5c31\u77e5\u9053&quot;,&quot;res&quot;:&quot;curl 请求返回的原始数据内容的 Base64 编码&quot;&#125;</span><br><span class="line">此处略</span><br></pre></td></tr></table></figure><p>接口的域名存在格式校验</p><p><img src="https://pic.imgdb.cn/item/65e5973a9f345e8d031f2c25.jpg"></p><p>实际上是一个前端js校验，burp抓包即可</p><p>发现任意文件下载漏洞</p><p><img src="https://pic.imgdb.cn/item/65e59ca29f345e8d032d617c.jpg"></p><p>找到对应的api接口</p><p><img src="https://pic.imgdb.cn/item/65e59d0c9f345e8d032e853d.jpg"></p><h1 id="任意文件下载"><a href="#任意文件下载" class="headerlink" title="任意文件下载"></a>任意文件下载</h1><p>绝对路径没用尝试相对路径，成功</p><p><img src="https://pic.imgdb.cn/item/65e59df89f345e8d033104aa.jpg"></p><p>判断当前的内网网段172.73.23.21&#x2F;24</p><p><img src="https://pic.imgdb.cn/item/65e59e679f345e8d03322b5e.jpg"></p><p>通过 <code>proc/net/arp</code> 文件，判断当前的内网的网关为：<code>172.73.23.1 </code></p><p><img src="https://pic.imgdb.cn/item/65e5bb0b9f345e8d038b885d.jpg"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 渗透 </category>
-          
-          <category> 内网渗透 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 内网渗透 </tag>
-            
-            <tag> burpsuite </tag>
-            
-            <tag> api </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>DC-1靶场练习</title>
       <link href="/2024/03/03/DC-1%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/"/>
       <url>/2024/03/03/DC-1%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/</url>
@@ -253,6 +222,8 @@
             
             <tag> 电子取证 </tag>
             
+            <tag> 服务器 </tag>
+            
             <tag> 盘古石 </tag>
             
             <tag> WP </tag>
@@ -262,8 +233,6 @@
             <tag> APK </tag>
             
             <tag> 计算机 </tag>
-            
-            <tag> 服务器 </tag>
             
             <tag> 二进制文件分析 </tag>
             
