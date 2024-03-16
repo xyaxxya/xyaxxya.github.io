@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>平航测验</title>
+      <link href="/2024/03/15/%E5%B9%B3%E8%88%AA%E6%B5%8B%E9%AA%8C-1/"/>
+      <url>/2024/03/15/%E5%B9%B3%E8%88%AA%E6%B5%8B%E9%AA%8C-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="服务器分析（共8题）"><a href="#服务器分析（共8题）" class="headerlink" title="服务器分析（共8题）"></a>服务器分析（共8题）</h1><h1 id="重构部分"><a href="#重构部分" class="headerlink" title="重构部分"></a>重构部分</h1><p>仿真后发现网卡缺失，ens33无法显示ip</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop NetworkManager</span><br><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure><p>同样道理剩下两台</p><p><img src="https://pic.imgdb.cn/item/65f455e69f345e8d03b4cc34.png"></p><p>发现IP，配网，分配临时ip</p><p><img src="https://pic.imgdb.cn/item/65f457da9f345e8d03c4471a.png"></p><p>修改hosts文件</p><p><img src="https://pic.imgdb.cn/item/65f458ff9f345e8d03ccee1b.png"></p><p>单节点启动</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ETCD_DATA_DIR=&quot;/var/lib/etcd/default.etcd&quot;</span><br><span class="line">ETCD_LISTEN_CLIENT_URLS=&quot;http://localhost:2379&quot;</span><br><span class="line">ETCD_NAME=&quot;default&quot;</span><br><span class="line">ETCD_ADVERTISE_CLIENT_URLS=&quot;http://localhost:2379&quot;</span><br></pre></td></tr></table></figure><p>看历史记录找到启动命令</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./etcdctl --endpoints=http://192.168.160.132:2379 endpoint status -w table</span><br></pre></td></tr></table></figure><p><img src="C:/Users/ROG/Desktop/blog/source/_posts/65f465519f345e8d03305ced.png"></p><h2 id="在服务器搭建的涉案网站中，一共注册了多少个用户（）。（格式：19）"><a href="#在服务器搭建的涉案网站中，一共注册了多少个用户（）。（格式：19）" class="headerlink" title="在服务器搭建的涉案网站中，一共注册了多少个用户（）。（格式：19）"></a>在服务器搭建的涉案网站中，一共注册了多少个用户（）。（格式：19）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure><p>查看一个目录下的所有key和查看所有key</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@etcd1 etcd-v3.4.18-linux-amd64]# /opt/etcd-v3.4.18-linux-amd64/etcdctl get --from-key &quot;&quot;</span><br><span class="line">/usr/admin</span><br><span class="line">qiu@c12</span><br><span class="line">/usr/admin2</span><br><span class="line">asd12@s</span><br><span class="line">/usr/back</span><br><span class="line">/var/</span><br></pre></td></tr></table></figure><h2 id="在该服务器中宝塔面板绑定的手机号是多少（）。（格式：1111）"><a href="#在该服务器中宝塔面板绑定的手机号是多少（）。（格式：1111）" class="headerlink" title="在该服务器中宝塔面板绑定的手机号是多少（）。（格式：1111）"></a>在该服务器中宝塔面板绑定的手机号是多少（）。（格式：1111）</h2><p> <img src="https://pic.imgdb.cn/item/65f465ca9f345e8d0334433e.png"></p><h2 id="在该服务器中，绑定手机号“17865309720”的用户名字是什么（）。（格式：张三）"><a href="#在该服务器中，绑定手机号“17865309720”的用户名字是什么（）。（格式：张三）" class="headerlink" title="在该服务器中，绑定手机号“17865309720”的用户名字是什么（）。（格式：张三）"></a>在该服务器中，绑定手机号“17865309720”的用户名字是什么（）。（格式：张三）</h2><p>后台有</p><p><img src="https://pic.imgdb.cn/item/65f5992f9f345e8d030fec2f.png"></p><h2 id="在该服务器中，节点etcd-2的节点ID是多少（）。（格式：c1234c3aa322235af）"><a href="#在该服务器中，节点etcd-2的节点ID是多少（）。（格式：c1234c3aa322235af）" class="headerlink" title="在该服务器中，节点etcd-2的节点ID是多少（）。（格式：c1234c3aa322235af）"></a>在该服务器中，节点etcd-2的节点ID是多少（）。（格式：c1234c3aa322235af）</h2><p> <img src="https://pic.imgdb.cn/item/65f46d379f345e8d036ca018.png"></p><h2 id="在该服务器中，集群节点的leader-ID是多少（）。（格式：c1234c3aa322235af）"><a href="#在该服务器中，集群节点的leader-ID是多少（）。（格式：c1234c3aa322235af）" class="headerlink" title="在该服务器中，集群节点的leader ID是多少（）。（格式：c1234c3aa322235af）"></a>在该服务器中，集群节点的leader ID是多少（）。（格式：c1234c3aa322235af）</h2><p> <img src="https://pic.imgdb.cn/item/65f46d379f345e8d036ca018.png"></p><h2 id="在该服务器中，存在一个诈骗网站，网站后台密码存放在-usr-目录的键值中，该密码的值是（）。（格式：admin123）"><a href="#在该服务器中，存在一个诈骗网站，网站后台密码存放在-usr-目录的键值中，该密码的值是（）。（格式：admin123）" class="headerlink" title="在该服务器中，存在一个诈骗网站，网站后台密码存放在&#x2F;usr&#x2F;目录的键值中，该密码的值是（）。（格式：admin123）"></a>在该服务器中，存在一个诈骗网站，网站后台密码存放在&#x2F;usr&#x2F;目录的键值中，该密码的值是（）。（格式：admin123）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@etcd1 system]# /opt/etcd-v3.4.18-linux-amd64/etcdctl get --from-key &quot;&quot;</span><br><span class="line">/usr/admin</span><br><span class="line">qiu@c12</span><br><span class="line">/usr/admin2</span><br><span class="line">asd12@s</span><br></pre></td></tr></table></figure><h2 id="接上题，该诈骗网站共中多少个账号被禁止登录（）。（格式：89）"><a href="#接上题，该诈骗网站共中多少个账号被禁止登录（）。（格式：89）" class="headerlink" title="接上题，该诈骗网站共中多少个账号被禁止登录（）。（格式：89）"></a>接上题，该诈骗网站共中多少个账号被禁止登录（）。（格式：89）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure><p><img src="https://pic.imgdb.cn/item/65f596619f345e8d03f879d5.png"></p><p><img src="https://pic.imgdb.cn/item/65f5967c9f345e8d03f94a8d.png"></p><p>somd5一下即可</p><p><img src="https://pic.imgdb.cn/item/65f5969f9f345e8d03fa4065.png"></p><p><img src="https://pic.imgdb.cn/item/65f5970e9f345e8d03fdbf0a.png"></p><p><img src="https://pic.imgdb.cn/item/65f5972d9f345e8d03feba8d.png"></p><h2 id="接上题，该诈骗网站有残留的客服qq信息，客服的qq号是多少（）。（格式：123456）"><a href="#接上题，该诈骗网站有残留的客服qq信息，客服的qq号是多少（）。（格式：123456）" class="headerlink" title="接上题，该诈骗网站有残留的客服qq信息，客服的qq号是多少（）。（格式：123456）"></a>接上题，该诈骗网站有残留的客服qq信息，客服的qq号是多少（）。（格式：123456）</h2><p><img src="https://pic.imgdb.cn/item/65f46d629f345e8d036dbc78.png"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 服务器 </tag>
+            
+            <tag> etcd </tag>
+            
+            <tag> bt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>上海市局网安大比武</title>
       <link href="/2024/03/11/%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%B1%80%E7%BD%91%E5%AE%89%E5%A4%A7%E6%AF%94%E6%AD%A6/"/>
       <url>/2024/03/11/%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%B1%80%E7%BD%91%E5%AE%89%E5%A4%A7%E6%AF%94%E6%AD%A6/</url>
@@ -70,9 +93,9 @@
       
         <tags>
             
-            <tag> 电子取证 </tag>
-            
             <tag> mysql </tag>
+            
+            <tag> 电子取证 </tag>
             
             <tag> 服务器 </tag>
             
@@ -222,8 +245,6 @@
             
             <tag> 电子取证 </tag>
             
-            <tag> 服务器 </tag>
-            
             <tag> 盘古石 </tag>
             
             <tag> WP </tag>
@@ -233,6 +254,8 @@
             <tag> APK </tag>
             
             <tag> 计算机 </tag>
+            
+            <tag> 服务器 </tag>
             
             <tag> 二进制文件分析 </tag>
             
@@ -265,9 +288,9 @@
       
         <tags>
             
-            <tag> 电子取证 </tag>
-            
             <tag> mysql </tag>
+            
+            <tag> 电子取证 </tag>
             
             <tag> 服务器 </tag>
             
