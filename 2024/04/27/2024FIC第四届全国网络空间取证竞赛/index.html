@@ -1,0 +1,761 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2024FIC第四届全国网络空间取证竞赛 | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="vc容器密码 12024Fic@杭州Powered~by~HL!  基本案情 123456782024年4月，卢某报案至警方，声称自己疑似遭受了“杀猪盘”诈骗，大量钱财被骗走。卢某透露，在与某公司交流过程中结识了员工李某。李某私下诱导卢某参与赌博游戏，起初资金出入均属正常。但随后，李某称赌博平台为提升安全性，更换了地址和玩法，转为通过群聊抢红包形式进行赌博。随着赌资不 断增加，卢某投入巨额资金">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024FIC第四届全国网络空间取证竞赛">
+<meta property="og:url" content="https://xyaxxya.github.io/2024/04/27/2024FIC%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%85%A8%E5%9B%BD%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%8F%96%E8%AF%81%E7%AB%9E%E8%B5%9B/index.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="vc容器密码 12024Fic@杭州Powered~by~HL!  基本案情 123456782024年4月，卢某报案至警方，声称自己疑似遭受了“杀猪盘”诈骗，大量钱财被骗走。卢某透露，在与某公司交流过程中结识了员工李某。李某私下诱导卢某参与赌博游戏，起初资金出入均属正常。但随后，李某称赌博平台为提升安全性，更换了地址和玩法，转为通过群聊抢红包形式进行赌博。随着赌资不 断增加，卢某投入巨额资金">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png">
+<meta property="article:published_time" content="2024-04-27T14:02:35.000Z">
+<meta property="article:modified_time" content="2024-04-29T01:07:57.959Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="PC">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="电子取证">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="esxi">
+<meta property="article:tag" content="openwrt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/2024/04/27/2024FIC%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%85%A8%E5%9B%BD%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%8F%96%E8%AF%81%E7%AB%9E%E8%B5%9B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2024FIC第四届全国网络空间取证竞赛',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-29 09:07:57'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2024FIC第四届全国网络空间取证竞赛</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-27T14:02:35.000Z" title="发表于 2024-04-27 22:02:35">2024-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-29T01:07:57.959Z" title="更新于 2024-04-29 09:07:57">2024-04-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/">电子取证</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/wp/">wp</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2024/04/27/2024FIC%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%85%A8%E5%9B%BD%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%8F%96%E8%AF%81%E7%AB%9E%E8%B5%9B/" data-flag-title="2024FIC第四届全国网络空间取证竞赛"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/04/27/2024FIC%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%85%A8%E5%9B%BD%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%8F%96%E8%AF%81%E7%AB%9E%E8%B5%9B/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2024/04/27/2024FIC%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%85%A8%E5%9B%BD%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%8F%96%E8%AF%81%E7%AB%9E%E8%B5%9B/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="https://pic.imgdb.cn/item/662d06100ea9cb14033e9a91.jpg"></p>
+<blockquote>
+<p>vc容器密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2024Fic@杭州Powered~by~HL!</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>基本案情</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2024年4月，卢某报案至警方，声称自己疑似遭受了“杀猪盘”诈骗，大量钱财被骗走。卢某透露，在</span><br><span class="line">与某公司交流过程中结识了员工李某。李某私下诱导卢某参与赌博游戏，起初资金出入均属正常。但随</span><br><span class="line">后，李某称赌博平台为提升安全性，更换了地址和玩法，转为通过群聊抢红包形式进行赌博。随着赌资</span><br><span class="line">不 断增加，卢某投入巨额资金后，发现无法再访问该网站，同时李某也失去联系，卢某遂意识到自己被</span><br><span class="line">骗。 在经济压力下，卢某选择报警，并承认参与赌博活动，愿意承担相应法律后果。 警方依据卢某提</span><br><span class="line">供的线索和手机数据，迅速锁定犯罪团伙，并在一藏匿地点成功抓获犯罪嫌疑人李某 和赵某。警方对嫌</span><br><span class="line">疑人持有的物品进行了证据固定：李某手机被标记为检材1，窝点内服务器为检材2，赵 某使用的计算</span><br><span class="line">机为检材3。</span><br></pre></td></tr></table></figure>
+
+<p>手机比较简单，火眼一把梭了，就不写了</p>
+<h1 id="服务器集群题"><a href="#服务器集群题" class="headerlink" title="服务器集群题"></a>服务器集群题</h1><p>火眼起仿真，如下</p>
+<p><img src="https://pic.imgdb.cn/item/662dbd2a0ea9cb14038b813a.png"></p>
+<p>开启虚拟化</p>
+<p><img src="https://pic.imgdb.cn/item/662e46480ea9cb1403b99aed.png"></p>
+<p>直接启</p>
+<p>root空密码</p>
+<p><img src="https://pic.imgdb.cn/item/662dc0120ea9cb1403909b91.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">esxcfg-volumn -l <span class="comment"># 显示没有挂载磁盘的UUID</span></span><br><span class="line">escfg-volumn -r UUID <span class="comment">#挂载你想要的磁盘的UUID</span></span><br><span class="line"><span class="built_in">df</span> -h <span class="comment">#查看磁盘</span></span><br></pre></td></tr></table></figure>
+
+<p>ssh连上查看（我这里已经挂载过了）</p>
+<p><img src="https://pic.imgdb.cn/item/662dc1210ea9cb140392b10f.png"></p>
+<p>找回丢失的挂载存储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esxcli storage vmfs snapshot list</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662dc1730ea9cb140393419c.png"></p>
+<p>命令挂载即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esxcfg-volume -M datastore1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662dc1c70ea9cb140393c58a.png"></p>
+<p>reboot一下就好了</p>
+<p><img src="https://pic.imgdb.cn/item/662e47d20ea9cb1403bd2a71.png"></p>
+<p><em><strong>还有一个要注意的就是PC里的搭建手册</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1、ruo-yi配置</span><br><span class="line">数据库IP</span><br><span class="line">检查mysql连接语句</span><br><span class="line"></span><br><span class="line">SSL报错：</span><br><span class="line">mysql连接语句修改成</span><br><span class="line">useSSL=false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">redis报错：</span><br><span class="line">Localhost修改为127.0.0.1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Based on configured schedule, the given trigger &#x27;DEFAULT.TASK_CLASS_NAME105&#x27; will never fire.</span><br><span class="line">Never fire 定时任务插件执行时间问题</span><br><span class="line">Sys_job表修改cron_expression 的执行时间对上年份就行</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">登录受限 -&gt;检查IP黑名单</span><br><span class="line">sys_config 表检查 login_ip_limit 值。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">各种密码备份：</span><br><span class="line">commonPwd.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>esxi服务器的esxi版本为？</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e45670ea9cb1403b79ba5.png"></p>
+<ol start="2">
+<li>请分析ESXi服务器，该系统的安装日期为：</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e47ef0ea9cb1403bd697c.png"></p>
+<ol start="3">
+<li>请分析ESXi服务器数据存储“datastore”的UUID是？</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e481e0ea9cb1403bdcf33.png"></p>
+<ol start="4">
+<li>ESXI服务器的原IP地址？</li>
+</ol>
+<p>配置的是静态IP</p>
+<p><img src="https://pic.imgdb.cn/item/662e485e0ea9cb1403bf4278.png"></p>
+<ol start="5">
+<li>EXSI服务器中共创建了几个虚拟机？</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662e48730ea9cb1403bfaaa7.png"></p>
+<ol start="6">
+<li>网站服务器绑定的IP地址为？</li>
+</ol>
+<p>根据名字判断网站服务器是三w</p>
+<p>比赛绕密做的</p>
+<p>Grignard师兄点了个新奇思路</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fscan -h 192.168.8.0/24 -pwdf C:\Users\ROG\Desktop\commonPwd.txt</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>data:192.168.8.142 hl@7001</p>
+<p>www:192.168.8.89 qqqqqq</p>
+<p>openwrt 192.168.8.16:22 root 6</p>
+</blockquote>
+<ol start="7">
+<li>网站服务器的登录密码为？</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qqqqqq</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="8">
+<li>网站服务器所使用的管理面板登陆入口地址对应的端口号为：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">连接主机...</span><br><span class="line">连接主机成功</span><br><span class="line">Last failed login: Sun Apr 28 21:15:23 CST 2024 from 192.168.8.1 on ssh:notty</span><br><span class="line">There was 1 failed login attempt since the last successful login.</span><br><span class="line">Last login: Sun Apr 28 21:11:48 2024</span><br><span class="line">[root@localhost ~]# ip a</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: ens192: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP group default qlen 1000</span><br><span class="line">    link/ether 00:0c:29:17:8d:46 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 192.168.8.89/24 brd 192.168.8.255 scope global noprefixroute ens192</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fdbc:6f08:9c51::413/128 scope global noprefixroute dynamic </span><br><span class="line">       valid_lft 42408sec preferred_lft 42408sec</span><br><span class="line">    inet6 fdbc:6f08:9c51:0:5bb3:d2bf:8eae:10a8/64 scope global noprefixroute </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::d662:4db9:6257:690f/64 scope link noprefixroute </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">[root@localhost ~]# bt</span><br><span class="line">==================================宝塔面板命令行====================================</span><br><span class="line">(1) 重启面板服务                  (8) 改面板端口                                   |</span><br><span class="line">(2) 停止面板服务                  (9) 清除面板缓存                                 |</span><br><span class="line">(3) 启动面板服务                  (10) 清除登录限制                                |</span><br><span class="line">(4) 重载面板服务                  (11) 设置是否开启IP + User-Agent验证             |</span><br><span class="line">(5) 修改面板密码                  (12) 取消域名绑定限制                            |</span><br><span class="line">(6) 修改面板用户名                (13) 取消IP访问限制                              |</span><br><span class="line">(7) 强制修改MySQL密码             (14) 查看面板默认信息                            |</span><br><span class="line">(22) 显示面板错误日志             (15) 清理系统垃圾                                |</span><br><span class="line">(23) 关闭BasicAuth认证            (16) 修复面板(检查错误并更新面板文件到最新版)    |</span><br><span class="line">(24) 关闭动态口令认证             (17) 设置日志切割是否压缩                        |</span><br><span class="line">(25) 设置是否保存文件历史副本     (18) 设置是否自动备份面板                        |</span><br><span class="line">(26) 关闭面板ssl                  (19) 关闭面板登录地区限制                        |</span><br><span class="line">(28) 修改面板安全入口             (29) 取消访问设备验证                            |</span><br><span class="line">(0) 取消                                                                           |</span><br><span class="line">====================================================================================</span><br><span class="line">请输入命令编号：5</span><br><span class="line">===============================================</span><br><span class="line">正在执行(5)...</span><br><span class="line">===============================================</span><br><span class="line">请输入新的面板密码：123456</span><br><span class="line">|-用户名: j9oehwoa</span><br><span class="line">|-新密码: 123456</span><br><span class="line">[root@localhost ~]# bt 14</span><br><span class="line">===============================================</span><br><span class="line">正在执行(14)...</span><br><span class="line">===============================================</span><br><span class="line">curl: (28) Resolving timed out after 4517 milliseconds</span><br><span class="line">^Z</span><br><span class="line">[1]+  已停止               bt 14</span><br><span class="line">[root@localhost ~]# bt 14</span><br><span class="line">===============================================</span><br><span class="line">正在执行(14)...</span><br><span class="line">===============================================</span><br><span class="line">curl: (28) Resolving timed out after 4518 milliseconds</span><br><span class="line">curl: (28) Resolving timed out after 4519 milliseconds</span><br><span class="line">curl: (28) Resolving timed out after 4519 milliseconds</span><br><span class="line">==================================================================</span><br><span class="line">BT-Panel default info!</span><br><span class="line">==================================================================</span><br><span class="line">获取外网IP失败，请使用服务器公网IP+端口访问面板</span><br><span class="line">外网面板地址: https://服务器公网IP:14131/adec8c75</span><br><span class="line">内网面板地址: https://192.168.8.89:14131/adec8c75</span><br><span class="line">username: j9oehwoa</span><br><span class="line">password: ********</span><br><span class="line">Warning:</span><br><span class="line">If you cannot access the panel, </span><br><span class="line">release the following port (8888|888|80|443|20|21) in the security group</span><br><span class="line">注意：初始密码仅在首次登录面板前能正确获取，其它时间请通过 bt 5 命令修改密码</span><br><span class="line">==================================================================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662e53c20ea9cb1403db7966.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">14131</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="9">
+<li>网站服务器的web目录是？</li>
+</ol>
+<p>bt没有网站，只有一个mysql和redis</p>
+<p><img src="https://pic.imgdb.cn/item/662e54ce0ea9cb1403de34d2.png"></p>
+<p>mysql来自data，经典站库分离</p>
+<p><img src="https://pic.imgdb.cn/item/662e55210ea9cb1403dee5bd.png"></p>
+<p>最后发现网站源码在webapp下</p>
+<p><img src="https://pic.imgdb.cn/item/662e553c0ea9cb1403df3a35.png"></p>
+<ol start="10">
+<li>网站配置中Redis的连接超时时间为多少秒</li>
+</ol>
+<p>把jar包下载到本地</p>
+<p><img src="https://pic.imgdb.cn/item/662e56770ea9cb1403e42858.png"></p>
+<p>7-zip解开</p>
+<p><img src="https://pic.imgdb.cn/item/662e56d40ea9cb1403e51490.png"></p>
+<ol start="11">
+<li>网站普通用户密码中使用的盐值为</li>
+</ol>
+<p>找到数据库账号密码</p>
+<p><img src="https://pic.imgdb.cn/item/662e573f0ea9cb1403e6077f.png"></p>
+<p>12. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">com.ruoyi.app.service.impl.UserInfoServiceImpl.login</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662e58bd0ea9cb1403ea4446.png"></p>
+<ol start="12">
+<li>网站管理员用户密码的加密算法名称是什么</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">com.ruoyi.common.utils.SecurityUtils</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662e599f0ea9cb1403eca138.png"></p>
+<ol start="13">
+<li>网站超级管理员用户账号创建的时间是？</li>
+</ol>
+<p>看过mysql数据库在data机中</p>
+<p>尝试连接一下</p>
+<p>本地没有mysql</p>
+<p><img src="https://pic.imgdb.cn/item/662e5a4e0ea9cb1403ee2b79.png"></p>
+<p>有docker，docker里有mysql数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mysql -uroot</span><br><span class="line">-bash: mysql: 未找到命令</span><br><span class="line">[root@localhost ~]# mysql -uroot -p</span><br><span class="line">-bash: mysql: 未找到命令</span><br><span class="line">[root@localhost ~]# systemctl start docker</span><br><span class="line">[root@localhost ~]# docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                   PORTS               NAMES</span><br><span class="line">9bf1cecec395        eclipse/mysql       &quot;docker-entrypoint...&quot;   6 weeks ago         Exited (0) 5 weeks ago                       mysql</span><br><span class="line">[root@localhost ~]# docker start 9b</span><br><span class="line">9b</span><br><span class="line">[root@localhost ~]# docker  ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</span><br><span class="line">9bf1cecec395        eclipse/mysql       &quot;docker-entrypoint...&quot;   6 weeks ago         Up 2 seconds        0.0.0.0:3306-&gt;3306/tcp   mysql</span><br><span class="line">[root@localhost ~]# docker exec -it 9b /bin/bash</span><br><span class="line">root@9bf1cecec395:/# </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>进入容器，启mysql</p>
+<p>密码在宝塔里</p>
+<p><img src="https://pic.imgdb.cn/item/662e5b630ea9cb1403f0c7fa.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">root@9bf1cecec395:/# mysql -uji-mei -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 6</span><br><span class="line">Server version: 5.7.19 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type &#x27;help;&#x27; or &#x27;\h&#x27; for help. Type &#x27;\c&#x27; to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662e5b9c0ea9cb1403f144b7.png"></p>
+<p>sys_role表中</p>
+<p><img src="https://pic.imgdb.cn/item/662e5bd00ea9cb1403f1cb26.png"></p>
+<ol start="14">
+<li>重构进入网站之后，用户管理下的用户列表页面默认有多少页数据</li>
+</ol>
+<p>根据PC中给的提示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1、ruo-yi配置</span><br><span class="line">数据库IP</span><br><span class="line">检查mysql连接语句</span><br><span class="line"></span><br><span class="line">SSL报错：</span><br><span class="line">mysql连接语句修改成</span><br><span class="line">useSSL=false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">redis报错：</span><br><span class="line">Localhost修改为127.0.0.1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Based on configured schedule, the given trigger &#x27;DEFAULT.TASK_CLASS_NAME105&#x27; will never fire.</span><br><span class="line">Never fire 定时任务插件执行时间问题</span><br><span class="line">Sys_job表修改cron_expression 的执行时间对上年份就行</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">登录受限 -&gt;检查IP黑名单</span><br><span class="line">sys_config 表检查 login_ip_limit 值。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">各种密码备份：</span><br><span class="line">commonPwd.txt</span><br></pre></td></tr></table></figure>
+
+<p>更改jar包配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jar xf ruoyi-admin.jar BOOT-INF/classes/application-druid.yml</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim BOOT-INF/classes/application-druid.yml</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662e5cb30ea9cb1403f38fbc.png"></p>
+<p>改成data的IP，password也要改</p>
+<p><img src="https://pic.imgdb.cn/item/662e5e2c0ea9cb1403f6de6c.png"></p>
+<p>更新jar包配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jar uf ruoyi-admin.jar BOOT-INF/classes/application-druid.yml</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost webapp]# ./restart.sh</span><br><span class="line">-bash: ./restart.sh: 权限不够</span><br><span class="line">[root@localhost webapp]# chmod 777 restart.sh </span><br><span class="line">[root@localhost webapp]# ls</span><br><span class="line">BOOT-INF  dist0906  index.html  luck-prize  qz          ruoyi-admin.jar      ruoyi-admin.jar0827   ruoyi-admin.jar0904  ruoyi-admin.jar 7.19  ruoyi-admin.jar8.15   ruoyi-admin.jarbak  test</span><br><span class="line">dist      down      kill.sh     nohup.out   qz 7.11     ruoyi-admin.jar0818  ruoyi-admin.jar0828   ruoyi-admin.jar0907  ruoyi-admin.jar 7.26  ruoyi-admin.jar8.151  ruoyi-admin.pid</span><br><span class="line">dist0826  group     logs        profile     restart.sh  ruoyi-admin.jar0826  ruoyi-admin.jar08281  ruoyi-admin.jar0915  ruoyi-admin.jar8.14   ruoyi-admin.jar8.16   start.sh</span><br><span class="line">[root@localhost webapp]# ./restart.sh </span><br><span class="line">32099</span><br><span class="line">killed 32099</span><br><span class="line">[root@localhost webapp]# </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>还是502报错</p>
+<p>跟着提示报错一步步改</p>
+<ol>
+<li><p>添加一条127.0.0.1 localhost映射到hosts中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;127.0.0.1 localhost&#x27; &gt; /etc/hosts</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改jar包，前面改过了</p>
+</li>
+<li><p>定时任务插件执行</p>
+</li>
+</ol>
+<p>​	sys_job表</p>
+<p><img src="https://pic.imgdb.cn/item/662e603c0ea9cb1403fb58a6.png"></p>
+<p>修改后</p>
+<p><img src="https://pic.imgdb.cn/item/662e60760ea9cb1403fbf275.png"></p>
+<p>启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar ruoyi-admin.jar</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662e61b70ea9cb1403fea773.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 restart.sh</span><br><span class="line">./restart.sh start</span><br></pre></td></tr></table></figure>
+
+<p>替换一个密码进去</p>
+<p><img src="https://pic.imgdb.cn/item/662e62580ea9cb1403000ad0.png"></p>
+<p><img src="https://pic.imgdb.cn/item/662e62930ea9cb1403008d86.png"></p>
+<p><img src="https://pic.imgdb.cn/item/662e62b30ea9cb140300ddc0.png"></p>
+<ol start="15">
+<li>该网站的系统接口文档版本号为</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e62e70ea9cb1403015880.png"></p>
+<ol start="16">
+<li>该网站获取订单列表的接口</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e62fd0ea9cb140301848f.png"></p>
+<ol start="17">
+<li>受害人卢某的用户ID</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e63170ea9cb140301b6fe.png"></p>
+<ol start="18">
+<li>受害人卢某一共充值了多少钱</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e64100ea9cb1403039ee7.png"></p>
+<ol start="19">
+<li>网站设置的单次抽奖价格为多少元</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e644a0ea9cb1403040d6f.png"></p>
+<ol start="20">
+<li>网站显示的总余额数是</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e646d0ea9cb140305d1a4.png"></p>
+<ol start="21">
+<li>网站数据库的root密码</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 9b</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662e65600ea9cb14030849ae.png"></p>
+<ol start="22">
+<li>数据库服务器的操作系统版本是</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/system-release</span><br><span class="line">CentOS Linux release 7.9.2009 (Core)</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="23">
+<li>数据库服务器的Docker Server版本是</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker info</span><br><span class="line">Containers: 1</span><br><span class="line"> Running: 1</span><br><span class="line"> Paused: 0</span><br><span class="line"> Stopped: 0</span><br><span class="line">Images: 1</span><br><span class="line">Server Version: 1.13.1</span><br><span class="line">Storage Driver: overlay2</span><br><span class="line"> Backing Filesystem: xfs</span><br><span class="line"> Supports d_type: true</span><br><span class="line"> Native Overlay Diff: true</span><br><span class="line">Logging Driver: journald</span><br><span class="line">Cgroup Driver: systemd</span><br><span class="line">Plugins: </span><br><span class="line"> Volume: local</span><br><span class="line"> Network: bridge host macvlan null overlay</span><br><span class="line">Swarm: inactive</span><br><span class="line">Runtimes: docker-runc runc</span><br><span class="line">Default Runtime: docker-runc</span><br><span class="line">Init Binary: /usr/libexec/docker/docker-init-current</span><br><span class="line">containerd version:  (expected: aa8187dbd3b7ad67d8e5e3a15115d3eef43a7ed1)</span><br><span class="line">runc version: 8891bca22c049cd2dcf13ba2438c0bac8d7f3343 (expected: 9df8b306d01f59d3a8029be411de015b7304dd8f)</span><br><span class="line">init version: fec3683b971d9c3ef73f284f176672c44b448662 (expected: 949e6facb77383876aeff8a6944dde66b3089574)</span><br><span class="line">Security Options:</span><br><span class="line"> seccomp</span><br><span class="line">  WARNING: You&#x27;re not using the default seccomp profile</span><br><span class="line">  Profile: /etc/docker/seccomp.json</span><br><span class="line"> selinux</span><br><span class="line">Kernel Version: 3.10.0-1160.108.1.el7.x86_64</span><br><span class="line">Operating System: CentOS Linux 7 (Core)</span><br><span class="line">OSType: linux</span><br><span class="line">Architecture: x86_64</span><br><span class="line">Number of Docker Hooks: 3</span><br><span class="line">CPUs: 1</span><br><span class="line">Total Memory: 991 MiB</span><br><span class="line">Name: localhost.localdomain</span><br><span class="line">ID: KPJA:N4L7:EQMY:XBT4:VE7K:3Q2U:5G6H:5AK2:CZKO:VMKN:XO3M:CI35</span><br><span class="line">Docker Root Dir: /var/lib/docker</span><br><span class="line">Debug Mode (client): false</span><br><span class="line">Debug Mode (server): false</span><br><span class="line">Registry: https://index.docker.io/v1/</span><br><span class="line">Experimental: false</span><br><span class="line">Insecure Registries:</span><br><span class="line"> 127.0.0.0/8</span><br><span class="line">Registry Mirrors:</span><br><span class="line"> https://registry.docker-cn.com</span><br><span class="line">Live Restore Enabled: false</span><br><span class="line">Registries: docker.io (secure)</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker -v</span><br><span class="line">Docker version 1.13.1, build 7d71120/1.13.1</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="24">
+<li>数据库服务器中数据库容器的完整ID是</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e65bb0ea9cb140309281b.png"></p>
+<ol start="25">
+<li>数据库服务器中数据库容器使用的镜像ID</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker images</span><br><span class="line">REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker.io/eclipse/mysql   latest              66c0e7ca4921        6 years ago         436 MB</span><br><span class="line">[root@localhost ~]# docker inspect 66</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;Id&quot;: &quot;sha256:66c0e7ca4921e941cbdbda9e92242f07fe37c2bcbbaac4af701b4934dfc41d8a&quot;,</span><br><span class="line">剩下略</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="26">
+<li>数据库服务器中数据库容器创建的北京时间</li>
+</ol>
+<p>前面有</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Created&quot;: &quot;2024-03-13T12:15:23.02589108Z&quot;,</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="27">
+<li>数据库服务器中数据库容器的ip是</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e66750ea9cb14030ad083.png"></p>
+<ol start="28">
+<li>分析数据库数据，在该平台邀请用户进群最多的用户的登录IP是</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e67060ea9cb14030c080b.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT inviter_id,COUNT(inviter_id) FROM `app_group_member`</span><br><span class="line">GROUP BY inviter_id</span><br><span class="line">ORDER BY COUNT(inviter_id) DESC</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662e67c50ea9cb14030d9ec1.png"></p>
+<p>对应找ip</p>
+<ol start="29">
+<li>分析数据库数据，在该平台抢得最多红包金额的用户的登录IP是</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e6a2a0ea9cb140312dac1.png"></p>
+<ol start="30">
+<li>数据库中记录的提现成功的金额总记是多少（不考虑手续费）</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e6aeb0ea9cb1403146bc6.png"></p>
+<p>全局搜一下</p>
+<p><img src="https://pic.imgdb.cn/item/662e6b150ea9cb140314ca5e.png"></p>
+<p>成功status为3</p>
+<p><img src="https://pic.imgdb.cn/item/662e6b8f0ea9cb140315ce05.png"></p>
+<ol start="31">
+<li>rocketchat服务器中，有几个真实用户？</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e6e280ea9cb14031b85ff.png"></p>
+<p>密码在PC</p>
+<p><img src="https://pic.imgdb.cn/item/662e6e4f0ea9cb14031bda0a.png"></p>
+<p><img src="https://pic.imgdb.cn/item/662e6e710ea9cb14031c21b2.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="32">
+<li>rocketchat服务器中，聊天服务的端口号是？</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3000</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="33">
+<li>rocketchat服务器中，聊天服务的管理员的邮箱是？</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e6eaa0ea9cb14031cacb0.png"></p>
+<ol start="34">
+<li>rocketchat服务器中，聊天服务使用的数据库的版本号是？</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e6f340ea9cb14031ddc0d.png"></p>
+<ol start="35">
+<li>rocketchat服务器中，最大的文件上传大小是？（以字节为单位）</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662e6fdb0ea9cb14031f452f.png"></p>
+<ol start="36">
+<li>rocketchat服务器中，管理员账号的创建时间为？</li>
+</ol>
+<p><em><strong>常规linux绕密</strong></em></p>
+<p>重启重启进入单用户模式关闭SELinux进入单用户模式修改或替换root密码检查&#x2F;etc&#x2F;passwd成功绕密</p>
+<ol>
+<li><p>开机启动，选择（core），按E键</p>
+</li>
+<li><p>如果是 CentOS，则修改 <code>ro</code> 为 <code>rw init=/sysroot/bin/sh</code>；如果是 Ubuntu，则修改 <code>ro</code> 为 <code>rw single init=/bin/bash</code></p>
+</li>
+<li><p>按Ctrl+X，进入 shell 界面，再输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chroot /sysroot</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入下面的命令修改密码，需要输入两次来确认密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭 SELinux</p>
+<ol>
+<li><p>编辑 SELinux 的 <code>config</code> 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/selinux/config</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到 <code>SELINUX=enforcing</code> 或 <code>SELINUX=permissive</code> 字段，按I进入编辑模式，将参数 <code>SELINUX=enforcing</code> 或 <code>SELINUX=permissive</code> 修改为 <code>SELINUX=disabled</code>，并保存:+W+Q</p>
+</li>
+</ol>
+</li>
+<li><p>重启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662ee9f50ea9cb1403cf73e1.png"></p>
+<p>开ssh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662eeb1c0ea9cb1403d0f699.png"></p>
+<p>发现mongodb</p>
+<p><img src="https://pic.imgdb.cn/item/662eebec0ea9cb1403d1e7ac.png"></p>
+<p><img src="https://pic.imgdb.cn/item/662eec3d0ea9cb1403d24ef4.png"></p>
+<p>ssh隧道连mongodb</p>
+<p><img src="https://pic.imgdb.cn/item/662eed5d0ea9cb1403d3c3ca.png"></p>
+<p><img src="https://pic.imgdb.cn/item/662eed6b0ea9cb1403d3d4a1.png"></p>
+<p><img src="https://pic.imgdb.cn/item/662eedb90ea9cb1403d43be8.png"></p>
+<ol start="37">
+<li>rocketchat服务器中，技术员提供的涉诈网站地址是？</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662eedf70ea9cb1403d48b4c.png"></p>
+<ol start="38">
+<li>综合分析服务器，该团伙的利润分配方案中，老李的利润占比是多少</li>
+</ol>
+<p>聊天服务器</p>
+<p><img src="https://pic.imgdb.cn/item/662eeea90ea9cb1403d5c8f7.png"></p>
+<ol start="39">
+<li>综合分析服务器，该团队“杀猪盘”收网的可能时间段为</li>
+</ol>
+<p>聊天服务器</p>
+<p><img src="https://pic.imgdb.cn/item/662eeec80ea9cb1403d600a6.png"></p>
+<ol start="40">
+<li>请综合分析，警方未抓获的重要嫌疑人，其使用聊天平台时注册邮箱号为？</li>
+</ol>
+<p>结合案情分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2024年4月，卢某报案至警方，声称自己疑似遭受了“杀猪盘”诈骗，大量钱财被骗走。卢某透露，在</span><br><span class="line">与某公司交流过程中结识了员工李某。李某私下诱导卢某参与赌博游戏，起初资金出入均属正常。但随</span><br><span class="line">后，李某称赌博平台为提升安全性，更换了地址和玩法，转为通过群聊抢红包形式进行赌博。随着赌资</span><br><span class="line">不 断增加，卢某投入巨额资金后，发现无法再访问该网站，同时李某也失去联系，卢某遂意识到自己被</span><br><span class="line">骗。 在经济压力下，卢某选择报警，并承认参与赌博活动，愿意承担相应法律后果。 警方依据卢某提</span><br><span class="line">供的线索和手机数据，迅速锁定犯罪团伙，并在一藏匿地点成功抓获犯罪嫌疑人李某 和赵某。警方对嫌</span><br><span class="line">疑人持有的物品进行了证据固定：李某手机被标记为检材1，窝点内服务器为检材2，赵 某使用的计算</span><br><span class="line">机为检材3。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662eeef80ea9cb1403d64709.png"></p>
+<ol start="41">
+<li>分析openwrt镜像，该系统的主机名为</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662eef5b0ea9cb1403d6c3c2.png"></p>
+<p>密码在PC</p>
+<p><img src="https://pic.imgdb.cn/item/662eefea0ea9cb1403d78136.png"></p>
+<p><img src="https://pic.imgdb.cn/item/662ef0200ea9cb1403d7d26a.png"></p>
+<p><img src="https://pic.imgdb.cn/item/662ef05e0ea9cb1403d83aec.png"></p>
+<ol start="42">
+<li>分析openwrt镜像，该系统的内核版本为</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662ef0a80ea9cb1403d89a43.png"></p>
+<ol start="43">
+<li>分析openwrt镜像，该静态ip地址为</li>
+</ol>
+<p>首页中是DHCP的</p>
+<p><img src="https://pic.imgdb.cn/item/662ef0c90ea9cb1403d8c5d9.png"></p>
+<p>结合PC</p>
+<p><img src="https://pic.imgdb.cn/item/662eefea0ea9cb1403d78136.png"></p>
+<ol start="44">
+<li>分析openwrt镜像，所用网卡的名称为</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662ef18b0ea9cb1403dc7372.png"></p>
+<ol start="45">
+<li>分析openwrt镜像，该系统中装的docker的版本号为</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662ef1a60ea9cb1403dc9f66.png"></p>
+<p><img src="https://pic.imgdb.cn/item/662ef1d50ea9cb1403dce646.png"></p>
+<ol start="46">
+<li>分析openwrt镜像，nastools的配置文件路径为</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662ef1ea0ea9cb1403dd0417.png"></p>
+<ol start="47">
+<li>分析openwrt镜像，使用的vpn代理软件为</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662ef2230ea9cb1403dd4ef5.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Core</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="48">
+<li>分析openwrt镜像，vpn实际有多少个可用节点</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662ef24b0ea9cb1403dd8498.png"></p>
+<ol start="49">
+<li>分析openwrt镜像，节点socks的监听端口是多少</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662ef2820ea9cb1403ddd439.png"></p>
+<ol start="50">
+<li>分析openwrt镜像，vpn的订阅链接是</li>
+</ol>
+<p>节点订阅中</p>
+<p><img src="https://pic.imgdb.cn/item/662ef2af0ea9cb1403de171a.png"></p>
+<h1 id="windows镜像"><a href="#windows镜像" class="headerlink" title="windows镜像"></a>windows镜像</h1><ol>
+<li>分析技术员赵某的windows镜像，并计算赵某计算机的原始镜像的SHA1值为？</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FFD2777C0B966D5FC07F2BAED1DA5782F8DE5AD6</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>分析技术员赵某的windows镜像，疑似VeraCrypt加密容器的文件的SHA1值为？</li>
+</ol>
+<p>Document中找到一堆资料</p>
+<p>一眼丁真</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B25E2804B586394778C800D410ED7BCDC05A19C8</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662d08160ea9cb140342e7a6.png"></p>
+<ol start="3">
+<li>据赵某供述，他会将常用的密码放置在一个文档内，分析技术员赵某的windows镜像，找到技术员赵某的密码字典，并计算该文件的SHA1值?</li>
+</ol>
+<p>同上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E6EB3D28C53E903A71880961ABB553EF09089007</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662d08160ea9cb140342e7a6.png"></p>
+<ol start="4">
+<li>据赵某供述，他将加密容器的密码隐写在一张图片内，隐写在图片中的容器密码是?</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662d08310ea9cb1403432440.png"></p>
+<p>直接解vc密码错误</p>
+<p> 010查看</p>
+<p><img src="https://pic.imgdb.cn/item/662d085b0ea9cb1403437f7f.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qwerasdfzxcv</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="5">
+<li>分析技术员赵某的windows镜像，bitlocker的恢复密钥是什么</li>
+</ol>
+<p>挂载vc</p>
+<p><img src="https://pic.imgdb.cn/item/662d08be0ea9cb1403449305.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">404052-011088-453090-291500-377751-349536-330429-257235</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>分析技术员赵某的windows镜像，bitlocker分区的起始扇区数是</li>
+</ol>
+<p>火眼跑出分区6</p>
+<p><img src="https://pic.imgdb.cn/item/662d0a1c0ea9cb140347f68f.png"></p>
+<p><img src="https://pic.imgdb.cn/item/662d0a380ea9cb140348395b.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">146794496</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><p>分析技术员赵某的windows镜像，默认的浏览器是</p>
+<p>注册表</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">默认浏览器:HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice的ProgId键</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chrome</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>分析技术员赵某的windows镜像，私有聊天服务器的密码为</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662d0ad50ea9cb1403498929.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Zhao</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="9">
+<li>分析技术员赵某的windows镜像，嫌疑人计算机中有疑似使用AI技术生成的进行赌博宣传的图片，该图片中，宣传的赌博网站地址为？</li>
+</ol>
+<p>bc锁解开后长这样</p>
+<p><img src="https://pic.imgdb.cn/item/662d099a0ea9cb140346d98a.png"></p>
+<ol start="10">
+<li>分析技术员赵某的windows镜像，赵某使用的AI换脸工具名称为？</li>
+</ol>
+<p>终端历史命令</p>
+<p><img src="https://pic.imgdb.cn/item/662d0b000ea9cb140349e919.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\python ..\run.py --source &quot;E:/dst01.jpeg&quot; --target &quot;E:/1.pjpg&quot; --output &quot;E:/db.jpg&quot; --frame-processor face_swapper face_enhancer --similar-face-distance 0.85 --temp-frame-format png --temp-frame-quality 18 --output-video-quality 18 --max-memory 4 --execution-provider cpu --execution-threads 4</span><br></pre></td></tr></table></figure>
+
+<p>可以选项爆搜，也可以拿命令直接搜google</p>
+<p>PC里也有</p>
+<p><img src="https://pic.imgdb.cn/item/662d0dc00ea9cb1403519c7b.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROOP</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="11">
+<li>分析技术员赵某的windows镜像，使用AI换脸功能生成了一张图片，该图片的名称为</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.jpg</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="12">
+<li>分析技术员赵某的windows镜像，ai换脸生成图片的参数中–similar-face-distance值为</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.85</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="13">
+<li>分析技术员赵某的windows镜像，嫌疑人使用AI换脸功能所使用的原始图片名称为</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dst01.jpeg</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="14">
+<li>分析技术员赵某的windows镜像，赵某与李某沟通中提到的“二维码”解密所用的网站url地址为？</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662d0bb80ea9cb14034bb9be.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://hi.pcmoe.net/buddha.html</span><br></pre></td></tr></table></figure>
+
+<ol start="15">
+<li>分析技术员赵某的windows镜像，赵某架设聊天服务器的原始IP地址为？</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662d0cd10ea9cb14034eb9ac.png"></p>
+<p>结合服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.8.17</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="16">
+<li>分析技术员赵某的windows镜像，据赵某交代，其在窝点中直接操作服务器进行部署，环境搭建好了之后，使用个人计算机登录聊天室进行沟通，请分析赵某第一次访问聊天室的时间为？</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662d0d0b0ea9cb14034f7d83.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2024-03-14 20:32:08</span><br></pre></td></tr></table></figure>
+
+<ol start="17">
+<li>分析技术员赵某的windows镜像，openwrt的后台管理密码是</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662d0d470ea9cb1403502594.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hl@7001</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="18">
+<li>分析技术员赵某的windows镜像，嫌疑人可能使用什么云来进行文件存储？</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662d0e130ea9cb1403529a2d.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WPS云</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="19">
+<li>分析技术员赵某的windows镜像，工资表密码是多少</li>
+</ol>
+<p>excel加密，拿document中的commonpwd进行爆破</p>
+<p><img src="https://pic.imgdb.cn/item/662d0e610ea9cb14035397cc.png"></p>
+<ol start="20">
+<li>分析技术员赵某的windows镜像，张伟的工资是多少</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662d0e780ea9cb140353e928.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/2024/04/27/2024FIC%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%85%A8%E5%9B%BD%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%8F%96%E8%AF%81%E7%AB%9E%E8%B5%9B/">https://xyaxxya.github.io/2024/04/27/2024FIC%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%85%A8%E5%9B%BD%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%8F%96%E8%AF%81%E7%AB%9E%E8%B5%9B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/PC/">PC</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="post-meta__tags" href="/tags/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/">电子取证</a><a class="post-meta__tags" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a><a class="post-meta__tags" href="/tags/esxi/">esxi</a><a class="post-meta__tags" href="/tags/openwrt/">openwrt</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/04/13/DonkeyDocker-v1-0%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/" title="DonkeyDocker_v1.0渗透思路"><img class="cover" src="https://s2.loli.net/2024/02/17/bcaAVNDYvx5leMf.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">DonkeyDocker_v1.0渗透思路</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/16/2024%E5%B9%B4%E9%A6%96%E5%B1%8A%E7%8D%AC%E8%B1%B8%E6%9D%AFwp/" title="2024年首届獬豸杯wp"><img class="cover" src="https://s2.loli.net/2024/02/19/MsgcRNJkUzmDS2Q.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-16</div><div class="title">2024年首届獬豸杯wp</div></div></a></div><div><a href="/2024/02/16/2023%E4%B8%AD%E7%A7%91%E5%AE%9E%E6%95%B0wp/" title="2023中科实数wp"><img class="cover" src="https://s2.loli.net/2024/02/20/vZP2swirp7WSNxl.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-16</div><div class="title">2023中科实数wp</div></div></a></div><div><a href="/2024/03/18/22%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/" title="22台州比武"><img class="cover" src="https://s2.loli.net/2024/02/20/j4DPtrihv27OwBM.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-18</div><div class="title">22台州比武</div></div></a></div><div><a href="/2024/03/19/23%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/" title="23台州比武"><img class="cover" src="https://s2.loli.net/2024/02/17/r6Hm71fzQ5LdCe3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-19</div><div class="title">23台州比武</div></div></a></div><div><a href="/2024/04/06/22%E5%AE%81%E5%A4%8F%E5%88%91%E4%BE%A6%E5%A4%A7%E6%AF%94%E6%AD%A6/" title="22宁夏刑侦大比武"><img class="cover" src="https://s2.loli.net/2024/02/20/hOrdmDQnvzAoTHM.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-06</div><div class="title">22宁夏刑侦大比武</div></div></a></div><div><a href="/2024/02/27/%E5%B9%B3%E8%88%AA%E6%B5%8B%E9%AA%8C/" title="平航测验"><img class="cover" src="https://s2.loli.net/2024/02/20/u2BNsSvH97EIl3x.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-27</div><div class="title">平航测验</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="mailto:3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2024/02/16/%E5%85%B3%E4%BA%8E%E6%88%91" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%9B%86%E7%BE%A4%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">服务器集群题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#windows%E9%95%9C%E5%83%8F"><span class="toc-number">2.</span> <span class="toc-text">windows镜像</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/04/27/2024FIC%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%85%A8%E5%9B%BD%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%8F%96%E8%AF%81%E7%AB%9E%E8%B5%9B/" title="2024FIC第四届全国网络空间取证竞赛"><img src="https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024FIC第四届全国网络空间取证竞赛"/></a><div class="content"><a class="title" href="/2024/04/27/2024FIC%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%85%A8%E5%9B%BD%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%8F%96%E8%AF%81%E7%AB%9E%E8%B5%9B/" title="2024FIC第四届全国网络空间取证竞赛">2024FIC第四届全国网络空间取证竞赛</a><time datetime="2024-04-27T14:02:35.000Z" title="发表于 2024-04-27 22:02:35">2024-04-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/13/DonkeyDocker-v1-0%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/" title="DonkeyDocker_v1.0渗透思路"><img src="https://s2.loli.net/2024/02/17/bcaAVNDYvx5leMf.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DonkeyDocker_v1.0渗透思路"/></a><div class="content"><a class="title" href="/2024/04/13/DonkeyDocker-v1-0%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/" title="DonkeyDocker_v1.0渗透思路">DonkeyDocker_v1.0渗透思路</a><time datetime="2024-04-13T11:15:10.000Z" title="发表于 2024-04-13 19:15:10">2024-04-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/06/22%E5%AE%81%E5%A4%8F%E5%88%91%E4%BE%A6%E5%A4%A7%E6%AF%94%E6%AD%A6/" title="22宁夏刑侦大比武"><img src="https://s2.loli.net/2024/02/20/hOrdmDQnvzAoTHM.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22宁夏刑侦大比武"/></a><div class="content"><a class="title" href="/2024/04/06/22%E5%AE%81%E5%A4%8F%E5%88%91%E4%BE%A6%E5%A4%A7%E6%AF%94%E6%AD%A6/" title="22宁夏刑侦大比武">22宁夏刑侦大比武</a><time datetime="2024-04-06T10:56:50.000Z" title="发表于 2024-04-06 18:56:50">2024-04-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/01/HACKMYVM-QUICK3/" title="HACKMYVM-QUICK3"><img src="https://s2.loli.net/2024/02/17/x9hmviL2f7kFYqV.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HACKMYVM-QUICK3"/></a><div class="content"><a class="title" href="/2024/04/01/HACKMYVM-QUICK3/" title="HACKMYVM-QUICK3">HACKMYVM-QUICK3</a><time datetime="2024-04-01T13:04:21.000Z" title="发表于 2024-04-01 21:04:21">2024-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/24/22%E6%9D%AD%E5%B7%9E%E6%AF%94%E6%AD%A6-%E6%B5%81%E9%87%8F+%E9%9B%86%E7%BE%A4/" title="22杭州比武(流量+集群)"><img src="https://s2.loli.net/2024/02/19/vYcnqNFOSGEofJD.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22杭州比武(流量+集群)"/></a><div class="content"><a class="title" href="/2024/03/24/22%E6%9D%AD%E5%B7%9E%E6%AF%94%E6%AD%A6-%E6%B5%81%E9%87%8F+%E9%9B%86%E7%BE%A4/" title="22杭州比武(流量+集群)">22杭州比武(流量+集群)</a><time datetime="2024-03-24T13:22:42.000Z" title="发表于 2024-03-24 21:22:42">2024-03-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
