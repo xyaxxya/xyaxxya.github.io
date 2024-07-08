@@ -1,0 +1,938 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>hashcat使用指北 | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="hashcat使用指北常配合john的脚本使用 常用参数-m 破解hash类型12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hashcat使用指北">
+<meta property="og:url" content="https://xyaxxya.github.io/2024/07/08/hashcat%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/index.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="hashcat使用指北常配合john的脚本使用 常用参数-m 破解hash类型12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/02/20/Hz2nS3Dp8NdIgsJ.png">
+<meta property="article:published_time" content="2024-07-08T13:15:56.000Z">
+<meta property="article:modified_time" content="2024-07-08T13:16:18.685Z">
+<meta property="article:author" content="yiyi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/02/20/Hz2nS3Dp8NdIgsJ.png"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/2024/07/08/hashcat%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'hashcat使用指北',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-08 21:16:18'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/02/20/Hz2nS3Dp8NdIgsJ.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">hashcat使用指北</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-08T13:15:56.000Z" title="发表于 2024-07-08 21:15:56">2024-07-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-08T13:16:18.685Z" title="更新于 2024-07-08 21:16:18">2024-07-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>41分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2024/07/08/hashcat%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/" data-flag-title="hashcat使用指北"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/07/08/hashcat%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2024/07/08/hashcat%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="hashcat使用指北"><a href="#hashcat使用指北" class="headerlink" title="hashcat使用指北"></a>hashcat使用指北</h1><p>常配合john的脚本使用</p>
+<h2 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h2><h3 id="m-破解hash类型"><a href="#m-破解hash类型" class="headerlink" title="-m 破解hash类型"></a>-m 破解hash类型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br></pre></td><td class="code"><pre><span class="line">- [ Hash modes ] -</span><br><span class="line"></span><br><span class="line">      # | Name                                                       | Category</span><br><span class="line">  ======+============================================================+======================================</span><br><span class="line">    900 | MD4                                                        | Raw Hash</span><br><span class="line">      0 | MD5                                                        | Raw Hash</span><br><span class="line">    100 | SHA1                                                       | Raw Hash</span><br><span class="line">   1300 | SHA2-224                                                   | Raw Hash</span><br><span class="line">   1400 | SHA2-256                                                   | Raw Hash</span><br><span class="line">  10800 | SHA2-384                                                   | Raw Hash</span><br><span class="line">   1700 | SHA2-512                                                   | Raw Hash</span><br><span class="line">  17300 | SHA3-224                                                   | Raw Hash</span><br><span class="line">  17400 | SHA3-256                                                   | Raw Hash</span><br><span class="line">  17500 | SHA3-384                                                   | Raw Hash</span><br><span class="line">  17600 | SHA3-512                                                   | Raw Hash</span><br><span class="line">   6000 | RIPEMD-160                                                 | Raw Hash</span><br><span class="line">    600 | BLAKE2b-512                                                | Raw Hash</span><br><span class="line">  11700 | GOST R 34.11-2012 (Streebog) 256-bit, big-endian           | Raw Hash</span><br><span class="line">  11800 | GOST R 34.11-2012 (Streebog) 512-bit, big-endian           | Raw Hash</span><br><span class="line">   6900 | GOST R 34.11-94                                            | Raw Hash</span><br><span class="line">  17010 | GPG (AES-128/AES-256 (SHA-1($pass)))                       | Raw Hash</span><br><span class="line">   5100 | Half MD5                                                   | Raw Hash</span><br><span class="line">  17700 | Keccak-224                                                 | Raw Hash</span><br><span class="line">  17800 | Keccak-256                                                 | Raw Hash</span><br><span class="line">  17900 | Keccak-384                                                 | Raw Hash</span><br><span class="line">  18000 | Keccak-512                                                 | Raw Hash</span><br><span class="line">   6100 | Whirlpool                                                  | Raw Hash</span><br><span class="line">  10100 | SipHash                                                    | Raw Hash</span><br><span class="line">     70 | md5(utf16le($pass))                                        | Raw Hash</span><br><span class="line">    170 | sha1(utf16le($pass))                                       | Raw Hash</span><br><span class="line">   1470 | sha256(utf16le($pass))                                     | Raw Hash</span><br><span class="line">  10870 | sha384(utf16le($pass))                                     | Raw Hash</span><br><span class="line">   1770 | sha512(utf16le($pass))                                     | Raw Hash</span><br><span class="line">    610 | BLAKE2b-512($pass.$salt)                                   | Raw Hash salted and/or iterated</span><br><span class="line">    620 | BLAKE2b-512($salt.$pass)                                   | Raw Hash salted and/or iterated</span><br><span class="line">     10 | md5($pass.$salt)                                           | Raw Hash salted and/or iterated</span><br><span class="line">     20 | md5($salt.$pass)                                           | Raw Hash salted and/or iterated</span><br><span class="line">   3800 | md5($salt.$pass.$salt)                                     | Raw Hash salted and/or iterated</span><br><span class="line">   3710 | md5($salt.md5($pass))                                      | Raw Hash salted and/or iterated</span><br><span class="line">   4110 | md5($salt.md5($pass.$salt))                                | Raw Hash salted and/or iterated</span><br><span class="line">   4010 | md5($salt.md5($salt.$pass))                                | Raw Hash salted and/or iterated</span><br><span class="line">  21300 | md5($salt.sha1($salt.$pass))                               | Raw Hash salted and/or iterated</span><br><span class="line">     40 | md5($salt.utf16le($pass))                                  | Raw Hash salted and/or iterated</span><br><span class="line">   2600 | md5(md5($pass))                                            | Raw Hash salted and/or iterated</span><br><span class="line">   3910 | md5(md5($pass).md5($salt))                                 | Raw Hash salted and/or iterated</span><br><span class="line">   3500 | md5(md5(md5($pass)))                                       | Raw Hash salted and/or iterated</span><br><span class="line">   4400 | md5(sha1($pass))                                           | Raw Hash salted and/or iterated</span><br><span class="line">   4410 | md5(sha1($pass).$salt)                                     | Raw Hash salted and/or iterated</span><br><span class="line">  20900 | md5(sha1($pass).md5($pass).sha1($pass))                    | Raw Hash salted and/or iterated</span><br><span class="line">  21200 | md5(sha1($salt).md5($pass))                                | Raw Hash salted and/or iterated</span><br><span class="line">   4300 | md5(strtoupper(md5($pass)))                                | Raw Hash salted and/or iterated</span><br><span class="line">     30 | md5(utf16le($pass).$salt)                                  | Raw Hash salted and/or iterated</span><br><span class="line">    110 | sha1($pass.$salt)                                          | Raw Hash salted and/or iterated</span><br><span class="line">    120 | sha1($salt.$pass)                                          | Raw Hash salted and/or iterated</span><br><span class="line">   4900 | sha1($salt.$pass.$salt)                                    | Raw Hash salted and/or iterated</span><br><span class="line">   4520 | sha1($salt.sha1($pass))                                    | Raw Hash salted and/or iterated</span><br><span class="line">  24300 | sha1($salt.sha1($pass.$salt))                              | Raw Hash salted and/or iterated</span><br><span class="line">    140 | sha1($salt.utf16le($pass))                                 | Raw Hash salted and/or iterated</span><br><span class="line">  19300 | sha1($salt1.$pass.$salt2)                                  | Raw Hash salted and/or iterated</span><br><span class="line">  14400 | sha1(CX)                                                   | Raw Hash salted and/or iterated</span><br><span class="line">   4700 | sha1(md5($pass))                                           | Raw Hash salted and/or iterated</span><br><span class="line">   4710 | sha1(md5($pass).$salt)                                     | Raw Hash salted and/or iterated</span><br><span class="line">  21100 | sha1(md5($pass.$salt))                                     | Raw Hash salted and/or iterated</span><br><span class="line">  18500 | sha1(md5(md5($pass)))                                      | Raw Hash salted and/or iterated</span><br><span class="line">   4500 | sha1(sha1($pass))                                          | Raw Hash salted and/or iterated</span><br><span class="line">   4510 | sha1(sha1($pass).$salt)                                    | Raw Hash salted and/or iterated</span><br><span class="line">   5000 | sha1(sha1($salt.$pass.$salt))                              | Raw Hash salted and/or iterated</span><br><span class="line">    130 | sha1(utf16le($pass).$salt)                                 | Raw Hash salted and/or iterated</span><br><span class="line">   1410 | sha256($pass.$salt)                                        | Raw Hash salted and/or iterated</span><br><span class="line">   1420 | sha256($salt.$pass)                                        | Raw Hash salted and/or iterated</span><br><span class="line">  22300 | sha256($salt.$pass.$salt)                                  | Raw Hash salted and/or iterated</span><br><span class="line">  20720 | sha256($salt.sha256($pass))                                | Raw Hash salted and/or iterated</span><br><span class="line">  21420 | sha256($salt.sha256_bin($pass))                            | Raw Hash salted and/or iterated</span><br><span class="line">   1440 | sha256($salt.utf16le($pass))                               | Raw Hash salted and/or iterated</span><br><span class="line">  20800 | sha256(md5($pass))                                         | Raw Hash salted and/or iterated</span><br><span class="line">  20710 | sha256(sha256($pass).$salt)                                | Raw Hash salted and/or iterated</span><br><span class="line">  21400 | sha256(sha256_bin($pass))                                  | Raw Hash salted and/or iterated</span><br><span class="line">   1430 | sha256(utf16le($pass).$salt)                               | Raw Hash salted and/or iterated</span><br><span class="line">  10810 | sha384($pass.$salt)                                        | Raw Hash salted and/or iterated</span><br><span class="line">  10820 | sha384($salt.$pass)                                        | Raw Hash salted and/or iterated</span><br><span class="line">  10840 | sha384($salt.utf16le($pass))                               | Raw Hash salted and/or iterated</span><br><span class="line">  10830 | sha384(utf16le($pass).$salt)                               | Raw Hash salted and/or iterated</span><br><span class="line">   1710 | sha512($pass.$salt)                                        | Raw Hash salted and/or iterated</span><br><span class="line">   1720 | sha512($salt.$pass)                                        | Raw Hash salted and/or iterated</span><br><span class="line">   1740 | sha512($salt.utf16le($pass))                               | Raw Hash salted and/or iterated</span><br><span class="line">   1730 | sha512(utf16le($pass).$salt)                               | Raw Hash salted and/or iterated</span><br><span class="line">     50 | HMAC-MD5 (key = $pass)                                     | Raw Hash authenticated</span><br><span class="line">     60 | HMAC-MD5 (key = $salt)                                     | Raw Hash authenticated</span><br><span class="line">    150 | HMAC-SHA1 (key = $pass)                                    | Raw Hash authenticated</span><br><span class="line">    160 | HMAC-SHA1 (key = $salt)                                    | Raw Hash authenticated</span><br><span class="line">   1450 | HMAC-SHA256 (key = $pass)                                  | Raw Hash authenticated</span><br><span class="line">   1460 | HMAC-SHA256 (key = $salt)                                  | Raw Hash authenticated</span><br><span class="line">   1750 | HMAC-SHA512 (key = $pass)                                  | Raw Hash authenticated</span><br><span class="line">   1760 | HMAC-SHA512 (key = $salt)                                  | Raw Hash authenticated</span><br><span class="line">  11750 | HMAC-Streebog-256 (key = $pass), big-endian                | Raw Hash authenticated</span><br><span class="line">  11760 | HMAC-Streebog-256 (key = $salt), big-endian                | Raw Hash authenticated</span><br><span class="line">  11850 | HMAC-Streebog-512 (key = $pass), big-endian                | Raw Hash authenticated</span><br><span class="line">  11860 | HMAC-Streebog-512 (key = $salt), big-endian                | Raw Hash authenticated</span><br><span class="line">  28700 | Amazon AWS4-HMAC-SHA256                                    | Raw Hash authenticated</span><br><span class="line">  11500 | CRC32                                                      | Raw Checksum</span><br><span class="line">  27900 | CRC32C                                                     | Raw Checksum</span><br><span class="line">  28000 | CRC64Jones                                                 | Raw Checksum</span><br><span class="line">  18700 | Java Object hashCode()                                     | Raw Checksum</span><br><span class="line">  25700 | MurmurHash                                                 | Raw Checksum</span><br><span class="line">  27800 | MurmurHash3                                                | Raw Checksum</span><br><span class="line">  14100 | 3DES (PT = $salt, key = $pass)                             | Raw Cipher, Known-plaintext attack</span><br><span class="line">  14000 | DES (PT = $salt, key = $pass)                              | Raw Cipher, Known-plaintext attack</span><br><span class="line">  26401 | AES-128-ECB NOKDF (PT = $salt, key = $pass)                | Raw Cipher, Known-plaintext attack</span><br><span class="line">  26402 | AES-192-ECB NOKDF (PT = $salt, key = $pass)                | Raw Cipher, Known-plaintext attack</span><br><span class="line">  26403 | AES-256-ECB NOKDF (PT = $salt, key = $pass)                | Raw Cipher, Known-plaintext attack</span><br><span class="line">  15400 | ChaCha20                                                   | Raw Cipher, Known-plaintext attack</span><br><span class="line">  14500 | Linux Kernel Crypto API (2.4)                              | Raw Cipher, Known-plaintext attack</span><br><span class="line">  14900 | Skip32 (PT = $salt, key = $pass)                           | Raw Cipher, Known-plaintext attack</span><br><span class="line">  11900 | PBKDF2-HMAC-MD5                                            | Generic KDF</span><br><span class="line">  12000 | PBKDF2-HMAC-SHA1                                           | Generic KDF</span><br><span class="line">  10900 | PBKDF2-HMAC-SHA256                                         | Generic KDF</span><br><span class="line">  12100 | PBKDF2-HMAC-SHA512                                         | Generic KDF</span><br><span class="line">   8900 | scrypt                                                     | Generic KDF</span><br><span class="line">    400 | phpass                                                     | Generic KDF</span><br><span class="line">  16100 | TACACS+                                                    | Network Protocol</span><br><span class="line">  11400 | SIP digest authentication (MD5)                            | Network Protocol</span><br><span class="line">   5300 | IKE-PSK MD5                                                | Network Protocol</span><br><span class="line">   5400 | IKE-PSK SHA1                                               | Network Protocol</span><br><span class="line">  25100 | SNMPv3 HMAC-MD5-96                                         | Network Protocol</span><br><span class="line">  25000 | SNMPv3 HMAC-MD5-96/HMAC-SHA1-96                            | Network Protocol</span><br><span class="line">  25200 | SNMPv3 HMAC-SHA1-96                                        | Network Protocol</span><br><span class="line">  26700 | SNMPv3 HMAC-SHA224-128                                     | Network Protocol</span><br><span class="line">  26800 | SNMPv3 HMAC-SHA256-192                                     | Network Protocol</span><br><span class="line">  26900 | SNMPv3 HMAC-SHA384-256                                     | Network Protocol</span><br><span class="line">  27300 | SNMPv3 HMAC-SHA512-384                                     | Network Protocol</span><br><span class="line">   2500 | WPA-EAPOL-PBKDF2                                           | Network Protocol</span><br><span class="line">   2501 | WPA-EAPOL-PMK                                              | Network Protocol</span><br><span class="line">  22000 | WPA-PBKDF2-PMKID+EAPOL                                     | Network Protocol</span><br><span class="line">  22001 | WPA-PMK-PMKID+EAPOL                                        | Network Protocol</span><br><span class="line">  16800 | WPA-PMKID-PBKDF2                                           | Network Protocol</span><br><span class="line">  16801 | WPA-PMKID-PMK                                              | Network Protocol</span><br><span class="line">   7300 | IPMI2 RAKP HMAC-SHA1                                       | Network Protocol</span><br><span class="line">  10200 | CRAM-MD5                                                   | Network Protocol</span><br><span class="line">  16500 | JWT (JSON Web Token)                                       | Network Protocol</span><br><span class="line">  29200 | Radmin3                                                    | Network Protocol</span><br><span class="line">  19600 | Kerberos 5, etype 17, TGS-REP                              | Network Protocol</span><br><span class="line">  19800 | Kerberos 5, etype 17, Pre-Auth                             | Network Protocol</span><br><span class="line">  28800 | Kerberos 5, etype 17, DB                                   | Network Protocol</span><br><span class="line">  19700 | Kerberos 5, etype 18, TGS-REP                              | Network Protocol</span><br><span class="line">  19900 | Kerberos 5, etype 18, Pre-Auth                             | Network Protocol</span><br><span class="line">  28900 | Kerberos 5, etype 18, DB                                   | Network Protocol</span><br><span class="line">   7500 | Kerberos 5, etype 23, AS-REQ Pre-Auth                      | Network Protocol</span><br><span class="line">  13100 | Kerberos 5, etype 23, TGS-REP                              | Network Protocol</span><br><span class="line">  18200 | Kerberos 5, etype 23, AS-REP                               | Network Protocol</span><br><span class="line">   5500 | NetNTLMv1 / NetNTLMv1+ESS                                  | Network Protocol</span><br><span class="line">  27000 | NetNTLMv1 / NetNTLMv1+ESS (NT)                             | Network Protocol</span><br><span class="line">   5600 | NetNTLMv2                                                  | Network Protocol</span><br><span class="line">  27100 | NetNTLMv2 (NT)                                             | Network Protocol</span><br><span class="line">  29100 | Flask Session Cookie ($salt.$salt.$pass)                   | Network Protocol</span><br><span class="line">   4800 | iSCSI CHAP authentication, MD5(CHAP)                       | Network Protocol</span><br><span class="line">   8500 | RACF                                                       | Operating System</span><br><span class="line">   6300 | AIX &#123;smd5&#125;                                                 | Operating System</span><br><span class="line">   6700 | AIX &#123;ssha1&#125;                                                | Operating System</span><br><span class="line">   6400 | AIX &#123;ssha256&#125;                                              | Operating System</span><br><span class="line">   6500 | AIX &#123;ssha512&#125;                                              | Operating System</span><br><span class="line">   3000 | LM                                                         | Operating System</span><br><span class="line">  19000 | QNX /etc/shadow (MD5)                                      | Operating System</span><br><span class="line">  19100 | QNX /etc/shadow (SHA256)                                   | Operating System</span><br><span class="line">  19200 | QNX /etc/shadow (SHA512)                                   | Operating System</span><br><span class="line">  15300 | DPAPI masterkey file v1 (context 1 and 2)                  | Operating System</span><br><span class="line">  15310 | DPAPI masterkey file v1 (context 3)                        | Operating System</span><br><span class="line">  15900 | DPAPI masterkey file v2 (context 1 and 2)                  | Operating System</span><br><span class="line">  15910 | DPAPI masterkey file v2 (context 3)                        | Operating System</span><br><span class="line">   7200 | GRUB 2                                                     | Operating System</span><br><span class="line">  12800 | MS-AzureSync PBKDF2-HMAC-SHA256                            | Operating System</span><br><span class="line">  12400 | BSDi Crypt, Extended DES                                   | Operating System</span><br><span class="line">   1000 | NTLM                                                       | Operating System</span><br><span class="line">   9900 | Radmin2                                                    | Operating System</span><br><span class="line">   5800 | Samsung Android Password/PIN                               | Operating System</span><br><span class="line">  28100 | Windows Hello PIN/Password                                 | Operating System</span><br><span class="line">  13800 | Windows Phone 8+ PIN/password                              | Operating System</span><br><span class="line">   2410 | Cisco-ASA MD5                                              | Operating System</span><br><span class="line">   9200 | Cisco-IOS $8$ (PBKDF2-SHA256)                              | Operating System</span><br><span class="line">   9300 | Cisco-IOS $9$ (scrypt)                                     | Operating System</span><br><span class="line">   5700 | Cisco-IOS type 4 (SHA256)                                  | Operating System</span><br><span class="line">   2400 | Cisco-PIX MD5                                              | Operating System</span><br><span class="line">   8100 | Citrix NetScaler (SHA1)                                    | Operating System</span><br><span class="line">  22200 | Citrix NetScaler (SHA512)                                  | Operating System</span><br><span class="line">   1100 | Domain Cached Credentials (DCC), MS Cache                  | Operating System</span><br><span class="line">   2100 | Domain Cached Credentials 2 (DCC2), MS Cache 2             | Operating System</span><br><span class="line">   7000 | FortiGate (FortiOS)                                        | Operating System</span><br><span class="line">  26300 | FortiGate256 (FortiOS256)                                  | Operating System</span><br><span class="line">    125 | ArubaOS                                                    | Operating System</span><br><span class="line">    501 | Juniper IVE                                                | Operating System</span><br><span class="line">     22 | Juniper NetScreen/SSG (ScreenOS)                           | Operating System</span><br><span class="line">  15100 | Juniper/NetBSD sha1crypt                                   | Operating System</span><br><span class="line">  26500 | iPhone passcode (UID key + System Keybag)                  | Operating System</span><br><span class="line">    122 | macOS v10.4, macOS v10.5, macOS v10.6                      | Operating System</span><br><span class="line">   1722 | macOS v10.7                                                | Operating System</span><br><span class="line">   7100 | macOS v10.8+ (PBKDF2-SHA512)                               | Operating System</span><br><span class="line">   3200 | bcrypt $2*$, Blowfish (Unix)                               | Operating System</span><br><span class="line">    500 | md5crypt, MD5 (Unix), Cisco-IOS $1$ (MD5)                  | Operating System</span><br><span class="line">   1500 | descrypt, DES (Unix), Traditional DES                      | Operating System</span><br><span class="line">  29000 | sha1($salt.sha1(utf16le($username).&#x27;:&#x27;.utf16le($pass)))    | Operating System</span><br><span class="line">   7400 | sha256crypt $5$, SHA256 (Unix)                             | Operating System</span><br><span class="line">   1800 | sha512crypt $6$, SHA512 (Unix)                             | Operating System</span><br><span class="line">  24600 | SQLCipher                                                  | Database Server</span><br><span class="line">    131 | MSSQL (2000)                                               | Database Server</span><br><span class="line">    132 | MSSQL (2005)                                               | Database Server</span><br><span class="line">   1731 | MSSQL (2012, 2014)                                         | Database Server</span><br><span class="line">  24100 | MongoDB ServerKey SCRAM-SHA-1                              | Database Server</span><br><span class="line">  24200 | MongoDB ServerKey SCRAM-SHA-256                            | Database Server</span><br><span class="line">     12 | PostgreSQL                                                 | Database Server</span><br><span class="line">  11100 | PostgreSQL CRAM (MD5)                                      | Database Server</span><br><span class="line">  28600 | PostgreSQL SCRAM-SHA-256                                   | Database Server</span><br><span class="line">   3100 | Oracle H: Type (Oracle 7+)                                 | Database Server</span><br><span class="line">    112 | Oracle S: Type (Oracle 11+)                                | Database Server</span><br><span class="line">  12300 | Oracle T: Type (Oracle 12+)                                | Database Server</span><br><span class="line">   7401 | MySQL $A$ (sha256crypt)                                    | Database Server</span><br><span class="line">  11200 | MySQL CRAM (SHA1)                                          | Database Server</span><br><span class="line">    200 | MySQL323                                                   | Database Server</span><br><span class="line">    300 | MySQL4.1/MySQL5                                            | Database Server</span><br><span class="line">   8000 | Sybase ASE                                                 | Database Server</span><br><span class="line">   8300 | DNSSEC (NSEC3)                                             | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">  25900 | KNX IP Secure - Device Authentication Code                 | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">  16400 | CRAM-MD5 Dovecot                                           | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">   1411 | SSHA-256(Base64), LDAP &#123;SSHA256&#125;                           | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">   1711 | SSHA-512(Base64), LDAP &#123;SSHA512&#125;                           | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">  24900 | Dahua Authentication MD5                                   | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">  10901 | RedHat 389-DS LDAP (PBKDF2-HMAC-SHA256)                    | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">  15000 | FileZilla Server &gt;= 0.9.55                                 | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">  12600 | ColdFusion 10+                                             | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">   1600 | Apache $apr1$ MD5, md5apr1, MD5 (APR)                      | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">    141 | Episerver 6.x &lt; .NET 4                                     | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">   1441 | Episerver 6.x &gt;= .NET 4                                    | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">   1421 | hMailServer                                                | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">    101 | nsldap, SHA-1(Base64), Netscape LDAP SHA                   | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">    111 | nsldaps, SSHA-1(Base64), Netscape LDAP SSHA                | FTP, HTTP, SMTP, LDAP Server</span><br><span class="line">   7700 | SAP CODVN B (BCODE)                                        | Enterprise Application Software (EAS)</span><br><span class="line">   7701 | SAP CODVN B (BCODE) from RFC_READ_TABLE                    | Enterprise Application Software (EAS)</span><br><span class="line">   7800 | SAP CODVN F/G (PASSCODE)                                   | Enterprise Application Software (EAS)</span><br><span class="line">   7801 | SAP CODVN F/G (PASSCODE) from RFC_READ_TABLE               | Enterprise Application Software (EAS)</span><br><span class="line">  10300 | SAP CODVN H (PWDSALTEDHASH) iSSHA-1                        | Enterprise Application Software (EAS)</span><br><span class="line">    133 | PeopleSoft                                                 | Enterprise Application Software (EAS)</span><br><span class="line">  13500 | PeopleSoft PS_TOKEN                                        | Enterprise Application Software (EAS)</span><br><span class="line">  21500 | SolarWinds Orion                                           | Enterprise Application Software (EAS)</span><br><span class="line">  21501 | SolarWinds Orion v2                                        | Enterprise Application Software (EAS)</span><br><span class="line">     24 | SolarWinds Serv-U                                          | Enterprise Application Software (EAS)</span><br><span class="line">   8600 | Lotus Notes/Domino 5                                       | Enterprise Application Software (EAS)</span><br><span class="line">   8700 | Lotus Notes/Domino 6                                       | Enterprise Application Software (EAS)</span><br><span class="line">   9100 | Lotus Notes/Domino 8                                       | Enterprise Application Software (EAS)</span><br><span class="line">  26200 | OpenEdge Progress Encode                                   | Enterprise Application Software (EAS)</span><br><span class="line">  20600 | Oracle Transportation Management (SHA256)                  | Enterprise Application Software (EAS)</span><br><span class="line">   4711 | Huawei sha1(md5($pass).$salt)                              | Enterprise Application Software (EAS)</span><br><span class="line">  20711 | AuthMe sha256                                              | Enterprise Application Software (EAS)</span><br><span class="line">  22400 | AES Crypt (SHA256)                                         | Full-Disk Encryption (FDE)</span><br><span class="line">  27400 | VMware VMX (PBKDF2-HMAC-SHA1 + AES-256-CBC)                | Full-Disk Encryption (FDE)</span><br><span class="line">  14600 | LUKS v1 (legacy)                                           | Full-Disk Encryption (FDE)</span><br><span class="line">  29541 | LUKS v1 RIPEMD-160 + AES                                   | Full-Disk Encryption (FDE)</span><br><span class="line">  29542 | LUKS v1 RIPEMD-160 + Serpent                               | Full-Disk Encryption (FDE)</span><br><span class="line">  29543 | LUKS v1 RIPEMD-160 + Twofish                               | Full-Disk Encryption (FDE)</span><br><span class="line">  29511 | LUKS v1 SHA-1 + AES                                        | Full-Disk Encryption (FDE)</span><br><span class="line">  29512 | LUKS v1 SHA-1 + Serpent                                    | Full-Disk Encryption (FDE)</span><br><span class="line">  29513 | LUKS v1 SHA-1 + Twofish                                    | Full-Disk Encryption (FDE)</span><br><span class="line">  29521 | LUKS v1 SHA-256 + AES                                      | Full-Disk Encryption (FDE)</span><br><span class="line">  29522 | LUKS v1 SHA-256 + Serpent                                  | Full-Disk Encryption (FDE)</span><br><span class="line">  29523 | LUKS v1 SHA-256 + Twofish                                  | Full-Disk Encryption (FDE)</span><br><span class="line">  29531 | LUKS v1 SHA-512 + AES                                      | Full-Disk Encryption (FDE)</span><br><span class="line">  29532 | LUKS v1 SHA-512 + Serpent                                  | Full-Disk Encryption (FDE)</span><br><span class="line">  29533 | LUKS v1 SHA-512 + Twofish                                  | Full-Disk Encryption (FDE)</span><br><span class="line">  13711 | VeraCrypt RIPEMD160 + XTS 512 bit (legacy)                 | Full-Disk Encryption (FDE)</span><br><span class="line">  13712 | VeraCrypt RIPEMD160 + XTS 1024 bit (legacy)                | Full-Disk Encryption (FDE)</span><br><span class="line">  13713 | VeraCrypt RIPEMD160 + XTS 1536 bit (legacy)                | Full-Disk Encryption (FDE)</span><br><span class="line">  13741 | VeraCrypt RIPEMD160 + XTS 512 bit + boot-mode (legacy)     | Full-Disk Encryption (FDE)</span><br><span class="line">  13742 | VeraCrypt RIPEMD160 + XTS 1024 bit + boot-mode (legacy)    | Full-Disk Encryption (FDE)</span><br><span class="line">  13743 | VeraCrypt RIPEMD160 + XTS 1536 bit + boot-mode (legacy)    | Full-Disk Encryption (FDE)</span><br><span class="line">  29411 | VeraCrypt RIPEMD160 + XTS 512 bit                          | Full-Disk Encryption (FDE)</span><br><span class="line">  29412 | VeraCrypt RIPEMD160 + XTS 1024 bit                         | Full-Disk Encryption (FDE)</span><br><span class="line">  29413 | VeraCrypt RIPEMD160 + XTS 1536 bit                         | Full-Disk Encryption (FDE)</span><br><span class="line">  29441 | VeraCrypt RIPEMD160 + XTS 512 bit + boot-mode              | Full-Disk Encryption (FDE)</span><br><span class="line">  29442 | VeraCrypt RIPEMD160 + XTS 1024 bit + boot-mode             | Full-Disk Encryption (FDE)</span><br><span class="line">  29443 | VeraCrypt RIPEMD160 + XTS 1536 bit + boot-mode             | Full-Disk Encryption (FDE)</span><br><span class="line">  13751 | VeraCrypt SHA256 + XTS 512 bit (legacy)                    | Full-Disk Encryption (FDE)</span><br><span class="line">  13752 | VeraCrypt SHA256 + XTS 1024 bit (legacy)                   | Full-Disk Encryption (FDE)</span><br><span class="line">  13753 | VeraCrypt SHA256 + XTS 1536 bit (legacy)                   | Full-Disk Encryption (FDE)</span><br><span class="line">  13761 | VeraCrypt SHA256 + XTS 512 bit + boot-mode (legacy)        | Full-Disk Encryption (FDE)</span><br><span class="line">  13762 | VeraCrypt SHA256 + XTS 1024 bit + boot-mode (legacy)       | Full-Disk Encryption (FDE)</span><br><span class="line">  13763 | VeraCrypt SHA256 + XTS 1536 bit + boot-mode (legacy)       | Full-Disk Encryption (FDE)</span><br><span class="line">  29451 | VeraCrypt SHA256 + XTS 512 bit                             | Full-Disk Encryption (FDE)</span><br><span class="line">  29452 | VeraCrypt SHA256 + XTS 1024 bit                            | Full-Disk Encryption (FDE)</span><br><span class="line">  29453 | VeraCrypt SHA256 + XTS 1536 bit                            | Full-Disk Encryption (FDE)</span><br><span class="line">  29461 | VeraCrypt SHA256 + XTS 512 bit + boot-mode                 | Full-Disk Encryption (FDE)</span><br><span class="line">  29462 | VeraCrypt SHA256 + XTS 1024 bit + boot-mode                | Full-Disk Encryption (FDE)</span><br><span class="line">  29463 | VeraCrypt SHA256 + XTS 1536 bit + boot-mode                | Full-Disk Encryption (FDE)</span><br><span class="line">  13721 | VeraCrypt SHA512 + XTS 512 bit (legacy)                    | Full-Disk Encryption (FDE)</span><br><span class="line">  13722 | VeraCrypt SHA512 + XTS 1024 bit (legacy)                   | Full-Disk Encryption (FDE)</span><br><span class="line">  13723 | VeraCrypt SHA512 + XTS 1536 bit (legacy)                   | Full-Disk Encryption (FDE)</span><br><span class="line">  29421 | VeraCrypt SHA512 + XTS 512 bit                             | Full-Disk Encryption (FDE)</span><br><span class="line">  29422 | VeraCrypt SHA512 + XTS 1024 bit                            | Full-Disk Encryption (FDE)</span><br><span class="line">  29423 | VeraCrypt SHA512 + XTS 1536 bit                            | Full-Disk Encryption (FDE)</span><br><span class="line">  13771 | VeraCrypt Streebog-512 + XTS 512 bit (legacy)              | Full-Disk Encryption (FDE)</span><br><span class="line">  13772 | VeraCrypt Streebog-512 + XTS 1024 bit (legacy)             | Full-Disk Encryption (FDE)</span><br><span class="line">  13773 | VeraCrypt Streebog-512 + XTS 1536 bit (legacy)             | Full-Disk Encryption (FDE)</span><br><span class="line">  13781 | VeraCrypt Streebog-512 + XTS 512 bit + boot-mode (legacy)  | Full-Disk Encryption (FDE)</span><br><span class="line">  13782 | VeraCrypt Streebog-512 + XTS 1024 bit + boot-mode (legacy) | Full-Disk Encryption (FDE)</span><br><span class="line">  13783 | VeraCrypt Streebog-512 + XTS 1536 bit + boot-mode (legacy) | Full-Disk Encryption (FDE)</span><br><span class="line">  29471 | VeraCrypt Streebog-512 + XTS 512 bit                       | Full-Disk Encryption (FDE)</span><br><span class="line">  29472 | VeraCrypt Streebog-512 + XTS 1024 bit                      | Full-Disk Encryption (FDE)</span><br><span class="line">  29473 | VeraCrypt Streebog-512 + XTS 1536 bit                      | Full-Disk Encryption (FDE)</span><br><span class="line">  29481 | VeraCrypt Streebog-512 + XTS 512 bit + boot-mode           | Full-Disk Encryption (FDE)</span><br><span class="line">  29482 | VeraCrypt Streebog-512 + XTS 1024 bit + boot-mode          | Full-Disk Encryption (FDE)</span><br><span class="line">  29483 | VeraCrypt Streebog-512 + XTS 1536 bit + boot-mode          | Full-Disk Encryption (FDE)</span><br><span class="line">  13731 | VeraCrypt Whirlpool + XTS 512 bit (legacy)                 | Full-Disk Encryption (FDE)</span><br><span class="line">  13732 | VeraCrypt Whirlpool + XTS 1024 bit (legacy)                | Full-Disk Encryption (FDE)</span><br><span class="line">  13733 | VeraCrypt Whirlpool + XTS 1536 bit (legacy)                | Full-Disk Encryption (FDE)</span><br><span class="line">  29431 | VeraCrypt Whirlpool + XTS 512 bit                          | Full-Disk Encryption (FDE)</span><br><span class="line">  29432 | VeraCrypt Whirlpool + XTS 1024 bit                         | Full-Disk Encryption (FDE)</span><br><span class="line">  29433 | VeraCrypt Whirlpool + XTS 1536 bit                         | Full-Disk Encryption (FDE)</span><br><span class="line">  23900 | BestCrypt v3 Volume Encryption                             | Full-Disk Encryption (FDE)</span><br><span class="line">  16700 | FileVault 2                                                | Full-Disk Encryption (FDE)</span><br><span class="line">  27500 | VirtualBox (PBKDF2-HMAC-SHA256 &amp; AES-128-XTS)              | Full-Disk Encryption (FDE)</span><br><span class="line">  27600 | VirtualBox (PBKDF2-HMAC-SHA256 &amp; AES-256-XTS)              | Full-Disk Encryption (FDE)</span><br><span class="line">  20011 | DiskCryptor SHA512 + XTS 512 bit                           | Full-Disk Encryption (FDE)</span><br><span class="line">  20012 | DiskCryptor SHA512 + XTS 1024 bit                          | Full-Disk Encryption (FDE)</span><br><span class="line">  20013 | DiskCryptor SHA512 + XTS 1536 bit                          | Full-Disk Encryption (FDE)</span><br><span class="line">  22100 | BitLocker                                                  | Full-Disk Encryption (FDE)</span><br><span class="line">  12900 | Android FDE (Samsung DEK)                                  | Full-Disk Encryption (FDE)</span><br><span class="line">   8800 | Android FDE &lt;= 4.3                                         | Full-Disk Encryption (FDE)</span><br><span class="line">  18300 | Apple File System (APFS)                                   | Full-Disk Encryption (FDE)</span><br><span class="line">   6211 | TrueCrypt RIPEMD160 + XTS 512 bit (legacy)                 | Full-Disk Encryption (FDE)</span><br><span class="line">   6212 | TrueCrypt RIPEMD160 + XTS 1024 bit (legacy)                | Full-Disk Encryption (FDE)</span><br><span class="line">   6213 | TrueCrypt RIPEMD160 + XTS 1536 bit (legacy)                | Full-Disk Encryption (FDE)</span><br><span class="line">   6241 | TrueCrypt RIPEMD160 + XTS 512 bit + boot-mode (legacy)     | Full-Disk Encryption (FDE)</span><br><span class="line">   6242 | TrueCrypt RIPEMD160 + XTS 1024 bit + boot-mode (legacy)    | Full-Disk Encryption (FDE)</span><br><span class="line">   6243 | TrueCrypt RIPEMD160 + XTS 1536 bit + boot-mode (legacy)    | Full-Disk Encryption (FDE)</span><br><span class="line">  29311 | TrueCrypt RIPEMD160 + XTS 512 bit                          | Full-Disk Encryption (FDE)</span><br><span class="line">  29312 | TrueCrypt RIPEMD160 + XTS 1024 bit                         | Full-Disk Encryption (FDE)</span><br><span class="line">  29313 | TrueCrypt RIPEMD160 + XTS 1536 bit                         | Full-Disk Encryption (FDE)</span><br><span class="line">  29341 | TrueCrypt RIPEMD160 + XTS 512 bit + boot-mode              | Full-Disk Encryption (FDE)</span><br><span class="line">  29342 | TrueCrypt RIPEMD160 + XTS 1024 bit + boot-mode             | Full-Disk Encryption (FDE)</span><br><span class="line">  29343 | TrueCrypt RIPEMD160 + XTS 1536 bit + boot-mode             | Full-Disk Encryption (FDE)</span><br><span class="line">   6221 | TrueCrypt SHA512 + XTS 512 bit (legacy)                    | Full-Disk Encryption (FDE)</span><br><span class="line">   6222 | TrueCrypt SHA512 + XTS 1024 bit (legacy)                   | Full-Disk Encryption (FDE)</span><br><span class="line">   6223 | TrueCrypt SHA512 + XTS 1536 bit (legacy)                   | Full-Disk Encryption (FDE)</span><br><span class="line">  29321 | TrueCrypt SHA512 + XTS 512 bit                             | Full-Disk Encryption (FDE)</span><br><span class="line">  29322 | TrueCrypt SHA512 + XTS 1024 bit                            | Full-Disk Encryption (FDE)</span><br><span class="line">  29323 | TrueCrypt SHA512 + XTS 1536 bit                            | Full-Disk Encryption (FDE)</span><br><span class="line">   6231 | TrueCrypt Whirlpool + XTS 512 bit (legacy)                 | Full-Disk Encryption (FDE)</span><br><span class="line">   6232 | TrueCrypt Whirlpool + XTS 1024 bit (legacy)                | Full-Disk Encryption (FDE)</span><br><span class="line">   6233 | TrueCrypt Whirlpool + XTS 1536 bit (legacy)                | Full-Disk Encryption (FDE)</span><br><span class="line">  29331 | TrueCrypt Whirlpool + XTS 512 bit                          | Full-Disk Encryption (FDE)</span><br><span class="line">  29332 | TrueCrypt Whirlpool + XTS 1024 bit                         | Full-Disk Encryption (FDE)</span><br><span class="line">  29333 | TrueCrypt Whirlpool + XTS 1536 bit                         | Full-Disk Encryption (FDE)</span><br><span class="line">  12200 | eCryptfs                                                   | Full-Disk Encryption (FDE)</span><br><span class="line">  10400 | PDF 1.1 - 1.3 (Acrobat 2 - 4)                              | Document</span><br><span class="line">  10410 | PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #1                 | Document</span><br><span class="line">  10420 | PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #2                 | Document</span><br><span class="line">  10500 | PDF 1.4 - 1.6 (Acrobat 5 - 8)                              | Document</span><br><span class="line">  25400 | PDF 1.4 - 1.6 (Acrobat 5 - 8) - user and owner pass        | Document</span><br><span class="line">  10600 | PDF 1.7 Level 3 (Acrobat 9)                                | Document</span><br><span class="line">  10700 | PDF 1.7 Level 8 (Acrobat 10 - 11)                          | Document</span><br><span class="line">   9400 | MS Office 2007                                             | Document</span><br><span class="line">   9500 | MS Office 2010                                             | Document</span><br><span class="line">   9600 | MS Office 2013                                             | Document</span><br><span class="line">  25300 | MS Office 2016 - SheetProtection                           | Document</span><br><span class="line">   9700 | MS Office &lt;= 2003 $0/$1, MD5 + RC4                         | Document</span><br><span class="line">   9710 | MS Office &lt;= 2003 $0/$1, MD5 + RC4, collider #1            | Document</span><br><span class="line">   9720 | MS Office &lt;= 2003 $0/$1, MD5 + RC4, collider #2            | Document</span><br><span class="line">   9810 | MS Office &lt;= 2003 $3, SHA1 + RC4, collider #1              | Document</span><br><span class="line">   9820 | MS Office &lt;= 2003 $3, SHA1 + RC4, collider #2              | Document</span><br><span class="line">   9800 | MS Office &lt;= 2003 $3/$4, SHA1 + RC4                        | Document</span><br><span class="line">  18400 | Open Document Format (ODF) 1.2 (SHA-256, AES)              | Document</span><br><span class="line">  18600 | Open Document Format (ODF) 1.1 (SHA-1, Blowfish)           | Document</span><br><span class="line">  16200 | Apple Secure Notes                                         | Document</span><br><span class="line">  23300 | Apple iWork                                                | Document</span><br><span class="line">   6600 | 1Password, agilekeychain                                   | Password Manager</span><br><span class="line">   8200 | 1Password, cloudkeychain                                   | Password Manager</span><br><span class="line">   9000 | Password Safe v2                                           | Password Manager</span><br><span class="line">   5200 | Password Safe v3                                           | Password Manager</span><br><span class="line">   6800 | LastPass + LastPass sniffed                                | Password Manager</span><br><span class="line">  13400 | KeePass 1 (AES/Twofish) and KeePass 2 (AES)                | Password Manager</span><br><span class="line">  29700 | KeePass 1 (AES/Twofish) and KeePass 2 (AES) - keyfile only mode | Password Manager</span><br><span class="line">  23400 | Bitwarden                                                  | Password Manager</span><br><span class="line">  16900 | Ansible Vault                                              | Password Manager</span><br><span class="line">  26000 | Mozilla key3.db                                            | Password Manager</span><br><span class="line">  26100 | Mozilla key4.db                                            | Password Manager</span><br><span class="line">  23100 | Apple Keychain                                             | Password Manager</span><br><span class="line">  11600 | 7-Zip                                                      | Archive</span><br><span class="line">  12500 | RAR3-hp                                                    | Archive</span><br><span class="line">  23800 | RAR3-p (Compressed)                                        | Archive</span><br><span class="line">  23700 | RAR3-p (Uncompressed)                                      | Archive</span><br><span class="line">  13000 | RAR5                                                       | Archive</span><br><span class="line">  17220 | PKZIP (Compressed Multi-File)                              | Archive</span><br><span class="line">  17200 | PKZIP (Compressed)                                         | Archive</span><br><span class="line">  17225 | PKZIP (Mixed Multi-File)                                   | Archive</span><br><span class="line">  17230 | PKZIP (Mixed Multi-File Checksum-Only)                     | Archive</span><br><span class="line">  17210 | PKZIP (Uncompressed)                                       | Archive</span><br><span class="line">  20500 | PKZIP Master Key                                           | Archive</span><br><span class="line">  20510 | PKZIP Master Key (6 byte optimization)                     | Archive</span><br><span class="line">  23001 | SecureZIP AES-128                                          | Archive</span><br><span class="line">  23002 | SecureZIP AES-192                                          | Archive</span><br><span class="line">  23003 | SecureZIP AES-256                                          | Archive</span><br><span class="line">  13600 | WinZip                                                     | Archive</span><br><span class="line">  18900 | Android Backup                                             | Archive</span><br><span class="line">  24700 | Stuffit5                                                   | Archive</span><br><span class="line">  13200 | AxCrypt 1                                                  | Archive</span><br><span class="line">  13300 | AxCrypt 1 in-memory SHA1                                   | Archive</span><br><span class="line">  23500 | AxCrypt 2 AES-128                                          | Archive</span><br><span class="line">  23600 | AxCrypt 2 AES-256                                          | Archive</span><br><span class="line">  14700 | iTunes backup &lt; 10.0                                       | Archive</span><br><span class="line">  14800 | iTunes backup &gt;= 10.0                                      | Archive</span><br><span class="line">   8400 | WBB3 (Woltlab Burning Board)                               | Forums, CMS, E-Commerce</span><br><span class="line">   2612 | PHPS                                                       | Forums, CMS, E-Commerce</span><br><span class="line">    121 | SMF (Simple Machines Forum) &gt; v1.1                         | Forums, CMS, E-Commerce</span><br><span class="line">   3711 | MediaWiki B type                                           | Forums, CMS, E-Commerce</span><br><span class="line">   4521 | Redmine                                                    | Forums, CMS, E-Commerce</span><br><span class="line">  24800 | Umbraco HMAC-SHA1                                          | Forums, CMS, E-Commerce</span><br><span class="line">     11 | Joomla &lt; 2.5.18                                            | Forums, CMS, E-Commerce</span><br><span class="line">  13900 | OpenCart                                                   | Forums, CMS, E-Commerce</span><br><span class="line">  11000 | PrestaShop                                                 | Forums, CMS, E-Commerce</span><br><span class="line">  16000 | Tripcode                                                   | Forums, CMS, E-Commerce</span><br><span class="line">   7900 | Drupal7                                                    | Forums, CMS, E-Commerce</span><br><span class="line">   4522 | PunBB                                                      | Forums, CMS, E-Commerce</span><br><span class="line">   2811 | MyBB 1.2+, IPB2+ (Invision Power Board)                    | Forums, CMS, E-Commerce</span><br><span class="line">   2611 | vBulletin &lt; v3.8.5                                         | Forums, CMS, E-Commerce</span><br><span class="line">   2711 | vBulletin &gt;= v3.8.5                                        | Forums, CMS, E-Commerce</span><br><span class="line">  25600 | bcrypt(md5($pass)) / bcryptmd5                             | Forums, CMS, E-Commerce</span><br><span class="line">  25800 | bcrypt(sha1($pass)) / bcryptsha1                           | Forums, CMS, E-Commerce</span><br><span class="line">  28400 | bcrypt(sha512($pass)) / bcryptsha512                       | Forums, CMS, E-Commerce</span><br><span class="line">     21 | osCommerce, xt:Commerce                                    | Forums, CMS, E-Commerce</span><br><span class="line">  18100 | TOTP (HMAC-SHA1)                                           | One-Time Password</span><br><span class="line">   2000 | STDOUT                                                     | Plaintext</span><br><span class="line">  99999 | Plaintext                                                  | Plaintext</span><br><span class="line">  21600 | Web2py pbkdf2-sha512                                       | Framework</span><br><span class="line">  10000 | Django (PBKDF2-SHA256)                                     | Framework</span><br><span class="line">    124 | Django (SHA-1)                                             | Framework</span><br><span class="line">  12001 | Atlassian (PBKDF2-HMAC-SHA1)                               | Framework</span><br><span class="line">  19500 | Ruby on Rails Restful-Authentication                       | Framework</span><br><span class="line">  27200 | Ruby on Rails Restful Auth (one round, no sitekey)         | Framework</span><br><span class="line">  30000 | Python Werkzeug MD5 (HMAC-MD5 (key = $salt))               | Framework</span><br><span class="line">  30120 | Python Werkzeug SHA256 (HMAC-SHA256 (key = $salt))         | Framework</span><br><span class="line">  20200 | Python passlib pbkdf2-sha512                               | Framework</span><br><span class="line">  20300 | Python passlib pbkdf2-sha256                               | Framework</span><br><span class="line">  20400 | Python passlib pbkdf2-sha1                                 | Framework</span><br><span class="line">  24410 | PKCS#8 Private Keys (PBKDF2-HMAC-SHA1 + 3DES/AES)          | Private Key</span><br><span class="line">  24420 | PKCS#8 Private Keys (PBKDF2-HMAC-SHA256 + 3DES/AES)        | Private Key</span><br><span class="line">  15500 | JKS Java Key Store Private Keys (SHA1)                     | Private Key</span><br><span class="line">  22911 | RSA/DSA/EC/OpenSSH Private Keys ($0$)                      | Private Key</span><br><span class="line">  22921 | RSA/DSA/EC/OpenSSH Private Keys ($6$)                      | Private Key</span><br><span class="line">  22931 | RSA/DSA/EC/OpenSSH Private Keys ($1, $3$)                  | Private Key</span><br><span class="line">  22941 | RSA/DSA/EC/OpenSSH Private Keys ($4$)                      | Private Key</span><br><span class="line">  22951 | RSA/DSA/EC/OpenSSH Private Keys ($5$)                      | Private Key</span><br><span class="line">  23200 | XMPP SCRAM PBKDF2-SHA1                                     | Instant Messaging Service</span><br><span class="line">  28300 | Teamspeak 3 (channel hash)                                 | Instant Messaging Service</span><br><span class="line">  22600 | Telegram Desktop &lt; v2.1.14 (PBKDF2-HMAC-SHA1)              | Instant Messaging Service</span><br><span class="line">  24500 | Telegram Desktop &gt;= v2.1.14 (PBKDF2-HMAC-SHA512)           | Instant Messaging Service</span><br><span class="line">  22301 | Telegram Mobile App Passcode (SHA256)                      | Instant Messaging Service</span><br><span class="line">     23 | Skype                                                      | Instant Messaging Service</span><br><span class="line">  29600 | Terra Station Wallet (AES256-CBC(PBKDF2($pass)))           | Cryptocurrency Wallet</span><br><span class="line">  26600 | MetaMask Wallet                                            | Cryptocurrency Wallet</span><br><span class="line">  21000 | BitShares v0.x - sha512(sha512_bin(pass))                  | Cryptocurrency Wallet</span><br><span class="line">  28501 | Bitcoin WIF private key (P2PKH), compressed                | Cryptocurrency Wallet</span><br><span class="line">  28502 | Bitcoin WIF private key (P2PKH), uncompressed              | Cryptocurrency Wallet</span><br><span class="line">  28503 | Bitcoin WIF private key (P2WPKH, Bech32), compressed       | Cryptocurrency Wallet</span><br><span class="line">  28504 | Bitcoin WIF private key (P2WPKH, Bech32), uncompressed     | Cryptocurrency Wallet</span><br><span class="line">  28505 | Bitcoin WIF private key (P2SH(P2WPKH)), compressed         | Cryptocurrency Wallet</span><br><span class="line">  28506 | Bitcoin WIF private key (P2SH(P2WPKH)), uncompressed       | Cryptocurrency Wallet</span><br><span class="line">  11300 | Bitcoin/Litecoin wallet.dat                                | Cryptocurrency Wallet</span><br><span class="line">  16600 | Electrum Wallet (Salt-Type 1-3)                            | Cryptocurrency Wallet</span><br><span class="line">  21700 | Electrum Wallet (Salt-Type 4)                              | Cryptocurrency Wallet</span><br><span class="line">  21800 | Electrum Wallet (Salt-Type 5)                              | Cryptocurrency Wallet</span><br><span class="line">  12700 | Blockchain, My Wallet                                      | Cryptocurrency Wallet</span><br><span class="line">  15200 | Blockchain, My Wallet, V2                                  | Cryptocurrency Wallet</span><br><span class="line">  18800 | Blockchain, My Wallet, Second Password (SHA256)            | Cryptocurrency Wallet</span><br><span class="line">  25500 | Stargazer Stellar Wallet XLM                               | Cryptocurrency Wallet</span><br><span class="line">  16300 | Ethereum Pre-Sale Wallet, PBKDF2-HMAC-SHA256               | Cryptocurrency Wallet</span><br><span class="line">  15600 | Ethereum Wallet, PBKDF2-HMAC-SHA256                        | Cryptocurrency Wallet</span><br><span class="line">  15700 | Ethereum Wallet, SCRYPT                                    | Cryptocurrency Wallet</span><br><span class="line">  22500 | MultiBit Classic .key (MD5)                                | Cryptocurrency Wallet</span><br><span class="line">  27700 | MultiBit Classic .wallet (scrypt)                          | Cryptocurrency Wallet</span><br><span class="line">  22700 | MultiBit HD (scrypt)                                       | Cryptocurrency Wallet</span><br><span class="line">  28200 | Exodus Desktop Wallet (scrypt)                             | Cryptocurrency Wallet</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="a-破解模式"><a href="#a-破解模式" class="headerlink" title="-a 破解模式"></a>-a 破解模式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- [ Attack Modes ] -</span><br><span class="line"></span><br><span class="line">  # | Mode</span><br><span class="line"> ===+======</span><br><span class="line">  0 | Straight                   # 直接字典破解</span><br><span class="line">  1 | Combination                # 组合破解</span><br><span class="line">  3 | Brute-force                # 掩码暴力破解</span><br><span class="line">  6 | Hybrid Wordlist + Mask     # 字典+掩码破解</span><br><span class="line">  7 | Hybrid Mask + Wordlist     # 掩码+字典破解</span><br><span class="line">  9 | Association</span><br></pre></td></tr></table></figure>
+
+<h3 id="increment"><a href="#increment" class="headerlink" title="-increment"></a>-increment</h3><p>启用增量破解模式，让hashcat在指定的密码长度范围内执行破解</p>
+<h3 id="increment-min"><a href="#increment-min" class="headerlink" title="-increment-min"></a>-increment-min</h3><p>密码最小长度，后面直接等于一个整数即可，配置increment模式一起使用</p>
+<h3 id="increment-max"><a href="#increment-max" class="headerlink" title="-increment-max"></a>-increment-max</h3><p>密码最大长度，后面直接等于一个整数即可，配置increment模式一起使用</p>
+<h3 id="force"><a href="#force" class="headerlink" title="-force"></a>-force</h3><p>忽略破解过程中的警告信息</p>
+<h3 id="remove"><a href="#remove" class="headerlink" title="-remove"></a>-remove</h3><p>删除已被破解成功的hash</p>
+<h3 id="username"><a href="#username" class="headerlink" title="-username"></a>-username</h3><p>忽略hash文件中的指定的用户名，在破解Linux系统用户密码hash会用到</p>
+<h3 id="potfile-disable"><a href="#potfile-disable" class="headerlink" title="-potfile-disable"></a>-potfile-disable</h3><p>不在potfile中记录破解成功的hash</p>
+<h3 id="O"><a href="#O" class="headerlink" title="-O"></a>-O</h3><p><code>--optimized-kernel-enable</code>启动优化的内核（限制密码长度）</p>
+<h3 id="d"><a href="#d" class="headerlink" title="-d"></a>-d</h3><p><code>--opencl-device</code>指定opencl的设备</p>
+<h3 id="D"><a href="#D" class="headerlink" title="-D"></a>-D</h3><p><code>--opencl-device-types</code>指定opencl的设备类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- [ OpenCL Device Types ] -</span><br><span class="line"></span><br><span class="line">  # | Device Type</span><br><span class="line"> ===+=============</span><br><span class="line">  1 | CPU</span><br><span class="line">  2 | GPU</span><br><span class="line">  3 | FPGA, DSP, Co-Processor</span><br></pre></td></tr></table></figure>
+
+<p>一般常用<code>-D 2</code>指定GPU破解</p>
+<h2 id="所有参数"><a href="#所有参数" class="headerlink" title="所有参数"></a>所有参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-m, --hash-type</code></td>
+<td>数字</td>
+<td>哈希类型，参考下面的引用</td>
+<td>-m 1000</td>
+</tr>
+<tr>
+<td><code>-a, --attack-mode</code></td>
+<td>数字</td>
+<td>攻击模式，参考下面的引用</td>
+<td>-a 3</td>
+</tr>
+<tr>
+<td><code>-V, --version</code></td>
+<td></td>
+<td>显示版本</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-h, --help</code></td>
+<td></td>
+<td>显示帮助</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--quiet</code></td>
+<td></td>
+<td>抑制输出</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--hex-charset</code></td>
+<td></td>
+<td>假设字符集以十六进制给出</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--hex-salt</code></td>
+<td></td>
+<td>假设盐值以十六进制给出</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--hex-wordlist</code></td>
+<td></td>
+<td>假设词表中的单词以十六进制给出</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--force</code></td>
+<td></td>
+<td>忽略警告</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--status</code></td>
+<td></td>
+<td>启用状态屏幕的自动更新</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--status-timer</code></td>
+<td>数字</td>
+<td>设置状态屏幕更新的秒数为X</td>
+<td><code>--status-timer=1</code></td>
+</tr>
+<tr>
+<td><code>--stdin-timeout-abort</code></td>
+<td>数字</td>
+<td>如果没有输入则在X秒后中止</td>
+<td><code>--stdin-timeout-abort=300</code></td>
+</tr>
+<tr>
+<td><code>--machine-readable</code></td>
+<td></td>
+<td>以机器可读格式显示状态视图</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--keep-guessing</code></td>
+<td></td>
+<td>在破解哈希后继续猜测</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--self-test-disable</code></td>
+<td></td>
+<td>启动时禁用自测试功能</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--loopback</code></td>
+<td></td>
+<td>将新平原添加到引导目录</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--markov-hcstat2</code></td>
+<td>文件</td>
+<td>指定要使用的hcstat2文件</td>
+<td><code>--markov-hcstat2=my.hcstat2</code></td>
+</tr>
+<tr>
+<td><code>--markov-disable</code></td>
+<td></td>
+<td>禁用马尔可夫链，模拟经典暴力破解</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--markov-classic</code></td>
+<td></td>
+<td>启用经典马尔可夫链，没有每个位置的</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-t, --markov-threshold</code></td>
+<td>数字</td>
+<td>何时停止接受新马尔可夫链的阈值X</td>
+<td>-t 50</td>
+</tr>
+<tr>
+<td><code>--runtime</code></td>
+<td>数字</td>
+<td>在运行X秒后中止会话</td>
+<td><code>--runtime=10</code></td>
+</tr>
+<tr>
+<td><code>--session</code></td>
+<td>字符</td>
+<td>定义特定的会话名称</td>
+<td><code>--session=mysession</code></td>
+</tr>
+<tr>
+<td><code>--restore</code></td>
+<td></td>
+<td>从–session恢复会话</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--restore-disable</code></td>
+<td></td>
+<td>不写入恢复文件</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--restore-file-path</code></td>
+<td>文件</td>
+<td>恢复文件的特定路径</td>
+<td><code>--restore-file-path=x.restore</code></td>
+</tr>
+<tr>
+<td><code>-o, --outfile</code></td>
+<td>文件</td>
+<td>为已破解的哈希定义输出文件</td>
+<td>-o outfile.txt</td>
+</tr>
+<tr>
+<td><code>--outfile-format</code></td>
+<td>数字</td>
+<td>为已破解的哈希定义输出文件格式X</td>
+<td><code>--outfile-format=7</code></td>
+</tr>
+<tr>
+<td><code>--outfile-autohex-disable</code></td>
+<td></td>
+<td>禁用在输出平原中使用$HEX[]</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--outfile-check-timer</code></td>
+<td>数字</td>
+<td>设置输出文件检查的秒数为X</td>
+<td><code>--outfile-check=30</code></td>
+</tr>
+<tr>
+<td><code>--wordlist-autohex-disable</code></td>
+<td></td>
+<td>禁用将$HEX[]从词表转换</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-p, --separator</code></td>
+<td>字符</td>
+<td>哈希列表和输出文件的分隔字符</td>
+<td>-p :</td>
+</tr>
+<tr>
+<td><code>--stdout</code></td>
+<td></td>
+<td>不破解哈希，只打印候选项</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--show</code></td>
+<td></td>
+<td>将哈希列表与potfile进行比较；显示已破解的哈希</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--left</code></td>
+<td></td>
+<td>将哈希列表与potfile进行比较；显示未破解的哈希</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--username</code></td>
+<td></td>
+<td>启用忽略哈希文件中的用户名</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--remove</code></td>
+<td></td>
+<td>启用在破解哈希后删除它们</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--remove-timer</code></td>
+<td>数字</td>
+<td>每X秒更新输入哈希文件</td>
+<td><code>--remove-timer=30</code></td>
+</tr>
+<tr>
+<td><code>--potfile-disable</code></td>
+<td></td>
+<td>不写入potfile</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--potfile-path</code></td>
+<td>文件</td>
+<td>potfile的特定路径</td>
+<td><code>--potfile-path=my.pot</code></td>
+</tr>
+<tr>
+<td><code>--encoding-from</code></td>
+<td>编码</td>
+<td>强制将内部词表编码从X</td>
+<td><code>--encoding-from=iso-8859-15</code></td>
+</tr>
+<tr>
+<td><code>--encoding-to</code></td>
+<td>编码</td>
+<td>强制将内部词表编码为X</td>
+<td><code>--encoding-to=utf-32le</code></td>
+</tr>
+<tr>
+<td><code>--debug-mode</code></td>
+<td>数字</td>
+<td>定义调试模式（仅使用规则进行混合）</td>
+<td><code>--debug-mode=4</code></td>
+</tr>
+<tr>
+<td><code>--debug-file</code></td>
+<td>文件</td>
+<td>调试规则的输出文件</td>
+<td><code>--debug-file=good.log</code></td>
+</tr>
+<tr>
+<td><code>--induction-dir</code></td>
+<td>目录</td>
+<td>指定要用于环回的引导目录</td>
+<td><code>--induction=inducts</code></td>
+</tr>
+<tr>
+<td><code>--outfile-check-dir</code></td>
+<td>目录</td>
+<td>指定要监视平原的输出文件目录</td>
+<td><code>--outfile-check-dir=x</code></td>
+</tr>
+<tr>
+<td><code>--logfile-disable</code></td>
+<td></td>
+<td>禁用日志文件</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--hccapx-message-pair</code></td>
+<td>数字</td>
+<td>仅加载与X匹配的hccapx消息对</td>
+<td><code>--hccapx-message-pair=2</code></td>
+</tr>
+<tr>
+<td><code>--nonce-error-corrections</code></td>
+<td>数字</td>
+<td>替换AP的随机数最后字节的BF大小范围</td>
+<td><code>--nonce-error-corrections=16</code></td>
+</tr>
+<tr>
+<td><code>--keyboard-layout-mapping</code></td>
+<td>文件</td>
+<td>特定哈希模式的键盘布局映射表</td>
+<td><code>--keyb=german.hckmap</code></td>
+</tr>
+<tr>
+<td><code>--truecrypt-keyfiles</code></td>
+<td>文件</td>
+<td>要使用的密钥文件，以逗号分隔</td>
+<td><code>--truecrypt-keyf=x.png</code></td>
+</tr>
+<tr>
+<td><code>--veracrypt-keyfiles</code></td>
+<td>文件</td>
+<td>要使用的密钥文件，以逗号分隔</td>
+<td><code>--veracrypt-keyf=x.txt</code></td>
+</tr>
+<tr>
+<td><code>--veracrypt-pim</code></td>
+<td>数字</td>
+<td>VeraCrypt个人迭代乘数</td>
+<td><code>--veracrypt-pim=1000</code></td>
+</tr>
+<tr>
+<td><code>-b, --benchmark</code></td>
+<td></td>
+<td>运行选定哈希模式的基准测试</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--benchmark-all</code></td>
+<td></td>
+<td>运行所有哈希模式的基准测试（需要-b）</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--speed-only</code></td>
+<td></td>
+<td>返回攻击的预期速度，然后退出</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--progress-only</code></td>
+<td></td>
+<td>返回理想的进度步骤大小和处理时间</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-c, --segment-size</code></td>
+<td>数字</td>
+<td>设置要从词文件缓存的大小为X</td>
+<td>-c 32</td>
+</tr>
+<tr>
+<td><code>--bitmap-min</code></td>
+<td>数字</td>
+<td>设置位图的最小位数为X</td>
+<td><code>--bitmap-min=24</code></td>
+</tr>
+<tr>
+<td><code>--bitmap-max</code></td>
+<td>数字</td>
+<td>设置位图的最大位数为X</td>
+<td><code>--bitmap-max=24</code></td>
+</tr>
+<tr>
+<td><code>--cpu-affinity</code></td>
+<td>字符</td>
+<td>锁定到CPU设备，以逗号分隔</td>
+<td><code>--cpu-affinity=1,2,3</code></td>
+</tr>
+<tr>
+<td><code>--example-hashes</code></td>
+<td></td>
+<td>显示每种哈希模式的示例哈希</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-I, --opencl-info</code></td>
+<td></td>
+<td>显示有关检测到的OpenCL平台&#x2F;设备的信息</td>
+<td>-I</td>
+</tr>
+<tr>
+<td><code>--opencl-platforms</code></td>
+<td>字符</td>
+<td>要使用的OpenCL平台，以逗号分隔</td>
+<td><code>--opencl-platforms=2</code></td>
+</tr>
+<tr>
+<td><code>-d, --opencl-devices</code></td>
+<td>字符</td>
+<td>要使用的OpenCL设备，以逗号分隔</td>
+<td>-d 1</td>
+</tr>
+<tr>
+<td><code>-D, --opencl-device-types</code></td>
+<td>字符</td>
+<td>要使用的OpenCL设备类型，以逗号分隔</td>
+<td>-D 1</td>
+</tr>
+<tr>
+<td><code>--opencl-vector-width</code></td>
+<td>数字</td>
+<td>手动覆盖OpenCL向量宽度为X</td>
+<td><code>--opencl-vector=4</code></td>
+</tr>
+<tr>
+<td><code>-O, --optimized-kernel-enable</code></td>
+<td></td>
+<td>启用优化内核（限制密码长度）</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-w, --workload-profile</code></td>
+<td>数字</td>
+<td>启用特定的工作负载配置文件，参见下方的池</td>
+<td>-w 3</td>
+</tr>
+<tr>
+<td><code>-n, --kernel-accel</code></td>
+<td>数字</td>
+<td>手动工作负载调整，设置外循环步长为X</td>
+<td>-n 64</td>
+</tr>
+<tr>
+<td><code>-u, --kernel-loops</code></td>
+<td>数字</td>
+<td>手动工作负载调整，设置内循环步长为X</td>
+<td>-u 256</td>
+</tr>
+<tr>
+<td><code>-T, --kernel-threads</code></td>
+<td>数字</td>
+<td>手动工作负载调整，设置线程数为X</td>
+<td>-T 64</td>
+</tr>
+<tr>
+<td><code>--spin-damp</code></td>
+<td>数字</td>
+<td>使用CPU进行设备同步，以百分比表示</td>
+<td><code>--spin-damp=50</code></td>
+</tr>
+<tr>
+<td><code>--hwmon-disable</code></td>
+<td></td>
+<td>禁用温度和风扇速度读取和触发器</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--hwmon-temp-abort</code></td>
+<td>数字</td>
+<td>如果温度达到X摄氏度则中止</td>
+<td><code>--hwmon-temp-abort=100</code></td>
+</tr>
+<tr>
+<td><code>--scrypt-tmto</code></td>
+<td>数字</td>
+<td>手动覆盖scrypt的TMTO值为X</td>
+<td><code>--scrypt-tmto=3</code></td>
+</tr>
+<tr>
+<td><code>-s, --skip</code></td>
+<td>数字</td>
+<td>从开头跳过X个单词</td>
+<td>-s 1000000</td>
+</tr>
+<tr>
+<td><code>-l, --limit</code></td>
+<td>数字</td>
+<td>限制为从开头+跳过的单词X个单词</td>
+<td>-l 1000000</td>
+</tr>
+<tr>
+<td><code>--keyspace</code></td>
+<td></td>
+<td>显示键空间base值然后退出</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-j, --rule-left</code></td>
+<td>规则</td>
+<td>将单个规则应用于左侧词表中的每个单词</td>
+<td>-j ‘c’</td>
+</tr>
+<tr>
+<td><code>-k, --rule-right</code></td>
+<td>规则</td>
+<td>将单个规则应用于右侧词表中的每个单词</td>
+<td>-k ‘^-‘</td>
+</tr>
+<tr>
+<td><code>-r, --rules-file</code></td>
+<td>文件</td>
+<td>将多个规则应用于词表中的每个单词</td>
+<td>-r rules&#x2F;best64.rule</td>
+</tr>
+<tr>
+<td><code>-g, --generate-rules</code></td>
+<td>数字</td>
+<td>生成X个随机规则</td>
+<td>-g 10000</td>
+</tr>
+<tr>
+<td><code>--generate-rules-func-min</code></td>
+<td>数字</td>
+<td>强制每条规则的最小X个功能</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--generate-rules-func-max</code></td>
+<td>数字</td>
+<td>强制每条规则的最大X个功能</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--generate-rules-seed</code></td>
+<td>数字</td>
+<td>强制RNG种子设置为X</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-1, --custom-charset1</code></td>
+<td>CS</td>
+<td>用户定义的字符集?1</td>
+<td>-1 ?l?d?u</td>
+</tr>
+<tr>
+<td><code>-i, --increment</code></td>
+<td></td>
+<td>启用掩码增量模式</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--increment-min</code></td>
+<td>数字</td>
+<td>从X开始掩码增量</td>
+<td><code>--increment-min=4</code></td>
+</tr>
+<tr>
+<td><code>--increment-max</code></td>
+<td>数字</td>
+<td>在X停止掩码增量</td>
+<td><code>--increment-max=8</code></td>
+</tr>
+<tr>
+<td><code>-S, --slow-candidates</code></td>
+<td></td>
+<td>启用较慢（但高级）的候选生成器</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--brain-server</code></td>
+<td></td>
+<td>启用brain服务器</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-z, --brain-client</code></td>
+<td></td>
+<td>启用brain客户端，激活-S</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--brain-client-features</code></td>
+<td>数字</td>
+<td>定义brain客户端功能，见下文</td>
+<td><code>--brain-client-features=3</code></td>
+</tr>
+<tr>
+<td><code>--brain-host</code></td>
+<td>字符</td>
+<td>brain服务器主机（IP或域名）</td>
+<td><code>--brain-host=127.0.0.1</code></td>
+</tr>
+<tr>
+<td><code>--brain-port</code></td>
+<td>端口</td>
+<td>brain服务器端口</td>
+<td><code>--brain-port=13743</code></td>
+</tr>
+<tr>
+<td><code>--brain-password</code></td>
+<td>字符</td>
+<td>brain服务器认证密码</td>
+<td><code>--brain-password=bZfhCvGUSjRq</code></td>
+</tr>
+<tr>
+<td><code>--brain-session</code></td>
+<td>十六进制</td>
+<td>覆盖自动计算的brain会话</td>
+<td><code>--brain-session=0x2ae611db</code></td>
+</tr>
+<tr>
+<td><code>--brain-session-whitelist</code></td>
+<td>十六进制</td>
+<td>仅允许给定的会话，以逗号分隔</td>
+<td><code>--brain-session-whitelist=0x2ae611db</code></td>
+</tr>
+</tbody></table>
+<h2 id="掩码破解"><a href="#掩码破解" class="headerlink" title="掩码破解"></a>掩码破解</h2><h3 id="掩码规则"><a href="#掩码规则" class="headerlink" title="掩码规则"></a>掩码规则</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- [ Built-in Charsets ] -</span><br><span class="line"></span><br><span class="line">? | Charset</span><br><span class="line">===+=========</span><br><span class="line"> l | abcdefghijklmnopqrstuvwxyz          # 小写字母 a-z</span><br><span class="line"> u | ABCDEFGHIJKLMNOPQRSTUVWXYZ          # 大写字母 A-Z</span><br><span class="line"> d | 0123456789                          # 数字 0-9</span><br><span class="line"> h | 0123456789abcdef                    # 数字 + abcdef</span><br><span class="line"> H | 0123456789ABCDEF                    # 数字 + ABCDEF</span><br><span class="line"> s |  !&quot;#$%&amp;&#x27;()*+,-./:;&lt;=&gt;?@[\]^_`&#123;|&#125;~   # 特殊字符    </span><br><span class="line"> a | ?l?u?d?s                            # 键盘上所有可见的字符</span><br><span class="line"> b | 0x00 - 0xff                         # 可能是用来匹配像空格这种密码的</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义掩码规则"><a href="#自定义掩码规则" class="headerlink" title="自定义掩码规则"></a>自定义掩码规则</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--custom-charset1 [chars] # 等价于 -1</span><br><span class="line">--custom-charset2 [chars] # 等价于 -2</span><br><span class="line">--custom-charset3 [chars] # 等价于 -3</span><br><span class="line">--custom-charset4 [chars] # 等价于 -4</span><br></pre></td></tr></table></figure>
+
+<p>在掩码中用 <code>?1</code>、<code>?2</code>、<code>?3</code>、<code>?4</code> 来表示</p>
+<p>一些案例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--custom-charset1 abcd123456!@-+</span><br></pre></td></tr></table></figure>
+
+<p>此时？1 就表示 <code>abcd123456!@-+</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--custom-charset2 ?l?d</span><br></pre></td></tr></table></figure>
+
+<p>此时？2 就表示 <code>?l?d</code> 即 <code>?h</code> 数字 + 小写字母：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-3 abcdef -4 123456 </span><br></pre></td></tr></table></figure>
+
+<p>此时 <code>?3?3?3?3?4?4?4?4</code> 就表示为前四位可能是 <code>abcdef</code>，后四位可能是 <code>123456</code></p>
+<h2 id="字典破解"><a href="#字典破解" class="headerlink" title="字典破解"></a>字典破解</h2><p><code>1q2w3e4r</code>的MD5值为<code>5416d7cd6ef195a0f7622a9c56b55e84</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 0 -m 0 <span class="string">&#x27;5416d7cd6ef195a0f7622a9c56b55e84&#x27;</span> hashpass.txt -o success.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除已破解密码"><a href="#删除已破解密码" class="headerlink" title="删除已破解密码"></a>删除已破解密码</h3><p>有时候破解的时候会出现如下提示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO: All hashes found in potfile! Use --show to display them.</span><br></pre></td></tr></table></figure>
+
+<p>这表明在之前该密码已经被我们破解成功了，Hashcat 故不再显示出来，可以在后面添加参数 <code>--show</code> 来显示密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 0 -m 0 <span class="string">&#x27;cbc8f5435c87e13c5d14e6ce92358d68&#x27;</span> hashpass.txt --show</span><br><span class="line">cbc8f5435c87e13c5d14e6ce92358d68:123456@abc</span><br></pre></td></tr></table></figure>
+
+<p>Hashcat 存放已经成功破解的密码文件位置为：<code>~/.hashcat/hashcat.potfile</code></p>
+<p>如果想要直接显示破解的密码的话，可以直接删除掉该文件。</p>
+<h3 id="批量破解"><a href="#批量破解" class="headerlink" title="批量破解"></a>批量破解</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除之前破解成功的记录</span></span><br><span class="line"><span class="built_in">rm</span> ~/.hashcat/hashcat.potfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># hash.txt为要破解的密码 hashpass.txt为字典 导出破解的结果到success.txt 并从hash.txt删除掉破解成功的</span></span><br><span class="line">hashcat -a 0 -m 0 hash.txt hashpass.txt -o success.txt --remove</span><br></pre></td></tr></table></figure>
+
+<h2 id="组合破解"><a href="#组合破解" class="headerlink" title="组合破解"></a>组合破解</h2><h3 id="多字典破解"><a href="#多字典破解" class="headerlink" title="多字典破解"></a>多字典破解</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 1 -m 0 <span class="string">&#x27;5416d7cd6ef195a0f7622a9c56b55e84&#x27;</span> hashpass1.txt hashpass1.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="字典-掩码破解"><a href="#字典-掩码破解" class="headerlink" title="字典 + 掩码破解"></a>字典 + 掩码破解</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n admin888 |openssl md5</span><br><span class="line">7fef6171469e80d32c0559f88b377245</span><br></pre></td></tr></table></figure>
+
+<p>破解 <code>admin888</code> 的 MD5 值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 6 -m 0 <span class="string">&#x27;7fef6171469e80d32c0559f88b377245&#x27;</span> hashpass.txt -O</span><br></pre></td></tr></table></figure>
+
+<h3 id="掩码-字典破解"><a href="#掩码-字典破解" class="headerlink" title="掩码 + 字典破解"></a>掩码 + 字典破解</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 7 -m 0 <span class="string">&#x27;7fef6171469e80d32c0559f88b377245&#x27;</span> <span class="string">&#x27;admi?l?d?d?d&#x27;</span> hashpass.txt  -O</span><br></pre></td></tr></table></figure>
+
+<h2 id="破解案例"><a href="#破解案例" class="headerlink" title="破解案例"></a>破解案例</h2><h3 id="8-位-MD5-加密的数字破解"><a href="#8-位-MD5-加密的数字破解" class="headerlink" title="8 位 MD5 加密的数字破解"></a>8 位 MD5 加密的数字破解</h3><p>对 <code>23323323</code> 进行 MD5 加密：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n 23323323 |openssl md5</span><br><span class="line">5a745e31dbbd93f4c86d1ef82281688b</span><br></pre></td></tr></table></figure>
+
+<p>使用 Hashcat 来进行破解：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 3 -m 0 --force <span class="string">&#x27;5a745e31dbbd93f4c86d1ef82281688b&#x27;</span> <span class="string">&#x27;?d?d?d?d?d?d?d?d&#x27;</span> -O</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-位-MD5-加密的大小写字母破解"><a href="#8-位-MD5-加密的大小写字母破解" class="headerlink" title="8 位 MD5 加密的大小写字母破解"></a>8 位 MD5 加密的大小写字母破解</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n PassWord |openssl md5</span><br><span class="line">a9d402bfcde5792a8b531b3a82669585</span><br></pre></td></tr></table></figure>
+
+<p>使用 Hashcat 来进行破解：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 3 -m 0 -1 <span class="string">&#x27;?l?u&#x27;</span> --force  <span class="string">&#x27;a9d402bfcde5792a8b531b3a82669585&#x27;</span> <span class="string">&#x27;?1?1?1?1?1?1?1?1&#x27;</span> -O</span><br></pre></td></tr></table></figure>
+
+<p>这里面定义了个自定义规则 <code>-1</code>，此时 <code>?1</code> 就表示 <code>?l?u</code>，即大小写字母</p>
+<h3 id="5-7-位-MD5-加密的大小写字母-数字破解"><a href="#5-7-位-MD5-加密的大小写字母-数字破解" class="headerlink" title="5-7 位 MD5 加密的大小写字母 + 数字破解"></a>5-7 位 MD5 加密的大小写字母 + 数字破解</h3><p><code>Admin88 </code>的 MD5 值为 <code>2792e40d60bac94b4b163b93566e65a9</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 3 -m 0 -1 <span class="string">&#x27;?l?u?d&#x27;</span> --force  <span class="string">&#x27;2792e40d60bac94b4b163b93566e65a9&#x27;</span> --increment --increment-min 5 --increment-max 7 <span class="string">&#x27;?1?1?1?1?1?1?1&#x27;</span> -O</span><br></pre></td></tr></table></figure>
+
+<p>这里面定义了个自定义规则 <code>-1</code>，此时 <code>?1</code> 就表示 <code>?l?u?d</code>，即大小写字母 + 数字</p>
+<h3 id="admin-开头-10-位-MD5-加密的大小写字母-数字破解"><a href="#admin-开头-10-位-MD5-加密的大小写字母-数字破解" class="headerlink" title="admin 开头 10 位 MD5 加密的大小写字母 + 数字破解"></a>admin 开头 10 位 MD5 加密的大小写字母 + 数字破解</h3><p><code>admin23323</code> 的 MD5 值为 <code>a9991129897a44e0d1c2855c3d7dccc4</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 3 -m 0 -1 <span class="string">&#x27;?l?u?d&#x27;</span> --force  <span class="string">&#x27;a9991129897a44e0d1c2855c3d7dccc4&#x27;</span> <span class="string">&#x27;admin?1?1?1?1?1&#x27;</span> -O</span><br></pre></td></tr></table></figure>
+
+<h3 id="哈希加盐"><a href="#哈希加盐" class="headerlink" title="哈希加盐"></a>哈希加盐</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat  -a 3 <span class="string">&quot;705388d19e80c2b8391d976b188349e3:72^saq2&amp;&quot;</span> ?b?b?b?b?b?b --increment --force --self-test-disable -m 10 -d 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="MySQL4-1-MySQL5"><a href="#MySQL4-1-MySQL5" class="headerlink" title="MySQL4.1&#x2F;MySQL5"></a>MySQL4.1&#x2F;MySQL5</h3><p>查看 MySQL 的密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select Password from mysql.user;</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">| Password                                  |</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">| *81F5E21E35407D884A6CD4A731AEBFB6AF209E1B |</span><br><span class="line">| *81F5E21E35407D884A6CD4A731AEBFB6AF209E1B |</span><br><span class="line">| *81F5E21E35407D884A6CD4A731AEBFB6AF209E1B |</span><br><span class="line">| *81F5E21E35407D884A6CD4A731AEBFB6AF209E1B |</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>然后开始使用字典破解：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 0 -m 300 --force <span class="string">&#x27;81F5E21E35407D884A6CD4A731AEBFB6AF209E1B&#x27;</span> hashpass.txt -O</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux-etc-shadow-sha512crypt-6-SHA512-Unix"><a href="#Linux-etc-shadow-sha512crypt-6-SHA512-Unix" class="headerlink" title="Linux &#x2F;etc&#x2F;shadow sha512crypt $6$, SHA512 (Unix)"></a>Linux &#x2F;etc&#x2F;shadow sha512crypt $6$, SHA512 (Unix)</h3><p>查看 <code>/etc/shadow</code> 密码文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~<span class="comment"># cat /etc/shadow</span></span><br><span class="line">root:$6$4ojiBMDPrehqrLkX<span class="variable">$d2T7Cn8LKkLk4SDXgCh1IEqjhnsUekXaNUXSxiZIwUTndSqyd</span>.9sEcu80sX9DuEHGmHOeoMev2O0ACYtjMett1:18201:0:99999:7:::</span><br><span class="line">daemon:*:18024:0:99999:7:::</span><br><span class="line">bin:*:18024:0:99999:7:::</span><br><span class="line">sys:*:18024:0:99999:7:::</span><br><span class="line"><span class="built_in">sync</span>:*:18024:0:99999:7:::</span><br><span class="line">games:*:18024:0:99999:7:::</span><br><span class="line">man:*:18024:0:99999:7:::</span><br><span class="line">lp:*:18024:0:99999:7:::</span><br><span class="line">mail:*:18024:0:99999:7:::</span><br><span class="line">news:*:18024:0:99999:7:::</span><br><span class="line">uucp:*:18024:0:99999:7:::</span><br><span class="line">proxy:*:18024:0:99999:7:::</span><br><span class="line">www-data:*:18024:0:99999:7:::</span><br><span class="line">backup:*:18024:0:99999:7:::</span><br><span class="line">list:*:18024:0:99999:7:::</span><br><span class="line">irc:*:18024:0:99999:7:::</span><br><span class="line">gnats:*:18024:0:99999:7:::</span><br><span class="line">nobody:*:18024:0:99999:7:::</span><br><span class="line">_apt:*:18024:0:99999:7:::</span><br><span class="line">systemd-timesync:*:18024:0:99999:7:::</span><br><span class="line">systemd-network:*:18024:0:99999:7:::</span><br><span class="line">systemd-resolve:*:18024:0:99999:7:::</span><br><span class="line">mysql:!:18024:0:99999:7:::</span><br><span class="line">ntp:*:18024:0:99999:7:::</span><br><span class="line">messagebus:*:18024:0:99999:7:::</span><br><span class="line">arpwatch:!:18024:0:99999:7:::</span><br><span class="line">Debian-exim:!:18024:0:99999:7:::</span><br><span class="line">uuidd:*:18024:0:99999:7:::</span><br><span class="line">redsocks:!:18024:0:99999:7:::</span><br><span class="line">tss:*:18024:0:99999:7:::</span><br><span class="line">rwhod:*:18024:0:99999:7:::</span><br><span class="line">iodine:*:18024:0:99999:7:::</span><br><span class="line">miredo:*:18024:0:99999:7:::</span><br><span class="line">dnsmasq:*:18024:0:99999:7:::</span><br><span class="line">postgres:*:18024:0:99999:7:::</span><br><span class="line">usbmux:*:18024:0:99999:7:::</span><br><span class="line">rtkit:*:18024:0:99999:7:::</span><br><span class="line">stunnel4:!:18024:0:99999:7:::</span><br><span class="line">sshd:*:18024:0:99999:7:::</span><br><span class="line">Debian-snmp:!:18024:0:99999:7:::</span><br><span class="line">sslh:!:18024:0:99999:7:::</span><br><span class="line">pulse:*:18024:0:99999:7:::</span><br><span class="line">speech-dispatcher:!:18024:0:99999:7:::</span><br><span class="line">avahi:*:18024:0:99999:7:::</span><br><span class="line">saned:*:18024:0:99999:7:::</span><br><span class="line">inetsim:*:18024:0:99999:7:::</span><br><span class="line">colord:*:18024:0:99999:7:::</span><br><span class="line">geoclue:*:18024:0:99999:7:::</span><br><span class="line">king-phisher:*:18024:0:99999:7:::</span><br><span class="line">Debian-gdm:*:18024:0:99999:7:::</span><br><span class="line">dradis:*:18024:0:99999:7:::</span><br><span class="line">beef-xss:*:18024:0:99999:7:::</span><br><span class="line">systemd-coredump:!!:18082::::::</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 <code>root</code> 是有密码的，前面使用的是 <code>$6</code> 表面 hash 的加密方式为:<code>sha512crypt $6$, SHA512 (Unix)</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 掩码破解root密码 不在potfile中记录破解成功的hash 指定设备2（核显）来跑密码 并开启优化</span></span><br><span class="line">hashcat -a 3 -m 1800 --force  <span class="string">&#x27;$6$4ojiBMDPrehqrLkX$d2T7Cn8LKkLk4SDXgCh1IEqjhnsUekXaNUXSxiZIwUTndSqyd.9sEcu80sX9DuEHGmHOeoMev2O0ACYtjMett1&#x27;</span> <span class="string">&#x27;?l?l?l?l&#x27;</span> -O -d 2 --potfile-disable</span><br><span class="line"></span><br><span class="line"><span class="comment"># 掩码破解root密码 忽略用户名 不在potfile中记录破解成功的hash 指定设备2（核显）来跑密码 并开启优化</span></span><br><span class="line">hashcat -a 3 -m 1800 --force  <span class="string">&#x27;root:$6$4ojiBMDPrehqrLkX$d2T7Cn8LKkLk4SDXgCh1IEqjhnsUekXaNUXSxiZIwUTndSqyd.9sEcu80sX9DuEHGmHOeoMev2O0ACYtjMett1&#x27;</span> <span class="string">&#x27;?l?l?l?l&#x27;</span> -O -d 2 --username --potfile-disable </span><br></pre></td></tr></table></figure>
+
+<p>macOS 下自带的 CPU 和独显无法破解，手动切换了 <code>-d 2</code> 用核显才成功跑出来：</p>
+<h3 id="字典破解-Windows-LM-Hash"><a href="#字典破解-Windows-LM-Hash" class="headerlink" title="字典破解 Windows LM Hash"></a>字典破解 Windows LM Hash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 0 -m 3000 --force <span class="string">&#x27;921988ba001dc8e14a3b108f3fa6cb6d&#x27;</span> password.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="字典破解-Windows-NTLM-Hash"><a href="#字典破解-Windows-NTLM-Hash" class="headerlink" title="字典破解 Windows NTLM Hash"></a>字典破解 Windows NTLM Hash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 0 -m 1000 --force <span class="string">&#x27;e19ccf75ee54e06b06a5907af13cef42&#x27;</span> password.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="掩码破解-1"><a href="#掩码破解-1" class="headerlink" title="掩码破解"></a>掩码破解</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 9800 -a 3 <span class="string">&#x27;$oldoffice$4*107c23885fafc2941281e5ea12155a9c*88fa443a510634975fe401a428fdb5b2*596498685ef86b45dc44ca45e30f6c8d5d366eae&#x27;</span> -1 ?l?u?d ?1?1?1?1?1?1rd</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="常用参数："><a href="#常用参数：" class="headerlink" title="常用参数："></a>常用参数：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1 <span class="comment">#自定义字符集</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--increment <span class="comment">#限制长度</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--increment-min=4 --increment-max=8</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用爆破一把梭"><a href="#常用爆破一把梭" class="headerlink" title="常用爆破一把梭"></a>常用爆破一把梭</h2><h4 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat  -a 0 -o cracked.txt /root/tmp/hash.txt  --force --self-test-disable -m 20 /root/yiyi/rockyou.txt --potfile-disable</span><br></pre></td></tr></table></figure>
+
+<h4 id="办公文档一把梭"><a href="#办公文档一把梭" class="headerlink" title="办公文档一把梭"></a>办公文档一把梭</h4><p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/undefinedimage-20240526211435578.png" alt="image-20240526211435578"></p>
+<ol>
+<li><code>office2john.py</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python office2john.py /root/tmp/新建 Microsoft Word 文档.docx</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/undefinedimage-20240526211900170.png" alt="image-20240526211900170"></p>
+<ol start="2">
+<li>存为hash.txt</li>
+<li>hashcat爆破</li>
+</ol>
+<h3 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h3><ul>
+<li><strong>10400</strong>: PDF 1.1 - 1.3 (Acrobat 2 - 4)</li>
+<li><strong>10410</strong>: PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #1</li>
+<li><strong>10420</strong>: PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #2</li>
+<li><strong>10500</strong>: PDF 1.4 - 1.6 (Acrobat 5 - 8)</li>
+<li><strong>25400</strong>: PDF 1.4 - 1.6 (Acrobat 5 - 8) - user and owner pass</li>
+<li><strong>10600</strong>: PDF 1.7 Level 3 (Acrobat 9)</li>
+<li><strong>10700</strong>: PDF 1.7 Level 8 (Acrobat 10 - 11)</li>
+</ul>
+<h3 id="MS-Office"><a href="#MS-Office" class="headerlink" title="MS Office"></a>MS Office</h3><ul>
+<li><strong>9400</strong>: MS Office 2007</li>
+<li><strong>9500</strong>: MS Office 2010</li>
+<li><strong>9600</strong>: MS Office 2013</li>
+<li><strong>25300</strong>: MS Office 2016 - SheetProtection</li>
+<li><strong>9700</strong>: MS Office &lt;&#x3D; 2003 $0&#x2F;$1, MD5 + RC4</li>
+<li><strong>9710</strong>: MS Office &lt;&#x3D; 2003 $0&#x2F;$1, MD5 + RC4, collider #1</li>
+<li><strong>9720</strong>: MS Office &lt;&#x3D; 2003 $0&#x2F;$1, MD5 + RC4, collider #2</li>
+<li><strong>9810</strong>: MS Office &lt;&#x3D; 2003 $3, SHA1 + RC4, collider #1</li>
+<li><strong>9820</strong>: MS Office &lt;&#x3D; 2003 $3, SHA1 + RC4, collider #2</li>
+<li><strong>9800</strong>: MS Office &lt;&#x3D; 2003 $3&#x2F;$4, SHA1 + RC4</li>
+</ul>
+<h3 id="Open-Document-Format-ODF"><a href="#Open-Document-Format-ODF" class="headerlink" title="Open Document Format (ODF)"></a>Open Document Format (ODF)</h3><ul>
+<li><strong>18400</strong>: Open Document Format (ODF) 1.2 (SHA-256, AES)</li>
+<li><strong>18600</strong>: Open Document Format (ODF) 1.1 (SHA-1, Blowfish)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 9600 -a 0 -o cracked.txt /root/tmp/hash.txt /root/yiyi/rockyou.txt --force --self-test-disable</span><br></pre></td></tr></table></figure>
+
+<h4 id="vc爆破"><a href="#vc爆破" class="headerlink" title="vc爆破"></a>vc爆破</h4><p><a target="_blank" rel="noopener" href="https://github.com/hashcat/hashcat/blob/master/tools/veracrypt2hashcat.py">hashcat&#x2F;tools&#x2F;veracrypt2hashcat.py at master · hashcat&#x2F;hashcat (github.com)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python veracrypt2hashcat.py /root/tmp/123123</span><br></pre></td></tr></table></figure>
+
+<p>选择哈希算法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">13711 = VeraCrypt PBKDF2-HMAC-SHA512 + XTS 512 bit AES</span><br><span class="line">13712 = VeraCrypt PBKDF2-HMAC-SHA512 + XTS 512 bit AES-Twofish</span><br><span class="line">13713 = VeraCrypt PBKDF2-HMAC-SHA512 + XTS 512 bit AES-Twofish-Serpent</span><br><span class="line">13721 = VeraCrypt PBKDF2-HMAC-SHA256 + XTS 512 bit AES</span><br><span class="line">13722 = VeraCrypt PBKDF2-HMAC-SHA256 + XTS 512 bit AES-Twofish</span><br><span class="line">13723 = VeraCrypt PBKDF2-HMAC-SHA256 + XTS 512 bit AES-Twofish-Serpent</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 137xx -a 0 hash.txt /root/tmp/wordlist.txt</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/2024/07/08/hashcat%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/">https://xyaxxya.github.io/2024/07/08/hashcat%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/02/20/Hz2nS3Dp8NdIgsJ.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/06/27/pop%E9%93%BE%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="pop链反序列化"><img class="cover" src="https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">pop链反序列化</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="mailto:3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2024/02/16/%E5%85%B3%E4%BA%8E%E6%88%91" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hashcat%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97"><span class="toc-number">1.</span> <span class="toc-text">hashcat使用指北</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">常用参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#m-%E7%A0%B4%E8%A7%A3hash%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">-m 破解hash类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-%E7%A0%B4%E8%A7%A3%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">-a 破解模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#increment"><span class="toc-number">1.1.3.</span> <span class="toc-text">-increment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#increment-min"><span class="toc-number">1.1.4.</span> <span class="toc-text">-increment-min</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#increment-max"><span class="toc-number">1.1.5.</span> <span class="toc-text">-increment-max</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#force"><span class="toc-number">1.1.6.</span> <span class="toc-text">-force</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remove"><span class="toc-number">1.1.7.</span> <span class="toc-text">-remove</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#username"><span class="toc-number">1.1.8.</span> <span class="toc-text">-username</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#potfile-disable"><span class="toc-number">1.1.9.</span> <span class="toc-text">-potfile-disable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#O"><span class="toc-number">1.1.10.</span> <span class="toc-text">-O</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d"><span class="toc-number">1.1.11.</span> <span class="toc-text">-d</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D"><span class="toc-number">1.1.12.</span> <span class="toc-text">-D</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%80%E6%9C%89%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">所有参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">掩码破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81%E8%A7%84%E5%88%99"><span class="toc-number">1.3.1.</span> <span class="toc-text">掩码规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A9%E7%A0%81%E8%A7%84%E5%88%99"><span class="toc-number">1.3.2.</span> <span class="toc-text">自定义掩码规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.4.</span> <span class="toc-text">字典破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%B7%B2%E7%A0%B4%E8%A7%A3%E5%AF%86%E7%A0%81"><span class="toc-number">1.4.1.</span> <span class="toc-text">删除已破解密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.4.2.</span> <span class="toc-text">批量破解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.5.</span> <span class="toc-text">组合破解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%AD%97%E5%85%B8%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.5.1.</span> <span class="toc-text">多字典破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E5%85%B8-%E6%8E%A9%E7%A0%81%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.5.2.</span> <span class="toc-text">字典 + 掩码破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81-%E5%AD%97%E5%85%B8%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.5.3.</span> <span class="toc-text">掩码 + 字典破解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A0%B4%E8%A7%A3%E6%A1%88%E4%BE%8B"><span class="toc-number">1.6.</span> <span class="toc-text">破解案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BD%8D-MD5-%E5%8A%A0%E5%AF%86%E7%9A%84%E6%95%B0%E5%AD%97%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.6.1.</span> <span class="toc-text">8 位 MD5 加密的数字破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BD%8D-MD5-%E5%8A%A0%E5%AF%86%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.6.2.</span> <span class="toc-text">8 位 MD5 加密的大小写字母破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7-%E4%BD%8D-MD5-%E5%8A%A0%E5%AF%86%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D-%E6%95%B0%E5%AD%97%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.6.3.</span> <span class="toc-text">5-7 位 MD5 加密的大小写字母 + 数字破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#admin-%E5%BC%80%E5%A4%B4-10-%E4%BD%8D-MD5-%E5%8A%A0%E5%AF%86%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D-%E6%95%B0%E5%AD%97%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.6.4.</span> <span class="toc-text">admin 开头 10 位 MD5 加密的大小写字母 + 数字破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%8A%A0%E7%9B%90"><span class="toc-number">1.6.5.</span> <span class="toc-text">哈希加盐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL4-1-MySQL5"><span class="toc-number">1.6.6.</span> <span class="toc-text">MySQL4.1&#x2F;MySQL5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-etc-shadow-sha512crypt-6-SHA512-Unix"><span class="toc-number">1.6.7.</span> <span class="toc-text">Linux &#x2F;etc&#x2F;shadow sha512crypt $6$, SHA512 (Unix)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E7%A0%B4%E8%A7%A3-Windows-LM-Hash"><span class="toc-number">1.6.8.</span> <span class="toc-text">字典破解 Windows LM Hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E7%A0%B4%E8%A7%A3-Windows-NTLM-Hash"><span class="toc-number">1.6.9.</span> <span class="toc-text">字典破解 Windows NTLM Hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81%E7%A0%B4%E8%A7%A3-1"><span class="toc-number">1.6.10.</span> <span class="toc-text">掩码破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%EF%BC%9A"><span class="toc-number">1.6.11.</span> <span class="toc-text">常用参数：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%88%86%E7%A0%B4%E4%B8%80%E6%8A%8A%E6%A2%AD"><span class="toc-number">1.7.</span> <span class="toc-text">常用爆破一把梭</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8C"><span class="toc-number">1.7.0.1.</span> <span class="toc-text">哈希</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9E%E5%85%AC%E6%96%87%E6%A1%A3%E4%B8%80%E6%8A%8A%E6%A2%AD"><span class="toc-number">1.7.0.2.</span> <span class="toc-text">办公文档一把梭</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PDF"><span class="toc-number">1.7.1.</span> <span class="toc-text">PDF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MS-Office"><span class="toc-number">1.7.2.</span> <span class="toc-text">MS Office</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Open-Document-Format-ODF"><span class="toc-number">1.7.3.</span> <span class="toc-text">Open Document Format (ODF)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vc%E7%88%86%E7%A0%B4"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">vc爆破</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/08/hashcat%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/" title="hashcat使用指北"><img src="https://s2.loli.net/2024/02/20/Hz2nS3Dp8NdIgsJ.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hashcat使用指北"/></a><div class="content"><a class="title" href="/2024/07/08/hashcat%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/" title="hashcat使用指北">hashcat使用指北</a><time datetime="2024-07-08T13:15:56.000Z" title="发表于 2024-07-08 21:15:56">2024-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/27/pop%E9%93%BE%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="pop链反序列化"><img src="https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="pop链反序列化"/></a><div class="content"><a class="title" href="/2024/06/27/pop%E9%93%BE%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="pop链反序列化">pop链反序列化</a><time datetime="2024-06-27T11:20:04.000Z" title="发表于 2024-06-27 19:20:04">2024-06-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/26/2024CISCN%E5%88%9D%E8%B5%9Bweb/" title="2024CISCN初赛web"><img src="https://s2.loli.net/2024/02/20/AzVOtrNYExbpkJa.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024CISCN初赛web"/></a><div class="content"><a class="title" href="/2024/06/26/2024CISCN%E5%88%9D%E8%B5%9Bweb/" title="2024CISCN初赛web">2024CISCN初赛web</a><time datetime="2024-06-26T06:16:12.000Z" title="发表于 2024-06-26 14:16:12">2024-06-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/17/2024%E7%9B%98%E5%8F%A4%E7%9F%B3%E5%86%B3%E8%B5%9B%E5%A4%8D%E7%9B%98wp/" title="2024盘古石决赛复盘wp"><img src="https://s2.loli.net/2024/02/17/r6Hm71fzQ5LdCe3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024盘古石决赛复盘wp"/></a><div class="content"><a class="title" href="/2024/06/17/2024%E7%9B%98%E5%8F%A4%E7%9F%B3%E5%86%B3%E8%B5%9B%E5%A4%8D%E7%9B%98wp/" title="2024盘古石决赛复盘wp">2024盘古石决赛复盘wp</a><time datetime="2024-06-17T08:15:45.000Z" title="发表于 2024-06-17 16:15:45">2024-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/20/24FIC%E7%BA%BF%E4%B8%8B%E5%86%B3%E8%B5%9B/" title="24FIC线下决赛"><img src="https://s2.loli.net/2024/02/20/yWd8e3INDVH2oP6.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="24FIC线下决赛"/></a><div class="content"><a class="title" href="/2024/05/20/24FIC%E7%BA%BF%E4%B8%8B%E5%86%B3%E8%B5%9B/" title="24FIC线下决赛">24FIC线下决赛</a><time datetime="2024-05-20T10:12:06.000Z" title="发表于 2024-05-20 18:12:06">2024-05-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
