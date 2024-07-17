@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>apk基础 | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最基础的adb和frida命令，自用  apk打包过程 Android 项目构建步骤 打包资源文件   对象: Resource文件 (res目录中的文件)、Assets文件 (assets目录中的文件)、AndroidManifest.xml 文件 工具: aapt (Android Asset Package Tool) 工具，负责编译和打包资源 产物: 项目中的AndroidManifes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="apk基础">
+<meta property="og:url" content="https://xyaxxya.github.io/2024/07/17/apk%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="最基础的adb和frida命令，自用  apk打包过程 Android 项目构建步骤 打包资源文件   对象: Resource文件 (res目录中的文件)、Assets文件 (assets目录中的文件)、AndroidManifest.xml 文件 工具: aapt (Android Asset Package Tool) 工具，负责编译和打包资源 产物: 项目中的AndroidManifes">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/02/20/u2BNsSvH97EIl3x.png">
+<meta property="article:published_time" content="2024-07-17T07:56:42.000Z">
+<meta property="article:modified_time" content="2024-07-17T07:58:08.677Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="电子取证">
+<meta property="article:tag" content="apk">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/02/20/u2BNsSvH97EIl3x.png"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/2024/07/17/apk%E5%9F%BA%E7%A1%80/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'apk基础',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-17 15:58:08'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/02/20/u2BNsSvH97EIl3x.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">apk基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-17T07:56:42.000Z" title="发表于 2024-07-17 15:56:42">2024-07-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-17T07:58:08.677Z" title="更新于 2024-07-17 15:58:08">2024-07-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/">-电子取证</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">673</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2024/07/17/apk%E5%9F%BA%E7%A1%80/" data-flag-title="apk基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/07/17/apk%E5%9F%BA%E7%A1%80/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2024/07/17/apk%E5%9F%BA%E7%A1%80/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>最基础的adb和frida命令，自用</p>
+</blockquote>
+<h1 id="apk打包过程"><a href="#apk打包过程" class="headerlink" title="apk打包过程"></a>apk打包过程</h1><p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240715193748277.png" alt="image-20240715193748277"></p>
+<h2 id="Android-项目构建步骤"><a href="#Android-项目构建步骤" class="headerlink" title="Android 项目构建步骤"></a>Android 项目构建步骤</h2><ol>
+<li><strong>打包资源文件</strong></li>
+</ol>
+<ul>
+<li><strong>对象:</strong> Resource文件 (res目录中的文件)、Assets文件 (assets目录中的文件)、AndroidManifest.xml 文件</li>
+<li><strong>工具:</strong> aapt (Android Asset Package Tool) 工具，负责编译和打包资源</li>
+<li><strong>产物:</strong> 项目中的AndroidManifest.xml 文件和其他XML文件会编译，然后生成相应的R.java。另外AndroidManifest.xml 会被aapt编译成进一步，除了assets和res中的raw资源被直接打包进APK之外，其他的资源都会被编译或者处理。 会生成一个resources.arsc文件和一个R.java， 前者保存的是一个资源索引表， 后者定义了各个资源ID常量</li>
+</ul>
+<p><strong>处理AIDL文件</strong></p>
+<ul>
+<li><strong>对象:</strong> aidl文件</li>
+<li><strong>工具:</strong> aidl (Android Interface Definition Language) 工具，即Android接口描述语言工具</li>
+<li><strong>产物:</strong> 生成相应的Java文件供程序调用，若项目中没有使用到aidl文件，则跳过这一步</li>
+</ul>
+<p><strong>编译项目源代码</strong></p>
+<ul>
+<li><strong>对象:</strong> R.java、Java接口文件以及工程源代码</li>
+<li><strong>工具:</strong> Java编译器 (javac)</li>
+<li><strong>产物:</strong> 生成多个.class文件（字节码文件）</li>
+</ul>
+<p><strong>转换所有 .class 文件</strong></p>
+<ul>
+<li><strong>对象:</strong> .class 文件和第三方库的jar包</li>
+<li><strong>工具:</strong> dx工具</li>
+<li><strong>产物:</strong> 生成classes.dex文件 (Dalvik字节码)</li>
+</ul>
+<p><strong>打包生成apk</strong></p>
+<ul>
+<li><strong>对象:</strong> classes.dex文件、resources.arsc和其他的资源 (没有编译的资源，如assets目录下资源、&#x2F;res&#x2F;raw目录下的资源)</li>
+<li><strong>工具:</strong> apkbuilder</li>
+<li><strong>产物:</strong> 未签名的apk文件</li>
+</ul>
+<p><strong>对apk文件签名</strong></p>
+<ul>
+<li><strong>对象:</strong> apk文件</li>
+<li><strong>工具:</strong> JDK提供的jarsigner工具或Android源代码提供的signapk工具</li>
+<li><strong>产物:</strong> Android调试程序时带有默认debug.keystore签名 的apk 或者打包发布时提供特有的签名文件的apk</li>
+</ul>
+<p><strong>apk对齐处理</strong></p>
+<ul>
+<li><strong>对象:</strong> 签名后的apk文件</li>
+<li><strong>工具:</strong> zipalign工具</li>
+<li><strong>产物:</strong> 使apk中所有资源文件距离文件起始偏移量为4字节的整数倍，从而在通过内部存储读取访问apk文件时会更快，对齐的操作用语减小运行时内存的使用</li>
+</ul>
+<h1 id="adb使用"><a href="#adb使用" class="headerlink" title="adb使用"></a>adb使用</h1><p>显示当前存在的模拟器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+
+<p>若不显示设备</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb connect 127.0.0.1:xxxx端口</span><br></pre></td></tr></table></figure>
+
+<p>进入模拟器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell</span><br></pre></td></tr></table></figure>
+
+<p>进root权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></figure>
+
+<p>查看当前正在运行的应用的包名以及主域名函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dumpsys window |grep mCurrentFocus</span><br></pre></td></tr></table></figure>
+
+<p>查看该app的apk路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm list packages -f | grep 包名(com.nosugar.chatapp)</span><br></pre></td></tr></table></figure>
+
+<p>导出apk(在外面敲的命令，导出路径不能是中文)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull /data/app/com.nosugar.chatapp-ZkyBNesQsqoVN91PH_KOVQ==/base.apk</span><br></pre></td></tr></table></figure>
+
+<p>将frida放入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb push frida /data/local/tmp</span><br><span class="line">进入虚拟机</span><br><span class="line">chmod 777 frida</span><br></pre></td></tr></table></figure>
+
+<h1 id="frida命令"><a href="#frida命令" class="headerlink" title="frida命令"></a>frida命令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida -ps -U</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida -U -f 包名 -l xxx.js</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida -UF -l .\xxx.js </span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/2024/07/17/apk%E5%9F%BA%E7%A1%80/">https://xyaxxya.github.io/2024/07/17/apk%E5%9F%BA%E7%A1%80/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/">电子取证</a><a class="post-meta__tags" href="/tags/apk/">apk</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/02/20/u2BNsSvH97EIl3x.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/17/web%F0%9F%90%95%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" title="web🐕每日一题"><img class="cover" src="https://s2.loli.net/2024/02/19/RJjvNHsu8WTFMYE.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">web🐕每日一题</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/15/24%E4%B8%AD%E7%A7%91%E5%AE%9E%E6%95%B0/" title="24中科实数"><img class="cover" src="https://s2.loli.net/2024/02/20/vZP2swirp7WSNxl.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">24中科实数</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/16/2023%E4%B8%AD%E7%A7%91%E5%AE%9E%E6%95%B0wp/" title="2023中科实数wp"><img class="cover" src="https://s2.loli.net/2024/02/20/hOrdmDQnvzAoTHM.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-16</div><div class="title">2023中科实数wp</div></div></a></div><div><a href="/2024/04/06/22%E5%AE%81%E5%A4%8F%E5%88%91%E4%BE%A6%E5%A4%A7%E6%AF%94%E6%AD%A6/" title="22宁夏刑侦大比武"><img class="cover" src="https://s2.loli.net/2024/02/19/2qGB9fpjNPvKAeC.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-06</div><div class="title">22宁夏刑侦大比武</div></div></a></div><div><a href="/2024/02/16/2024%E5%B9%B4%E9%A6%96%E5%B1%8A%E7%8D%AC%E8%B1%B8%E6%9D%AFwp/" title="2024年首届獬豸杯wp"><img class="cover" src="https://s2.loli.net/2024/02/20/k5JcHuo9eUaxMWK.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-16</div><div class="title">2024年首届獬豸杯wp</div></div></a></div><div><a href="/2024/04/27/2024FIC%E7%AC%AC%E5%9B%9B%E5%B1%8A%E5%85%A8%E5%9B%BD%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%8F%96%E8%AF%81%E7%AB%9E%E8%B5%9B/" title="2024FIC第四届全国网络空间取证竞赛"><img class="cover" src="https://s2.loli.net/2024/02/19/8fBYiCjdpqegr7x.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-27</div><div class="title">2024FIC第四届全国网络空间取证竞赛</div></div></a></div><div><a href="/2024/06/17/2024%E7%9B%98%E5%8F%A4%E7%9F%B3%E5%86%B3%E8%B5%9B%E5%A4%8D%E7%9B%98wp/" title="2024盘古石决赛复盘wp"><img class="cover" src="https://s2.loli.net/2024/02/19/jV24UWc9gbtDSml.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-17</div><div class="title">2024盘古石决赛复盘wp</div></div></a></div><div><a href="/2024/03/18/22%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/" title="22台州比武"><img class="cover" src="https://s2.loli.net/2024/02/19/XSgGnKMzUilF82E.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-18</div><div class="title">22台州比武</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="mailto:3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2024/02/16/%E5%85%B3%E4%BA%8E%E6%88%91" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#apk%E6%89%93%E5%8C%85%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">apk打包过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.</span> <span class="toc-text">Android 项目构建步骤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#adb%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">adb使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#frida%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">frida命令</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/17/web%F0%9F%90%95%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" title="web🐕每日一题"><img src="https://s2.loli.net/2024/02/19/RJjvNHsu8WTFMYE.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="web🐕每日一题"/></a><div class="content"><a class="title" href="/2024/07/17/web%F0%9F%90%95%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" title="web🐕每日一题">web🐕每日一题</a><time datetime="2024-07-17T07:57:27.000Z" title="发表于 2024-07-17 15:57:27">2024-07-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/17/apk%E5%9F%BA%E7%A1%80/" title="apk基础"><img src="https://s2.loli.net/2024/02/20/u2BNsSvH97EIl3x.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="apk基础"/></a><div class="content"><a class="title" href="/2024/07/17/apk%E5%9F%BA%E7%A1%80/" title="apk基础">apk基础</a><time datetime="2024-07-17T07:56:42.000Z" title="发表于 2024-07-17 15:56:42">2024-07-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/15/24%E4%B8%AD%E7%A7%91%E5%AE%9E%E6%95%B0/" title="24中科实数"><img src="https://s2.loli.net/2024/02/20/vZP2swirp7WSNxl.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="24中科实数"/></a><div class="content"><a class="title" href="/2024/07/15/24%E4%B8%AD%E7%A7%91%E5%AE%9E%E6%95%B0/" title="24中科实数">24中科实数</a><time datetime="2024-07-15T01:51:17.000Z" title="发表于 2024-07-15 09:51:17">2024-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/11/22%E9%95%BF%E5%AE%89%E6%9D%AF/" title="22长安杯"><img src="https://s2.loli.net/2024/02/20/TdqcQtUob7GAIMz.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="22长安杯"/></a><div class="content"><a class="title" href="/2024/07/11/22%E9%95%BF%E5%AE%89%E6%9D%AF/" title="22长安杯">22长安杯</a><time datetime="2024-07-11T13:19:21.000Z" title="发表于 2024-07-11 21:19:21">2024-07-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/10/24%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/" title="24台州比武"><img src="https://s2.loli.net/2024/02/17/r6Hm71fzQ5LdCe3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="24台州比武"/></a><div class="content"><a class="title" href="/2024/07/10/24%E5%8F%B0%E5%B7%9E%E6%AF%94%E6%AD%A6/" title="24台州比武">24台州比武</a><time datetime="2024-07-10T04:35:00.000Z" title="发表于 2024-07-10 12:35:00">2024-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
