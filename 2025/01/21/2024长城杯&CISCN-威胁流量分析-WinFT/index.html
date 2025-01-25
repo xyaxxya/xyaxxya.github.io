@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2024长城杯&amp;CISCN-威胁流量分析-WinFT | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="某单位网管日常巡检中发现某员工电脑（IP：192.168.116.123）存在异常外连及数据传输行为，随后立即对该电脑进行断网处理，并启动网络安全应急预案进行排查。 文件名：82f13fdc9f7078ba29c4a6dcc65d8859.7z文件大小：14.8g下载链接1：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1hHX8J13EWRAfm3e-qakuDw 提取码：GAME下载链接2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024长城杯&amp;CISCN-威胁流量分析-WinFT">
+<meta property="og:url" content="https://xyaxxya.github.io/2025/01/21/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-WinFT/index.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="某单位网管日常巡检中发现某员工电脑（IP：192.168.116.123）存在异常外连及数据传输行为，随后立即对该电脑进行断网处理，并启动网络安全应急预案进行排查。 文件名：82f13fdc9f7078ba29c4a6dcc65d8859.7z文件大小：14.8g下载链接1：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1hHX8J13EWRAfm3e-qakuDw 提取码：GAME下载链接2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.dmoe.cc/random.php?9532">
+<meta property="article:published_time" content="2025-01-21T09:45:35.000Z">
+<meta property="article:modified_time" content="2025-01-21T10:37:06.642Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="应急响应">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.dmoe.cc/random.php?9532"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/2025/01/21/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-WinFT/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2024长城杯&CISCN-威胁流量分析-WinFT',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-01-21 18:37:06'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">74</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php?9532')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2024长城杯&amp;CISCN-威胁流量分析-WinFT</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-21T09:45:35.000Z" title="发表于 2025-01-21 17:45:35">2025-01-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-21T10:37:06.642Z" title="更新于 2025-01-21 18:37:06">2025-01-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">409</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2025/01/21/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-WinFT/" data-flag-title="2024长城杯&amp;CISCN-威胁流量分析-WinFT"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/01/21/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-WinFT/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2025/01/21/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-WinFT/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>某单位网管日常巡检中发现某员工电脑（IP：192.168.116.123）存在异常外连及数据传输行为，随后立即对该电脑进行断网处理，并启动网络安全应急预案进行排查。</p>
+<p>文件名：82f13fdc9f7078ba29c4a6dcc65d8859.7z<br>文件大小：14.8g<br>下载链接1：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1hHX8J13EWRAfm3e-qakuDw">https://pan.baidu.com/s/1hHX8J13EWRAfm3e-qakuDw</a> 提取码：GAME<br>下载链接2：<a target="_blank" rel="noopener" href="https://drive.google.com/file/d/14RBdzdozTHIwJs_tveivjwOqclcp2rhL/view">https://drive.google.com/file/d/14RBdzdozTHIwJs_tveivjwOqclcp2rhL/view</a><br>解压密码：3604e2f3-585a-4972-a867-3a9cc8d34c1d<br>来源：长城杯&amp;CISCN官网</p>
+</blockquote>
+<h2 id="1-受控机木马的回连域名及-ip-及端口是（示例：flag-xxx-com-127-0-0-1-2333-）"><a href="#1-受控机木马的回连域名及-ip-及端口是（示例：flag-xxx-com-127-0-0-1-2333-）" class="headerlink" title="1.受控机木马的回连域名及 ip 及端口是（示例：flag{xxx.com:127.0.0.1:2333}）"></a>1.受控机木马的回连域名及 ip 及端口是（示例：flag{xxx.com:127.0.0.1:2333}）</h2><p>很贴心的给了工具做检查</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121175313118.png" alt="image-20250121175313118"></p>
+<p>直接看到</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121175346084.png" alt="image-20250121175346084"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121175735873.png" alt="image-20250121175735873"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;miscsecure.com:192.168.116.130:443&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-受控机启动项中隐藏-flag-是"><a href="#2-受控机启动项中隐藏-flag-是" class="headerlink" title="2.受控机启动项中隐藏 flag 是"></a>2.受控机启动项中隐藏 flag 是</h2><p>任务计划程序</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121175929717.png" alt="image-20250121175929717"></p>
+<p>解密即可</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121180009033.png" alt="image-20250121180009033"></p>
+<h2 id="3-受控机中驻留的-flag-是"><a href="#3-受控机中驻留的-flag-是" class="headerlink" title="3.受控机中驻留的 flag 是"></a>3.受控机中驻留的 flag 是</h2><p>电子取证和应急响应都需要关注的一个文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\UserName\AppData\</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121180307899.png" alt="image-20250121180307899"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121180411476.png" alt="image-20250121180411476"></p>
+<p>确定为7zip压缩文件，但是需要密码</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121180507458.png" alt="image-20250121180507458"></p>
+<p>经测试为<code>flvupdate</code></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121180612917.png" alt="image-20250121180612917"></p>
+<h2 id="４-受控源头隐藏的-flag-是"><a href="#４-受控源头隐藏的-flag-是" class="headerlink" title="４.受控源头隐藏的 flag 是"></a>４.受控源头隐藏的 flag 是</h2><p>桌面上有Thunderbird快捷方式，猜测通过邮件发送恶意程序</p>
+<p>直接筛选带有附件的</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121180852578.png" alt="image-20250121180852578"></p>
+<p>一个个一个邮件的来往发件看过去</p>
+<p>发现<a href="mailto:&#115;&#97;&#x66;&#x65;&#64;&#x73;&#101;&#114;&#118;&#105;&#99;&#x65;&#x2e;&#97;&#117;&#116;&#111;&#x72;&#101;&#x76;&#x65;&#x72;&#x74;&#x65;&#x63;&#104;&#x2e;&#x63;&#x6e;">&#115;&#97;&#x66;&#x65;&#64;&#x73;&#101;&#114;&#118;&#105;&#99;&#x65;&#x2e;&#97;&#117;&#116;&#111;&#x72;&#101;&#x76;&#x65;&#x72;&#x74;&#x65;&#x63;&#104;&#x2e;&#x63;&#x6e;</a>可疑</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121182011846.png" alt="image-20250121182011846"></p>
+<p>对</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SGVsbG8sIHRoaXMgaXMgdGhlIGFjY2VzcyBsaW5rLCA8YSBocmVmPSJodHRwczovL2F1dG9y</span><br><span class="line">ZXZlcnRlY2guY29tP2tleT0lNjElNDclNkUlNzYlNzYlNDklNzglNkQlNjIlNDclNDYlNkUl</span><br><span class="line">NDklNDclNkMlN0ElNDklNDglNzQlNTUlNjElNDclNTUlNjclNTMlNkQlMzklMzElNjMlNkQl</span><br><span class="line">MzUlNkMlNjUlNTMlNDIlMzAlNjIlNzklNDIlMzAlNjElNDclNTUlNjclNTYlMzIlNTYlN0El</span><br><span class="line">NjQlNDglMzAlM0QiPnBsZWFzZSBjbGljayBhbmQgZ2V0PC9hPi4gVGhhbmsgeW91IHZlcnkg</span><br><span class="line">bXVjaCE=</span><br></pre></td></tr></table></figure>
+
+<p>进行解密</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121182202137.png" alt="image-20250121182202137"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121182220161.png" alt="image-20250121182220161"></p>
+<h2 id="5-分析流量，获得压缩包中得到答案"><a href="#5-分析流量，获得压缩包中得到答案" class="headerlink" title="5.分析流量，获得压缩包中得到答案"></a>5.分析流量，获得压缩包中得到答案</h2><p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121182705237.png" alt="image-20250121182705237"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121182733466.png" alt="image-20250121182733466"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121182741889.png" alt="image-20250121182741889"></p>
+<p>怀疑为压缩包文件被拆分传输</p>
+<p>合并后打开</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121182841821.png" alt="image-20250121182841821"></p>
+<p>注释</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121182915524.png" alt="image-20250121182915524"></p>
+<p>解压</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121182957996.png" alt="image-20250121182957996"></p>
+<h2 id="6-通过-aes-解密得到的-flag"><a href="#6-通过-aes-解密得到的-flag" class="headerlink" title="6.通过 aes 解密得到的 flag"></a>6.通过 aes 解密得到的 flag</h2><p>通过flag的信息可知</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mode: CBC</span><br><span class="line">Key: a1b2c3d4e5f67890abcdef1234567890</span><br><span class="line">iv: 2f4d90a1b7c8e2349d3f56e0a9b01b8a</span><br></pre></td></tr></table></figure>
+
+<p>接下来寻找密文即可</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121183545695.png" alt="image-20250121183545695"></p>
+<p>解密</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250121183645787.png" alt="image-20250121183645787"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/2025/01/21/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-WinFT/">https://xyaxxya.github.io/2025/01/21/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-WinFT/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php?9532" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/01/22/2024%E6%95%B0%E8%AF%81%E6%9D%AF%E5%86%B3%E8%B5%9B%E5%9B%A2%E9%98%9F%E8%B5%9B/" title="2024数证杯决赛团队赛"><img class="cover" src="https://www.dmoe.cc/random.php?6158" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2024数证杯决赛团队赛</div></div></a></div><div class="next-post pull-right"><a href="/2025/01/20/%E7%AC%AC%E4%B8%80%E5%B1%8Asolar%E6%9D%AF%C2%B7%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E6%8C%91%E6%88%98%E8%B5%9B/" title="第一届solar杯·应急响应挑战赛"><img class="cover" src="https://www.dmoe.cc/random.php?7513" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">第一届solar杯·应急响应挑战赛</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/01/20/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-zeroshell/" title="2024长城杯&amp;CISCN-威胁流量分析-zeroshell"><img class="cover" src="https://www.dmoe.cc/random.php?3858" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-20</div><div class="title">2024长城杯&amp;CISCN-威胁流量分析-zeroshell</div></div></a></div><div><a href="/2024/09/21/%E7%8E%84%E6%9C%BA%E6%B5%81%E9%87%8F%E4%B8%93%E9%A2%98/" title="玄机流量专题"><img class="cover" src="https://www.dmoe.cc/random.php?7249" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-21</div><div class="title">玄机流量专题</div></div></a></div><div><a href="/2025/01/20/%E7%AC%AC%E4%B8%80%E5%B1%8Asolar%E6%9D%AF%C2%B7%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E6%8C%91%E6%88%98%E8%B5%9B/" title="第一届solar杯·应急响应挑战赛"><img class="cover" src="https://www.dmoe.cc/random.php?7513" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-20</div><div class="title">第一届solar杯·应急响应挑战赛</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">74</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8F%97%E6%8E%A7%E6%9C%BA%E6%9C%A8%E9%A9%AC%E7%9A%84%E5%9B%9E%E8%BF%9E%E5%9F%9F%E5%90%8D%E5%8F%8A-ip-%E5%8F%8A%E7%AB%AF%E5%8F%A3%E6%98%AF%EF%BC%88%E7%A4%BA%E4%BE%8B%EF%BC%9Aflag-xxx-com-127-0-0-1-2333-%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">1.受控机木马的回连域名及 ip 及端口是（示例：flag{xxx.com:127.0.0.1:2333}）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8F%97%E6%8E%A7%E6%9C%BA%E5%90%AF%E5%8A%A8%E9%A1%B9%E4%B8%AD%E9%9A%90%E8%97%8F-flag-%E6%98%AF"><span class="toc-number">2.</span> <span class="toc-text">2.受控机启动项中隐藏 flag 是</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8F%97%E6%8E%A7%E6%9C%BA%E4%B8%AD%E9%A9%BB%E7%95%99%E7%9A%84-flag-%E6%98%AF"><span class="toc-number">3.</span> <span class="toc-text">3.受控机中驻留的 flag 是</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%94-%E5%8F%97%E6%8E%A7%E6%BA%90%E5%A4%B4%E9%9A%90%E8%97%8F%E7%9A%84-flag-%E6%98%AF"><span class="toc-number">4.</span> <span class="toc-text">４.受控源头隐藏的 flag 是</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%88%86%E6%9E%90%E6%B5%81%E9%87%8F%EF%BC%8C%E8%8E%B7%E5%BE%97%E5%8E%8B%E7%BC%A9%E5%8C%85%E4%B8%AD%E5%BE%97%E5%88%B0%E7%AD%94%E6%A1%88"><span class="toc-number">5.</span> <span class="toc-text">5.分析流量，获得压缩包中得到答案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%80%9A%E8%BF%87-aes-%E8%A7%A3%E5%AF%86%E5%BE%97%E5%88%B0%E7%9A%84-flag"><span class="toc-number">6.</span> <span class="toc-text">6.通过 aes 解密得到的 flag</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/23/HackMyVM%20buster/" title="HackMyVM"><img src="https://www.dmoe.cc/random.php?467" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HackMyVM"/></a><div class="content"><a class="title" href="/2025/01/23/HackMyVM%20buster/" title="HackMyVM">HackMyVM</a><time datetime="2025-01-23T07:07:38.000Z" title="发表于 2025-01-23 15:07:38">2025-01-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/22/2024%E6%95%B0%E8%AF%81%E6%9D%AF%E5%86%B3%E8%B5%9B%E5%9B%A2%E9%98%9F%E8%B5%9B/" title="2024数证杯决赛团队赛"><img src="https://www.dmoe.cc/random.php?6158" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024数证杯决赛团队赛"/></a><div class="content"><a class="title" href="/2025/01/22/2024%E6%95%B0%E8%AF%81%E6%9D%AF%E5%86%B3%E8%B5%9B%E5%9B%A2%E9%98%9F%E8%B5%9B/" title="2024数证杯决赛团队赛">2024数证杯决赛团队赛</a><time datetime="2025-01-22T03:59:00.000Z" title="发表于 2025-01-22 11:59:00">2025-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/21/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-WinFT/" title="2024长城杯&amp;CISCN-威胁流量分析-WinFT"><img src="https://www.dmoe.cc/random.php?9532" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024长城杯&amp;CISCN-威胁流量分析-WinFT"/></a><div class="content"><a class="title" href="/2025/01/21/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-WinFT/" title="2024长城杯&amp;CISCN-威胁流量分析-WinFT">2024长城杯&amp;CISCN-威胁流量分析-WinFT</a><time datetime="2025-01-21T09:45:35.000Z" title="发表于 2025-01-21 17:45:35">2025-01-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/20/%E7%AC%AC%E4%B8%80%E5%B1%8Asolar%E6%9D%AF%C2%B7%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E6%8C%91%E6%88%98%E8%B5%9B/" title="第一届solar杯·应急响应挑战赛"><img src="https://www.dmoe.cc/random.php?7513" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第一届solar杯·应急响应挑战赛"/></a><div class="content"><a class="title" href="/2025/01/20/%E7%AC%AC%E4%B8%80%E5%B1%8Asolar%E6%9D%AF%C2%B7%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E6%8C%91%E6%88%98%E8%B5%9B/" title="第一届solar杯·应急响应挑战赛">第一届solar杯·应急响应挑战赛</a><time datetime="2025-01-20T11:24:30.000Z" title="发表于 2025-01-20 19:24:30">2025-01-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/20/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-zeroshell/" title="2024长城杯&amp;CISCN-威胁流量分析-zeroshell"><img src="https://www.dmoe.cc/random.php?3858" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024长城杯&amp;CISCN-威胁流量分析-zeroshell"/></a><div class="content"><a class="title" href="/2025/01/20/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-zeroshell/" title="2024长城杯&amp;CISCN-威胁流量分析-zeroshell">2024长城杯&amp;CISCN-威胁流量分析-zeroshell</a><time datetime="2025-01-20T09:22:24.000Z" title="发表于 2025-01-20 17:22:24">2025-01-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
