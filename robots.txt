@@ -1,0 +1,6 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://xyaxxya.github.io/sitemap.xml
+Sitemap: https://xyaxxya.github.io/baidusitemap.xml
