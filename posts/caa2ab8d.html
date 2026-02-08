@@ -1,0 +1,338 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>第十八届软件系统安全赛半决赛取证DC | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者通过AD CS提权至域管理员，在攻击过程中，攻击者使用有问题的证书模版注册了一张证书，该证书的证书模版名、证书序列号是什么？（格式为模版名-序列号，如CertTemplate-2f000000064287f6f5d6ff4a91000000000006）’、 Windows系统中，CertOCM.log是Active Directory">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十八届软件系统安全赛半决赛取证DC">
+<meta property="og:url" content="https://xyaxxya.github.io/posts/caa2ab8d.html">
+<meta property="og:site_name" content="Yiyi">
+<meta property="og:description" content="1.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者通过AD CS提权至域管理员，在攻击过程中，攻击者使用有问题的证书模版注册了一张证书，该证书的证书模版名、证书序列号是什么？（格式为模版名-序列号，如CertTemplate-2f000000064287f6f5d6ff4a91000000000006）’、 Windows系统中，CertOCM.log是Active Directory">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.dmoe.cc/random.php?3395">
+<meta property="article:published_time" content="2026-02-08T05:11:41.000Z">
+<meta property="article:modified_time" content="2026-02-08T11:05:35.825Z">
+<meta property="article:author" content="yiyi">
+<meta property="article:tag" content="取证溯源">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.dmoe.cc/random.php?3395"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/posts/caa2ab8d.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="JKAzMndNFupeAvLybmTDZQvXJ-qzwexiresLFX-aPSw"/><meta name="msvalidate.01" content="46A43356A247D4026C1F053B84E2275F"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第十八届软件系统安全赛半决赛取证DC',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-02-08 19:05:35'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php?3395')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">第十八届软件系统安全赛半决赛取证DC</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-08T05:11:41.000Z" title="发表于 2026-02-08 13:11:41">2026-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-08T11:05:35.825Z" title="更新于 2026-02-08 19:05:35">2026-02-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/posts/caa2ab8d.html" data-flag-title="第十八届软件系统安全赛半决赛取证DC"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/caa2ab8d.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/caa2ab8d.html" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。-攻击者通过AD-CS提权至域管理员，在攻击过程中，攻击者使用有问题的证书模版注册了一张证书，该证书的证书模版名、证书序列号是什么？（格式为模版名-序列号，如CertTemplate-2f000000064287f6f5d6ff4a91000000000006）’、"><a href="#1-小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。-攻击者通过AD-CS提权至域管理员，在攻击过程中，攻击者使用有问题的证书模版注册了一张证书，该证书的证书模版名、证书序列号是什么？（格式为模版名-序列号，如CertTemplate-2f000000064287f6f5d6ff4a91000000000006）’、" class="headerlink" title="1.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者通过AD CS提权至域管理员，在攻击过程中，攻击者使用有问题的证书模版注册了一张证书，该证书的证书模版名、证书序列号是什么？（格式为模版名-序列号，如CertTemplate-2f000000064287f6f5d6ff4a91000000000006）’、"></a>1.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者通过AD CS提权至域管理员，在攻击过程中，攻击者使用有问题的证书模版注册了一张证书，该证书的证书模版名、证书序列号是什么？（格式为模版名-序列号，如CertTemplate-2f000000064287f6f5d6ff4a91000000000006）’、</h1><blockquote>
+<p>Windows系统中，CertOCM.log是<strong>Active Directory Certificate Services(AD CS)<strong>安装与配置过程中生成的</strong>设置日志文件</strong>，主要用于记录证书服务角色<strong>安装的详细步骤</strong>、<strong>成功</strong>或<strong>失败</strong>信息，以及相关错误代码，帮助管理员在部署或排错时了解内部执行流程。</p>
+</blockquote>
+<p>挂载后直接找<code>I:\C___NONAME [NTFS]\[root]\Windows\certocm.log</code></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208131645514.png" alt="image-20260208131645514"></p>
+<p>找到可疑证书名称</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208131916286.png" alt="image-20260208131916286"></p>
+<p>去挂载的目录下搜索</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208132423331.png" alt="image-20260208132423331"></p>
+<p>发现一个在<code>I:\C___NONAME [NTFS]\[root]\Windows\System32\certsrv\CertEnroll</code></p>
+<p>一个在<code>I:\C___NONAME [NTFS]\[root]\Windows\System32\CertLog</code></p>
+<blockquote>
+<p>在部署Active Directory Certificate Services(AD CS)时，系统会在%SystemRoot%System32下生成两个关键目录：</p>
+<p>CertLog：存放CA的<strong>证书数据库</strong>及<strong>事务日志文件</strong>，用于记录所有对数据库的写操作；</p>
+<p>CertEnroll（位于certsrvCertEnroll）：存放CA自动发布的证书（.crt）和撤销列表（.crl）文件，以及在Web注册或自动注册过程中生成的证书请求和响应。</p>
+</blockquote>
+<blockquote>
+<p><strong>CertLog目录主要内容</strong></p>
+<p><strong>证书数据库文件（.edb）</strong></p>
+<p>默认会根据CA名称生成一个后缀为.edb的数据库文件，如Contoso Issuing CA 02.edb，该文件保存了已签发和已吊销证书、密钥存档以及证书请求等记录</p>
+<p><strong>事务日志文件（edb.log）</strong></p>
+<p>目录下包含一系列名称形如edb00001.log至edbFFFFF.log的固定大小（通常 1MB）日志文件，用于快速写入数据库变更；当写满后依次创建新文件，最多可支持约1TB的日志空间</p>
+<p><strong>日志检查点文件（edb.chk）</strong></p>
+<p>edb.chk文件记录了数据库恢复时的日志应用检查点，保障数据库和日志的一致性</p>
+<p><strong>certsrvCertEnroll目录主要内容</strong></p>
+<p><strong>公共证书文件（.crt）</strong></p>
+<p>ADCS在签发或续订时，会将根CA与下级CA的证书导出为.crt文件，文件名常包含CA名称和时间戳，如corpCA1CA.crt</p>
+<p><strong>撤销列表文件（.crl）</strong></p>
+<p>包括完整CRL（.crl）和可选的增量CRL（DeltaCRL），文件名同样带有CA名称和发布时间，用于CDP（CRL Distribution Point）通道分发，以便客户端进行证书吊销检查</p>
+</blockquote>
+<p>看到这里直接去看edb文件</p>
+<p>在第二张表找到模板名</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208133152202.png" alt="image-20260208133152202"></p>
+<p>倒数第二张表you又找到了一些<br><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208133233913.png" alt="image-20260208133233913"></p>
+<p>对照的看发现多了MyTem</p>
+<p>对照的看requestID&#x3D;3</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208133401192.png" alt="image-20260208133401192"></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208133441473.png" alt="	"></p>
+<p>得到结果</p>
+<blockquote>
+<p>MyTem-5400000003eedab5344b2e5da5000000000003</p>
+</blockquote>
+<h1 id="2-小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。-攻击者在获取域管理员权限后，尝试上传木马文件，但是被杀毒软件查杀，上传的木马文件的绝对路径是什么？（如C-Windows-cmd-exe）-题目附件同DC-Forensics-1"><a href="#2-小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。-攻击者在获取域管理员权限后，尝试上传木马文件，但是被杀毒软件查杀，上传的木马文件的绝对路径是什么？（如C-Windows-cmd-exe）-题目附件同DC-Forensics-1" class="headerlink" title="2.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者在获取域管理员权限后，尝试上传木马文件，但是被杀毒软件查杀，上传的木马文件的绝对路径是什么？（如C:\Windows\cmd.exe） 题目附件同DC-Forensics-1"></a>2.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者在获取域管理员权限后，尝试上传木马文件，但是被杀毒软件查杀，上传的木马文件的绝对路径是什么？（如C:\Windows\cmd.exe） 题目附件同DC-Forensics-1</h1><blockquote>
+<p>Windows系统中，<strong>\Windows\System32\winevt\Logs</strong>是Windows<strong>事件日志服务的主目录</strong>，主要用于管理事件日志的存储和配置，而其中最<strong>核心</strong>的子目录是<strong>Logs</strong>，用于存放所有实际的日志文件。<br>Logs目录中包含大量以**.evtx**为扩展名的文件，这些文件采用专有的二进制格式存储事件记录，每个文件对应事件查看器（Event Viewer）中的一个日志通道，如 Application.evtx、System.evtx、Security.evtx 等。</p>
+</blockquote>
+<p>找到defender相关日志 用妙妙小工具瞅一眼</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208134004608.png" alt="image-20260208134004608"></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208134631388.png" alt="image-20260208134631388"></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208134658713.png" alt="image-20260208134658713"></p>
+<p>再来看一下1117</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208134725801.png" alt="image-20260208134725801"></p>
+<h1 id="3-小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。-攻击者从机器中提取出了用户的连接其他机器的Windows企业凭据，凭据的连接IP、用户名、密码是什么？（格式为IP-用户名-密码，如127-0-0-1-sam-123456）-题目附件同DC-Forensics-1"><a href="#3-小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。-攻击者从机器中提取出了用户的连接其他机器的Windows企业凭据，凭据的连接IP、用户名、密码是什么？（格式为IP-用户名-密码，如127-0-0-1-sam-123456）-题目附件同DC-Forensics-1" class="headerlink" title="3.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者从机器中提取出了用户的连接其他机器的Windows企业凭据，凭据的连接IP、用户名、密码是什么？（格式为IP-用户名-密码，如127.0.0.1-sam-123456） 题目附件同DC-Forensics-1"></a>3.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者从机器中提取出了用户的连接其他机器的Windows企业凭据，凭据的连接IP、用户名、密码是什么？（格式为IP-用户名-密码，如127.0.0.1-sam-123456） 题目附件同DC-Forensics-1</h1><blockquote>
+<p>在任何Windows机器（包括域控制器）上，通过“凭据管理器”保存的RDP凭据本质上都是以<strong>DPAPI加密</strong>的<strong>“Blob”文件</strong>形式。</p>
+<p>默认写入本地用户配置文件下的%LOCALAPPDATA%MicrosoftCredentials文件夹；</p>
+<p>而%APPDATA%RoamingMicrosoftCredentials仅在启用了凭据漫游（Crede</p>
+<p>ntial Roaming）功能时，才会将这些加密Blob同步到域中，以支持跨机器访问。</p>
+<p>DPAPI（Data Protection API）是Windows提供的一个简单密码学应用程序接口，用于对任意数据进行<strong>对称加密</strong>，尤其常用于保护<strong>非对称私钥</strong>等敏感信息。它<strong>内置</strong>于Windows 2000及更高版本操作系统中，无需开发者自行设计密钥生成和存储方案，即可调用系统 API 完成加密任务</p>
+<p>Blob是“Binary Large Object”或“Basic Large Object”的缩写，用于描述在数据库或文件系统中以<strong>二进制方式</strong>存储的大型、不易直接解析的数据单元。Blob（Binary&#x2F;Large Object）是一个<strong>通用概念</strong>，用于表示“体积大、结构不定的二进制数据块”。</p>
+</blockquote>
+<p>找<code>I:\C___NONAME [NTFS]\[root]\Users\john\AppData\Roaming\Microsoft\Credentials</code></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208140305784.png" alt="image-20260208140305784"></p>
+<p>由于找到的14396336784B72E4294497641A22A484这个Blob文件是使用<strong>DPAPI 进行对称加密</strong>的，要去找到使用的主密钥（Master Key）加密时使用的<strong>对称加解密密钥 key</strong>值，才能解密Blob文件，得到明文形式的凭据信息。</p>
+<p>主密钥（Master Key）的信息以GUID的形式存储在Blob文件中</p>
+<p>使用工具对Blob文件进行分析</p>
+<p>可以用impacket（<a target="_blank" rel="noopener" href="https://github.com/fortra/impacket%EF%BC%89%E5%92%8Cmimikatz%EF%BC%88https://github.com/gentilkiwi/mimikatz/%EF%BC%89">https://github.com/fortra/impacket）和mimikatz（https://github.com/gentilkiwi/mimikatz/）</a></p>
+<p>这里使用mimikatz查看该Blob文件的主密钥（master key）的GUID</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpapi::cred /in:14396336784B72E4294497641A22A484</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208140641686.png" alt="image-20260208140641686"></p>
+<p>找到GUID<code>61e93ed3-5ca2-4e98-a27b-b8a09fcf618d</code></p>
+<blockquote>
+<p>在Windows环境下，DPAPI加密文件使用的主密钥一般位于%APPDATA%MicrosoftProtectSIDMasterKeyGUID或系统目录中，文件名即为GUID</p>
+</blockquote>
+<p>在<code>I:\C___NONAME [NTFS]\[root]\Users\john\AppData\Roaming\Microsoft\Protect\S-1-5-21-1507239155-486581747-1996177333-1000</code>下找到同名主密钥文件</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208140902548.png" alt="image-20260208140902548"></p>
+<p>通过命令尝试解密指定用户的DPAPI主密钥（Master Key）文件，输出解密后的会话密钥等信息，以便后续解密由该主密钥加密的DPAPI数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpapi::masterkey /in:61e93ed3-5ca2-4e98-a27b-b8a09fcf618d</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208141035229.png" alt="image-20260208141035229"></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">mimikatz # dpapi::masterkey /<span class="keyword">in</span>:<span class="number">61</span>e93ed3-<span class="number">5</span>ca2-<span class="number">4</span>e98-a27b-b8a09fcf618d</span><br><span class="line">**MASTERKEYS**</span><br><span class="line">  dwVersion          : <span class="number">00000002</span> - <span class="number">2</span></span><br><span class="line">  szGuid             : &#123;<span class="number">61</span>e93ed3-<span class="number">5</span>ca2-<span class="number">4</span>e98-a27b-b8a09fcf618d&#125;</span><br><span class="line">  dwFlags            : <span class="number">00000000</span> - <span class="number">0</span></span><br><span class="line">  dwMasterKeyLen     : <span class="number">00000088</span> - <span class="number">136</span></span><br><span class="line">  dwBackupKeyLen     : <span class="number">00000068</span> - <span class="number">104</span></span><br><span class="line">  dwCredHistLen      : <span class="number">00000000</span> - <span class="number">0</span></span><br><span class="line">  dwDomainKeyLen     : <span class="number">00000174</span> - <span class="number">372</span></span><br><span class="line">[masterkey]</span><br><span class="line">  **MASTERKEY**</span><br><span class="line">    dwVersion        : <span class="number">00000002</span> - <span class="number">2</span></span><br><span class="line">    salt             : <span class="number">7</span>e1072fe30262799dc756fb7109366f2</span><br><span class="line">    rounds           : <span class="number">00004650</span> - <span class="number">18000</span></span><br><span class="line">    algHash          : <span class="number">00008009</span> - <span class="number">32777</span> (CALG_HMAC)</span><br><span class="line">    algCrypt         : <span class="number">00006603</span> - <span class="number">26115</span> (CALG_3DES)</span><br><span class="line">    pbKey            : bc75fd0486dc274587d605da3923641dedce3ca5639358b2f620c4330068b753aca0ee6aab3b5db219f045bf82eb03d4bf09179504bd0e3487de134b195ebb863381230970bbc5206c74f6301c19e7714eb21f34c72fa2f80e256a164a03411cd022ae5db2efb619</span><br><span class="line"></span><br><span class="line">[backupkey]</span><br><span class="line">  **MASTERKEY**</span><br><span class="line">    dwVersion        : <span class="number">00000002</span> - <span class="number">2</span></span><br><span class="line">    salt             : <span class="number">43</span>d5fff1971d0bae2c58631d4a356e41</span><br><span class="line">    rounds           : <span class="number">00004650</span> - <span class="number">18000</span></span><br><span class="line">    algHash          : <span class="number">00008009</span> - <span class="number">32777</span> (CALG_HMAC)</span><br><span class="line">    algCrypt         : <span class="number">00006603</span> - <span class="number">26115</span> (CALG_3DES)</span><br><span class="line">    pbKey            : <span class="number">2407</span>de9a211d52a0e7273b5a5ad9a29daaccb61d2875a8a6c2c354bca57215fbb46686c9985f4dbd4550c0abbb91734ba1020db070fda515a14a7ea7519ea6596de0cfa8513253ad</span><br><span class="line"></span><br><span class="line">[domainkey]</span><br><span class="line">  **DOMAINKEY**</span><br><span class="line">    dwVersion        : <span class="number">00000002</span> - <span class="number">2</span></span><br><span class="line">    dwSecretLen      : <span class="number">00000100</span> - <span class="number">256</span></span><br><span class="line">    dwAccesscheckLen : <span class="number">00000058</span> - <span class="number">88</span></span><br><span class="line">    guidMasterKey    : &#123;<span class="number">439</span>f5cbe-<span class="number">3</span>a71-<span class="number">45</span>e5-<span class="number">9</span>db9-<span class="number">00</span>df588d9386&#125;</span><br><span class="line">    pbSecret         : d3d77abb0ca1c8f68bd2f51e9b495b14988ea88aa8ff42bbbcbf115e176d58e121851554a2ad6f90f76a2badae164ac1e627911b8e5097641b1c4c445f144e11ddcd0ec30115d8a756406587e1dece3cf0d9529680cae044575bdcf52f8f8a3a9ef675d4ba50a4a546368000f44c0b32b4b575a63849b21f74510d7ba4b3aff71cc58bb57e10ed62a8d2e3cd5179554b5ecd1e906db52375148258bb79f7194619bf3d49784051d34db31a22190988ef36c3bfcda3eab83f9f47b91be6d8cc0e46c1adc4671d6748aa0330c33ea7e1bf82f235c4efe602f881290a17ffbd85a3d5496d9a3d58e13c9fe705dbf96eb4392ddb66d7bee90092f7f73371ecb4a415</span><br><span class="line">    pbAccesscheck    : <span class="number">0</span>a2e0818970d7e065b552659999fcdab93bf183bc48b6915666866c5432d3b4bdd590cb4cad890a254588f7a17f67431d3ef9fb076dd361841a9f6907d3b56bc3798db396009d10db3c79fa5ef02bb7c7418220e481d1dc9</span><br></pre></td></tr></table></figure>
+
+<p>但是在结果中并没有给出主密钥中加密使用的<strong>对称加解密密钥 key</strong>值</p>
+<blockquote>
+<p>使用<strong>域用户</strong>（Domain User）解密DPAPI的MasterKey文件时，需要依赖<strong>域控制器</strong>（DC）上的<strong>备份密钥</strong>（Domain Backup Key），而在<strong>本地用户</strong>（Local User）场景中则<strong>无需如此</strong>。</p>
+<p><strong>域环境</strong>下，DPAPI（Data Protection API）为每个用户生成的MasterKey文件，除了使用用户密码派生的密钥进行加密外，还会使用“<strong>域备份密钥</strong>”（DPAPI Domain Backup Key）进行<strong>二次加密并存储</strong>，以应对密码重置或漫游场景；而<strong>本地用户</strong>的MasterKey文件<strong>仅依赖</strong>于<strong>本地密码派生密钥</strong>进行加解密，不涉及集中式恢复机制。</p>
+</blockquote>
+<p>Windows DPAPI在<strong>域环境</strong>中为<strong>每个用户</strong>生成的<strong>主密钥</strong>（Master Key）包含<strong>两部分</strong>，一是<strong>用户密码派生密钥</strong>，用于<strong>对主密钥</strong>进行<strong>正常的加解密</strong>，二是<strong>域级备份密钥</strong>，用于用户密码<strong>丢失</strong>时来<strong>对主密钥进行加解密</strong>。</p>
+<p>那么对于<strong>攻击者</strong>而言，用户密码肯定是不知道的，那么就要去想办法<strong>得到域级备份密钥</strong>来<strong>对主密钥进行解密</strong>，然后才能使<strong>用主密钥解密</strong>RDP凭据文件获得凭据信息。</p>
+<p><strong>域级备份密钥</strong>的<strong>公私钥对</strong>存储在Active Directory的<strong>ntds.dit</strong>（WindowsNTDS）数据库中，而<strong>私钥本身</strong>又被一个称为<strong>BootKey</strong>（SysKey）的<strong>对称密钥</strong>加密。</p>
+<p>那么要想得到<strong>域级备份密钥</strong>，先要得到<strong>BootKey对称密钥</strong>，然后<strong>解密ntds.dit</strong>得到<strong>域级备份密钥</strong>的<strong>私钥</strong>，然后使用这个私钥去<strong>解密主密钥（Master Key）</strong>，得到<strong>对称加解密密钥key</strong>，最后使用这个key解密RDP凭据文件获得凭据信息。</p>
+<blockquote>
+<p><strong>BootKey</strong>来源于域控制器的<strong>SYSTEM</strong>注册表配置单元，通过导出DC的SAM和SYSTEM hive，并使用工具secretsdump.py提取BootKey</p>
+<p><strong>SAM</strong>（Security Account Manager）存储本地账户的凭据哈希，位于C:WindowsSystem32configSAM，用于本地登录验证</p>
+<p><strong>SYSTEM</strong>包含系统配置和秘密，用于保护其他hive（包括 SAM）的BootKey，位 C:WindowsSystem32configSYSTEM</p>
+</blockquote>
+<h2 id="第一步：获取BootKey"><a href="#第一步：获取BootKey" class="headerlink" title="第一步：获取BootKey"></a>第一步：获取BootKey</h2><p>这里由于mimikatz <strong>不能在仅有 SAM + SYSTEM 离线文件的情况下，直接替代 <code>secretsdump.py</code> 来解析 BootKey 并解密 SAM</strong>；<br>它只适合<strong>在线、有权限的系统</strong>，而 impacket 更适合</p>
+<p>所以这里使用impacket</p>
+<p>首先把SAM和SYSTEM复制下来</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208142138337.png" alt="image-20260208142138337"></p>
+<p>脚本在<code>impacket-0.13.0/impacket/examples</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">secretsdump.py -sam SAM -system SYSTEM LOCAL</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208142344889.png" alt="image-20260208142344889"></p>
+<p>得到bootKey<code>0x8044866ff95b2378568f795d988d1d3e</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[~/…/impacket-0.13.0/impacket-0.13.0/impacket/examples]</span><br><span class="line">└─<span class="comment"># secretsdump.py -sam SAM -system SYSTEM LOCAL</span></span><br><span class="line">/usr/local/bin/secretsdump.py:4: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html</span><br><span class="line">  __import__(<span class="string">&#x27;pkg_resources&#x27;</span>).run_script(<span class="string">&#x27;impacket==0.13.0&#x27;</span>, <span class="string">&#x27;secretsdump.py&#x27;</span>)</span><br><span class="line">Impacket v0.13.0 - Copyright Fortra, LLC and its affiliated companies </span><br><span class="line"></span><br><span class="line">[*] Target system bootKey: 0x8044866ff95b2378568f795d988d1d3e</span><br><span class="line">[*] Dumping <span class="built_in">local</span> SAM hashes (uid:rid:lmhash:nthash)</span><br><span class="line">Administrator:500:aad3b435b51404eeaad3b435b51404ee:6ebb6fd790e36d56422326bbc53107cc:::</span><br><span class="line">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::</span><br><span class="line">DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::</span><br><span class="line">[*] Cleaning up... </span><br></pre></td></tr></table></figure>
+
+<h2 id="第二步：解密ntds-dit"><a href="#第二步：解密ntds-dit" class="headerlink" title="第二步：解密ntds.dit"></a>第二步：解密ntds.dit</h2><p>然后使用bootKey<strong>解密ntds.dit</strong>得到<strong>域级备份密钥</strong>的<strong>私钥</strong></p>
+<p><strong>ntds.dit</strong>是Active Directory的Extensible Storage Engine(ESE)数据库文件，通常位于C:WindowsNTDS tds.dit，存放所有AD对象，包括域级DPAPI备份密钥对象</p>
+<p>在WindowsNTDS下面找到ntds.dit文件</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208142618273.png" alt="image-20260208142618273"></p>
+<p>接着用DSInternals工具的Get-ADDBBackupKey模块去使用bootKey<strong>解密ntds.dit</strong>得到<strong>域级备份密钥</strong>的<strong>私钥文件（.pvk）</strong></p>
+<p>以管理员运行powershell，然后执行命令Install-Module DSInternals -Force来安装DSInternals，第一次安装会提示先安装nuget，输入Y即可，powershell版本低可以直接去下离线放到powershell文件夹下食用</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-ADDBBackupKey</span> <span class="literal">-DBPath</span> ./WindowsPowerShell/ntds.dit <span class="literal">-BootKey</span> <span class="number">8044866</span>ff95b2378568f795d988d1d3e | <span class="built_in">Save-DPAPIBlob</span> <span class="literal">-DirectoryPath</span> ./WindowsPowerShell</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208173739501.png" alt="image-20260208173739501"></p>
+<p><strong>.pvk</strong>文件即为<strong>域级备份密钥</strong>的<strong>私钥文件</strong></p>
+<p>复制到mimikatz.exe的文件夹中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpapi::masterkey /in:61e93ed3-5ca2-4e98-a27b-b8a09fcf618d /pvk:ntds_capi_439f5cbe-3a71-45e5-9db9-00df588d9386.pvk</span><br></pre></td></tr></table></figure>
+
+<p><code>61e93ed3-5ca2-4e98-a27b-b8a09fcf618d</code>是前面的master key</p>
+<p><code>ntds_capi_439f5cbe-3a71-45e5-9db9-00df588d9386.pvk</code>是刚才解得得私钥文件</p>
+<p>解密主密钥master key得到<strong>对称加解密密钥 key</strong></p>
+<p><code>75690187db3d7b10dbad020d97ee3557178b86d34736f60fed190de957366d803c7c46a563bfa08f345a70f7b77578f821c2cc38f5b182c1cfeb7a6b84834125</code></p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208174153320.png" alt="image-20260208174153320"></p>
+<p>这个<strong>对称加解密密钥key</strong>已经加载到内存中了，会自动对匹配的凭证文件进行解密</p>
+<h2 id="第三步：解密RDP凭证得到明文信息用户名、密码以及ip"><a href="#第三步：解密RDP凭证得到明文信息用户名、密码以及ip" class="headerlink" title="第三步：解密RDP凭证得到明文信息用户名、密码以及ip"></a>第三步：解密RDP凭证得到明文信息用户名、密码以及ip</h2><p>再次运行最初的命令</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">dpapi::<span class="title">cred</span> /<span class="title">in</span>:14396336784<span class="title">B72E4294497641A22A484</span></span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208174916183.png" alt="image-20260208174916183"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">172.16.6.25-indiana-Xss89cwsb!@#</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。-攻击者创建了一个新用户组和一个新用户，并把这个用户加入了新用户组和域管理员组中，新用户组名、新用户的用户名、新用户的密码是什么？（用户组名和用户名均小写，格式为用户组名-用户名-密码，如admins-sam-123456）-题目附件同DC-Forensics-1"><a href="#4-小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。-攻击者创建了一个新用户组和一个新用户，并把这个用户加入了新用户组和域管理员组中，新用户组名、新用户的用户名、新用户的密码是什么？（用户组名和用户名均小写，格式为用户组名-用户名-密码，如admins-sam-123456）-题目附件同DC-Forensics-1" class="headerlink" title="4.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者创建了一个新用户组和一个新用户，并把这个用户加入了新用户组和域管理员组中，新用户组名、新用户的用户名、新用户的密码是什么？（用户组名和用户名均小写，格式为用户组名-用户名-密码，如admins-sam-123456） 题目附件同DC-Forensics-1"></a>4.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者创建了一个新用户组和一个新用户，并把这个用户加入了新用户组和域管理员组中，新用户组名、新用户的用户名、新用户的密码是什么？（用户组名和用户名均小写，格式为用户组名-用户名-密码，如admins-sam-123456） 题目附件同DC-Forensics-1</h1><p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208175607745.png" alt="image-20260208175607745"></p>
+<p>看到这里将James移到用户组maintainer</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208185646619.png" alt="image-20260208185646619"></p>
+<p>下面找新用户James的密码</p>
+<blockquote>
+<p>windows系统中，ntds.dit存储了域中所有用户和计算机对象的详细信息，其中包括经过<strong>加密的密码哈希</strong>，ntds.dit是 Active Directory 域控制器上的数据库文件。</p>
+<p>SYSTEM 注册表文件则包含了用于<strong>加密和解密</strong>这些哈希的<strong>系统密钥</strong></p>
+<p>获取这两个文件后，就可以使用Impacket 的 <strong>secretsdump.py提取</strong>出域用户的用户名和对应的<strong>密码哈希值</strong>，然后使用<strong>john爆破</strong>哈希值得到<strong>明文密码</strong></p>
+</blockquote>
+<p><code>I:\C___NONAME [NTFS]\[root]\Windows\System32\config</code>下找到<code>SYSTEM</code></p>
+<p><code>I:\C___NONAME [NTFS]\[root]\Windows\NTDS</code>下找到<code>ntds.dit</code></p>
+<p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">secretsdump.py -ntds ntds.dit -system SYSTEM LOCAL</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208190100243.png" alt="image-20260208190100243"></p>
+<p>直接拿网站解了，hashcat直接拿rockyou爆也可以</p>
+<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260208190258553.png" alt="image-20260208190258553"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maintainer-James-3011liverpool!</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/posts/caa2ab8d.html">https://xyaxxya.github.io/posts/caa2ab8d.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8F%96%E8%AF%81%E6%BA%AF%E6%BA%90/">取证溯源</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php?3395" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/1f59513d.html" title="2025年度总结"><img class="cover" src="https://www.dmoe.cc/random.php?7442" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2025年度总结</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%B0%8F%E6%A2%81%E7%9A%84%E5%9F%9F%E6%8E%A7%E6%9C%BA%E5%99%A8%E8%A2%AB%E9%BB%91%E5%AE%A2%E6%94%BB%E5%87%BB%E4%BA%86%EF%BC%8C%E8%AF%B7%E4%BD%A0%E6%89%BE%E5%87%BA%E4%B8%80%E4%BA%9B%E8%9B%9B%E4%B8%9D%E9%A9%AC%E8%BF%B9%E3%80%82-%E6%94%BB%E5%87%BB%E8%80%85%E9%80%9A%E8%BF%87AD-CS%E6%8F%90%E6%9D%83%E8%87%B3%E5%9F%9F%E7%AE%A1%E7%90%86%E5%91%98%EF%BC%8C%E5%9C%A8%E6%94%BB%E5%87%BB%E8%BF%87%E7%A8%8B%E4%B8%AD%EF%BC%8C%E6%94%BB%E5%87%BB%E8%80%85%E4%BD%BF%E7%94%A8%E6%9C%89%E9%97%AE%E9%A2%98%E7%9A%84%E8%AF%81%E4%B9%A6%E6%A8%A1%E7%89%88%E6%B3%A8%E5%86%8C%E4%BA%86%E4%B8%80%E5%BC%A0%E8%AF%81%E4%B9%A6%EF%BC%8C%E8%AF%A5%E8%AF%81%E4%B9%A6%E7%9A%84%E8%AF%81%E4%B9%A6%E6%A8%A1%E7%89%88%E5%90%8D%E3%80%81%E8%AF%81%E4%B9%A6%E5%BA%8F%E5%88%97%E5%8F%B7%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%88%E6%A0%BC%E5%BC%8F%E4%B8%BA%E6%A8%A1%E7%89%88%E5%90%8D-%E5%BA%8F%E5%88%97%E5%8F%B7%EF%BC%8C%E5%A6%82CertTemplate-2f000000064287f6f5d6ff4a91000000000006%EF%BC%89%E2%80%99%E3%80%81"><span class="toc-number">1.</span> <span class="toc-text">1.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者通过AD CS提权至域管理员，在攻击过程中，攻击者使用有问题的证书模版注册了一张证书，该证书的证书模版名、证书序列号是什么？（格式为模版名-序列号，如CertTemplate-2f000000064287f6f5d6ff4a91000000000006）’、</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%B0%8F%E6%A2%81%E7%9A%84%E5%9F%9F%E6%8E%A7%E6%9C%BA%E5%99%A8%E8%A2%AB%E9%BB%91%E5%AE%A2%E6%94%BB%E5%87%BB%E4%BA%86%EF%BC%8C%E8%AF%B7%E4%BD%A0%E6%89%BE%E5%87%BA%E4%B8%80%E4%BA%9B%E8%9B%9B%E4%B8%9D%E9%A9%AC%E8%BF%B9%E3%80%82-%E6%94%BB%E5%87%BB%E8%80%85%E5%9C%A8%E8%8E%B7%E5%8F%96%E5%9F%9F%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90%E5%90%8E%EF%BC%8C%E5%B0%9D%E8%AF%95%E4%B8%8A%E4%BC%A0%E6%9C%A8%E9%A9%AC%E6%96%87%E4%BB%B6%EF%BC%8C%E4%BD%86%E6%98%AF%E8%A2%AB%E6%9D%80%E6%AF%92%E8%BD%AF%E4%BB%B6%E6%9F%A5%E6%9D%80%EF%BC%8C%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%9C%A8%E9%A9%AC%E6%96%87%E4%BB%B6%E7%9A%84%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%88%E5%A6%82C-Windows-cmd-exe%EF%BC%89-%E9%A2%98%E7%9B%AE%E9%99%84%E4%BB%B6%E5%90%8CDC-Forensics-1"><span class="toc-number">2.</span> <span class="toc-text">2.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者在获取域管理员权限后，尝试上传木马文件，但是被杀毒软件查杀，上传的木马文件的绝对路径是什么？（如C:\Windows\cmd.exe） 题目附件同DC-Forensics-1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%B0%8F%E6%A2%81%E7%9A%84%E5%9F%9F%E6%8E%A7%E6%9C%BA%E5%99%A8%E8%A2%AB%E9%BB%91%E5%AE%A2%E6%94%BB%E5%87%BB%E4%BA%86%EF%BC%8C%E8%AF%B7%E4%BD%A0%E6%89%BE%E5%87%BA%E4%B8%80%E4%BA%9B%E8%9B%9B%E4%B8%9D%E9%A9%AC%E8%BF%B9%E3%80%82-%E6%94%BB%E5%87%BB%E8%80%85%E4%BB%8E%E6%9C%BA%E5%99%A8%E4%B8%AD%E6%8F%90%E5%8F%96%E5%87%BA%E4%BA%86%E7%94%A8%E6%88%B7%E7%9A%84%E8%BF%9E%E6%8E%A5%E5%85%B6%E4%BB%96%E6%9C%BA%E5%99%A8%E7%9A%84Windows%E4%BC%81%E4%B8%9A%E5%87%AD%E6%8D%AE%EF%BC%8C%E5%87%AD%E6%8D%AE%E7%9A%84%E8%BF%9E%E6%8E%A5IP%E3%80%81%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81%E5%AF%86%E7%A0%81%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%88%E6%A0%BC%E5%BC%8F%E4%B8%BAIP-%E7%94%A8%E6%88%B7%E5%90%8D-%E5%AF%86%E7%A0%81%EF%BC%8C%E5%A6%82127-0-0-1-sam-123456%EF%BC%89-%E9%A2%98%E7%9B%AE%E9%99%84%E4%BB%B6%E5%90%8CDC-Forensics-1"><span class="toc-number">3.</span> <span class="toc-text">3.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者从机器中提取出了用户的连接其他机器的Windows企业凭据，凭据的连接IP、用户名、密码是什么？（格式为IP-用户名-密码，如127.0.0.1-sam-123456） 题目附件同DC-Forensics-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%8E%B7%E5%8F%96BootKey"><span class="toc-number">3.1.</span> <span class="toc-text">第一步：获取BootKey</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E8%A7%A3%E5%AF%86ntds-dit"><span class="toc-number">3.2.</span> <span class="toc-text">第二步：解密ntds.dit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%A7%A3%E5%AF%86RDP%E5%87%AD%E8%AF%81%E5%BE%97%E5%88%B0%E6%98%8E%E6%96%87%E4%BF%A1%E6%81%AF%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8Aip"><span class="toc-number">3.3.</span> <span class="toc-text">第三步：解密RDP凭证得到明文信息用户名、密码以及ip</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%B0%8F%E6%A2%81%E7%9A%84%E5%9F%9F%E6%8E%A7%E6%9C%BA%E5%99%A8%E8%A2%AB%E9%BB%91%E5%AE%A2%E6%94%BB%E5%87%BB%E4%BA%86%EF%BC%8C%E8%AF%B7%E4%BD%A0%E6%89%BE%E5%87%BA%E4%B8%80%E4%BA%9B%E8%9B%9B%E4%B8%9D%E9%A9%AC%E8%BF%B9%E3%80%82-%E6%94%BB%E5%87%BB%E8%80%85%E5%88%9B%E5%BB%BA%E4%BA%86%E4%B8%80%E4%B8%AA%E6%96%B0%E7%94%A8%E6%88%B7%E7%BB%84%E5%92%8C%E4%B8%80%E4%B8%AA%E6%96%B0%E7%94%A8%E6%88%B7%EF%BC%8C%E5%B9%B6%E6%8A%8A%E8%BF%99%E4%B8%AA%E7%94%A8%E6%88%B7%E5%8A%A0%E5%85%A5%E4%BA%86%E6%96%B0%E7%94%A8%E6%88%B7%E7%BB%84%E5%92%8C%E5%9F%9F%E7%AE%A1%E7%90%86%E5%91%98%E7%BB%84%E4%B8%AD%EF%BC%8C%E6%96%B0%E7%94%A8%E6%88%B7%E7%BB%84%E5%90%8D%E3%80%81%E6%96%B0%E7%94%A8%E6%88%B7%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81%E6%96%B0%E7%94%A8%E6%88%B7%E7%9A%84%E5%AF%86%E7%A0%81%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%88%E7%94%A8%E6%88%B7%E7%BB%84%E5%90%8D%E5%92%8C%E7%94%A8%E6%88%B7%E5%90%8D%E5%9D%87%E5%B0%8F%E5%86%99%EF%BC%8C%E6%A0%BC%E5%BC%8F%E4%B8%BA%E7%94%A8%E6%88%B7%E7%BB%84%E5%90%8D-%E7%94%A8%E6%88%B7%E5%90%8D-%E5%AF%86%E7%A0%81%EF%BC%8C%E5%A6%82admins-sam-123456%EF%BC%89-%E9%A2%98%E7%9B%AE%E9%99%84%E4%BB%B6%E5%90%8CDC-Forensics-1"><span class="toc-number">4.</span> <span class="toc-text">4.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者创建了一个新用户组和一个新用户，并把这个用户加入了新用户组和域管理员组中，新用户组名、新用户的用户名、新用户的密码是什么？（用户组名和用户名均小写，格式为用户组名-用户名-密码，如admins-sam-123456） 题目附件同DC-Forensics-1</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/caa2ab8d.html" title="第十八届软件系统安全赛半决赛取证DC"><img src="https://www.dmoe.cc/random.php?3395" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第十八届软件系统安全赛半决赛取证DC"/></a><div class="content"><a class="title" href="/posts/caa2ab8d.html" title="第十八届软件系统安全赛半决赛取证DC">第十八届软件系统安全赛半决赛取证DC</a><time datetime="2026-02-08T05:11:41.000Z" title="发表于 2026-02-08 13:11:41">2026-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1f59513d.html" title="2025年度总结"><img src="https://www.dmoe.cc/random.php?7442" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025年度总结"/></a><div class="content"><a class="title" href="/posts/1f59513d.html" title="2025年度总结">2025年度总结</a><time datetime="2026-01-12T13:55:08.000Z" title="发表于 2026-01-12 21:55:08">2026-01-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ef7a0f8d.html" title="学习一下javascript"><img src="https://www.dmoe.cc/random.php?6039" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="学习一下javascript"/></a><div class="content"><a class="title" href="/posts/ef7a0f8d.html" title="学习一下javascript">学习一下javascript</a><time datetime="2025-07-02T10:17:50.000Z" title="发表于 2025-07-02 18:17:50">2025-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/32bcf973.html" title="CVE-2025-32463复现"><img src="https://www.dmoe.cc/random.php?6945" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CVE-2025-32463复现"/></a><div class="content"><a class="title" href="/posts/32bcf973.html" title="CVE-2025-32463复现">CVE-2025-32463复现</a><time datetime="2025-07-02T10:04:31.000Z" title="发表于 2025-07-02 18:04:31">2025-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b63ba91a.html" title="2025PYCC"><img src="https://www.dmoe.cc/random.php?8846" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025PYCC"/></a><div class="content"><a class="title" href="/posts/b63ba91a.html" title="2025PYCC">2025PYCC</a><time datetime="2025-06-18T11:00:20.000Z" title="发表于 2025-06-18 19:00:20">2025-06-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
+      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
+      avatar: 'monsterid',
+      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
