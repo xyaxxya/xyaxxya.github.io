@@ -176,9 +176,9 @@
       
         <tags>
             
-            <tag> CTF </tag>
-            
             <tag> web </tag>
+            
+            <tag> CTF </tag>
             
         </tags>
       
@@ -336,9 +336,9 @@
       
         <tags>
             
-            <tag> CTF </tag>
-            
             <tag> web </tag>
+            
+            <tag> CTF </tag>
             
         </tags>
       
@@ -632,9 +632,9 @@
       
         <tags>
             
-            <tag> CTF </tag>
-            
             <tag> web </tag>
+            
+            <tag> CTF </tag>
             
         </tags>
       
@@ -822,13 +822,13 @@
       
         <tags>
             
+            <tag> 提权 </tag>
+            
             <tag> 内网渗透 </tag>
             
             <tag> nmap </tag>
             
             <tag> shell </tag>
-            
-            <tag> 提权 </tag>
             
             <tag> msf </tag>
             
