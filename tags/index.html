@@ -1,289 +1,652 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>tags | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="春风得意马蹄疾，一日看尽长安花">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://xyaxxya.github.io/tags/index.html">
-<meta property="og:site_name" content="Yiyi">
-<meta property="og:description" content="春风得意马蹄疾，一日看尽长安花">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.dmoe.cc/random.php?1000">
-<meta property="article:published_time" content="2024-02-16T12:18:54.000Z">
-<meta property="article:modified_time" content="2024-02-16T12:33:48.000Z">
-<meta property="article:author" content="yiyi">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.dmoe.cc/random.php?1000"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/tags/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="JKAzMndNFupeAvLybmTDZQvXJ-qzwexiresLFX-aPSw"/><meta name="msvalidate.01" content="46A43356A247D4026C1F053B84E2275F"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '天',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: true,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'tags',
-  isPost: false,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2024-02-16 20:33:48'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Yiyi 博客标签索引">
+    <meta name="theme-color" content="#0d0e12">
+    <meta name="color-scheme" content="light dark">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="标签 · Yiyi">
+    <meta property="og:description" content="Yiyi 博客标签索引">
+    <meta property="og:url" content="https://xyaxxya.github.io/tags/">
+    <meta property="og:site_name" content="Yiyi">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://xyaxxya.github.io/tags/">
+    <link rel="alternate" type="application/rss+xml" title="Yiyi RSS" href="/rss.xml">
+    <link rel="icon" href="/assets/avatar.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem("yiyi-theme")||"auto"}catch(e){}</script>
     
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
-
-        document.head.appendChild(script)
-      })
+    <title>标签 · Yiyi</title></head>
+  <body class="inner-page directory-body tags-body">
+    <a class="skip-link" href="#main-content">跳到正文</a>
     
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
+    <header class="site-header" data-site-header>
+      <div class="site-header-inner">
+        <a class="site-brand" href="/" aria-label="Yiyi 首页">Yiyi</a>
+        <nav class="site-nav" aria-label="主导航"><a class="site-nav-link" href="/#articles">文章</a><a class="site-nav-link" href="/categories/">专题</a><a class="site-nav-link" href="/tags/">标签</a><a class="site-nav-link" href="/archives/">归档</a><a class="site-nav-link" href="/about/">关于</a></nav>
+        <div class="site-actions">
+          
+  <button class="icon-button" type="button" aria-label="搜索" data-tooltip="搜索" data-open-search>
+    <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+  </button>
+          <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="切换主题" data-tooltip="切换主题">
+            <svg class="icon theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+            <svg class="icon theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+          </button>
+          
+  <button class="icon-button mobile-menu-trigger" type="button" aria-label="打开菜单" data-tooltip="打开菜单" data-menu-toggle aria-expanded="false">
+    <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+  </button>
+        </div>
+      </div>
+    </header>
     
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
     
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+    <section class="page-hero" id="main-content">
+      <div class="section-shell">
+        <span>Index</span>
+        <h1>标签</h1>
+        <p>69 个标签，连接 39 篇技术记录。</p>
+      </div>
+    </section>
+    <main class="tags-page section-shell">
+      <section class="tag-cloud" aria-label="标签列表">
+    <button type="button" data-tag-filter="渗透"><span>渗透</span><small>10</small></button>
+    <button type="button" data-tag-filter="web"><span>web</span><small>10</small></button>
+    <button type="button" data-tag-filter="ctf"><span>ctf</span><small>6</small></button>
+    <button type="button" data-tag-filter="HTB"><span>HTB</span><small>6</small></button>
+    <button type="button" data-tag-filter="CTF"><span>CTF</span><small>5</small></button>
+    <button type="button" data-tag-filter="电子取证"><span>电子取证</span><small>3</small></button>
+    <button type="button" data-tag-filter="代码审计"><span>代码审计</span><small>2</small></button>
+    <button type="button" data-tag-filter="内网渗透"><span>内网渗透</span><small>2</small></button>
+    <button type="button" data-tag-filter="提权"><span>提权</span><small>2</small></button>
+    <button type="button" data-tag-filter="HMVM"><span>HMVM</span><small>2</small></button>
+    <button type="button" data-tag-filter="春秋云镜"><span>春秋云镜</span><small>1</small></button>
+    <button type="button" data-tag-filter="服务器"><span>服务器</span><small>1</small></button>
+    <button type="button" data-tag-filter="介质"><span>介质</span><small>1</small></button>
+    <button type="button" data-tag-filter="卷影拷贝提取SAM"><span>卷影拷贝提取SAM</span><small>1</small></button>
+    <button type="button" data-tag-filter="年度总结"><span>年度总结</span><small>1</small></button>
+    <button type="button" data-tag-filter="取证溯源"><span>取证溯源</span><small>1</small></button>
+    <button type="button" data-tag-filter="渗透靶场"><span>渗透靶场</span><small>1</small></button>
+    <button type="button" data-tag-filter="数据分析"><span>数据分析</span><small>1</small></button>
+    <button type="button" data-tag-filter="网站重构"><span>网站重构</span><small>1</small></button>
+    <button type="button" data-tag-filter="信呼nday"><span>信呼nday</span><small>1</small></button>
+    <button type="button" data-tag-filter="信息泄露"><span>信息泄露</span><small>1</small></button>
+    <button type="button" data-tag-filter="域渗透"><span>域渗透</span><small>1</small></button>
+    <button type="button" data-tag-filter="原型污染"><span>原型污染</span><small>1</small></button>
+    <button type="button" data-tag-filter="云手机"><span>云手机</span><small>1</small></button>
+    <button type="button" data-tag-filter="about me"><span>about me</span><small>1</small></button>
+    <button type="button" data-tag-filter="Ansible Vault"><span>Ansible Vault</span><small>1</small></button>
+    <button type="button" data-tag-filter="CMS"><span>CMS</span><small>1</small></button>
+    <button type="button" data-tag-filter="CVE-2020-1983 Tomcat文件包含"><span>CVE-2020-1983 Tomcat文件包含</span><small>1</small></button>
+    <button type="button" data-tag-filter="DCSyn"><span>DCSyn</span><small>1</small></button>
+    <button type="button" data-tag-filter="DCSync"><span>DCSync</span><small>1</small></button>
+    <button type="button" data-tag-filter="Decrypt"><span>Decrypt</span><small>1</small></button>
+    <button type="button" data-tag-filter="drupal"><span>drupal</span><small>1</small></button>
+    <button type="button" data-tag-filter="Fastjson"><span>Fastjson</span><small>1</small></button>
+    <button type="button" data-tag-filter="Gitlab API Token"><span>Gitlab API Token</span><small>1</small></button>
+    <button type="button" data-tag-filter="hydra"><span>hydra</span><small>1</small></button>
+    <button type="button" data-tag-filter="java反序列化"><span>java反序列化</span><small>1</small></button>
+    <button type="button" data-tag-filter="javascript"><span>javascript</span><small>1</small></button>
+    <button type="button" data-tag-filter="Jenkins初始管理员密码"><span>Jenkins初始管理员密码</span><small>1</small></button>
+    <button type="button" data-tag-filter="jenkins后台RCE"><span>jenkins后台RCE</span><small>1</small></button>
+    <button type="button" data-tag-filter="john"><span>john</span><small>1</small></button>
+    <button type="button" data-tag-filter="Kerberos"><span>Kerberos</span><small>1</small></button>
+    <button type="button" data-tag-filter="MS17-010"><span>MS17-010</span><small>1</small></button>
+    <button type="button" data-tag-filter="ms17-010(永恒之蓝)"><span>ms17-010(永恒之蓝)</span><small>1</small></button>
+    <button type="button" data-tag-filter="msf"><span>msf</span><small>1</small></button>
+    <button type="button" data-tag-filter="mysql"><span>mysql</span><small>1</small></button>
+    <button type="button" data-tag-filter="mysql命令提权"><span>mysql命令提权</span><small>1</small></button>
+    <button type="button" data-tag-filter="Nacos"><span>Nacos</span><small>1</small></button>
+    <button type="button" data-tag-filter="nmap"><span>nmap</span><small>1</small></button>
+    <button type="button" data-tag-filter="nodejs"><span>nodejs</span><small>1</small></button>
+    <button type="button" data-tag-filter="noPac"><span>noPac</span><small>1</small></button>
+    <button type="button" data-tag-filter="NTLM Relay via WebDAV+Petitpotam Coerce Authentication"><span>NTLM Relay via WebDAV+Petitpotam Coerce Authentication</span><small>1</small></button>
+    <button type="button" data-tag-filter="Oracle RCE"><span>Oracle RCE</span><small>1</small></button>
+    <button type="button" data-tag-filter="pop3"><span>pop3</span><small>1</small></button>
+    <button type="button" data-tag-filter="pop链反序列化"><span>pop链反序列化</span><small>1</small></button>
+    <button type="button" data-tag-filter="psafe3"><span>psafe3</span><small>1</small></button>
+    <button type="button" data-tag-filter="pve"><span>pve</span><small>1</small></button>
+    <button type="button" data-tag-filter="RBCD"><span>RBCD</span><small>1</small></button>
+    <button type="button" data-tag-filter="ruoyi"><span>ruoyi</span><small>1</small></button>
+    <button type="button" data-tag-filter="SeRestorePrivilege提权"><span>SeRestorePrivilege提权</span><small>1</small></button>
+    <button type="button" data-tag-filter="SharpHound"><span>SharpHound</span><small>1</small></button>
+    <button type="button" data-tag-filter="shell"><span>shell</span><small>1</small></button>
+    <button type="button" data-tag-filter="Shiro"><span>Shiro</span><small>1</small></button>
+    <button type="button" data-tag-filter="SPN"><span>SPN</span><small>1</small></button>
+    <button type="button" data-tag-filter="sql注入"><span>sql注入</span><small>1</small></button>
+    <button type="button" data-tag-filter="ssrf"><span>ssrf</span><small>1</small></button>
+    <button type="button" data-tag-filter="thinkphp 5.0.23 RCE"><span>thinkphp 5.0.23 RCE</span><small>1</small></button>
+    <button type="button" data-tag-filter="vm2"><span>vm2</span><small>1</small></button>
+    <button type="button" data-tag-filter="windows"><span>windows</span><small>1</small></button>
+    <button type="button" data-tag-filter="XSS"><span>XSS</span><small>1</small></button></section>
+      <section class="directory-results">
+        <header><h2 data-tag-title>全部标签</h2><button type="button" class="text-button" data-tag-clear hidden>清除筛选</button></header>
+        <div class="article-list">
+    <div data-tag-item data-tags="[&quot;渗透&quot;,&quot;Ansible Vault&quot;,&quot;pop3&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/942cb43a.html">
+        <div class="article-row-date"><time datetime="2026-02-12T04:39:15.000Z">2026/02/12</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HMVM-Poppins</h3>
+          <p>这个目录看起来有点奇怪，看起来像是多个字符的拼接 构造一个字典继续爆破 继续爆破 找到个hash.bak 使用hashcat爆破 放入字典 人物猜测就是主页的这些 测试后发现是小写 hydra爆破无果 手动测试发现必须得有用户名才校验密码 但是pop3可以正常爆破 得到用户名…</p>
+          <div class="article-row-tags"><span>渗透</span><span>Ansible Vault</span><span>pop3</span></div>
+        </div>
+        <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;渗透&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/8cc5a836.html">
+        <div class="article-row-date"><time datetime="2026-02-11T04:57:11.000Z">2026/02/11</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HMVM-MS02423</h3>
+          <p>423端口 并扫出了80的robots.txt .user.txt里有编码 解密得一个用户名字典 密码提示top500 抓个包看看怎么传参的 爆破 得到 ctf player:genesis 我这里用ffuf 补充几个筛选常用参数 -mc 200 只显示响应为200的 -fs…</p>
+          <div class="article-row-tags"><span>渗透</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;渗透&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/3d3db288.html">
+        <div class="article-row-date"><time datetime="2026-02-10T03:48:19.000Z">2026/02/10</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HMVM-Coolpg</h3>
+          <p>F12 直接提示支持union select 手动测试一下 直接sqlmap跑了 ssh连接 简单看一眼 看一下suid然后sudo -l发现个脚本 有点容易的过头了</p>
+          <div class="article-row-tags"><span>渗透</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;取证溯源&quot;]">
+    <article class="article-row" data-article-item data-topic="电子取证">
+      <a class="article-row-link" href="/posts/caa2ab8d.html">
+        <div class="article-row-date"><time datetime="2026-02-08T05:11:41.000Z">2026/02/08</time><span>电子取证</span></div>
+        <div class="article-row-copy">
+          <h3>第十八届软件系统安全赛半决赛取证DC</h3>
+          <p>1.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者通过AD CS提权至域管理员，在攻击过程中，攻击者使用有问题的证书模版注册了一张证书，该证书的证书模版名、证书序列号是什么？（格式为模版名-序列号，如CertTemplate-2f000000064287f6f5d…</p>
+          <div class="article-row-tags"><span>取证溯源</span></div>
+        </div>
+        <div class="article-row-end"><span>8 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;年度总结&quot;]">
+    <article class="article-row" data-article-item data-topic="学习札记">
+      <a class="article-row-link" href="/posts/1f59513d.html">
+        <div class="article-row-date"><time datetime="2026-01-12T13:55:08.000Z">2026/01/12</time><span>学习札记</span></div>
+        <div class="article-row-copy">
+          <h3>2025年度总结</h3>
+          <p>两年前看toto毕业的时候写下自己的四年，便萌生两年后自己也要试着回顾一下我的四年，只是没想到时间如此之快，谨以此文记录也致敬我的大学四年，也已自己的所感所想希望为迷茫的师弟们指点迷津 大一入学懵懂无知，饱含对所有j校新鲜事物的憧憬，啥都想尝试，唱了歌跳了舞，认识不少人，整个…</p>
+          <div class="article-row-tags"><span>年度总结</span></div>
+        </div>
+        <div class="article-row-end"><span>8 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;javascript&quot;,&quot;ctf&quot;,&quot;web&quot;,&quot;vm2&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/ef7a0f8d.html">
+        <div class="article-row-date"><time datetime="2025-07-02T10:17:50.000Z">2025/07/02</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>学习一下javascript</h3>
+          <p>参考文章： Node.js 相关安全问题 - MustaphaMond - 博客园 深入理解 JavaScript Prototype 污染攻击 离别歌 Express+lodash+ejs: 从原型链污染到RCE Node.js 常见漏洞学习与总结 i春秋2020新春战“疫…</p>
+          <div class="article-row-tags"><span>javascript</span><span>ctf</span><span>web</span></div>
+        </div>
+        <div class="article-row-end"><span>5 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;提权&quot;]">
+    <article class="article-row" data-article-item data-topic="漏洞研究">
+      <a class="article-row-link" href="/posts/32bcf973.html">
+        <div class="article-row-date"><time datetime="2025-07-02T10:04:31.000Z">2025/07/02</time><span>漏洞研究</span></div>
+        <div class="article-row-copy">
+          <h3>CVE-2025-32463复现</h3>
+          <p>地层 版本影响范围在 Sudo 1.9.14至1.9.17 全系列</p>
+          <div class="article-row-tags"><span>提权</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;CTF&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/b63ba91a.html">
+        <div class="article-row-date"><time datetime="2025-06-18T11:00:20.000Z">2025/06/18</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>2025PYCC</h3>
+          <p>半决赛 回归基本功 “金铲铲”最强王者选手小睿来到了新赛季“赛博之城”，面对全新的版本，他试图重回最强王者段位，但却总是屡屡失败，他不由感叹：“归根到底还是基本功不够扎实，回归基本功，从代码中找到上分密码flag吧！” 题目中有提示 （注意：需要输入正确的“用户代理”身份标识…</p>
+          <div class="article-row-tags"><span>CTF</span></div>
+        </div>
+        <div class="article-row-end"><span>3 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;CTF&quot;,&quot;web&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/a875e753.html">
+        <div class="article-row-date"><time datetime="2025-06-08T15:59:11.000Z">2025/06/08</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>OpenHarmony_CTF专题赛</h3>
+          <p>两天三道web也算是有惊无险 Filesystem 这是一个开发了不到百分之十的文件管理系统 tips：赛题服务环境启动较慢，请耐心等待2分钟左右再访问赛题，若长时间没有服务请尝试重启 审计代码最开始发现的就是 admin.controller.ts 中使用了 gray-ma…</p>
+          <div class="article-row-tags"><span>CTF</span><span>web</span></div>
+        </div>
+        <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;代码审计&quot;,&quot;ruoyi&quot;,&quot;CMS&quot;]">
+    <article class="article-row" data-article-item data-topic="漏洞研究">
+      <a class="article-row-link" href="/posts/7083c6a.html">
+        <div class="article-row-date"><time datetime="2025-06-06T05:53:59.000Z">2025/06/06</time><span>漏洞研究</span></div>
+        <div class="article-row-copy">
+          <h3>若依CMS-4.5.1代码审计</h3>
+          <p>前期准备 源码 Releases · yangzongzhuan/RuoYi 导入sql文件 修改配置文件 src/main/resources/application-druid.yml Shiro反序列化 pom.xml中发现引入了Shiro组件 全局搜索cipherKe…</p>
+          <div class="article-row-tags"><span>代码审计</span><span>ruoyi</span><span>CMS</span></div>
+        </div>
+        <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;信息泄露&quot;,&quot;Jenkins初始管理员密码&quot;,&quot;jenkins后台RCE&quot;,&quot;Gitlab API Token&quot;,&quot;Oracle RCE&quot;,&quot;SeRestorePrivilege提权&quot;,&quot;SPN&quot;,&quot;卷影拷贝提取SAM&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/c0aca0e.html">
+        <div class="article-row-date"><time datetime="2025-04-25T05:45:42.000Z">2025/04/25</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>春秋云镜-Privilege</h3>
+          <p>在这个靶场中，您将扮演一名资深黑客，被雇佣来评估虚构公司 XR Shop 的网络安全。您需要通过渗透测试逐个击破公司暴露在公网的应用，并通过后渗透技巧深入 XR Shop 的内部网络，寻找潜在的弱点和漏洞，并通过滥用 Windows 特权获取管理员权限，最终并获取隐藏在其内部…</p>
+          <div class="article-row-tags"><span>信息泄露</span><span>Jenkins初始管理员密码</span><span>jenkins后台RCE</span></div>
+        </div>
+        <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;CVE-2020-1983 Tomcat文件包含&quot;,&quot;MS17-010&quot;,&quot;NTLM Relay via WebDAV+Petitpotam Coerce Authentication&quot;,&quot;RBCD&quot;,&quot;noPac&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/ac5e4dda.html">
+        <div class="article-row-date"><time datetime="2025-04-24T05:00:21.000Z">2025/04/24</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>春秋云镜-Spoofing</h3>
+          <p>Spoofing是一套难度为中等的靶场环境，完成该挑战可以帮助玩家了解内网渗透中的代理转发、内网扫描、信息收集、特权提升以及横向移动技术方法，加强对域环境核心认证机制的理解，以及掌握域环境渗透中一些有趣的技术要点。该靶场共有4个flag，分布于不同的靶机。 flag1 入口…</p>
+          <div class="article-row-tags"><span>CVE-2020-1983 Tomcat文件包含</span><span>MS17-010</span><span>NTLM Relay via WebDAV+Petitpotam Coerce Authentication</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;内网渗透&quot;,&quot;Nacos&quot;,&quot;Shiro&quot;,&quot;Fastjson&quot;,&quot;Decrypt&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/d66aab01.html">
+        <div class="article-row-date"><time datetime="2025-04-19T05:01:28.000Z">2025/04/19</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>春秋云镜-Hospital</h3>
+          <p>描述：在这个场景中，你将扮演一名渗透测试工程师，被派遣去测试某家医院的网络安全性。你的目标是成功获取所有服务器的权限，以评估公司的网络安全状况。该靶场共有 4 个 flag，分布于不同的靶机。 标签：内网渗透、Nacos、Shiro、Fastjson、Decrypt 难度：简…</p>
+          <div class="article-row-tags"><span>内网渗透</span><span>Nacos</span><span>Shiro</span></div>
+        </div>
+        <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;春秋云镜&quot;,&quot;thinkphp 5.0.23 RCE&quot;,&quot;mysql命令提权&quot;,&quot;信呼nday&quot;,&quot;ms17-010(永恒之蓝)&quot;,&quot;DCSyn&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/327fc326.html">
+        <div class="article-row-date"><time datetime="2025-04-17T05:36:50.000Z">2025/04/17</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>春秋云镜-Initial</h3>
+          <p>信息搜集 thinkphp 5.0.23 RCE 检测一下 写马 反弹shell 得到第一半flag 扫内网 172.22.1.18-信呼nday frps.ini frpc.ini 访问到 admin/admin123登录 运行得到返回地址 拿到flag2 172.22.1…</p>
+          <div class="article-row-tags"><span>春秋云镜</span><span>thinkphp 5.0.23 RCE</span><span>mysql命令提权</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;CTF&quot;,&quot;web&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/a646b97b.html">
+        <div class="article-row-date"><time datetime="2025-04-15T03:23:43.000Z">2025/04/15</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>TGCTF_web</h3>
+          <p>AAA偷渡阴平 web签到1。简单的PHP特性，我的waf无懈可击！（bushi 考虑无参 ?tgctf2025=eval current getallheaders ; 或者 AAA偷渡阴平（复仇） ban了无参RCE，思考别的方法。 没有过滤session 直面天命 hi…</p>
+          <div class="article-row-tags"><span>CTF</span><span>web</span></div>
+        </div>
+        <div class="article-row-end"><span>3 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;HMVM&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/4ff635be.html">
+        <div class="article-row-date"><time datetime="2025-04-11T07:48:56.000Z">2025/04/11</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HMVM-SingDanceRap</h3>
+          <p>端口扫描 目录扫描</p>
+          <div class="article-row-tags"><span>HMVM</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;HMVM&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/b7e3530d.html">
+        <div class="article-row-date"><time datetime="2025-04-11T05:18:01.000Z">2025/04/11</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HMVM-Todd</h3>
+          <p>扫端口 nc连7066 提权 nc会掉 写入ssh公钥连接 发现还是会掉 原来是踢用户 本来想着vshell上马来 发现靶机没有curl，没辙 www目录下有作者留下来的工具 发现在ssh结束的时候执行了kill todd.sh，那么结合sudo rm直接删掉 那么仔细看这个…</p>
+          <div class="article-row-tags"><span>HMVM</span></div>
+        </div>
+        <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;ctf&quot;,&quot;web&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/2da6415f.html">
+        <div class="article-row-date"><time datetime="2025-03-28T08:16:16.000Z">2025/03/28</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>环境变量注入执行任意命令</h3>
+          <p>在nss上做NCTF 2022的时候发现一道很有意思的题 遂记下 源程序如下 这里因为在log处echo了num，因此就可以传入恶意num绕过waf并通过os.system log 命令执行 很简单的测试代码 在nss中去掉了num参数 那么预期解如下 首先看一段bash的源…</p>
+          <div class="article-row-tags"><span>ctf</span><span>web</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;渗透&quot;,&quot;HTB&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/fc0e5af.html">
+        <div class="article-row-date"><time datetime="2025-03-24T08:19:34.000Z">2025/03/24</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HTB-EscapeTwo</h3>
+          <p>As is common in real life Windows pentests, you will start this box with credentials for the following account: rose / KxEPkKe6R8su</p>
+          <div class="article-row-tags"><span>渗透</span><span>HTB</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;渗透&quot;,&quot;HTB&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/4bdc74c4.html">
+        <div class="article-row-date"><time datetime="2025-03-24T04:56:37.000Z">2025/03/24</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HTB-Dog</h3>
+          <p>扫目录扫到git泄露 githacker开扒 在files目录发现了应该是别的师傅写的马，还是不直接用了吧 robots.txt git历史中没发现内容 在setting中找到mysql的账号和密码 update.settings.json找到一个用户 尝试组合登录一下 成功…</p>
+          <div class="article-row-tags"><span>渗透</span><span>HTB</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;渗透&quot;,&quot;HTB&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/72ffed1e.html">
+        <div class="article-row-date"><time datetime="2025-03-23T06:31:58.000Z">2025/03/23</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HTB-Cypher</h3>
+          <p>发现一个jar包 反编译看一下 HelloWorldProcedure实现了一个自定义的Hello xxx的neo4j的存储 CustomFunctions 这里直接将url补http头然后补到String command = new String &quot;/bin/sh&quot;, &quot;-…</p>
+          <div class="article-row-tags"><span>渗透</span><span>HTB</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;渗透&quot;,&quot;HTB&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/f5701a7f.html">
+        <div class="article-row-date"><time datetime="2025-03-23T05:04:33.000Z">2025/03/23</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HTB-UnderPass</h3>
+          <p>fscan只扫出22 80 110端口 学到一个新的信息搜集的新招 snmpwalk 命令从目标主机 underpass.htb 获取的管理信息库 MIB 数据 得知该服务器运行了 daloRADIUS 查询得知目录结构一般为/daloradius/... 进一步目录扫描 但…</p>
+          <div class="article-row-tags"><span>渗透</span><span>HTB</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;渗透&quot;,&quot;HTB&quot;,&quot;windows&quot;,&quot;域渗透&quot;,&quot;SharpHound&quot;,&quot;psafe3&quot;,&quot;DCSync&quot;,&quot;Kerberos&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/92e7967d.html">
+        <div class="article-row-date"><time datetime="2025-03-22T05:37:36.000Z">2025/03/22</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HTB-Administrator</h3>
+          <p>As is common in real life Windows pentests, you will start the Administrator box with credentials for the following account: Username: Oli…</p>
+          <div class="article-row-tags"><span>渗透</span><span>HTB</span><span>windows</span></div>
+        </div>
+        <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;渗透&quot;,&quot;HTB&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/d681991e.html">
+        <div class="article-row-date"><time datetime="2025-03-21T07:22:54.000Z">2025/03/21</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HTB-LinkVortex</h3>
+          <p>fscan扫描没什么内容 目录扫描扫到 一个登录框，但是暂时利用不起来 fuzz出一个 Launching Soon git泄露 githack和githacker拉下来不大一样 可以获取到一些敏感信息泄露 学到了一个新姿势 可以关注/.git/logs/HEAD是对应的上传…</p>
+          <div class="article-row-tags"><span>渗透</span><span>HTB</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;渗透&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/54ae0e11.html">
+        <div class="article-row-date"><time datetime="2025-03-20T05:26:00.000Z">2025/03/20</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HTB-Cat</h3>
+          <p>fscan dirsearch扫到git泄露 githacker拉下来 注册账号后发现这里可能有漏洞点 审计代码 这里对出了照片的其他选项做了过滤，因此可以从照片入手 貌似是对MIME头做了检验 下面还有一个白名单 那好像不大好注了 看看别的 在view cat看到打印了这么…</p>
+          <div class="article-row-tags"><span>渗透</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/2a97a4ed.html">
+        <div class="article-row-date"><time datetime="2025-03-19T08:21:44.000Z">2025/03/19</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>HTB-Alert</h3>
+          <p>dirsearch 打开网站 是一个文件上传 只能传markdown文件 尝试xss 尝试访问/messages.php文件并将响应结果传输回攻击机 通过sharemarkdown获得路径 发送给网站管理员 bot点击后弹回内容 url解密得到 可以看到接受一个file参数…</p>
+          <div class="article-row-tags"></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;ctf&quot;,&quot;web&quot;,&quot;sql注入&quot;,&quot;XSS&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/d6f9135a.html">
+        <div class="article-row-date"><time datetime="2025-03-10T05:05:05.000Z">2025/03/10</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>XCTF-TPCTF</h3>
+          <p>TPCTF-XCTF rk6 没爆0 输出了一点 supersqli 看到这类的waf有点走不动道 第一反应是绕过waf，这里尝试了两种思路 一开始想到是http走私，但是没走成，前后都处理了TE头 https://www.geekby.site/2022/03/waf-by…</p>
+          <div class="article-row-tags"><span>ctf</span><span>web</span><span>sql注入</span></div>
+        </div>
+        <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;web&quot;,&quot;java反序列化&quot;]">
+    <article class="article-row" data-article-item data-topic="漏洞研究">
+      <a class="article-row-link" href="/posts/d64ee7.html">
+        <div class="article-row-date"><time datetime="2025-02-19T08:00:19.000Z">2025/02/19</time><span>漏洞研究</span></div>
+        <div class="article-row-copy">
+          <h3>Java反序列化之URLDNS链分析</h3>
+          <p>链子 1. HashMap-&gt;readObject 2. HashMap-&gt;hash 3. URL-&gt;hashCode 4. URLStreamHandler-&gt;hashCode 5. URLStreamHandler-&gt;getHostAddress 6. InetAddre…</p>
+          <div class="article-row-tags"><span>web</span><span>java反序列化</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;CTF&quot;,&quot;web&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/53577.html">
+        <div class="article-row-date"><time datetime="2025-02-10T10:04:34.000Z">2025/02/10</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>2025VNCTF</h3>
+          <p>WEB ez emlog 猴子大王在1月23日开始学习Web安全并搭建了一个博客，你能找到他博客的漏洞吗。 一条人一只烟 一道web干一天 也是给我挖上0day了 拉源码做审计 跟一下，使用mt rand生成随机数 由于这两个都调用了getRandStr函数，分别查看调用 a…</p>
+          <div class="article-row-tags"><span>CTF</span><span>web</span></div>
+        </div>
+        <div class="article-row-end"><span>5 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;CTF&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/65071.html">
+        <div class="article-row-date"><time datetime="2025-02-07T11:30:37.000Z">2025/02/07</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>2025西湖论剑</h3>
+          <p>签到 web Rank-l 【Flag完整格式一般为：DASCTF ，只需要提交 内的内容。若Flag为其它格式，则会在题目描述中单独说明。】 7 7 测试得到HTML Entity编码的回显，ssti特征 测试得到子类 直接利用os. wrap close无果 直接调用os…</p>
+          <div class="article-row-tags"><span>CTF</span></div>
+        </div>
+        <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;电子取证&quot;]">
+    <article class="article-row" data-article-item data-topic="电子取证">
+      <a class="article-row-link" href="/posts/31513.html">
+        <div class="article-row-date"><time datetime="2025-01-22T03:59:00.000Z">2025/01/22</time><span>电子取证</span></div>
+        <div class="article-row-copy">
+          <h3>2024数证杯决赛团队赛</h3>
+          <p>团队赛MD5值：E5297609ACCD1C8DF7E6F56F8912E734 团队赛容器密码：mW7@B!tRp Xz46Y9#KFUV^J2&amp;NqoHqTpLCE%8rvGW AX#1k@YL3$M5!bWY 9HLFq7UZR6^T!XoVmPK28J&amp;CY9%6 A…</p>
+          <div class="article-row-tags"><span>电子取证</span></div>
+        </div>
+        <div class="article-row-end"><span>8 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;web&quot;,&quot;ctf&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/34322.html">
+        <div class="article-row-date"><time datetime="2024-12-16T00:54:40.000Z">2024/12/16</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>2024CISCN&amp;铁三初赛web<svg class="icon title-lock" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="16" r="1"></circle><rect x="3" y="10" width="18" height="12" rx="2"></rect><path d="M7 10V7a5 5 0 0 1 10 0v3"></path></svg></h3>
+          <p>此文章受密码保护，验证后可阅读完整内容。</p>
+          <div class="article-row-tags"><span>web</span><span>ctf</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;电子取证&quot;]">
+    <article class="article-row" data-article-item data-topic="电子取证">
+      <a class="article-row-link" href="/posts/12333.html">
+        <div class="article-row-date"><time datetime="2024-12-05T10:10:53.000Z">2024/12/05</time><span>电子取证</span></div>
+        <div class="article-row-copy">
+          <h3>2024数证杯决赛个人赛</h3>
+          <p>全国公安机关电子数据取证分析大比武202412031809 40道题，共100.0分 vc 请根据计算机检材，回答以下问题： 10道题，共19.0分 1. 计算机中曾挂载的Bitlocker加密分区的恢复密钥后6位为？（答案格式：6位数字） 1.0分 2. 请写出曾远程连接过…</p>
+          <div class="article-row-tags"><span>电子取证</span></div>
+        </div>
+        <div class="article-row-end"><span>6 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;web&quot;,&quot;ctf&quot;,&quot;pop链反序列化&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/28181.html">
+        <div class="article-row-date"><time datetime="2024-11-05T06:56:09.000Z">2024/11/05</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>pop链构造的一些其他考点<svg class="icon title-lock" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="16" r="1"></circle><rect x="3" y="10" width="18" height="12" rx="2"></rect><path d="M7 10V7a5 5 0 0 1 10 0v3"></path></svg></h3>
+          <p>此文章受密码保护，验证后可阅读完整内容。</p>
+          <div class="article-row-tags"><span>web</span><span>ctf</span><span>pop链反序列化</span></div>
+        </div>
+        <div class="article-row-end"><span>6 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;渗透靶场&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/33561.html">
+        <div class="article-row-date"><time datetime="2024-08-17T12:46:07.000Z">2024/08/17</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>ICA1-Vulnhub</h3>
+          <p>本机ip 靶机ip 内网探测 端口探测 漏洞扫描 扫到两个可能可以利用的点 目录索引和敏感文件 : - /css/, /template/, /images/ : 这些目录启用了目录索引功能，这意味着目录下的文件列表可以被直接访问，可能会暴露敏感信息。 - /manual/…</p>
+          <div class="article-row-tags"><span>渗透靶场</span></div>
+        </div>
+        <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;nodejs&quot;,&quot;web&quot;,&quot;ctf&quot;,&quot;代码审计&quot;,&quot;原型污染&quot;,&quot;ssrf&quot;]">
+    <article class="article-row" data-article-item data-topic="赛事复盘">
+      <a class="article-row-link" href="/posts/20764.html">
+        <div class="article-row-date"><time datetime="2024-07-22T12:10:27.000Z">2024/07/22</time><span>赛事复盘</span></div>
+        <div class="article-row-copy">
+          <h3>nodejs学习</h3>
+          <p>NodeJS nodejs和vue的关系 ‌ ‌Node.js和‌Vue.js的关系 ‌‌12 Node.js是一种在服务器端运行的JavaScript运行时环境，而Vue.js是一个用于构建用户界面的JavaScript框架。Node.js负责处理服务器端逻辑，如HTTP请…</p>
+          <div class="article-row-tags"><span>nodejs</span><span>web</span><span>ctf</span></div>
+        </div>
+        <div class="article-row-end"><span>8 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;电子取证&quot;,&quot;介质&quot;,&quot;服务器&quot;,&quot;网站重构&quot;,&quot;云手机&quot;,&quot;pve&quot;,&quot;数据分析&quot;]">
+    <article class="article-row" data-article-item data-topic="电子取证">
+      <a class="article-row-link" href="/posts/46629.html">
+        <div class="article-row-date"><time datetime="2024-05-20T10:12:06.000Z">2024/05/20</time><span>电子取证</span></div>
+        <div class="article-row-copy">
+          <h3>24FIC线下决赛</h3>
+          <p>2024年弘连网络FIC大会竞赛题-0518线下决赛题 案件背景: 2024年3月15日凌晨,受害人短视频平台上看到一段近期火爆的交通事故视频，留言后有人通过私信联系，称有一个赚大钱的机会，该人自称李某，提议让他到他们平台充值做代理；最终受害人发现自己被卷入了一个复杂的网络传…</p>
+          <div class="article-row-tags"><span>电子取证</span><span>介质</span><span>服务器</span></div>
+        </div>
+        <div class="article-row-end"><span>10 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;内网渗透&quot;,&quot;nmap&quot;,&quot;shell&quot;,&quot;提权&quot;,&quot;msf&quot;,&quot;drupal&quot;,&quot;mysql&quot;,&quot;hydra&quot;,&quot;john&quot;]">
+    <article class="article-row" data-article-item data-topic="靶场实战">
+      <a class="article-row-link" href="/posts/60396.html">
+        <div class="article-row-date"><time datetime="2024-03-03T08:38:51.000Z">2024/03/03</time><span>靶场实战</span></div>
+        <div class="article-row-copy">
+          <h3>DC-1靶场练习</h3>
+          <p>arp扫描 nmap 看样子是个 Drupal 站点 111/tcp：开放的 rpcbind 服务 ssh爆破 无果 访问80端口 msf搜索漏洞 连接成功 寻找flag 翻译： Drupal 的配置文件主要包括 settings.php 和 sites/default/se…</p>
+          <div class="article-row-tags"><span>内网渗透</span><span>nmap</span><span>shell</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div>
+    <div data-tag-item data-tags="[&quot;about me&quot;]">
+    <article class="article-row" data-article-item data-topic="学习札记">
+      <a class="article-row-link" href="/posts/61383.html">
+        <div class="article-row-date"><time datetime="2023-09-23T12:20:48.000Z">2023/09/23</time><span>学习札记</span></div>
+        <div class="article-row-copy">
+          <h3>about_me</h3>
+          <p>Galaxy成员 n0wayback成员 微信🛰：xyaxxya 欢迎交流</p>
+          <div class="article-row-tags"><span>about me</span></div>
+        </div>
+        <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
+      </a>
+    </article></div></div>
+      </section>
+    </main>
     
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">tags</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="tag-cloud-list is-center"><a href="/tags/web/" style="font-size: 2.1em; color: rgb(71, 148, 147)">web</a><a href="/tags/ctf/" style="font-size: 1.92em; color: rgb(142, 8, 191)">ctf</a><a href="/tags/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/" style="font-size: 1.56em; color: rgb(43, 105, 115)">电子取证</a><a href="/tags/CTF/" style="font-size: 1.74em; color: rgb(127, 197, 77)">CTF</a><a href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 1.2em; color: rgb(15, 200, 140)">年度总结</a><a href="/tags/%E6%8F%90%E6%9D%83/" style="font-size: 1.38em; color: rgb(94, 55, 70)">提权</a><a href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" style="font-size: 1.38em; color: rgb(106, 43, 112)">内网渗透</a><a href="/tags/nmap/" style="font-size: 1.2em; color: rgb(60, 146, 139)">nmap</a><a href="/tags/shell/" style="font-size: 1.2em; color: rgb(153, 105, 35)">shell</a><a href="/tags/msf/" style="font-size: 1.2em; color: rgb(30, 183, 98)">msf</a><a href="/tags/drupal/" style="font-size: 1.2em; color: rgb(113, 29, 93)">drupal</a><a href="/tags/mysql/" style="font-size: 1.2em; color: rgb(69, 132, 155)">mysql</a><a href="/tags/hydra/" style="font-size: 1.2em; color: rgb(3, 157, 164)">hydra</a><a href="/tags/john/" style="font-size: 1.2em; color: rgb(166, 40, 89)">john</a><a href="/tags/%E6%B8%97%E9%80%8F/" style="font-size: 2.1em; color: rgb(72, 174, 146)">渗透</a><a href="/tags/%E4%BB%8B%E8%B4%A8/" style="font-size: 1.2em; color: rgb(4, 29, 120)">介质</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.2em; color: rgb(127, 169, 66)">服务器</a><a href="/tags/%E7%BD%91%E7%AB%99%E9%87%8D%E6%9E%84/" style="font-size: 1.2em; color: rgb(148, 57, 158)">网站重构</a><a href="/tags/%E4%BA%91%E6%89%8B%E6%9C%BA/" style="font-size: 1.2em; color: rgb(144, 23, 126)">云手机</a><a href="/tags/pve/" style="font-size: 1.2em; color: rgb(147, 119, 37)">pve</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 1.2em; color: rgb(142, 74, 95)">数据分析</a><a href="/tags/HMVM/" style="font-size: 1.38em; color: rgb(27, 191, 61)">HMVM</a><a href="/tags/Ansible-Vault/" style="font-size: 1.2em; color: rgb(0, 78, 11)">Ansible Vault</a><a href="/tags/pop3/" style="font-size: 1.2em; color: rgb(164, 172, 43)">pop3</a><a href="/tags/HTB/" style="font-size: 1.92em; color: rgb(136, 19, 187)">HTB</a><a href="/tags/windows/" style="font-size: 1.2em; color: rgb(53, 44, 187)">windows</a><a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/" style="font-size: 1.2em; color: rgb(199, 49, 37)">域渗透</a><a href="/tags/SharpHound/" style="font-size: 1.2em; color: rgb(59, 21, 103)">SharpHound</a><a href="/tags/psafe3/" style="font-size: 1.2em; color: rgb(88, 163, 176)">psafe3</a><a href="/tags/DCSync/" style="font-size: 1.2em; color: rgb(35, 66, 7)">DCSync</a><a href="/tags/Kerberos/" style="font-size: 1.2em; color: rgb(100, 84, 22)">Kerberos</a><a href="/tags/%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/" style="font-size: 1.2em; color: rgb(86, 149, 143)">渗透靶场</a><a href="/tags/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="font-size: 1.2em; color: rgb(23, 166, 12)">java反序列化</a><a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 1.2em; color: rgb(155, 188, 13)">sql注入</a><a href="/tags/XSS/" style="font-size: 1.2em; color: rgb(184, 54, 165)">XSS</a><a href="/tags/about-me/" style="font-size: 1.2em; color: rgb(21, 156, 13)">about me</a><a href="/tags/nodejs/" style="font-size: 1.2em; color: rgb(107, 115, 68)">nodejs</a><a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 1.38em; color: rgb(99, 145, 35)">代码审计</a><a href="/tags/%E5%8E%9F%E5%9E%8B%E6%B1%A1%E6%9F%93/" style="font-size: 1.2em; color: rgb(104, 44, 37)">原型污染</a><a href="/tags/ssrf/" style="font-size: 1.2em; color: rgb(4, 136, 186)">ssrf</a><a href="/tags/pop%E9%93%BE%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="font-size: 1.2em; color: rgb(33, 98, 188)">pop链反序列化</a><a href="/tags/javascript/" style="font-size: 1.2em; color: rgb(124, 96, 196)">javascript</a><a href="/tags/vm2/" style="font-size: 1.2em; color: rgb(160, 181, 70)">vm2</a><a href="/tags/Nacos/" style="font-size: 1.2em; color: rgb(185, 125, 2)">Nacos</a><a href="/tags/Shiro/" style="font-size: 1.2em; color: rgb(73, 104, 146)">Shiro</a><a href="/tags/Fastjson/" style="font-size: 1.2em; color: rgb(162, 184, 101)">Fastjson</a><a href="/tags/Decrypt/" style="font-size: 1.2em; color: rgb(2, 149, 79)">Decrypt</a><a href="/tags/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/" style="font-size: 1.2em; color: rgb(18, 167, 121)">春秋云镜</a><a href="/tags/thinkphp-5-0-23-RCE/" style="font-size: 1.2em; color: rgb(132, 130, 140)">thinkphp 5.0.23 RCE</a><a href="/tags/mysql%E5%91%BD%E4%BB%A4%E6%8F%90%E6%9D%83/" style="font-size: 1.2em; color: rgb(36, 169, 140)">mysql命令提权</a><a href="/tags/%E4%BF%A1%E5%91%BCnday/" style="font-size: 1.2em; color: rgb(173, 177, 165)">信呼nday</a><a href="/tags/ms17-010-%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D/" style="font-size: 1.2em; color: rgb(85, 78, 200)">ms17-010(永恒之蓝)</a><a href="/tags/DCSyn/" style="font-size: 1.2em; color: rgb(9, 187, 128)">DCSyn</a><a href="/tags/CVE-2020-1983-Tomcat%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="font-size: 1.2em; color: rgb(18, 155, 116)">CVE-2020-1983 Tomcat文件包含</a><a href="/tags/MS17-010/" style="font-size: 1.2em; color: rgb(34, 47, 198)">MS17-010</a><a href="/tags/NTLM-Relay-via-WebDAV-Petitpotam-Coerce-Authentication/" style="font-size: 1.2em; color: rgb(158, 15, 126)">NTLM Relay via WebDAV+Petitpotam Coerce Authentication</a><a href="/tags/RBCD/" style="font-size: 1.2em; color: rgb(100, 39, 125)">RBCD</a><a href="/tags/noPac/" style="font-size: 1.2em; color: rgb(108, 161, 74)">noPac</a><a href="/tags/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/" style="font-size: 1.2em; color: rgb(47, 131, 136)">信息泄露</a><a href="/tags/Jenkins%E5%88%9D%E5%A7%8B%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81/" style="font-size: 1.2em; color: rgb(136, 28, 200)">Jenkins初始管理员密码</a><a href="/tags/jenkins%E5%90%8E%E5%8F%B0RCE/" style="font-size: 1.2em; color: rgb(156, 187, 69)">jenkins后台RCE</a><a href="/tags/Gitlab-API-Token/" style="font-size: 1.2em; color: rgb(111, 53, 195)">Gitlab API Token</a><a href="/tags/Oracle-RCE/" style="font-size: 1.2em; color: rgb(175, 177, 54)">Oracle RCE</a><a href="/tags/SeRestorePrivilege%E6%8F%90%E6%9D%83/" style="font-size: 1.2em; color: rgb(32, 96, 136)">SeRestorePrivilege提权</a><a href="/tags/SPN/" style="font-size: 1.2em; color: rgb(27, 36, 115)">SPN</a><a href="/tags/%E5%8D%B7%E5%BD%B1%E6%8B%B7%E8%B4%9D%E6%8F%90%E5%8F%96SAM/" style="font-size: 1.2em; color: rgb(167, 135, 20)">卷影拷贝提取SAM</a><a href="/tags/%E5%8F%96%E8%AF%81%E6%BA%AF%E6%BA%90/" style="font-size: 1.2em; color: rgb(66, 104, 136)">取证溯源</a><a href="/tags/ruoyi/" style="font-size: 1.2em; color: rgb(38, 124, 115)">ruoyi</a><a href="/tags/CMS/" style="font-size: 1.2em; color: rgb(66, 5, 151)">CMS</a></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/942cb43a.html" title="HMVM-Poppins"><img src="https://www.dmoe.cc/random.php?8829" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HMVM-Poppins"/></a><div class="content"><a class="title" href="/posts/942cb43a.html" title="HMVM-Poppins">HMVM-Poppins</a><time datetime="2026-02-12T04:39:15.000Z" title="发表于 2026-02-12 12:39:15">2026-02-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/8cc5a836.html" title="HMVM-MS02423"><img src="https://www.dmoe.cc/random.php?2667" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HMVM-MS02423"/></a><div class="content"><a class="title" href="/posts/8cc5a836.html" title="HMVM-MS02423">HMVM-MS02423</a><time datetime="2026-02-11T04:57:11.000Z" title="发表于 2026-02-11 12:57:11">2026-02-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3d3db288.html" title="HMVM-Coolpg"><img src="https://www.dmoe.cc/random.php?6586" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HMVM-Coolpg"/></a><div class="content"><a class="title" href="/posts/3d3db288.html" title="HMVM-Coolpg">HMVM-Coolpg</a><time datetime="2026-02-10T03:48:19.000Z" title="发表于 2026-02-10 11:48:19">2026-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/caa2ab8d.html" title="第十八届软件系统安全赛半决赛取证DC"><img src="https://www.dmoe.cc/random.php?4515" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第十八届软件系统安全赛半决赛取证DC"/></a><div class="content"><a class="title" href="/posts/caa2ab8d.html" title="第十八届软件系统安全赛半决赛取证DC">第十八届软件系统安全赛半决赛取证DC</a><time datetime="2026-02-08T05:11:41.000Z" title="发表于 2026-02-08 13:11:41">2026-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1f59513d.html" title="2025年度总结"><img src="https://www.dmoe.cc/random.php?2980" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025年度总结"/></a><div class="content"><a class="title" href="/posts/1f59513d.html" title="2025年度总结">2025年度总结</a><time datetime="2026-01-12T13:55:08.000Z" title="发表于 2026-01-12 21:55:08">2026-01-12</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>分类</span>
-            
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B8%97%E9%80%8F/"><span class="card-category-list-name">渗透</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"><span class="card-category-list-name">内网渗透</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/DC%E7%B3%BB%E5%88%97/"><span class="card-category-list-name">DC系列</span><span class="card-category-list-count">1</span></a></li></ul></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/"><span class="card-category-list-name">电子取证</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/wp/"><span class="card-category-list-name">wp</span><span class="card-category-list-count">1</span></a></li></ul></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Oracle-RCE/" style="font-size: 1.1em; color: #999">Oracle RCE</a> <a href="/tags/HTB/" style="font-size: 1.5em; color: #99a9bf">HTB</a> <a href="/tags/hydra/" style="font-size: 1.1em; color: #999">hydra</a> <a href="/tags/NTLM-Relay-via-WebDAV-Petitpotam-Coerce-Authentication/" style="font-size: 1.1em; color: #999">NTLM Relay via WebDAV+Petitpotam Coerce Authentication</a> <a href="/tags/Decrypt/" style="font-size: 1.1em; color: #999">Decrypt</a> <a href="/tags/Ansible-Vault/" style="font-size: 1.1em; color: #999">Ansible Vault</a> <a href="/tags/%E4%BB%8B%E8%B4%A8/" style="font-size: 1.1em; color: #999">介质</a> <a href="/tags/thinkphp-5-0-23-RCE/" style="font-size: 1.1em; color: #999">thinkphp 5.0.23 RCE</a> <a href="/tags/pop3/" style="font-size: 1.1em; color: #999">pop3</a> <a href="/tags/SPN/" style="font-size: 1.1em; color: #999">SPN</a> <a href="/tags/shell/" style="font-size: 1.1em; color: #999">shell</a> <a href="/tags/drupal/" style="font-size: 1.1em; color: #999">drupal</a> <a href="/tags/ssrf/" style="font-size: 1.1em; color: #999">ssrf</a> <a href="/tags/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/" style="font-size: 1.37em; color: #99a4b2">电子取证</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 1.1em; color: #999">数据分析</a> <a href="/tags/pve/" style="font-size: 1.1em; color: #999">pve</a> <a href="/tags/nmap/" style="font-size: 1.1em; color: #999">nmap</a> <a href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 1.1em; color: #999">年度总结</a> <a href="/tags/jenkins%E5%90%8E%E5%8F%B0RCE/" style="font-size: 1.1em; color: #999">jenkins后台RCE</a> <a href="/tags/RBCD/" style="font-size: 1.1em; color: #999">RBCD</a> <a href="/tags/about-me/" style="font-size: 1.1em; color: #999">about me</a> <a href="/tags/noPac/" style="font-size: 1.1em; color: #999">noPac</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 1.23em; color: #999ea6">代码审计</a> <a href="/tags/windows/" style="font-size: 1.1em; color: #999">windows</a> <a href="/tags/javascript/" style="font-size: 1.1em; color: #999">javascript</a> <a href="/tags/HMVM/" style="font-size: 1.23em; color: #999ea6">HMVM</a> <a href="/tags/CMS/" style="font-size: 1.1em; color: #999">CMS</a> <a href="/tags/nodejs/" style="font-size: 1.1em; color: #999">nodejs</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 1.1em; color: #999">sql注入</a> <a href="/tags/SeRestorePrivilege%E6%8F%90%E6%9D%83/" style="font-size: 1.1em; color: #999">SeRestorePrivilege提权</a> <a href="/tags/%E5%8F%96%E8%AF%81%E6%BA%AF%E6%BA%90/" style="font-size: 1.1em; color: #999">取证溯源</a> <a href="/tags/MS17-010/" style="font-size: 1.1em; color: #999">MS17-010</a> <a href="/tags/Kerberos/" style="font-size: 1.1em; color: #999">Kerberos</a> <a href="/tags/%E6%8F%90%E6%9D%83/" style="font-size: 1.23em; color: #999ea6">提权</a> <a href="/tags/Nacos/" style="font-size: 1.1em; color: #999">Nacos</a> <a href="/tags/pop%E9%93%BE%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="font-size: 1.1em; color: #999">pop链反序列化</a> <a href="/tags/DCSync/" style="font-size: 1.1em; color: #999">DCSync</a> <a href="/tags/XSS/" style="font-size: 1.1em; color: #999">XSS</a> <a href="/tags/ctf/" style="font-size: 1.5em; color: #99a9bf">ctf</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E6%B1%A1%E6%9F%93/" style="font-size: 1.1em; color: #999">原型污染</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">39</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2026-03-09T07:20:45.828Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">105k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-03-09T07:20:45.884Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
-  const initValine = () => {
-    const valine = new Valine(Object.assign({
-      el: '#vcomment',
-      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
-      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
-      avatar: 'monsterid',
-      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
-      emojiMaps: "",
-      path: window.location.pathname,
-      visitor: true
-    }, null))
-  }
-
-  const loadValine = async () => {
-    if (typeof Valine === 'function') initValine()
-    else {
-      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
-      initValine()
-    }
-  }
-
-  if ('Valine' === 'Valine' || !false) {
-    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
-    else setTimeout(loadValine, 0)
-  } else {
-    window.loadOtherComment = loadValine
-  }
-})()</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
-  const changeContent = (content) => {
-    if (content === '') return content
-
-    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-    content = content.replace(/<[^>]+>/g,"") // remove html tag
-
-    if (content.length > 150) {
-      content = content.substring(0,150) + '...'
-    }
-    return content
-  }
-
-  const getIcon = (icon, mail) => {
-    if (icon) return icon
-    let defaultIcon = '?d=monsterid'
-    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
-    return iconUrl
-  }
-
-  const generateHtml = array => {
-    let result = ''
-
-    if (array.length) {
-      for (let i = 0; i < array.length; i++) {
-        result += '<div class=\'aside-list-item\'>'
-
-        if (true) {
-          const name = 'src'
-          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
-        }
-
-        result += `<div class='content'>
-        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
-        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
-        </div></div>`
-      }
-    } else {
-      result += '没有评论'
-    }
-
-    let $dom = document.querySelector('#card-newest-comments .aside-list')
-    $dom && ($dom.innerHTML= result)
-    window.lazyLoadInstance && window.lazyLoadInstance.update()
-    window.pjax && window.pjax.refresh($dom)
-  }
-
-  const getComment = () => {
-    const serverURL = 'https://pygeiy3e.lc-cn-n1-shared.com'
-
-    var settings = {
-      "method": "GET",
-      "headers": {
-        "X-LC-Id": 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
-        "X-LC-Key": 'V8vEx9nsiDEMy45ekCcPUaiN',
-        "Content-Type": "application/json"
-      },
-    }
-
-    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
-      .then(response => response.json())
-      .then(data => {
-        const valineArray = data.results.map(function (e) {
-          return {
-            'avatar': getIcon(e.QQAvatar, e.mail),
-            'content': changeContent(e.comment),
-            'nick': e.nick,
-            'url': e.url + '#' + e.objectId,
-            'date': e.updatedAt,
-          }
-        })
-        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
-        generateHtml(valineArray)
-      }).catch(e => {
-        const $dom = document.querySelector('#card-newest-comments .aside-list')
-        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
-      }) 
-  }
-
-  const newestCommentInit = () => {
-    if (document.querySelector('#card-newest-comments .aside-list')) {
-      const data = saveToLocal.get('valine-newest-comments')
-      if (data) {
-        generateHtml(JSON.parse(data))
-      } else {
-        getComment()
-      }
-    }
-  }
-
-  newestCommentInit()
-  document.addEventListener('pjax:complete', newestCommentInit)
-})</script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = true;
-POWERMODE.mobile = true;
-document.body.addEventListener('input', POWERMODE);
-</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
+    <footer class="site-footer">
+      <div class="footer-lead">
+        <a class="footer-brand" href="/">Yiyi</a>
+        <p>春风得意马蹄疾，一日看尽长安花<br><span>慢慢来，比较快</span></p>
+      </div>
+      <div class="footer-links">
+        <nav aria-label="页脚导航"><a class="" href="/#articles">文章</a><a class="" href="/categories/">专题</a><a class="" href="/tags/">标签</a><a class="" href="/archives/">归档</a><a class="" href="/about/">关于</a></nav>
+        <div class="footer-social">
+    <a href="https://github.com/xyaxxya" target="_blank" rel="noopener noreferrer"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg><span>GitHub</span></a>
+    <a href="https://blog.csdn.net/xydsg" target="_blank" rel="noopener noreferrer"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg><span>CSDN</span></a>
+    <a href="mailto:3170234809@qq.com"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span>Email</span></a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 yiyi</span>
+        <span>春风正好，步履不停</span>
+      </div>
+    </footer>
+    
+    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+      <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+      <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
+      <div class="mobile-menu-social">
+    <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
+    <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
+    <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
+    </div>
+    
+    <dialog class="search-dialog" data-search-dialog>
+      <div class="search-shell">
+        <header class="search-header">
+          <span class="search-title">站内搜索</span>
+          <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+        </header>
+        <label class="search-field">
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+          <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
+        </label>
+        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <div class="search-results" data-search-results aria-live="polite"></div>
+        <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
+      </div>
+    </dialog>
+    
+    <dialog class="image-lightbox" data-image-lightbox>
+      <button class="icon-button lightbox-close" type="button" data-lightbox-close aria-label="关闭图片预览"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+      <img data-lightbox-image alt="">
+      <p data-lightbox-caption></p>
+    </dialog>
+    <script src="/assets/app.js" defer></script>
+  </body>
+</html>

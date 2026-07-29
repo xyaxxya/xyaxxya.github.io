@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Yiyi</title>
+    <link>https://xyaxxya.github.io/</link>
+    <description>春风得意马蹄疾，一日看尽长安花</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 29 Jul 2026 09:12:15 GMT</lastBuildDate>
+    
+    <item>
+      <title>HMVM-Poppins</title>
+      <link>https://xyaxxya.github.io/posts/942cb43a.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/942cb43a.html</guid>
+      <pubDate>Thu, 12 Feb 2026 04:39:15 GMT</pubDate>
+      <description>这个目录看起来有点奇怪，看起来像是多个字符的拼接 构造一个字典继续爆破 继续爆破 找到个hash.bak 使用hashcat爆破 放入字典 人物猜测就是主页的这些 测试后发现是小写 hydra爆破无果 手动测试发现必须得有用户名才校验密码 但是pop3可以正常爆破 得到用户名…</description>
+      <category>渗透</category><category>Ansible Vault</category><category>pop3</category>
+    </item>
+    <item>
+      <title>HMVM-MS02423</title>
+      <link>https://xyaxxya.github.io/posts/8cc5a836.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/8cc5a836.html</guid>
+      <pubDate>Wed, 11 Feb 2026 04:57:11 GMT</pubDate>
+      <description>423端口 并扫出了80的robots.txt .user.txt里有编码 解密得一个用户名字典 密码提示top500 抓个包看看怎么传参的 爆破 得到 ctf player:genesis 我这里用ffuf 补充几个筛选常用参数 -mc 200 只显示响应为200的 -fs…</description>
+      <category>渗透</category>
+    </item>
+    <item>
+      <title>HMVM-Coolpg</title>
+      <link>https://xyaxxya.github.io/posts/3d3db288.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/3d3db288.html</guid>
+      <pubDate>Tue, 10 Feb 2026 03:48:19 GMT</pubDate>
+      <description>F12 直接提示支持union select 手动测试一下 直接sqlmap跑了 ssh连接 简单看一眼 看一下suid然后sudo -l发现个脚本 有点容易的过头了</description>
+      <category>渗透</category>
+    </item>
+    <item>
+      <title>第十八届软件系统安全赛半决赛取证DC</title>
+      <link>https://xyaxxya.github.io/posts/caa2ab8d.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/caa2ab8d.html</guid>
+      <pubDate>Sun, 08 Feb 2026 05:11:41 GMT</pubDate>
+      <description>1.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者通过AD CS提权至域管理员，在攻击过程中，攻击者使用有问题的证书模版注册了一张证书，该证书的证书模版名、证书序列号是什么？（格式为模版名-序列号，如CertTemplate-2f000000064287f6f5d…</description>
+      <category>取证溯源</category>
+    </item>
+    <item>
+      <title>2025年度总结</title>
+      <link>https://xyaxxya.github.io/posts/1f59513d.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/1f59513d.html</guid>
+      <pubDate>Mon, 12 Jan 2026 13:55:08 GMT</pubDate>
+      <description>两年前看toto毕业的时候写下自己的四年，便萌生两年后自己也要试着回顾一下我的四年，只是没想到时间如此之快，谨以此文记录也致敬我的大学四年，也已自己的所感所想希望为迷茫的师弟们指点迷津 大一入学懵懂无知，饱含对所有j校新鲜事物的憧憬，啥都想尝试，唱了歌跳了舞，认识不少人，整个…</description>
+      <category>年度总结</category>
+    </item>
+    <item>
+      <title>学习一下javascript</title>
+      <link>https://xyaxxya.github.io/posts/ef7a0f8d.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/ef7a0f8d.html</guid>
+      <pubDate>Wed, 02 Jul 2025 10:17:50 GMT</pubDate>
+      <description>参考文章： Node.js 相关安全问题 - MustaphaMond - 博客园 深入理解 JavaScript Prototype 污染攻击 离别歌 Express+lodash+ejs: 从原型链污染到RCE Node.js 常见漏洞学习与总结 i春秋2020新春战“疫…</description>
+      <category>javascript</category><category>ctf</category><category>web</category><category>vm2</category>
+    </item>
+    <item>
+      <title>CVE-2025-32463复现</title>
+      <link>https://xyaxxya.github.io/posts/32bcf973.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/32bcf973.html</guid>
+      <pubDate>Wed, 02 Jul 2025 10:04:31 GMT</pubDate>
+      <description>地层 版本影响范围在 Sudo 1.9.14至1.9.17 全系列</description>
+      <category>提权</category>
+    </item>
+    <item>
+      <title>2025PYCC</title>
+      <link>https://xyaxxya.github.io/posts/b63ba91a.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/b63ba91a.html</guid>
+      <pubDate>Wed, 18 Jun 2025 11:00:20 GMT</pubDate>
+      <description>半决赛 回归基本功 “金铲铲”最强王者选手小睿来到了新赛季“赛博之城”，面对全新的版本，他试图重回最强王者段位，但却总是屡屡失败，他不由感叹：“归根到底还是基本功不够扎实，回归基本功，从代码中找到上分密码flag吧！” 题目中有提示 （注意：需要输入正确的“用户代理”身份标识…</description>
+      <category>CTF</category>
+    </item>
+    <item>
+      <title>OpenHarmony_CTF专题赛</title>
+      <link>https://xyaxxya.github.io/posts/a875e753.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/a875e753.html</guid>
+      <pubDate>Sun, 08 Jun 2025 15:59:11 GMT</pubDate>
+      <description>两天三道web也算是有惊无险 Filesystem 这是一个开发了不到百分之十的文件管理系统 tips：赛题服务环境启动较慢，请耐心等待2分钟左右再访问赛题，若长时间没有服务请尝试重启 审计代码最开始发现的就是 admin.controller.ts 中使用了 gray-ma…</description>
+      <category>CTF</category><category>web</category>
+    </item>
+    <item>
+      <title>若依CMS-4.5.1代码审计</title>
+      <link>https://xyaxxya.github.io/posts/7083c6a.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/7083c6a.html</guid>
+      <pubDate>Fri, 06 Jun 2025 05:53:59 GMT</pubDate>
+      <description>前期准备 源码 Releases · yangzongzhuan/RuoYi 导入sql文件 修改配置文件 src/main/resources/application-druid.yml Shiro反序列化 pom.xml中发现引入了Shiro组件 全局搜索cipherKe…</description>
+      <category>代码审计</category><category>ruoyi</category><category>CMS</category>
+    </item>
+    <item>
+      <title>春秋云镜-Privilege</title>
+      <link>https://xyaxxya.github.io/posts/c0aca0e.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/c0aca0e.html</guid>
+      <pubDate>Fri, 25 Apr 2025 05:45:42 GMT</pubDate>
+      <description>在这个靶场中，您将扮演一名资深黑客，被雇佣来评估虚构公司 XR Shop 的网络安全。您需要通过渗透测试逐个击破公司暴露在公网的应用，并通过后渗透技巧深入 XR Shop 的内部网络，寻找潜在的弱点和漏洞，并通过滥用 Windows 特权获取管理员权限，最终并获取隐藏在其内部…</description>
+      <category>信息泄露</category><category>Jenkins初始管理员密码</category><category>jenkins后台RCE</category><category>Gitlab API Token</category><category>Oracle RCE</category><category>SeRestorePrivilege提权</category><category>SPN</category><category>卷影拷贝提取SAM</category>
+    </item>
+    <item>
+      <title>春秋云镜-Spoofing</title>
+      <link>https://xyaxxya.github.io/posts/ac5e4dda.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/ac5e4dda.html</guid>
+      <pubDate>Thu, 24 Apr 2025 05:00:21 GMT</pubDate>
+      <description>Spoofing是一套难度为中等的靶场环境，完成该挑战可以帮助玩家了解内网渗透中的代理转发、内网扫描、信息收集、特权提升以及横向移动技术方法，加强对域环境核心认证机制的理解，以及掌握域环境渗透中一些有趣的技术要点。该靶场共有4个flag，分布于不同的靶机。 flag1 入口…</description>
+      <category>CVE-2020-1983 Tomcat文件包含</category><category>MS17-010</category><category>NTLM Relay via WebDAV+Petitpotam Coerce Authentication</category><category>RBCD</category><category>noPac</category>
+    </item>
+    <item>
+      <title>春秋云镜-Hospital</title>
+      <link>https://xyaxxya.github.io/posts/d66aab01.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/d66aab01.html</guid>
+      <pubDate>Sat, 19 Apr 2025 05:01:28 GMT</pubDate>
+      <description>描述：在这个场景中，你将扮演一名渗透测试工程师，被派遣去测试某家医院的网络安全性。你的目标是成功获取所有服务器的权限，以评估公司的网络安全状况。该靶场共有 4 个 flag，分布于不同的靶机。 标签：内网渗透、Nacos、Shiro、Fastjson、Decrypt 难度：简…</description>
+      <category>内网渗透</category><category>Nacos</category><category>Shiro</category><category>Fastjson</category><category>Decrypt</category>
+    </item>
+    <item>
+      <title>春秋云镜-Initial</title>
+      <link>https://xyaxxya.github.io/posts/327fc326.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/327fc326.html</guid>
+      <pubDate>Thu, 17 Apr 2025 05:36:50 GMT</pubDate>
+      <description>信息搜集 thinkphp 5.0.23 RCE 检测一下 写马 反弹shell 得到第一半flag 扫内网 172.22.1.18-信呼nday frps.ini frpc.ini 访问到 admin/admin123登录 运行得到返回地址 拿到flag2 172.22.1…</description>
+      <category>春秋云镜</category><category>thinkphp 5.0.23 RCE</category><category>mysql命令提权</category><category>信呼nday</category><category>ms17-010(永恒之蓝)</category><category>DCSyn</category>
+    </item>
+    <item>
+      <title>TGCTF_web</title>
+      <link>https://xyaxxya.github.io/posts/a646b97b.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/a646b97b.html</guid>
+      <pubDate>Tue, 15 Apr 2025 03:23:43 GMT</pubDate>
+      <description>AAA偷渡阴平 web签到1。简单的PHP特性，我的waf无懈可击！（bushi 考虑无参 ?tgctf2025=eval current getallheaders ; 或者 AAA偷渡阴平（复仇） ban了无参RCE，思考别的方法。 没有过滤session 直面天命 hi…</description>
+      <category>CTF</category><category>web</category>
+    </item>
+    <item>
+      <title>HMVM-SingDanceRap</title>
+      <link>https://xyaxxya.github.io/posts/4ff635be.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/4ff635be.html</guid>
+      <pubDate>Fri, 11 Apr 2025 07:48:56 GMT</pubDate>
+      <description>端口扫描 目录扫描</description>
+      <category>HMVM</category>
+    </item>
+    <item>
+      <title>HMVM-Todd</title>
+      <link>https://xyaxxya.github.io/posts/b7e3530d.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/b7e3530d.html</guid>
+      <pubDate>Fri, 11 Apr 2025 05:18:01 GMT</pubDate>
+      <description>扫端口 nc连7066 提权 nc会掉 写入ssh公钥连接 发现还是会掉 原来是踢用户 本来想着vshell上马来 发现靶机没有curl，没辙 www目录下有作者留下来的工具 发现在ssh结束的时候执行了kill todd.sh，那么结合sudo rm直接删掉 那么仔细看这个…</description>
+      <category>HMVM</category>
+    </item>
+    <item>
+      <title>环境变量注入执行任意命令</title>
+      <link>https://xyaxxya.github.io/posts/2da6415f.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/2da6415f.html</guid>
+      <pubDate>Fri, 28 Mar 2025 08:16:16 GMT</pubDate>
+      <description>在nss上做NCTF 2022的时候发现一道很有意思的题 遂记下 源程序如下 这里因为在log处echo了num，因此就可以传入恶意num绕过waf并通过os.system log 命令执行 很简单的测试代码 在nss中去掉了num参数 那么预期解如下 首先看一段bash的源…</description>
+      <category>ctf</category><category>web</category>
+    </item>
+    <item>
+      <title>HTB-EscapeTwo</title>
+      <link>https://xyaxxya.github.io/posts/fc0e5af.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/fc0e5af.html</guid>
+      <pubDate>Mon, 24 Mar 2025 08:19:34 GMT</pubDate>
+      <description>As is common in real life Windows pentests, you will start this box with credentials for the following account: rose / KxEPkKe6R8su</description>
+      <category>渗透</category><category>HTB</category>
+    </item>
+    <item>
+      <title>HTB-Dog</title>
+      <link>https://xyaxxya.github.io/posts/4bdc74c4.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/4bdc74c4.html</guid>
+      <pubDate>Mon, 24 Mar 2025 04:56:37 GMT</pubDate>
+      <description>扫目录扫到git泄露 githacker开扒 在files目录发现了应该是别的师傅写的马，还是不直接用了吧 robots.txt git历史中没发现内容 在setting中找到mysql的账号和密码 update.settings.json找到一个用户 尝试组合登录一下 成功…</description>
+      <category>渗透</category><category>HTB</category>
+    </item>
+    <item>
+      <title>HTB-Cypher</title>
+      <link>https://xyaxxya.github.io/posts/72ffed1e.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/72ffed1e.html</guid>
+      <pubDate>Sun, 23 Mar 2025 06:31:58 GMT</pubDate>
+      <description>发现一个jar包 反编译看一下 HelloWorldProcedure实现了一个自定义的Hello xxx的neo4j的存储 CustomFunctions 这里直接将url补http头然后补到String command = new String &quot;/bin/sh&quot;, &quot;-…</description>
+      <category>渗透</category><category>HTB</category>
+    </item>
+    <item>
+      <title>HTB-UnderPass</title>
+      <link>https://xyaxxya.github.io/posts/f5701a7f.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/f5701a7f.html</guid>
+      <pubDate>Sun, 23 Mar 2025 05:04:33 GMT</pubDate>
+      <description>fscan只扫出22 80 110端口 学到一个新的信息搜集的新招 snmpwalk 命令从目标主机 underpass.htb 获取的管理信息库 MIB 数据 得知该服务器运行了 daloRADIUS 查询得知目录结构一般为/daloradius/... 进一步目录扫描 但…</description>
+      <category>渗透</category><category>HTB</category>
+    </item>
+    <item>
+      <title>HTB-Administrator</title>
+      <link>https://xyaxxya.github.io/posts/92e7967d.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/92e7967d.html</guid>
+      <pubDate>Sat, 22 Mar 2025 05:37:36 GMT</pubDate>
+      <description>As is common in real life Windows pentests, you will start the Administrator box with credentials for the following account: Username: Oli…</description>
+      <category>渗透</category><category>HTB</category><category>windows</category><category>域渗透</category><category>SharpHound</category><category>psafe3</category><category>DCSync</category><category>Kerberos</category>
+    </item>
+    <item>
+      <title>HTB-LinkVortex</title>
+      <link>https://xyaxxya.github.io/posts/d681991e.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/d681991e.html</guid>
+      <pubDate>Fri, 21 Mar 2025 07:22:54 GMT</pubDate>
+      <description>fscan扫描没什么内容 目录扫描扫到 一个登录框，但是暂时利用不起来 fuzz出一个 Launching Soon git泄露 githack和githacker拉下来不大一样 可以获取到一些敏感信息泄露 学到了一个新姿势 可以关注/.git/logs/HEAD是对应的上传…</description>
+      <category>渗透</category><category>HTB</category>
+    </item>
+    <item>
+      <title>HTB-Cat</title>
+      <link>https://xyaxxya.github.io/posts/54ae0e11.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/54ae0e11.html</guid>
+      <pubDate>Thu, 20 Mar 2025 05:26:00 GMT</pubDate>
+      <description>fscan dirsearch扫到git泄露 githacker拉下来 注册账号后发现这里可能有漏洞点 审计代码 这里对出了照片的其他选项做了过滤，因此可以从照片入手 貌似是对MIME头做了检验 下面还有一个白名单 那好像不大好注了 看看别的 在view cat看到打印了这么…</description>
+      <category>渗透</category>
+    </item>
+    <item>
+      <title>HTB-Alert</title>
+      <link>https://xyaxxya.github.io/posts/2a97a4ed.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/2a97a4ed.html</guid>
+      <pubDate>Wed, 19 Mar 2025 08:21:44 GMT</pubDate>
+      <description>dirsearch 打开网站 是一个文件上传 只能传markdown文件 尝试xss 尝试访问/messages.php文件并将响应结果传输回攻击机 通过sharemarkdown获得路径 发送给网站管理员 bot点击后弹回内容 url解密得到 可以看到接受一个file参数…</description>
+      
+    </item>
+    <item>
+      <title>XCTF-TPCTF</title>
+      <link>https://xyaxxya.github.io/posts/d6f9135a.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/d6f9135a.html</guid>
+      <pubDate>Mon, 10 Mar 2025 05:05:05 GMT</pubDate>
+      <description>TPCTF-XCTF rk6 没爆0 输出了一点 supersqli 看到这类的waf有点走不动道 第一反应是绕过waf，这里尝试了两种思路 一开始想到是http走私，但是没走成，前后都处理了TE头 https://www.geekby.site/2022/03/waf-by…</description>
+      <category>ctf</category><category>web</category><category>sql注入</category><category>XSS</category>
+    </item>
+    <item>
+      <title>Java反序列化之URLDNS链分析</title>
+      <link>https://xyaxxya.github.io/posts/d64ee7.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/d64ee7.html</guid>
+      <pubDate>Wed, 19 Feb 2025 08:00:19 GMT</pubDate>
+      <description>链子 1. HashMap-&gt;readObject 2. HashMap-&gt;hash 3. URL-&gt;hashCode 4. URLStreamHandler-&gt;hashCode 5. URLStreamHandler-&gt;getHostAddress 6. InetAddre…</description>
+      <category>web</category><category>java反序列化</category>
+    </item>
+    <item>
+      <title>2025VNCTF</title>
+      <link>https://xyaxxya.github.io/posts/53577.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/53577.html</guid>
+      <pubDate>Mon, 10 Feb 2025 10:04:34 GMT</pubDate>
+      <description>WEB ez emlog 猴子大王在1月23日开始学习Web安全并搭建了一个博客，你能找到他博客的漏洞吗。 一条人一只烟 一道web干一天 也是给我挖上0day了 拉源码做审计 跟一下，使用mt rand生成随机数 由于这两个都调用了getRandStr函数，分别查看调用 a…</description>
+      <category>CTF</category><category>web</category>
+    </item>
+    <item>
+      <title>2025西湖论剑</title>
+      <link>https://xyaxxya.github.io/posts/65071.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/65071.html</guid>
+      <pubDate>Fri, 07 Feb 2025 11:30:37 GMT</pubDate>
+      <description>签到 web Rank-l 【Flag完整格式一般为：DASCTF ，只需要提交 内的内容。若Flag为其它格式，则会在题目描述中单独说明。】 7 7 测试得到HTML Entity编码的回显，ssti特征 测试得到子类 直接利用os. wrap close无果 直接调用os…</description>
+      <category>CTF</category>
+    </item>
+    <item>
+      <title>2024数证杯决赛团队赛</title>
+      <link>https://xyaxxya.github.io/posts/31513.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/31513.html</guid>
+      <pubDate>Wed, 22 Jan 2025 03:59:00 GMT</pubDate>
+      <description>团队赛MD5值：E5297609ACCD1C8DF7E6F56F8912E734 团队赛容器密码：mW7@B!tRp Xz46Y9#KFUV^J2&amp;NqoHqTpLCE%8rvGW AX#1k@YL3$M5!bWY 9HLFq7UZR6^T!XoVmPK28J&amp;CY9%6 A…</description>
+      <category>电子取证</category>
+    </item>
+    <item>
+      <title>2024CISCN&amp;铁三初赛web</title>
+      <link>https://xyaxxya.github.io/posts/34322.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/34322.html</guid>
+      <pubDate>Mon, 16 Dec 2024 00:54:40 GMT</pubDate>
+      <description>此文章受密码保护。</description>
+      <category>web</category><category>ctf</category>
+    </item>
+    <item>
+      <title>2024数证杯决赛个人赛</title>
+      <link>https://xyaxxya.github.io/posts/12333.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/12333.html</guid>
+      <pubDate>Thu, 05 Dec 2024 10:10:53 GMT</pubDate>
+      <description>全国公安机关电子数据取证分析大比武202412031809 40道题，共100.0分 vc 请根据计算机检材，回答以下问题： 10道题，共19.0分 1. 计算机中曾挂载的Bitlocker加密分区的恢复密钥后6位为？（答案格式：6位数字） 1.0分 2. 请写出曾远程连接过…</description>
+      <category>电子取证</category>
+    </item>
+    <item>
+      <title>pop链构造的一些其他考点</title>
+      <link>https://xyaxxya.github.io/posts/28181.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/28181.html</guid>
+      <pubDate>Tue, 05 Nov 2024 06:56:09 GMT</pubDate>
+      <description>此文章受密码保护。</description>
+      <category>web</category><category>ctf</category><category>pop链反序列化</category>
+    </item>
+    <item>
+      <title>ICA1-Vulnhub</title>
+      <link>https://xyaxxya.github.io/posts/33561.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/33561.html</guid>
+      <pubDate>Sat, 17 Aug 2024 12:46:07 GMT</pubDate>
+      <description>本机ip 靶机ip 内网探测 端口探测 漏洞扫描 扫到两个可能可以利用的点 目录索引和敏感文件 : - /css/, /template/, /images/ : 这些目录启用了目录索引功能，这意味着目录下的文件列表可以被直接访问，可能会暴露敏感信息。 - /manual/…</description>
+      <category>渗透靶场</category>
+    </item>
+    <item>
+      <title>nodejs学习</title>
+      <link>https://xyaxxya.github.io/posts/20764.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/20764.html</guid>
+      <pubDate>Mon, 22 Jul 2024 12:10:27 GMT</pubDate>
+      <description>NodeJS nodejs和vue的关系 ‌ ‌Node.js和‌Vue.js的关系 ‌‌12 Node.js是一种在服务器端运行的JavaScript运行时环境，而Vue.js是一个用于构建用户界面的JavaScript框架。Node.js负责处理服务器端逻辑，如HTTP请…</description>
+      <category>nodejs</category><category>web</category><category>ctf</category><category>代码审计</category><category>原型污染</category><category>ssrf</category>
+    </item>
+    <item>
+      <title>24FIC线下决赛</title>
+      <link>https://xyaxxya.github.io/posts/46629.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/46629.html</guid>
+      <pubDate>Mon, 20 May 2024 10:12:06 GMT</pubDate>
+      <description>2024年弘连网络FIC大会竞赛题-0518线下决赛题 案件背景: 2024年3月15日凌晨,受害人短视频平台上看到一段近期火爆的交通事故视频，留言后有人通过私信联系，称有一个赚大钱的机会，该人自称李某，提议让他到他们平台充值做代理；最终受害人发现自己被卷入了一个复杂的网络传…</description>
+      <category>电子取证</category><category>介质</category><category>服务器</category><category>网站重构</category><category>云手机</category><category>pve</category><category>数据分析</category>
+    </item>
+    <item>
+      <title>DC-1靶场练习</title>
+      <link>https://xyaxxya.github.io/posts/60396.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/60396.html</guid>
+      <pubDate>Sun, 03 Mar 2024 08:38:51 GMT</pubDate>
+      <description>arp扫描 nmap 看样子是个 Drupal 站点 111/tcp：开放的 rpcbind 服务 ssh爆破 无果 访问80端口 msf搜索漏洞 连接成功 寻找flag 翻译： Drupal 的配置文件主要包括 settings.php 和 sites/default/se…</description>
+      <category>内网渗透</category><category>nmap</category><category>shell</category><category>提权</category><category>msf</category><category>drupal</category><category>mysql</category><category>hydra</category><category>john</category>
+    </item>
+    <item>
+      <title>about_me</title>
+      <link>https://xyaxxya.github.io/posts/61383.html</link>
+      <guid isPermaLink="true">https://xyaxxya.github.io/posts/61383.html</guid>
+      <pubDate>Sat, 23 Sep 2023 12:20:48 GMT</pubDate>
+      <description>Galaxy成员 n0wayback成员 微信🛰：xyaxxya 欢迎交流</description>
+      <category>about me</category>
+    </item>
+  </channel>
+</rss>

