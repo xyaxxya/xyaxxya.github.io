@@ -40,7 +40,7 @@
       ".about-intro > *",
       ".about-content > *",
       ".post-hero > *",
-      ".article-content > *",
+      ".article-content > :is(h2, h3, h4, figure, blockquote, table)",
       ".toc-column",
       ".post-tools > *",
       ".post-pagination > *",
@@ -170,28 +170,48 @@
 
   function setupMobileMenu() {
     const menu = one("[data-mobile-menu]");
-    if (!menu) return;
+    if (!(menu instanceof HTMLDialogElement)) return;
     const toggles = all("[data-menu-toggle]");
-    const close = () => {
+    let restoreFocusTo = null;
+    let closeTimer = 0;
+    const syncToggles = (open) => toggles.forEach((toggle) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "关闭菜单" : "打开菜单");
+    });
+    const finishClose = (restoreFocus) => {
+      if (menu.open) menu.close();
+      window.clearTimeout(closeTimer);
+      closeTimer = 0;
+      syncBodyLock();
+      if (restoreFocus && restoreFocusTo?.isConnected) restoreFocusTo.focus({ preventScroll: true });
+      restoreFocusTo = null;
+    };
+    const close = ({ restoreFocus = true } = {}) => {
+      if (!menu.open && !menu.classList.contains("is-open")) return;
       menu.classList.remove("is-open");
-      menu.setAttribute("aria-hidden", "true");
       body.classList.remove("menu-open");
-      toggles.forEach((toggle) => toggle.setAttribute("aria-expanded", "false"));
-      syncBodyLock();
+      syncToggles(false);
+      if (reducedMotion.matches) finishClose(restoreFocus);
+      else closeTimer = window.setTimeout(() => finishClose(restoreFocus), 300);
     };
-    const open = () => {
-      menu.classList.add("is-open");
-      menu.setAttribute("aria-hidden", "false");
+    const open = (trigger) => {
+      window.clearTimeout(closeTimer);
+      restoreFocusTo = trigger instanceof HTMLElement ? trigger : document.activeElement;
+      if (!menu.open) menu.showModal();
       body.classList.add("menu-open");
-      toggles.forEach((toggle) => toggle.setAttribute("aria-expanded", "true"));
-      requestAnimationFrame(() => one("a", menu)?.focus());
+      syncToggles(true);
+      requestAnimationFrame(() => {
+        menu.classList.add("is-open");
+        one("a", menu)?.focus({ preventScroll: true });
+      });
       syncBodyLock();
     };
-    toggles.forEach((toggle) => toggle.addEventListener("click", () => menu.classList.contains("is-open") ? close() : open()));
+    toggles.forEach((toggle) => toggle.addEventListener("click", () => menu.open ? close() : open(toggle)));
     one("[data-menu-close]", menu)?.addEventListener("click", close);
-    all("a", menu).forEach((link) => link.addEventListener("click", close));
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && menu.classList.contains("is-open")) close();
+    all("a", menu).forEach((link) => link.addEventListener("click", () => close({ restoreFocus: false })));
+    menu.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      close();
     });
   }
 
@@ -201,8 +221,18 @@
     const videos = all("[data-hero-video]", hero);
     const switches = all("[data-video-switch]", hero);
     const darkScenes = new Set((hero.dataset.darkScenes || "").split(",").filter(Boolean).map(Number));
+    const saveData = Boolean(navigator.connection?.saveData);
     let active = 0;
     let transitioning = false;
+    let heroVisible = true;
+
+    const shouldPlay = () => !document.hidden && heroVisible && !reducedMotion.matches && !saveData;
+    const syncPlayback = () => {
+      videos.forEach((video, index) => {
+        if (index === active && shouldPlay()) video.play().catch(() => {});
+        else video.pause();
+      });
+    };
 
     const select = async (index) => {
       if (index === active || transitioning || !videos[index]) return;
@@ -213,7 +243,7 @@
       const nextVideo = videos[index];
       try {
         nextVideo.preload = "auto";
-        await nextVideo.play();
+        if (shouldPlay()) await nextVideo.play();
       } catch (_) { /* The poster remains visible if autoplay is blocked. */ }
       videos.forEach((video, videoIndex) => video.classList.toggle("is-active", videoIndex === index));
       switches.forEach((button, buttonIndex) => {
@@ -230,11 +260,15 @@
     };
 
     switches.forEach((button) => button.addEventListener("click", () => select(Number(button.dataset.videoSwitch))));
-    videos[0]?.play().catch(() => {});
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) videos.forEach((video) => video.pause());
-      else videos[active]?.play().catch(() => {});
-    });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([entry]) => {
+        heroVisible = entry.isIntersecting && entry.intersectionRatio >= 0.2;
+        syncPlayback();
+      }, { threshold: [0, 0.2] }).observe(hero);
+    }
+    document.addEventListener("visibilitychange", syncPlayback);
+    reducedMotion.addEventListener?.("change", syncPlayback);
+    syncPlayback();
   }
 
   function setupArticleList() {
@@ -546,8 +580,10 @@
     const setTocOpen = (open) => {
       tocColumn?.classList.toggle("is-open", open);
       tocToggle?.setAttribute("aria-expanded", String(open));
+      tocToggle?.setAttribute("aria-label", open ? "关闭目录" : "打开目录");
+      tocToggle?.setAttribute("data-tooltip", open ? "关闭目录" : "目录");
     };
-    tocToggle?.setAttribute("aria-expanded", "false");
+    setTocOpen(false);
     tocToggle?.addEventListener("click", () => setTocOpen(!tocColumn?.classList.contains("is-open")));
     document.addEventListener("click", (event) => {
       if (event.target.closest(".post-toc a")) setTocOpen(false);

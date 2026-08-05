@@ -112,7 +112,7 @@ Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <s
                                                                                                                                                                      
 ┌──(root㉿kali)-[~]
 </code></pre></figure><p>423端口
-<figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211130842076.png" alt="image-20260211130842076" loading="lazy" decoding="async"></figure></p>
+<figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1442;--image-max-width:1345px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211130842076.png" alt="image-20260211130842076" loading="lazy" decoding="async" width="2552" height="1442"></span></figure></p>
 <p>并扫出了80的robots.txt</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">/admin.txt /login.txt .config .backup .user.txt 
 |_/wp-admin</code></pre></figure><p>.user.txt里有编码</p>
@@ -123,26 +123,26 @@ alice
 sysadmin
 ctf_player
 &lt;-----passwd top 500-----&gt;</code></pre></figure><p>抓个包看看怎么传参的</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133111529.png" alt="image-20260211133111529" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211131939631.png" alt="image-20260211131939631" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:988 / 281;--image-max-width:2672px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133111529.png" alt="image-20260211133111529" loading="lazy" decoding="async" width="988" height="281"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1442;--image-max-width:1345px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211131939631.png" alt="image-20260211131939631" loading="lazy" decoding="async" width="2552" height="1442"></span></figure></p>
 <p>爆破</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133435637.png" alt="image-20260211133435637" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133435637.png" alt="image-20260211133435637" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <p>得到<code>ctf_player:genesis</code></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133523582.png" alt="image-20260211133523582" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:786 / 433;--image-max-width:1380px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211133523582.png" alt="image-20260211133523582" loading="lazy" decoding="async" width="786" height="433"></span></figure></p>
 <p>我这里用ffuf</p>
 <p>补充几个筛选常用参数</p>
 <blockquote>
 <p>-mc 200　只显示响应为200的</p>
 <p>-fs 1191 筛选响应长度不为1191的</p>
 </blockquote>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135124163.png" alt="image-20260211135124163" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1662 / 618;--image-max-width:2044px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135124163.png" alt="image-20260211135124163" loading="lazy" decoding="async" width="1662" height="618"></span></figure></p>
 <p>尝试手动fuzz一下命令，发现可以读/etc/passwd，其他的好像都读不了</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135228517.png" alt="image-20260211135228517" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1086;--image-max-width:1786px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135228517.png" alt="image-20260211135228517" loading="lazy" decoding="async" width="2552" height="1086"></span></figure></p>
 <p>那么发现有俩用户</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">2002:x:1000:1000:2002 User:/home/2002:/bin/bash
 MS02423:x:1001:1001:MS02423 User:/home/MS02423:/bin/bash</code></pre></figure><p>直接爆破ssh即可 思路很固定</p>
 <figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">┌──(root㉿kali)-[~/yiyi]
-└─# hydra -L users.txt -P rockyou.txt ssh://192.168.56.126 -V -I -u -f</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135607959.png" alt="image-20260211135607959" loading="lazy" decoding="async"></figure></p>
+└─# hydra -L users.txt -P rockyou.txt ssh://192.168.56.126 -V -I -u -f</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:962 / 289;--image-max-width:2530px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211135607959.png" alt="image-20260211135607959" loading="lazy" decoding="async" width="962" height="289"></span></figure></p>
 <figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">Linux MS02423 4.19.0-27-amd64 <span class="hljs-comment">#1 SMP Debian 4.19.316-1 (2024-06-25) x86_64</span>
 
 The programs included with the Debian GNU/Linux system are free software;
@@ -222,7 +222,7 @@ drwxr-xr-x 75 root root 4096 1月  12 23:33 ..
 ==============================================
 -bash-5.0$ </code></pre></figure><p>发现sudo有个脚本可以读文件 但是不能读root.txt</p>
 <p>明确思路 首先bash有suid权限，那么bash后通过软连接读flag即可</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211140452860.png" alt="image-20260211140452860" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1118 / 840;--image-max-width:1012px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20260211140452860.png" alt="image-20260211140452860" loading="lazy" decoding="async" width="1118" height="840"></span></figure></p>
 </article>
         <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><p>本文没有分节</p></div></nav></aside>
       </div>
@@ -259,26 +259,26 @@ drwxr-xr-x 75 root root 4096 1月  12 23:33 ..
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>

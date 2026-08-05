@@ -60,9 +60,9 @@
       </header>
       <div class="post-layout section-shell">
         <article class="article-content" data-article-content><p>扫目录扫到git泄露 githacker开扒</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324125647543.png" alt="image-20250324125647543" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1678 / 913;--image-max-width:1397px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324125647543.png" alt="image-20250324125647543" loading="lazy" decoding="async" width="1678" height="913"></span></figure></p>
 <p>在files目录发现了应该是别的师傅写的马，还是不直接用了吧</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324125727020.png" alt="image-20250324125727020" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:756 / 568;--image-max-width:1012px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324125727020.png" alt="image-20250324125727020" loading="lazy" decoding="async" width="756" height="568"></span></figure></p>
 <p>robots.txt</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">#
 # robots.txt
@@ -110,23 +110,23 @@ Disallow: /?q=user/password
 Disallow: /?q=user/register
 Disallow: /?q=user/login
 Disallow: /?q=user/logout</code></pre></figure><p>git历史中没发现内容</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324131644911.png" alt="image-20250324131644911" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 715;--image-max-width:2721px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324131644911.png" alt="image-20250324131644911" loading="lazy" decoding="async" width="2560" height="715"></span></figure></p>
 <p>在setting中找到mysql的账号和密码</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324131311937.png" alt="image-20250324131311937" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1319 / 594;--image-max-width:1688px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324131311937.png" alt="image-20250324131311937" loading="lazy" decoding="async" width="1319" height="594"></span></figure></p>
 <p>update.settings.json找到一个用户</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324131504976.png" alt="image-20250324131504976" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1905 / 1087;--image-max-width:1332px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324131504976.png" alt="image-20250324131504976" loading="lazy" decoding="async" width="1905" height="1087"></span></figure></p>
 <p>尝试组合登录一下 成功</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324131825536.png" alt="image-20250324131825536" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1448;--image-max-width:1339px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324131825536.png" alt="image-20250324131825536" loading="lazy" decoding="async" width="2552" height="1448"></span></figure></p>
 <p>进去后先找文件上传/命令执行的点-&gt;插件优先</p>
 <p><a href="https://backdropcms.org/modules" target="_blank" rel="noopener noreferrer">Modules for Backdrop CMS | Backdrop CMS<svg class="icon external-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324135951133.png" alt="image-20250324135951133" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324132429543.png" alt="image-20250324132429543" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324132435410.png" alt="image-20250324132435410" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1384 / 992;--image-max-width:1060px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324135951133.png" alt="image-20250324135951133" loading="lazy" decoding="async" width="1384" height="992"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:731 / 275;--image-max-width:2020px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324132429543.png" alt="image-20250324132429543" loading="lazy" decoding="async" width="731" height="275"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1448;--image-max-width:1339px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324132435410.png" alt="image-20250324132435410" loading="lazy" decoding="async" width="2552" height="1448"></span></figure></p>
 <p><a href="http://10.10.11.58/modules/bean/bean_admin_ui/plugins/bean_custom.class.php" target="_blank" rel="noopener noreferrer">10.10.11.58<svg class="icon external-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
 <p>反弹shell</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324141353452.png" alt="image-20250324141353452" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:850 / 310;--image-max-width:2084px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324141353452.png" alt="image-20250324141353452" loading="lazy" decoding="async" width="850" height="310"></span></figure></p>
 <p>直接拿数据库密码登录了johncusack</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324142258937.png" alt="image-20250324142258937" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:578 / 316;--image-max-width:1390px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324142258937.png" alt="image-20250324142258937" loading="lazy" decoding="async" width="578" height="316"></span></figure></p>
 <figure class="code-block"><figcaption><span>bash</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-bash">python3 -c <span class="hljs-string">&#x27;import pty;pty.spawn(&quot;/bin/bash&quot;)&#x27;</span>
 johncusack@dog:~$ find / -perm -u=s -<span class="hljs-built_in">type</span> f 2&gt;/dev/null
 find / -perm -u=s -<span class="hljs-built_in">type</span> f 2&gt;/dev/null
@@ -450,9 +450,9 @@ Commands:
   sql
    sqlc, sql-cli, db-cli
    Open an SQL command-line interface using Backdrop<span class="hljs-string">&#x27;s database credentials.</span></code></pre></figure><p>注意到有一个命令执行参数</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324143449023.png" alt="image-20250324143449023" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:660 / 93;--image-max-width:5394px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324143449023.png" alt="image-20250324143449023" loading="lazy" decoding="async" width="660" height="93"></span></figure></p>
 <p>直接执行/bin/bash -p即可</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324143604018.png" alt="image-20250324143604018" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:898 / 299;--image-max-width:2283px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250324143604018.png" alt="image-20250324143604018" loading="lazy" decoding="async" width="898" height="299"></span></figure></p>
 </article>
         <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><p>本文没有分节</p></div></nav></aside>
       </div>
@@ -489,26 +489,26 @@ Commands:
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>

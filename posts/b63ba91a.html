@@ -59,7 +59,7 @@
         <div class="post-tags"><a href="/tags/?tag=CTF">#CTF</a></div>
       </header>
       <div class="post-layout section-shell">
-        <article class="article-content" data-article-content><h1 id="半决赛">半决赛<a class="heading-anchor" href="#%E5%8D%8A%E5%86%B3%E8%B5%9B" aria-label="链接到 半决赛">#</a></h1><h2 id="回归基本功">回归基本功<a class="heading-anchor" href="#%E5%9B%9E%E5%BD%92%E5%9F%BA%E6%9C%AC%E5%8A%9F" aria-label="链接到 回归基本功">#</a></h2><blockquote>
+        <article class="article-content" data-article-content><h2 id="半决赛">半决赛<a class="heading-anchor" href="#%E5%8D%8A%E5%86%B3%E8%B5%9B" aria-label="链接到 半决赛">#</a></h2><h3 id="回归基本功">回归基本功<a class="heading-anchor" href="#%E5%9B%9E%E5%BD%92%E5%9F%BA%E6%9C%AC%E5%8A%9F" aria-label="链接到 回归基本功">#</a></h3><blockquote>
 <p>“金铲铲”最强王者选手小睿来到了新赛季“赛博之城”，面对全新的版本，他试图重回最强王者段位，但却总是屡屡失败，他不由感叹：“归根到底还是基本功不够扎实，回归基本功，从代码中找到上分密码flag吧！”</p>
 </blockquote>
 <p>题目中有提示</p>
@@ -69,7 +69,7 @@
 <p>（ “EBaLeiKeDun”（鳄霸雷克顿）与“ShengLingShiZheLeiKeDun”（圣灵使者雷克顿）是不同的答案 ）</p>
 </blockquote>
 <p>修改UA头找到下一关内容</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250510225829102.png" alt="image-20250510225829102" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1154;--image-max-width:1681px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250510225829102.png" alt="image-20250510225829102" loading="lazy" decoding="async" width="2552" height="1154"></span></figure></p>
 <figure class="code-block"><figcaption><span>php</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-title function_ invoke__">show_source</span>(<span class="hljs-keyword">__FILE__</span>);
 <span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;E8sP4g7UvT.php&#x27;</span>);
@@ -118,12 +118,12 @@
 }
 <span class="hljs-meta">?&gt;</span> </code></pre></figure><p>基础的弱比较，然后就是传参参数的特性</p>
 <p>用<code>_</code>来bypass</p>
-<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">http://112.126.73.173:9998/Q2rN6h3YkZB9fL5j2WmX.php?huigui[jibengong.1=1&amp;huigui[jibengong.2=%0A0=0%261=e559dcee72d03a13110efe9b6355b30d&amp;huigui[jibengong.3=jibengong</code></pre></figure><p><figure class="article-image"><img src="/assets/post-media/b63ba91a/image-20250510230002538.png" alt="image-20250510230002538" loading="lazy" decoding="async"></figure></p>
-<h2 id="哪吒的试炼">哪吒的试炼<a class="heading-anchor" href="#%E5%93%AA%E5%90%92%E7%9A%84%E8%AF%95%E7%82%BC" aria-label="链接到 哪吒的试炼">#</a></h2><blockquote>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">http://112.126.73.173:9998/Q2rN6h3YkZB9fL5j2WmX.php?huigui[jibengong.1=1&amp;huigui[jibengong.2=%0A0=0%261=e559dcee72d03a13110efe9b6355b30d&amp;huigui[jibengong.3=jibengong</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1010;--image-max-width:1920px"><img data-article-image src="/assets/post-media/b63ba91a/image-20250510230002538.png" alt="image-20250510230002538" loading="lazy" decoding="async" width="2552" height="1010"></span></figure></p>
+<h3 id="哪吒的试炼">哪吒的试炼<a class="heading-anchor" href="#%E5%93%AA%E5%90%92%E7%9A%84%E8%AF%95%E7%82%BC" aria-label="链接到 哪吒的试炼">#</a></h3><blockquote>
 <p>哪吒面临一项艰难的试炼，他需要解开封印才能获得最终的力量。</p>
 </blockquote>
 <p>根据提示传参?food=lotus root获得isflag.php路由，f12</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250512120418786.png" alt="image-20250512120418786" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:709 / 132;--image-max-width:4082px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250512120418786.png" alt="image-20250512120418786" loading="lazy" decoding="async" width="709" height="132"></span></figure></p>
 <p>得到源码</p>
 <figure class="code-block"><figcaption><span>php</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;nezha&#x27;</span>])) {
@@ -149,15 +149,15 @@
     <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h3&gt;只有真正的勇者才能找到破局之法。&lt;/h3&gt;&quot;</span>;
 }
 <span class="hljs-meta">?&gt;</span></code></pre></figure><p>双写+弱比较绕过</p>
-<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">nezha={&quot;incantation&quot;: &quot;I_am_the_spirI_am_the_spirit_of_fireit_of_fire&quot;,&quot;md5&quot;: &quot;240610708&quot;,&quot;power&quot;: &quot;QNKCDZO&quot;}</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250512121656329.png" alt="image-20250512121656329" loading="lazy" decoding="async"></figure></p>
+<figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">nezha={&quot;incantation&quot;: &quot;I_am_the_spirI_am_the_spirit_of_fireit_of_fire&quot;,&quot;md5&quot;: &quot;240610708&quot;,&quot;power&quot;: &quot;QNKCDZO&quot;}</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1123;--image-max-width:1727px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250512121656329.png" alt="image-20250512121656329" loading="lazy" decoding="async" width="2552" height="1123"></span></figure></p>
 <p>然后找对应关系：明拆分成日，月 日对应sun月对应moon然后月翻转，n去掉即可得到suoom</p>
 <p>得到flag-&gt;ISCC{suetsueergwooniwwoooowsilrow}</p>
-<h2 id="shallowseek">ShallowSeek<a class="heading-anchor" href="#shallowseek" aria-label="链接到 ShallowSeek">#</a></h2><blockquote>
+<h3 id="shallowseek">ShallowSeek<a class="heading-anchor" href="#shallowseek" aria-label="链接到 ShallowSeek">#</a></h3><blockquote>
 <p>ShallowSeek - 探索已至之境</p>
 </blockquote>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250512121909480.png" alt="image-20250512121909480" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1448;--image-max-width:1339px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250512121909480.png" alt="image-20250512121909480" loading="lazy" decoding="async" width="2552" height="1448"></span></figure></p>
 <p>查看室友带饭问题</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250512121949782.png" alt="image-20250512121949782" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1448;--image-max-width:1339px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250512121949782.png" alt="image-20250512121949782" loading="lazy" decoding="async" width="2552" height="1448"></span></figure></p>
 <p>查看三个历史记录</p>
 <figure class="code-block"><figcaption><span>text</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-text">出题建议：AI这么火不蹭一下热度？可以从AI相关的输入处理等方向入手，保持题目趣味性和可用性。
 实在不行，你还能加点密码学，CTF一家亲嘛！要是不想用经典加密方式，我给你提供个好玩儿的：
@@ -239,12 +239,12 @@
     <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>.join(r)
 
 
-<span class="hljs-built_in">print</span>(decrypt(<span class="hljs-string">&quot;0@_cu_5_1r3lw@y5wn5!}&quot;</span>, <span class="hljs-string">&quot;387531189&quot;</span>))</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250512122347945.png" alt="image-20250512122347945" loading="lazy" decoding="async"></figure></p>
+<span class="hljs-built_in">print</span>(decrypt(<span class="hljs-string">&quot;0@_cu_5_1r3lw@y5wn5!}&quot;</span>, <span class="hljs-string">&quot;387531189&quot;</span>))</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250512122347945.png" alt="image-20250512122347945" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <p>拼接前半段即可</p>
-<h1 id="决赛">决赛<a class="heading-anchor" href="#%E5%86%B3%E8%B5%9B" aria-label="链接到 决赛">#</a></h1><h3 id="谁动了我的奶酪">谁动了我的奶酪<a class="heading-anchor" href="#%E8%B0%81%E5%8A%A8%E4%BA%86%E6%88%91%E7%9A%84%E5%A5%B6%E9%85%AA" aria-label="链接到 谁动了我的奶酪">#</a></h3><p>有一个输入框 任意输入回显</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518122440667.png" alt="image-20250518122440667" loading="lazy" decoding="async"></figure></p>
+<h2 id="决赛">决赛<a class="heading-anchor" href="#%E5%86%B3%E8%B5%9B" aria-label="链接到 决赛">#</a></h2><h4 id="谁动了我的奶酪">谁动了我的奶酪<a class="heading-anchor" href="#%E8%B0%81%E5%8A%A8%E4%BA%86%E6%88%91%E7%9A%84%E5%A5%B6%E9%85%AA" aria-label="链接到 谁动了我的奶酪">#</a></h4><p>有一个输入框 任意输入回显</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518122440667.png" alt="image-20250518122440667" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
 <p>多次尝试后发现为tom</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518122459377.png" alt="image-20250518122459377" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518122459377.png" alt="image-20250518122459377" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
 <p>得到源码</p>
 <figure class="code-block"><figcaption><span>php</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2&gt;据目击鼠鼠称，那Tom坏猫确实拿了一块儿奶酪，快去找找吧！&lt;/h2&gt;&quot;</span>;
@@ -346,58 +346,58 @@
 <span class="hljs-variable">$b</span>-&gt;color = <span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$a</span>);
 
 <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">urlencode</span>(<span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$b</span>));
-</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518122825536.png" alt="image-20250518122825536" loading="lazy" decoding="async"></figure></p>
+</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518122825536.png" alt="image-20250518122825536" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <p>得到（根据源码UA头改一下）</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123742551.png" alt="image-20250518123742551" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123542029.png" alt="image-20250518123542029" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:620 / 510;--image-max-width:924px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123742551.png" alt="image-20250518123742551" loading="lazy" decoding="async" width="620" height="510"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1000;--image-max-width:1940px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123542029.png" alt="image-20250518123542029" loading="lazy" decoding="async" width="2552" height="1000"></span></figure></p>
 <p>那么再次构造exp 将clue.php换成flag_of_cheese.php即可</p>
 <p>得到</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123420141.png" alt="image-20250518123420141" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1081;--image-max-width:1794px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123420141.png" alt="image-20250518123420141" loading="lazy" decoding="async" width="2552" height="1081"></span></figure></p>
 <p>得到前一半flag</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123449092.png" alt="image-20250518123449092" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123449092.png" alt="image-20250518123449092" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
 <p>根据flag1的php文件名解码得到cheeseOne</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123818753.png" alt="image-20250518123818753" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123818753.png" alt="image-20250518123818753" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
 <p>构造chees2</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123849950.png" alt="image-20250518123849950" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123849950.png" alt="image-20250518123849950" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
 <p>得到</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123911020.png" alt="image-20250518123911020" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1062;--image-max-width:1826px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123911020.png" alt="image-20250518123911020" loading="lazy" decoding="async" width="2552" height="1062"></span></figure></p>
 <p>查看源码发现</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123940498.png" alt="image-20250518123940498" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:517 / 145;--image-max-width:2710px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518123940498.png" alt="image-20250518123940498" loading="lazy" decoding="async" width="517" height="145"></span></figure></p>
 <p>解密后发现可能为jwt密钥</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124026256.png" alt="image-20250518124026256" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124119176.png" alt="image-20250518124119176" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124026256.png" alt="image-20250518124026256" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1135;--image-max-width:1709px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124119176.png" alt="image-20250518124119176" loading="lazy" decoding="async" width="2552" height="1135"></span></figure></p>
 <p>user改为admin 将密钥填入</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124317972.png" alt="image-20250518124317972" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124317972.png" alt="image-20250518124317972" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
 <p>认证成功</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124342998.png" alt="image-20250518124342998" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1098;--image-max-width:1766px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124342998.png" alt="image-20250518124342998" loading="lazy" decoding="async" width="2552" height="1098"></span></figure></p>
 <p>进入flag界面</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124409217.png" alt="image-20250518124409217" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1065;--image-max-width:1827px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124409217.png" alt="image-20250518124409217" loading="lazy" decoding="async" width="2560" height="1065"></span></figure></p>
 <p>与0x16异或得到flag</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124524114.png" alt="image-20250518124524114" loading="lazy" decoding="async"></figure></p>
-<h3 id="iscc购物中心">ISCC购物中心<a class="heading-anchor" href="#iscc%E8%B4%AD%E7%89%A9%E4%B8%AD%E5%BF%83" aria-label="链接到 ISCC购物中心">#</a></h3><p>1/1登录非预期了</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518124524114.png" alt="image-20250518124524114" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
+<h4 id="iscc购物中心">ISCC购物中心<a class="heading-anchor" href="#iscc%E8%B4%AD%E7%89%A9%E4%B8%AD%E5%BF%83" aria-label="链接到 ISCC购物中心">#</a></h4><p>1/1登录非预期了</p>
 <p>初始积分99999，在首页中修改前端代码兑换flag</p>
 <p>观察前端代码</p>
 <p>将hidden删除</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518125235723.png" alt="image-20250518125235723" loading="lazy" decoding="async"></figure></p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518125704753.png" alt="image-20250518125704753" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1317;--image-max-width:1473px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518125235723.png" alt="image-20250518125235723" loading="lazy" decoding="async" width="2552" height="1317"></span></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 727;--image-max-width:2668px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518125704753.png" alt="image-20250518125704753" loading="lazy" decoding="async" width="2552" height="727"></span></figure></p>
 <p>获得flag</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518125726414.png" alt="image-20250518125726414" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1298 / 364;--image-max-width:2710px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518125726414.png" alt="image-20250518125726414" loading="lazy" decoding="async" width="1298" height="364"></span></figure></p>
 <p>登录用户管理系统</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518125755593.png" alt="image-20250518125755593" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1575 / 799;--image-max-width:1498px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518125755593.png" alt="image-20250518125755593" loading="lazy" decoding="async" width="1575" height="799"></span></figure></p>
 <p>解密</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518125843335.png" alt="image-20250518125843335" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518125843335.png" alt="image-20250518125843335" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
 <p>解密</p>
 <figure class="code-block"><figcaption><span>python</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-python">a = <span class="hljs-string">&quot;_EUUmpVxbw#b7uE~&amp;ff7xq%nfSd7sxusk&quot;</span>
 b = a.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)
 re = <span class="hljs-built_in">bytes</span>([b ^ <span class="hljs-number">0x16</span> <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> b])
 
-<span class="hljs-built_in">print</span>(re.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518130005647.png" alt="image-20250518130005647" loading="lazy" decoding="async"></figure></p>
-<h2 id="安卓-ggad">安卓-GGAD<a class="heading-anchor" href="#%E5%AE%89%E5%8D%93-ggad" aria-label="链接到 安卓-GGAD">#</a></h2><p>雷电找到关键字符</p>
-<p><figure class="article-image"><img src="/assets/post-media/b63ba91a/image-20250518132820767.png" alt="image-20250518132820767" loading="lazy" decoding="async"></figure></p>
+<span class="hljs-built_in">print</span>(re.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518130005647.png" alt="image-20250518130005647" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
+<h3 id="安卓-ggad">安卓-GGAD<a class="heading-anchor" href="#%E5%AE%89%E5%8D%93-ggad" aria-label="链接到 安卓-GGAD">#</a></h3><p>雷电找到关键字符</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1920 / 1040;--image-max-width:1403px"><img data-article-image src="/assets/post-media/b63ba91a/image-20250518132820767.png" alt="image-20250518132820767" loading="lazy" decoding="async" width="1920" height="1040"></span></figure></p>
 <p>看源码</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518133036781.png" alt="image-20250518133036781" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518133036781.png" alt="image-20250518133036781" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <p>查看c.a的返回值</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518133148603.png" alt="image-20250518133148603" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518133148603.png" alt="image-20250518133148603" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
 <p>剩下的拿给ai审一下 编写解密脚本</p>
 <figure class="code-block"><figcaption><span>python</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
 <span class="hljs-comment"># RC4 + Vigenère 解密组合脚本</span>
@@ -496,11 +496,11 @@ re = <span class="hljs-built_in">bytes</span>([b ^ <span class="hljs-number">0x1
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
     main()
-</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518133602853.png" alt="image-20250518133602350" loading="lazy" decoding="async"></figure></p>
-<h2 id="misc-神经网络迷踪">misc-神经网络迷踪<a class="heading-anchor" href="#misc-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%B7%E8%B8%AA" aria-label="链接到 misc-神经网络迷踪">#</a></h2><p>看到secret_key.weight</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518183606699.png" alt="image-20250518183606699" loading="lazy" decoding="async"></figure></p>
+</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518133602853.png" alt="image-20250518133602350" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
+<h3 id="misc-神经网络迷踪">misc-神经网络迷踪<a class="heading-anchor" href="#misc-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%B7%E8%B8%AA" aria-label="链接到 misc-神经网络迷踪">#</a></h3><p>看到secret_key.weight</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1024 / 768;--image-max-width:1013px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518183606699.png" alt="image-20250518183606699" loading="lazy" decoding="async" width="1024" height="768"></span></figure></p>
 <p>只有output层带bias</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518183727134.png" alt="image-20250518183727134" loading="lazy" decoding="async"></figure>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1024 / 768;--image-max-width:1013px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518183727134.png" alt="image-20250518183727134" loading="lazy" decoding="async" width="1024" height="768"></span></figure>
 转字符</p>
 <figure class="code-block"><figcaption><span>python</span><button class="icon-text-button" type="button" data-copy-code aria-label="复制代码"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg><span>复制</span></button></figcaption><pre><code class="hljs language-python"><span class="hljs-keyword">import</span> sys, torch, re
 
@@ -513,20 +513,20 @@ bias = sd.get(<span class="hljs-string">&#x27;output.bias&#x27;</span>)
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(nums).decode()
 ![image-<span class="hljs-number">20250518184401403</span>](/assets/post-media/b63ba91a/image-<span class="hljs-number">20250518184401403.</span>png)
 core = to_text(bias, <span class="hljs-number">255</span>) <span class="hljs-keyword">or</span> to_text(bias, <span class="hljs-number">1</span>)
-<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;ISCC{{<span class="hljs-subst">{core}</span>}}&quot;</span>)</code></pre></figure><p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518184406205.png" alt="image-20250518184406205" loading="lazy" decoding="async"></figure></p>
-<h2 id="misc-八卦">misc-八卦<a class="heading-anchor" href="#misc-%E5%85%AB%E5%8D%A6" aria-label="链接到 misc-八卦">#</a></h2><p>十六进制查看到7z文件 手动分离</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518190451270.png" alt="image-20250518190451270" loading="lazy" decoding="async"></figure></p>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;ISCC{{<span class="hljs-subst">{core}</span>}}&quot;</span>)</code></pre></figure><p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2560 / 1560;--image-max-width:1247px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518184406205.png" alt="image-20250518184406205" loading="lazy" decoding="async" width="2560" height="1560"></span></figure></p>
+<h3 id="misc-八卦">misc-八卦<a class="heading-anchor" href="#misc-%E5%85%AB%E5%8D%A6" aria-label="链接到 misc-八卦">#</a></h3><p>十六进制查看到7z文件 手动分离</p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2233 / 1349;--image-max-width:1258px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518190451270.png" alt="image-20250518190451270" loading="lazy" decoding="async" width="2233" height="1349"></span></figure></p>
 <p>上半部分是gif，下半部分是一个7z的加密压缩包，猜测密码在gif中</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518190735956.png" alt="image-20250518190735956" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2233 / 1160;--image-max-width:1463px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518190735956.png" alt="image-20250518190735956" loading="lazy" decoding="async" width="2233" height="1160"></span></figure></p>
 <p>拆分gif</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518190903651.png" alt="image-20250518190903651" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:1245 / 569;--image-max-width:1663px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518190903651.png" alt="image-20250518190903651" loading="lazy" decoding="async" width="1245" height="569"></span></figure></p>
 <p>查看帧间隔</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518190953947.png" alt="image-20250518190953947" loading="lazy" decoding="async"></figure></p>
-<h4 id="1-时间间帧232323">1. <strong>时间间帧232323</strong><a class="heading-anchor" href="#1-%E6%97%B6%E9%97%B4%E9%97%B4%E5%B8%A7232323" aria-label="链接到 1. 时间间帧232323">#</a></h4><ul>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:740 / 240;--image-max-width:2343px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518190953947.png" alt="image-20250518190953947" loading="lazy" decoding="async" width="740" height="240"></span></figure></p>
+<h5 id="1-时间间帧232323">1. <strong>时间间帧232323</strong><a class="heading-anchor" href="#1-%E6%97%B6%E9%97%B4%E9%97%B4%E5%B8%A7232323" aria-label="链接到 1. 时间间帧232323">#</a></h5><ul>
 <li>表示六十四卦中的<strong>第23卦</strong>。</li>
 <li>第23卦是 <strong>剥卦</strong>，卦象是：<strong>艮下坤上</strong>。</li>
 </ul>
-<h4 id="2-存在内容111010">2. <strong>存在内容111010</strong><a class="heading-anchor" href="#2-%E5%AD%98%E5%9C%A8%E5%86%85%E5%AE%B9111010" aria-label="链接到 2. 存在内容111010">#</a></h4><ul>
+<h5 id="2-存在内容111010">2. <strong>存在内容111010</strong><a class="heading-anchor" href="#2-%E5%AD%98%E5%9C%A8%E5%86%85%E5%AE%B9111010" aria-label="链接到 2. 存在内容111010">#</a></h5><ul>
 <li>这是一个6位二进制数：111010。</li>
 <li>将其转为十进制：
 <code>111010₂ = 58₁₀</code></li>
@@ -593,11 +593,11 @@ core = to_text(bias, <span class="hljs-number">255</span>) <span class="hljs-key
 <p><strong>先拼接下卦，再拼接上卦</strong>，并按卦编号从小到大。</p>
 <p>于是得到压缩包密码</p>
 <p>乾乾坤坤坎震艮坎坎乾艮坤兑兑</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518191304558.png" alt="image-20250518191304558" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:717 / 334;--image-max-width:1631px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518191304558.png" alt="image-20250518191304558" loading="lazy" decoding="async" width="717" height="334"></span></figure></p>
 <p>两次base64解密</p>
-<p><figure class="article-image"><img src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518191316734.png" alt="image-20250518191316734" loading="lazy" decoding="async"></figure></p>
+<p><figure class="article-image" data-image-layout="intrinsic"><span class="article-image-frame" style="--image-ratio:2552 / 1452;--image-max-width:1336px"><img data-article-image src="https://github.com/xyaxxya/PicGo/raw/main/img/image-20250518191316734.png" alt="image-20250518191316734" loading="lazy" decoding="async" width="2552" height="1452"></span></figure></p>
 </article>
-        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><a class="toc-depth-2" href="#%E5%9B%9E%E5%BD%92%E5%9F%BA%E6%9C%AC%E5%8A%9F">回归基本功</a><a class="toc-depth-2" href="#%E5%93%AA%E5%90%92%E7%9A%84%E8%AF%95%E7%82%BC">哪吒的试炼</a><a class="toc-depth-2" href="#shallowseek">ShallowSeek</a><a class="toc-depth-3" href="#%E8%B0%81%E5%8A%A8%E4%BA%86%E6%88%91%E7%9A%84%E5%A5%B6%E9%85%AA">谁动了我的奶酪</a><a class="toc-depth-3" href="#iscc%E8%B4%AD%E7%89%A9%E4%B8%AD%E5%BF%83">ISCC购物中心</a><a class="toc-depth-2" href="#%E5%AE%89%E5%8D%93-ggad">安卓-GGAD</a><a class="toc-depth-2" href="#misc-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%B7%E8%B8%AA">misc-神经网络迷踪</a><a class="toc-depth-2" href="#misc-%E5%85%AB%E5%8D%A6">misc-八卦</a></div></nav></aside>
+        <aside class="toc-column"><nav class="post-toc" aria-label="文章目录" ><span>目录</span><div data-toc-list><a class="toc-depth-2" href="#%E5%8D%8A%E5%86%B3%E8%B5%9B">半决赛</a><a class="toc-depth-3" href="#%E5%9B%9E%E5%BD%92%E5%9F%BA%E6%9C%AC%E5%8A%9F">回归基本功</a><a class="toc-depth-3" href="#%E5%93%AA%E5%90%92%E7%9A%84%E8%AF%95%E7%82%BC">哪吒的试炼</a><a class="toc-depth-3" href="#shallowseek">ShallowSeek</a><a class="toc-depth-2" href="#%E5%86%B3%E8%B5%9B">决赛</a><a class="toc-depth-3" href="#%E5%AE%89%E5%8D%93-ggad">安卓-GGAD</a><a class="toc-depth-3" href="#misc-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%B7%E8%B8%AA">misc-神经网络迷踪</a><a class="toc-depth-3" href="#misc-%E5%85%AB%E5%8D%A6">misc-八卦</a></div></nav></aside>
       </div>
       <div class="post-tools section-shell">
         <button type="button" data-copy-link><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg><span>复制链接</span></button>
@@ -632,26 +632,26 @@ core = to_text(bias, <span class="hljs-number">255</span>) <span class="hljs-key
       </div>
     </footer>
     
-    <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <dialog class="mobile-menu" data-mobile-menu aria-label="站点导航">
       <button class="mobile-menu-close" type="button" data-menu-close aria-label="关闭菜单"><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
       <nav aria-label="移动导航"><a class="mobile-menu-link" href="/#articles">文章</a><a class="mobile-menu-link" href="/categories/">专题</a><a class="mobile-menu-link" href="/tags/">标签</a><a class="mobile-menu-link" href="/archives/">归档</a><a class="mobile-menu-link" href="/about/">关于</a></nav>
       <div class="mobile-menu-social">
     <a href="https://github.com/xyaxxya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></a>
     <a href="https://blog.csdn.net/xydsg" aria-label="CSDN" target="_blank" rel="noopener noreferrer"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"></path><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg></a>
     <a href="mailto:3170234809@qq.com" aria-label="Email"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></a></div>
-    </div>
+    </dialog>
     
-    <dialog class="search-dialog" data-search-dialog>
+    <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" aria-describedby="search-dialog-status">
       <div class="search-shell">
         <header class="search-header">
-          <span class="search-title">站内搜索</span>
+          <span class="search-title" id="search-dialog-title">站内搜索</span>
           <button class="icon-button" type="button" data-close-search aria-label="关闭搜索"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
         </header>
         <label class="search-field">
           <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
           <input type="search" data-search-input autocomplete="off" placeholder="搜索标题、标签或正文" aria-label="搜索文章">
         </label>
-        <p class="search-status" data-search-status>输入关键词，查找 39 篇记录。</p>
+        <p class="search-status" id="search-dialog-status" data-search-status>输入关键词，查找 39 篇记录。</p>
         <div class="search-results" data-search-results aria-live="polite"></div>
         <template data-search-result-icon><svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></template>
       </div>
